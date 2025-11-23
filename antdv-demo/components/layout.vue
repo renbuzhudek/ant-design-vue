@@ -17,6 +17,7 @@ import MobileMenu from '../../components/vc-drawer/src';
 import WWAds from './WWAds.vue';
 import GoogleAds from './GoogleAds';
 import SurelyVue from './surelyVue';
+import MentorBook from './mentorbook';
 
 const docsList = [
   { key: 'introduce', enTitle: 'Ant Design of Vue', title: 'Ant Design of Vue' },
@@ -250,6 +251,7 @@ export default {
     const { isMobile, $route } = this;
     return (
       <div class="page-wrapper">
+        <MentorBook isCN={isCN} />
         <Header searchData={searchData} name={name} />
         <a-config-provider locale={locale}>
           <div class="main-wrapper">

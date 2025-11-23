@@ -1,15 +1,18 @@
 <template>
-  <div v-if="isCN" id="right-bottom">
-    <img width="150" :src="`https://next.antdv.com/common_rice.png?v=${v}`" />
-    <div v-if="isMobile" class="close" @click="visible = false">
-      <a-icon type="close" />
-    </div>
-    <!-- <span v-if="isCN">广告</span> -->
+  <div id="right-bottom">
+    <a v-if="isAdVisible" :href="'https://mentorbook.ai'" target="_blank">
+      <img
+        :src="isCN ? mentorbook_banner_zh : mentorbook_banner_en"
+        style="width: 152px; display: block; margin-top: 16px"
+      />
+    </a>
   </div>
 </template>
 
 <script>
 import moment from 'moment';
+import mentorbook_banner_en from '../public/MPU_176x250_bf_en.svg';
+import mentorbook_banner_zh from '../public/MPU_176x250_bf_zh.svg';
 const isEffective = (start, end) => {
   return moment().isBetween(start, end);
 };
@@ -19,22 +22,9 @@ export default {
   data() {
     return {
       isEffective,
-      visible: true,
-      v: moment().date(),
-      ads: [
-        {
-          alt: 'geektime',
-          img: 'https://qn.antdv.com/geektime-web-small.jpg',
-          href: 'http://gk.link/a/10l8O',
-          visible: isEffective('2020-09-03 10:00:00', '2020-10-04 10:00:00'),
-        },
-        {
-          alt: 'powerproject',
-          img: 'https://qn.antdv.com/powerproject.jpeg?v=20200327',
-          href: 'http://www.powerproject.com.cn',
-          visible: isEffective('2020-03-27 17:00:00', '2020-09-28 17:00:00'),
-        },
-      ],
+      mentorbook_banner_en,
+      mentorbook_banner_zh,
+      isAdVisible: isEffective('2025-11-24 00:00:00', '2025-11-30 23:59:59'),
     };
   },
 };
@@ -45,8 +35,7 @@ export default {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  width: 150px;
-  border-radius: 5px;
+  width: 152px;
   overflow: hidden;
   .close {
     position: absolute;

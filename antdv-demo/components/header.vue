@@ -157,27 +157,28 @@ export default {
               <a-menu-item key="components">
                 <router-link to="/docs/vue/introduce">{isCN ? '组件' : 'Components'}</router-link>
               </a-menu-item>
-              <a-sub-menu
-                v-if="isZhCN"
-                key="advanced"
-                title={
-                  <span style="position: relative">
-                    高级组件
-                    <a-badge color="red" style="position: absolute; top: -35px; right: -15px" />
-                  </span>
-                }
-              >
-                <a-menu-item key="surely-table">
-                  <a
-                    href="https://www.surely.cool"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style="position: relative;"
-                  >
-                    Surely Table
-                  </a>
-                </a-menu-item>
-              </a-sub-menu>
+              {isZhCN && (
+                <a-sub-menu
+                  key="advanced"
+                  title={
+                    <span style="position: relative">
+                      高级组件
+                      <a-badge color="red" style="position: absolute; top: -35px; right: -15px" />
+                    </span>
+                  }
+                >
+                  <a-menu-item key="surely-table">
+                    <a
+                      href="https://www.surelyvue.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style="position: relative;"
+                    >
+                      Surely Table
+                    </a>
+                  </a-menu-item>
+                </a-sub-menu>
+              )}
               {isCN ? (
                 <a-menu-item key="store">
                   <a
