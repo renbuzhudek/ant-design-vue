@@ -1,4 +1,5 @@
 <template>
+  <Mentorbook />
   <Header />
   <div class="main-wrapper">
     <a-row>
@@ -43,24 +44,26 @@
             <component :is="matchCom" />
           </Demo>
           <router-view v-else />
-          <a-affix v-if="headers.length" class="toc-affix" :offset-top="20">
-            <a-anchor>
-              <a-anchor-link
-                v-for="h in headers"
-                :key="h.title"
-                :href="h.href || `#${slugifyTitle(h.title)}`"
-                :target="h.target"
-              >
-                <template #title>
-                  <LinkOutlined v-if="h.target" />
-                  {{ isZhCN ? h.title : h.enTitle || h.title }}
-                </template>
-              </a-anchor-link>
-            </a-anchor>
-          </a-affix>
+          <div class="toc-affix">
+            <a-affix v-if="headers.length" :offset-top="20">
+              <a-anchor>
+                <a-anchor-link
+                  v-for="h in headers"
+                  :key="h.title"
+                  :href="h.href || `#${slugifyTitle(h.title)}`"
+                  :target="h.target"
+                >
+                  <template #title>
+                    <LinkOutlined v-if="h.target" />
+                    {{ isZhCN ? h.title : h.enTitle || h.title }}
+                  </template>
+                </a-anchor-link>
+              </a-anchor>
+            </a-affix>
+          </div>
         </section>
         <a-back-top />
-        <div class="fixed-widgets" :style="isZhCN ? { bottom: '175px' } : {}">
+        <div class="fixed-widgets" :style="{ bottom: '205px' }">
           <a-dropdown placement="top">
             <template #overlay>
               <a-menu
@@ -80,6 +83,7 @@
         <Footer />
       </a-col>
     </a-row>
+    <RightBottomAd />
   </div>
 </template>
 <script lang="ts">
@@ -95,12 +99,12 @@ import Demo from './Demo.vue';
 import useMenus from '../hooks/useMenus';
 import TopAd from '../components/rice/top_rice.vue';
 import Sponsors from '../components/rice/sponsors.vue';
-import RightBottomAd from '../components/rice/right_bottom_rice.vue';
+import RightBottomAd from '../components/rice/right_bottom_ad.vue';
 import { CloseOutlined, MenuOutlined, LinkOutlined } from '@ant-design/icons-vue';
 import ThemeIcon from './ThemeIcon.vue';
 import surelyVueVue from '../components/surelyVue.vue';
 import WWAdsVue from '../components/rice/WWAds.vue';
-
+import Mentorbook from '../components/rice/mentorbook.vue';
 const rControl = /[\u0000-\u001f]/g;
 const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'<>,.?/]+/g;
 
@@ -121,6 +125,7 @@ export default defineComponent({
     surelyVueVue,
     WWAdsVue,
     LinkOutlined,
+    Mentorbook,
   },
   setup() {
     const visible = ref(false);

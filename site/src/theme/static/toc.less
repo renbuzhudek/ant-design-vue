@@ -68,8 +68,8 @@ ul.toc > li {
 }
 
 .toc-affix {
-  position: absolute;
-  top: 8px;
+  position: fixed;
+  top: 120px;
   right: 20px;
   .ant-affix {
     z-index: 9;
@@ -82,6 +82,10 @@ ul.toc > li {
     right: auto;
     left: 20px;
   }
+}
+.toc-affix .ant-anchor-wrapper {
+  max-height: ~'calc(100vh - 340px)' !important;
+  overflow-y: auto;
 }
 
 .toc-affix-bottom {
