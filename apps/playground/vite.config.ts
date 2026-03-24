@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'node:path'
-import { readdirSync, statSync, readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { defineConfig, Plugin } from 'vite'
 
 const uiSrc = resolve(__dirname, '../../packages/ui/src')
@@ -21,7 +21,7 @@ function demoGlobPlugin(): Plugin {
       try {
         const files = readdirSync(demoDir).filter(f => f.endsWith('.vue'))
         if (files.length) result[comp] = files.map(f => f.replace('.vue', ''))
-      } catch {}
+      } catch { /* no demo dir */ }
     }
     return result
   }
@@ -104,7 +104,7 @@ function oldDemoGlobPlugin(): Plugin {
           f => f.endsWith('.vue') && f !== 'index.vue',
         )
         if (files.length) result[comp] = files.map(f => f.replace('.vue', ''))
-      } catch {}
+      } catch { /* no demo dir */ }
     }
     return result
   }

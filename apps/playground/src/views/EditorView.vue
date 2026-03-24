@@ -40,8 +40,6 @@ import {
   defineComponent,
   markRaw,
   onErrorCaptured,
-  onMounted,
-  onBeforeUnmount,
 } from 'vue'
 import * as Vue from 'vue'
 import { transform } from 'sucrase'
@@ -55,8 +53,6 @@ const route = useRoute()
 // --- Route-based state ---
 const componentName = computed(() => route.params.component as string | undefined)
 const demoName = computed(() => route.params.demo as string | undefined)
-const isPlayground = computed(() => route.path === '/playground')
-
 const demoInfo = computed(() => {
   if (componentName.value && demoName.value) {
     return findDemo(componentName.value, demoName.value)
