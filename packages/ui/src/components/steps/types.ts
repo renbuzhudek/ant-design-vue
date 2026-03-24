@@ -1,12 +1,29 @@
-import type { Slot } from '@/utils/types'
-import type { InjectionKey, Ref } from 'vue'
+import type { Slot, ScopedSlot, SlotReturnType } from '@/utils/types'
+import type { Component, InjectionKey, Ref } from 'vue'
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error'
+
+export type ProgressDotRender = (info: {
+  index: number
+  status: StepStatus
+  title: SlotReturnType
+  description: SlotReturnType
+  node: SlotReturnType
+}) => SlotReturnType
+
+export interface StepItem {
+  title?: string
+  subTitle?: string
+  description?: string
+  icon?: Component | string
+  status?: StepStatus
+  disabled?: boolean
+}
 
 export interface StepsProps {
   /** Current active step index (zero-based) */
   current?: number
-  /** Starting index for step numbering */
+  /** Starting index for step numbering display (default 0) */
   initial?: number
   /** Status of the current step */
   status?: StepStatus
@@ -17,19 +34,25 @@ export interface StepsProps {
   /** Placement of labels relative to icons */
   labelPlacement?: 'horizontal' | 'vertical'
   /** Visual type of the steps */
-  type?: 'default' | 'navigation'
+  type?: 'default' | 'navigation' | 'inline'
   /** Progress percentage for the current step icon */
   percent?: number
+  /** Show dot style progress bar. Pass a function for custom dot rendering */
+  progressDot?: boolean | ProgressDotRender
+  /** Declarative step items — alternative to using <Step> children */
+  items?: StepItem[]
+  /** Auto-switch to vertical layout on small screens */
+  responsive?: boolean
 }
 
 export const stepsDefaultProps = {
   current: 0,
   initial: 0,
   status: 'process',
-  size: 'default',
   direction: 'horizontal',
   labelPlacement: 'horizontal',
   type: 'default',
+  responsive: true,
 } as const
 
 export interface StepsEmits {
@@ -39,6 +62,13 @@ export interface StepsEmits {
 
 export interface StepsSlots {
   default?: Slot
+  progressDot?: ScopedSlot<{
+    index: number
+    status: StepStatus
+    title: SlotReturnType
+    description: SlotReturnType
+    node: SlotReturnType
+  }>
 }
 
 export interface StepProps {
@@ -48,6 +78,8 @@ export interface StepProps {
   subTitle?: string
   /** Description of the step */
   description?: string
+  /** Custom icon component or string */
+  icon?: Component | string
   /** Override the automatically determined status */
   status?: StepStatus
   /** Whether the step is disabled (not clickable) */
@@ -65,11 +97,14 @@ export interface StepSlots {
 /** Context provided by Steps to each Step child */
 export interface StepsContextType {
   current: Ref<number>
+  initial: Ref<number>
   status: Ref<StepStatus>
   size: Ref<'default' | 'small'>
   direction: Ref<'horizontal' | 'vertical'>
   labelPlacement: Ref<'horizontal' | 'vertical'>
   percent: Ref<number | undefined>
+  progressDot: Ref<boolean | ProgressDotRender | undefined>
+  type: Ref<'default' | 'navigation' | 'inline'>
   onStepClick?: (index: number) => void
   registerStep: () => number
   unregisterStep: (index: number) => void

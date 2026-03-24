@@ -2,13 +2,24 @@
 import { computed, provide, ref, onBeforeUpdate } from 'vue'
 import type { StepsProps, StepsEmits, StepsSlots } from './types'
 import { stepsDefaultProps, stepsContextKey } from './types'
+import { useConfigInject, useBreakpoint } from '@/hooks'
+import Step from './Step.vue'
 
 defineOptions({ name: 'ASteps' })
 const props = withDefaults(defineProps<StepsProps>(), stepsDefaultProps)
 const emit = defineEmits<StepsEmits>()
 defineSlots<StepsSlots>()
 
-// Step registration counter. Reset before each render via onBeforeUpdate.
+const { size: globalSize } = useConfigInject()
+const screens = useBreakpoint()
+
+const mergedSize = computed(() => props.size ?? (globalSize.value === 'sm' ? 'small' : 'default'))
+
+const mergedDirection = computed(() => {
+  if (props.responsive && screens.value.xs) return 'vertical'
+  return props.direction
+})
+
 const stepCounter = ref(0)
 
 onBeforeUpdate(() => {
@@ -22,11 +33,14 @@ function handleStepClick(index: number) {
 
 provide(stepsContextKey, {
   current: computed(() => props.current),
+  initial: computed(() => props.initial),
   status: computed(() => props.status),
-  size: computed(() => props.size),
-  direction: computed(() => props.direction),
+  size: mergedSize,
+  direction: mergedDirection,
   labelPlacement: computed(() => props.labelPlacement),
   percent: computed(() => props.percent),
+  progressDot: computed(() => props.progressDot),
+  type: computed(() => props.type),
   onStepClick: handleStepClick,
   registerStep: () => {
     return stepCounter.value++
@@ -36,17 +50,34 @@ provide(stepsContextKey, {
   },
 })
 
+const isInline = computed(() => props.type === 'inline')
+
 const classes = computed(() => ({
   'ant-steps': true,
-  [`ant-steps-${props.direction}`]: true,
-  [`ant-steps-${props.size}`]: props.size !== 'default',
-  'ant-steps-label-vertical': props.labelPlacement === 'vertical' && props.direction === 'horizontal',
+  [`ant-steps-${mergedDirection.value}`]: true,
+  [`ant-steps-${mergedSize.value}`]: mergedSize.value !== 'default',
+  'ant-steps-label-vertical':
+    props.labelPlacement === 'vertical' && mergedDirection.value === 'horizontal',
   'ant-steps-navigation': props.type === 'navigation',
+  'ant-steps-inline': isInline.value,
+  'ant-steps-dot': !!props.progressDot && !isInline.value,
 }))
+
 </script>
 
 <template>
   <div :class="classes" role="navigation" aria-label="Steps">
-    <slot />
+    <slot>
+      <Step
+        v-for="(item, index) in (items || [])"
+        :key="item.title ?? index"
+        :title="item.title"
+        :sub-title="item.subTitle"
+        :description="item.description"
+        :icon="item.icon"
+        :status="item.status"
+        :disabled="item.disabled"
+      />
+    </slot>
   </div>
 </template>

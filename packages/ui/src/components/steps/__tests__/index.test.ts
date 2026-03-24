@@ -103,6 +103,16 @@ describe('Steps', () => {
     expect(wrapper.classes('ant-steps-navigation')).toBe(true)
   })
 
+  it('applies inline type class', () => {
+    const wrapper = createSteps({ type: 'inline' })
+    expect(wrapper.classes('ant-steps-inline')).toBe(true)
+  })
+
+  it('applies dot class when progressDot is true', () => {
+    const wrapper = createSteps({ progressDot: true })
+    expect(wrapper.classes('ant-steps-dot')).toBe(true)
+  })
+
   it('step click emits change and update:current', async () => {
     const wrapper = createSteps({ current: 0 })
     const items = wrapper.findAll('.ant-steps-item')
@@ -153,6 +163,30 @@ describe('Steps', () => {
     expect(items[2].classes('ant-steps-item-wait')).toBe(true)
   })
 
+  it('renders steps via items prop', () => {
+    const wrapper = mount(Steps, {
+      props: {
+        current: 1,
+        items: [
+          { title: 'First' },
+          { title: 'Second', description: 'desc' },
+          { title: 'Third' },
+        ],
+      },
+    })
+    const items = wrapper.findAll('.ant-steps-item')
+    expect(items).toHaveLength(3)
+    expect(items[0].find('.ant-steps-item-title').text()).toContain('First')
+    expect(items[1].find('.ant-steps-item-description').text()).toBe('desc')
+  })
+
+  it('initial prop offsets step numbering display', () => {
+    const wrapper = createSteps({ current: 0, initial: 2 })
+    const icons = wrapper.findAll('.ant-steps-icon')
+    expect(icons[0].text()).toBe('3')
+    expect(icons[1].text()).toBe('4')
+  })
+
   it('should render snapshot correctly', () => {
     const wrapper = createSteps({ current: 1 }, [
       { title: 'Done', description: 'First step' },
@@ -196,6 +230,11 @@ describe('Step', () => {
     const wrapper = createSteps({ current: 1, status: 'error' })
     const icons = wrapper.findAll('.ant-steps-icon')
     expect(icons[1].find('.anticon-close').exists()).toBe(true)
+  })
+
+  it('shows dot icon when progressDot is enabled', () => {
+    const wrapper = createSteps({ current: 0, progressDot: true })
+    expect(wrapper.find('.ant-steps-icon-dot').exists()).toBe(true)
   })
 
   it('supports icon slot', () => {
@@ -249,9 +288,18 @@ describe('Step', () => {
     expect(tails.length).toBe(3)
   })
 
-  it('clickable step has clickable class', () => {
+  it('clickable step has clickable class and role="button"', () => {
     const wrapper = createSteps({ current: 0 })
     const items = wrapper.findAll('.ant-steps-item')
     expect(items[0].classes('ant-steps-item-clickable')).toBe(true)
+    expect(items[0].attributes('role')).toBe('button')
+  })
+
+  it('has component name AStep', () => {
+    expect(Step.name).toBe('AStep')
+  })
+
+  it('has component name ASteps', () => {
+    expect(Steps.name).toBe('ASteps')
   })
 })
