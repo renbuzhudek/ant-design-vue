@@ -8,6 +8,12 @@ defineSlots<DividerSlots>()
 const slots = useSlots()
 
 const hasContent = computed(() => !!slots.default)
+const hasCustomMarginLeft = computed(
+  () => hasContent.value && props.orientation === 'left' && props.orientationMargin != null,
+)
+const hasCustomMarginRight = computed(
+  () => hasContent.value && props.orientation === 'right' && props.orientationMargin != null,
+)
 
 const classes = computed(() => ({
   'ant-divider': true,
@@ -16,6 +22,8 @@ const classes = computed(() => ({
   'ant-divider-plain': props.plain,
   'ant-divider-with-text': hasContent.value,
   [`ant-divider-with-text-${props.orientation}`]: hasContent.value,
+  'ant-divider-no-default-orientation-margin-left': hasCustomMarginLeft.value,
+  'ant-divider-no-default-orientation-margin-right': hasCustomMarginRight.value,
 }))
 
 const innerStyle = computed(() => {
