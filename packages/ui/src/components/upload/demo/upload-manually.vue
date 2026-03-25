@@ -19,7 +19,6 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue';
-import request from 'umi-request';
 import { UploadOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 import type { UploadProps } from 'ant-design-vue';
@@ -47,9 +46,9 @@ const handleUpload = () => {
   uploading.value = true;
 
   // You can use any AJAX library you like
-  request('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
-    method: 'post',
-    data: formData,
+  fetch('https://www.mocky.io/v2/5cc8019d300000980a055e76', {
+    method: 'POST',
+    body: formData,
   })
     .then(() => {
       fileList.value = [];

@@ -111,8 +111,18 @@
   </a-drawer>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
-import descriptionItem from './descriptionItem/index.vue';
+import { ref, defineComponent, h } from 'vue';
+
+const descriptionItem = defineComponent({
+  props: { title: String, content: String },
+  setup(props, { slots }) {
+    return () =>
+      h('div', { style: 'font-size:14px;line-height:22px;margin-bottom:7px;color:rgba(0,0,0,0.65)' }, [
+        h('p', { style: 'margin-right:8px;display:inline-block;color:rgba(0,0,0,0.85)' }, `${props.title}：`),
+        props.content ? props.content : slots.content?.(),
+      ]);
+  },
+});
 const open = ref<boolean>(false);
 const pStyle = {
   fontSize: '16px',

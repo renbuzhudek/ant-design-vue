@@ -13,10 +13,9 @@
   </a-table>
 </template>
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import type { TableProps } from 'ant-design-vue';
-import { usePagination } from 'vue-request';
-import axios from 'axios';
+
 const columns = [
   {
     title: 'Name',
@@ -46,31 +45,28 @@ type APIParams = {
   sortOrder?: number;
   [key: string]: any;
 };
-type APIResult = {
-  results: {
-    gender: 'female' | 'male';
-    name: string;
-    email: string;
-  }[];
-};
 
-const queryData = async (params: APIParams) => {
-  const res = await axios.get<APIResult>('https://randomuser.me/api?noinfo', { params })
-  return res.data.results;
-};
+const dataSource = ref([]);
+const loading = ref(false);
+const current = ref(1);
+const pageSize = ref(10);
 
-const {
-  data: dataSource,
-  run,
-  loading,
-  current,
-  pageSize,
-} = usePagination(queryData, {
-  pagination: {
-    currentKey: 'page',
-    pageSizeKey: 'results',
-  },
-});
+const fetchData = async (params: APIParams) => {
+  loading.value = true;
+  try {
+    const query = new URLSearchParams(
+      Object.entries(params).reduce((acc, [k, v]) => {
+        if (v !== undefined) acc[k] = String(v);
+        return acc;
+      }, {} as Record<string, string>),
+    );
+    const res = await fetch(`https://randomuser.me/api?noinfo&${query}`);
+    const json = await res.json();
+    dataSource.value = json.results;
+  } finally {
+    loading.value = false;
+  }
+};
 
 const pagination = computed(() => ({
   total: 200,
@@ -83,12 +79,18 @@ const handleTableChange: TableProps['onChange'] = (
   filters: any,
   sorter: any,
 ) => {
-  run({
+  current.value = pag.current;
+  pageSize.value = pag.pageSize;
+  fetchData({
     results: pag.pageSize,
-    page: pag?.current,
+    page: pag.current,
     sortField: sorter.field,
     sortOrder: sorter.order,
     ...filters,
   });
 };
+
+onMounted(() => {
+  fetchData({ results: pageSize.value, page: current.value });
+});
 </script>
