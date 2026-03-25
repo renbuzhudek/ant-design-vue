@@ -1,50 +1,51 @@
 <template>
-  <div style="padding: 40px;">
-    <a-button ref="btn1Ref" variant="solid" @click="open = true">
-      Begin Tour
-    </a-button>
-    <a-divider />
-    <a-space :size="60">
-      <a-button ref="btn2Ref">Upload</a-button>
-      <a-button ref="btn3Ref">Save</a-button>
-    </a-space>
-    <a-tour
-      v-model:open="open"
-      :steps="steps"
-      @finish="onFinish"
-    />
-  </div>
+  <a-button type="primary" @click="handleOpen(true)">Begin Tour</a-button>
+
+  <a-divider />
+
+  <a-space>
+    <a-button ref="ref1">Upload</a-button>
+    <a-button ref="ref2" type="primary">Save</a-button>
+    <a-button ref="ref3"><EllipsisOutlined /></a-button>
+  </a-space>
+
+  <a-tour v-model:current="current" :open="open" :steps="steps" @close="handleOpen(false)" />
 </template>
 
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-import type { TourStepInfo } from '../types'
+<script lang="ts" setup>
+import { ref, createVNode } from 'vue';
+import { EllipsisOutlined } from '@ant-design/icons-vue';
+import type { TourProps } from 'ant-design-vue';
 
-const open = ref(false)
+const open = ref<boolean>(false);
 
-const btn1Ref = ref<{ $el: HTMLElement } | null>(null)
-const btn2Ref = ref<{ $el: HTMLElement } | null>(null)
-const btn3Ref = ref<{ $el: HTMLElement } | null>(null)
-
-const steps = computed<TourStepInfo[]>(() => [
-  {
-    title: 'Begin Tour',
-    description: 'Click this button to start the tour.',
-    target: () => btn1Ref.value?.$el ?? null,
-  },
+const ref1 = ref(null);
+const ref2 = ref(null);
+const ref3 = ref(null);
+const current = ref(0);
+const steps: TourProps['steps'] = [
   {
     title: 'Upload File',
-    description: 'Upload your file here.',
-    target: () => btn2Ref.value?.$el ?? null,
+    description: 'Put your files here.',
+    cover: createVNode('img', {
+      alt: 'tour.png',
+      src: 'https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png',
+    }),
+    target: () => ref1.value && ref1.value.$el,
   },
   {
     title: 'Save',
     description: 'Save your changes.',
-    target: () => btn3Ref.value?.$el ?? null,
+    target: () => ref2.value && ref2.value.$el,
   },
-])
+  {
+    title: 'Other Actions',
+    description: 'Click to see other actions.',
+    target: () => ref3.value && ref3.value.$el,
+  },
+];
 
-function onFinish() {
-  console.log('Tour finished')
-}
+const handleOpen = (val: boolean): void => {
+  open.value = val;
+};
 </script>

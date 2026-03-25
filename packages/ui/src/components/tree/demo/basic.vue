@@ -1,8 +1,22 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { TreeDataNode, Key } from '../types'
+<template>
+  <a-tree
+    v-model:expanded-keys="expandedKeys"
+    v-model:selected-keys="selectedKeys"
+    v-model:checked-keys="checkedKeys"
+    checkable
+    :tree-data="treeData"
+  >
+    <template #title="{ title, key }">
+      <span v-if="key === '0-0-1-0'" style="color: #1890ff">{{ title }}</span>
+      <template v-else>{{ title }}</template>
+    </template>
+  </a-tree>
+</template>
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+import type { TreeProps } from 'ant-design-vue';
 
-const treeData: TreeDataNode[] = [
+const treeData: TreeProps['treeData'] = [
   {
     title: 'parent 1',
     key: '0-0',
@@ -10,40 +24,31 @@ const treeData: TreeDataNode[] = [
       {
         title: 'parent 1-0',
         key: '0-0-0',
+        disabled: true,
         children: [
-          { title: 'leaf', key: '0-0-0-0' },
+          { title: 'leaf', key: '0-0-0-0', disableCheckbox: true },
           { title: 'leaf', key: '0-0-0-1' },
         ],
       },
       {
         title: 'parent 1-1',
         key: '0-0-1',
-        children: [
-          { title: 'leaf', key: '0-0-1-0' },
-        ],
+        children: [{ key: '0-0-1-0', title: 'sss' }],
       },
     ],
   },
-]
+];
 
-const expandedKeys = ref<Key[]>(['0-0', '0-0-0'])
-const selectedKeys = ref<Key[]>([])
-
-function onSelect(keys: Key[]) {
-  selectedKeys.value = keys
-}
-
-function onExpand(keys: Key[]) {
-  expandedKeys.value = keys
-}
+const expandedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+const selectedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+const checkedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+watch(expandedKeys, () => {
+  console.log('expandedKeys', expandedKeys);
+});
+watch(selectedKeys, () => {
+  console.log('selectedKeys', selectedKeys);
+});
+watch(checkedKeys, () => {
+  console.log('checkedKeys', checkedKeys);
+});
 </script>
-
-<template>
-  <a-tree
-    :tree-data="treeData"
-    :expanded-keys="expandedKeys"
-    :selected-keys="selectedKeys"
-    @select="onSelect"
-    @expand="onExpand"
-  />
-</template>

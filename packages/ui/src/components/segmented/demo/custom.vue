@@ -1,51 +1,91 @@
-<script setup lang="ts">
-import { ref } from 'vue'
+<template>
+  <a-segmented v-model:value="value" :options="data">
+    <template #label="{ value: val, payload = {} }">
+      <div style="padding: 4px 4px">
+        <template v-if="payload.icon">
+          <a-avatar :src="payload.src" :style="payload.style">
+            <template #icon><component :is="payload.icon" /></template>
+            {{ payload.content }}
+          </a-avatar>
+        </template>
+        <template v-else>
+          <a-avatar :src="payload.src" :style="payload.style">
+            {{ payload.content }}
+          </a-avatar>
+        </template>
+        <div>{{ val }}</div>
+      </div>
+    </template>
+  </a-segmented>
+  <br />
+  <br />
+  <a-segmented v-model:value="value2" :options="options2">
+    <template #label="{ payload }">
+      <div style="padding: 4px 4px">
+        <div>{{ payload.title }}</div>
+        <div>{{ payload.subTitle }}</div>
+      </div>
+    </template>
+  </a-segmented>
+</template>
 
-const value = ref('user1')
-const value2 = ref('spring')
-
-const userOptions = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { UserOutlined } from '@ant-design/icons-vue';
+import ASegmented from 'ant-design-vue/es/segmented/src/segmented';
+const data = ref([
   {
     value: 'user1',
-    label: 'User 1',
+    payload: {
+      src: 'https://joeschmoe.io/api/v1/random',
+      style: { backgroundColor: '#f56a00' },
+    },
   },
   {
     value: 'user2',
-    label: 'User 2',
+    payload: {
+      style: { backgroundColor: '#f56a00' },
+      content: 'K',
+    },
   },
   {
     value: 'user3',
-    label: 'User 3',
+    payload: {
+      icon: UserOutlined,
+      style: { backgroundColor: '#f56a00' },
+    },
   },
-]
-
-const seasonOptions = [
-  { value: 'spring', label: 'Spring' },
-  { value: 'summer', label: 'Summer' },
-  { value: 'autumn', label: 'Autumn' },
-  { value: 'winter', label: 'Winter' },
-]
+]);
+const options2 = ref([
+  {
+    value: 'spring',
+    payload: {
+      title: 'Spring',
+      subTitle: 'Jan-Mar',
+    },
+  },
+  {
+    value: 'summer',
+    payload: {
+      title: 'Summer',
+      subTitle: 'Apr-Jun',
+    },
+  },
+  {
+    value: 'autumn',
+    payload: {
+      title: 'Autumn',
+      subTitle: 'Jul-Sept',
+    },
+  },
+  {
+    value: 'winter',
+    payload: {
+      title: 'Winter',
+      subTitle: 'Oct-Dec',
+    },
+  },
+]);
+const value = ref('user1');
+const value2 = ref('spring');
 </script>
-
-<template>
-  <div style="display: flex; flex-direction: column; gap: 24px;">
-    <a-segmented v-model:value="value" :options="userOptions">
-      <template #label="{ value: val, label }">
-        <div style="padding: 4px;">
-          <div style="width: 32px; height: 32px; border-radius: 50%; background: #f56a00; color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
-            {{ (val as string).charAt(0).toUpperCase() }}
-          </div>
-          <div style="margin-top: 4px; text-align: center;">{{ label }}</div>
-        </div>
-      </template>
-    </a-segmented>
-
-    <a-segmented v-model:value="value2" :options="seasonOptions">
-      <template #label="{ label }">
-        <div style="padding: 4px;">
-          <div style="font-weight: 600;">{{ label }}</div>
-        </div>
-      </template>
-    </a-segmented>
-  </div>
-</template>

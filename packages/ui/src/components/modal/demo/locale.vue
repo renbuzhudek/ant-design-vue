@@ -1,33 +1,34 @@
 <template>
   <div>
-    <a-button variant="solid" @click="open = true">Modal</a-button>
-    <a-button style="margin-left: 8px" @click="confirm">Confirm</a-button>
-    <a-modal
-      v-model:open="open"
-      title="Modal"
-      ok-text="Confirm"
-      cancel-text="Dismiss"
-      @ok="open = false"
-    >
+    <a-button type="primary" @click="showModal">Modal</a-button>
+    <a-button @click="confirm">Confirm</a-button>
+    <a-modal v-model:open="open" title="Modal" ok-text="确认" cancel-text="取消" @ok="hideModal">
       <p>Bla bla ...</p>
       <p>Bla bla ...</p>
       <p>Bla bla ...</p>
     </a-modal>
   </div>
 </template>
+<script lang="ts" setup>
+import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
+import { ref, createVNode } from 'vue';
+import { Modal } from 'ant-design-vue';
+const open = ref<boolean>(false);
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import { Modal } from '@ant-design-vue/ui'
-
-const open = ref(false)
+const showModal = () => {
+  open.value = true;
+};
+const hideModal = () => {
+  open.value = false;
+};
 
 const confirm = () => {
   Modal.confirm({
     title: 'Confirm',
+    icon: createVNode(ExclamationCircleOutlined),
     content: 'Bla bla ...',
-    okText: 'Confirm',
-    cancelText: 'Dismiss',
-  })
-}
+    okText: '确认',
+    cancelText: '取消',
+  });
+};
 </script>

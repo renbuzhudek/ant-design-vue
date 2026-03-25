@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref(1)
-</script>
-
 <template>
   <div>
     <a-radio-group v-model:value="value">
@@ -14,3 +8,7 @@ const value = ref(1)
     </a-radio-group>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref<number>(1);
+</script>

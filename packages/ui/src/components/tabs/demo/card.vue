@@ -5,8 +5,7 @@
     <a-tab-pane key="3" tab="Tab 3">Content of Tab Pane 3</a-tab-pane>
   </a-tabs>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const activeKey = ref('1')
+<script lang="ts" setup>
+import { ref } from 'vue';
+const activeKey = ref('1');
 </script>

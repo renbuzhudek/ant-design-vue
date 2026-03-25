@@ -1,7 +1,9 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 8px; max-width: 400px">
-    <a-button variant="solid" block>Solid Block</a-button>
-    <a-button variant="outlined" block>Outlined Block</a-button>
-    <a-button variant="dashed" block>Dashed Block</a-button>
-  </div>
+  <a-space wrap>
+    <a-button type="primary" block>Primary</a-button>
+    <a-button block>Default</a-button>
+    <a-button type="dashed" block>Dashed</a-button>
+    <a-button danger block>Danger</a-button>
+    <a-button type="link" block>Link</a-button>
+  </a-space>
 </template>

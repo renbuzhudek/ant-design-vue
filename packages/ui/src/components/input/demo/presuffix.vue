@@ -1,22 +1,23 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px">
-    <a-input v-model:value="userName" placeholder="Enter your username">
+  <div class="components-input-demo-presuffix">
+    <a-input v-model:value="userName" placeholder="Basic usage">
       <template #prefix>
-        <UserOutlined />
+        <user-outlined />
       </template>
       <template #suffix>
         <a-tooltip title="Extra information">
-          <InfoCircleOutlined style="color: rgba(0, 0, 0, 0.45)" />
+          <info-circle-outlined style="color: rgba(0, 0, 0, 0.45)" />
         </a-tooltip>
       </template>
     </a-input>
-    <a-input prefix="$" suffix="USD" placeholder="Amount" />
+    <br />
+    <br />
+    <a-input prefix="￥" suffix="RMB" />
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
-
-const userName = ref('')
+<script lang="ts" setup>
+import { UserOutlined, InfoCircleOutlined } from '@ant-design/icons-vue';
+import { ref } from 'vue';
+const userName = ref<string>('');
 </script>

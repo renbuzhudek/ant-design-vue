@@ -1,49 +1,113 @@
 <template>
-  <div style="display: flex; gap: 24px;">
-    <div style="width: 256px;">
-      <h4 style="margin-bottom: 16px;">Light Theme</h4>
-      <a-menu
-        v-model:selected-keys="lightSelected"
-        v-model:open-keys="lightOpen"
-        mode="inline"
-        theme="light"
-      >
-        <a-sub-menu menu-key="sub1" title="Navigation One">
-          <a-menu-item item-key="1">Option 1</a-menu-item>
-          <a-menu-item item-key="2">Option 2</a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu menu-key="sub2" title="Navigation Two">
-          <a-menu-item item-key="3">Option 3</a-menu-item>
-          <a-menu-item item-key="4">Option 4</a-menu-item>
-        </a-sub-menu>
-      </a-menu>
-    </div>
-    <div style="width: 256px;">
-      <h4 style="margin-bottom: 16px;">Dark Theme</h4>
-      <a-menu
-        v-model:selected-keys="darkSelected"
-        v-model:open-keys="darkOpen"
-        mode="inline"
-        theme="dark"
-      >
-        <a-sub-menu menu-key="sub1" title="Navigation One">
-          <a-menu-item item-key="1">Option 1</a-menu-item>
-          <a-menu-item item-key="2">Option 2</a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu menu-key="sub2" title="Navigation Two">
-          <a-menu-item item-key="3">Option 3</a-menu-item>
-          <a-menu-item item-key="4">Option 4</a-menu-item>
-        </a-sub-menu>
-      </a-menu>
-    </div>
+  <div>
+    <a-switch
+      :checked="theme === 'dark'"
+      checked-children="Dark"
+      un-checked-children="Light"
+      @change="changeTheme"
+    />
+    <br />
+    <br />
+    <a-menu
+      v-model:open-keys="openKeys"
+      v-model:selected-keys="selectedKeys"
+      style="width: 256px"
+      mode="inline"
+      :theme="theme"
+      :items="items"
+    />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const lightSelected = ref(['1'])
-const lightOpen = ref(['sub1'])
-const darkSelected = ref(['1'])
-const darkOpen = ref(['sub1'])
+<script lang="ts" setup>
+import { h, ref } from 'vue';
+import {
+  MailOutlined,
+  CalendarOutlined,
+  AppstoreOutlined,
+  SettingOutlined,
+} from '@ant-design/icons-vue';
+import type { MenuTheme } from 'ant-design-vue';
+const theme = ref<MenuTheme>('dark');
+const selectedKeys = ref(['1']);
+const openKeys = ref(['sub1']);
+const items = ref([
+  {
+    key: '1',
+    icon: () => h(MailOutlined),
+    label: 'Navigation One',
+    title: 'Navigation One',
+  },
+  {
+    key: '2',
+    icon: () => h(CalendarOutlined),
+    label: 'Navigation Two',
+    title: 'Navigation Two',
+  },
+  {
+    key: 'sub1',
+    icon: () => h(AppstoreOutlined),
+    label: 'Navigation Three',
+    title: 'Navigation Three',
+    children: [
+      {
+        key: '3',
+        label: 'Option 3',
+        title: 'Option 3',
+      },
+      {
+        key: '4',
+        label: 'Option 4',
+        title: 'Option 4',
+      },
+      {
+        key: 'sub1-2',
+        label: 'Submenu',
+        title: 'Submenu',
+        children: [
+          {
+            key: '5',
+            label: 'Option 5',
+            title: 'Option 5',
+          },
+          {
+            key: '6',
+            label: 'Option 6',
+            title: 'Option 6',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'sub2',
+    icon: () => h(SettingOutlined),
+    label: 'Navigation Four',
+    title: 'Navigation Four',
+    children: [
+      {
+        key: '7',
+        label: 'Option 7',
+        title: 'Option 7',
+      },
+      {
+        key: '8',
+        label: 'Option 8',
+        title: 'Option 8',
+      },
+      {
+        key: '9',
+        label: 'Option 9',
+        title: 'Option 9',
+      },
+      {
+        key: '10',
+        label: 'Option 10',
+        title: 'Option 10',
+      },
+    ],
+  },
+]);
+const changeTheme = (checked: boolean) => {
+  theme.value = checked ? 'dark' : 'light';
+};
 </script>

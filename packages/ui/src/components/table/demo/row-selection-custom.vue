@@ -1,63 +1,87 @@
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-import type { Key, TableRowSelection } from '../types'
-import { SELECTION_ALL, SELECTION_INVERT, SELECTION_NONE } from '../types'
+<template>
+  <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" />
+</template>
+<script lang="ts" setup>
+import { computed, ref, unref } from 'vue';
+import { Table } from 'ant-design-vue';
 
 interface DataType {
-  key: Key
-  name: string
-  age: number
-  address: string
+  key: string | number;
+  name: string;
+  age: number;
+  address: string;
 }
 
 const columns = [
-  { title: 'Name', dataIndex: 'name' },
-  { title: 'Age', dataIndex: 'age' },
-  { title: 'Address', dataIndex: 'address' },
-]
+  {
+    title: 'Name',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+  },
+];
 
-const data: DataType[] = Array.from({ length: 46 }, (_, i) => ({
-  key: i,
-  name: `Edward King ${i}`,
-  age: 32,
-  address: `London, Park Lane no. ${i}`,
-}))
-
-const selectedRowKeys = ref<Key[]>([])
-
-function onSelectChange(keys: Key[]) {
-  selectedRowKeys.value = keys
+const data: DataType[] = [];
+for (let i = 0; i < 46; i++) {
+  data.push({
+    key: i,
+    name: `Edward King ${i}`,
+    age: 32,
+    address: `London, Park Lane no. ${i}`,
+  });
 }
 
-const rowSelection = computed<TableRowSelection<DataType>>(() => ({
-  selectedRowKeys: selectedRowKeys.value,
-  onChange: onSelectChange,
-  selections: [
-    SELECTION_ALL,
-    SELECTION_INVERT,
-    SELECTION_NONE,
-    {
-      key: 'odd',
-      text: 'Select Odd Row',
-      onSelect: (changeableRowKeys: Key[]) => {
-        selectedRowKeys.value = changeableRowKeys.filter((_key, index) => index % 2 === 0)
-      },
-    },
-    {
-      key: 'even',
-      text: 'Select Even Row',
-      onSelect: (changeableRowKeys: Key[]) => {
-        selectedRowKeys.value = changeableRowKeys.filter((_key, index) => index % 2 !== 0)
-      },
-    },
-  ],
-}))
-</script>
+const selectedRowKeys = ref<DataType['key'][]>([]); // Check here to configure the default column
 
-<template>
-  <a-table
-    :columns="columns"
-    :data-source="data"
-    :row-selection="rowSelection"
-  />
-</template>
+const onSelectChange = (changableRowKeys: string[]) => {
+  console.log('selectedRowKeys changed: ', changableRowKeys);
+  selectedRowKeys.value = changableRowKeys;
+};
+
+const rowSelection = computed(() => {
+  return {
+    selectedRowKeys: unref(selectedRowKeys),
+    onChange: onSelectChange,
+    hideDefaultSelections: true,
+    selections: [
+      Table.SELECTION_ALL,
+      Table.SELECTION_INVERT,
+      Table.SELECTION_NONE,
+      {
+        key: 'odd',
+        text: 'Select Odd Row',
+        onSelect: changableRowKeys => {
+          let newSelectedRowKeys = [];
+          newSelectedRowKeys = changableRowKeys.filter((_key, index) => {
+            if (index % 2 !== 0) {
+              return false;
+            }
+            return true;
+          });
+          selectedRowKeys.value = newSelectedRowKeys;
+        },
+      },
+      {
+        key: 'even',
+        text: 'Select Even Row',
+        onSelect: changableRowKeys => {
+          let newSelectedRowKeys = [];
+          newSelectedRowKeys = changableRowKeys.filter((_key, index) => {
+            if (index % 2 !== 0) {
+              return true;
+            }
+            return false;
+          });
+          selectedRowKeys.value = newSelectedRowKeys;
+        },
+      },
+    ],
+  };
+});
+</script>

@@ -1,38 +1,21 @@
-<script setup lang="ts">
-const formatter = (value: number | string | undefined) => {
-  if (value === undefined || value === null || value === '') return ''
-  return `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
-
-const parser = (value: string) => {
-  return Number(value.replace(/\$\s?|(,*)/g, ''))
-}
-
-const percentFormatter = (value: number | string | undefined) => {
-  if (value === undefined || value === null || value === '') return ''
-  return `${value}%`
-}
-
-const percentParser = (value: string) => {
-  return Number(value.replace('%', ''))
-}
-</script>
-
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px">
+  <a-space>
     <a-input-number
-      :default-value="1000"
-      :formatter="formatter"
-      :parser="parser"
-      style="width: 200px"
+      v-model:value="value1"
+      :formatter="value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
+      :parser="value => value.replace(/\$\s?|(,*)/g, '')"
     />
     <a-input-number
-      :default-value="100"
+      v-model:value="value2"
       :min="0"
       :max="100"
-      :formatter="percentFormatter"
-      :parser="percentParser"
-      style="width: 200px"
+      :formatter="value => `${value}%`"
+      :parser="value => value.replace('%', '')"
     />
-  </div>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value1 = ref<number>(1000);
+const value2 = ref<number>(100);
+</script>

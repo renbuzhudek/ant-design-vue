@@ -1,11 +1,36 @@
 <template>
-  <div style="display: flex; gap: 16px; align-items: center;">
-    <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" alt="User avatar" />
-    <a-avatar>U</a-avatar>
-    <a-avatar>
-      <template #icon><span style="font-size: 18px;">&#128100;</span></template>
-    </a-avatar>
-    <a-avatar shape="square">S</a-avatar>
-    <a-avatar shape="square" src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" alt="Square avatar" />
-  </div>
+  <a-space direction="vertical" :size="32">
+    <a-space wrap :size="16">
+      <a-avatar :size="64">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+      <a-avatar size="large">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+      <a-avatar>
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+      <a-avatar size="small">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-space>
+    <a-space wrap :size="16">
+      <a-avatar shape="square" :size="64">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+      <a-avatar shape="square" size="large">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+      <a-avatar shape="square">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+      <a-avatar shape="square" size="small">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-space>
+  </a-space>
 </template>
+
+<script lang="ts" setup>
+import { UserOutlined } from '@ant-design/icons-vue';
+</script>

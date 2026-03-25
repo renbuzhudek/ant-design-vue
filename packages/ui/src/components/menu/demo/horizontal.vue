@@ -1,27 +1,64 @@
 <template>
-  <div>
-    <a-menu v-model:selected-keys="current" mode="horizontal">
-      <a-menu-item item-key="mail">Navigation One</a-menu-item>
-      <a-menu-item item-key="app">Navigation Two</a-menu-item>
-      <a-sub-menu menu-key="sub1" title="Navigation Three - Submenu">
-        <a-menu-item-group title="Item 1">
-          <a-menu-item item-key="setting:1">Option 1</a-menu-item>
-          <a-menu-item item-key="setting:2">Option 2</a-menu-item>
-        </a-menu-item-group>
-        <a-menu-item-group title="Item 2">
-          <a-menu-item item-key="setting:3">Option 3</a-menu-item>
-          <a-menu-item item-key="setting:4">Option 4</a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
-      <a-menu-item item-key="link">
-        <a href="https://antdv.com" target="_blank">Navigation Four - Link</a>
-      </a-menu-item>
-    </a-menu>
-  </div>
+  <a-menu v-model:selected-keys="current" mode="horizontal" :items="items" />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const current = ref(['mail'])
+<script lang="ts" setup>
+import { h, ref } from 'vue';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import type { MenuProps } from 'ant-design-vue';
+const current = ref<string[]>(['mail']);
+const items = ref<MenuProps['items']>([
+  {
+    key: 'mail',
+    icon: () => h(MailOutlined),
+    label: 'Navigation One',
+    title: 'Navigation One',
+  },
+  {
+    key: 'app',
+    icon: () => h(AppstoreOutlined),
+    label: 'Navigation Two',
+    title: 'Navigation Two',
+  },
+  {
+    key: 'sub1',
+    icon: () => h(SettingOutlined),
+    label: 'Navigation Three - Submenu',
+    title: 'Navigation Three - Submenu',
+    children: [
+      {
+        type: 'group',
+        label: 'Item 1',
+        children: [
+          {
+            label: 'Option 1',
+            key: 'setting:1',
+          },
+          {
+            label: 'Option 2',
+            key: 'setting:2',
+          },
+        ],
+      },
+      {
+        type: 'group',
+        label: 'Item 2',
+        children: [
+          {
+            label: 'Option 3',
+            key: 'setting:3',
+          },
+          {
+            label: 'Option 4',
+            key: 'setting:4',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'alipay',
+    label: h('a', { href: 'https://antdv.com', target: '_blank' }, 'Navigation Four - Link'),
+    title: 'Navigation Four - Link',
+  },
+]);
 </script>

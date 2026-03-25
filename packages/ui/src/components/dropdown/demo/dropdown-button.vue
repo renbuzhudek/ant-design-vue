@@ -1,52 +1,100 @@
 <template>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 40px;">
+  <div class="demo-dropdown-wrap">
     <a-dropdown-button @click="handleButtonClick">
       Dropdown
       <template #overlay>
         <a-menu @click="handleMenuClick">
-          <a-menu-item item-key="1">1st menu item</a-menu-item>
-          <a-menu-item item-key="2">2nd menu item</a-menu-item>
-          <a-menu-item item-key="3">3rd menu item</a-menu-item>
+          <a-menu-item key="1">
+            <UserOutlined />
+            1st menu item
+          </a-menu-item>
+          <a-menu-item key="2">
+            <UserOutlined />
+            2nd menu item
+          </a-menu-item>
+          <a-menu-item key="3">
+            <UserOutlined />
+            3rd item
+          </a-menu-item>
         </a-menu>
       </template>
     </a-dropdown-button>
-
-    <a-dropdown-button type="primary">
-      Primary
+    <a-dropdown-button>
+      Dropdown
       <template #overlay>
-        <a-menu>
-          <a-menu-item item-key="1">1st item</a-menu-item>
-          <a-menu-item item-key="2">2nd item</a-menu-item>
+        <a-menu @click="handleMenuClick">
+          <a-menu-item key="1">
+            <UserOutlined />
+            1st menu item
+          </a-menu-item>
+          <a-menu-item key="2">
+            <UserOutlined />
+            2nd menu item
+          </a-menu-item>
+          <a-menu-item key="3">
+            <UserOutlined />
+            3rd item
+          </a-menu-item>
         </a-menu>
       </template>
+      <template #icon><UserOutlined /></template>
     </a-dropdown-button>
-
-    <a-dropdown-button disabled>
-      Disabled
+    <a-dropdown-button disabled @click="handleButtonClick">
+      Dropdown
       <template #overlay>
-        <a-menu>
-          <a-menu-item item-key="1">1st item</a-menu-item>
+        <a-menu @click="handleMenuClick">
+          <a-menu-item key="1">
+            <UserOutlined />
+            1st menu item
+          </a-menu-item>
+          <a-menu-item key="2">
+            <UserOutlined />
+            2nd menu item
+          </a-menu-item>
+          <a-menu-item key="3">
+            <UserOutlined />
+            3rd item
+          </a-menu-item>
         </a-menu>
       </template>
     </a-dropdown-button>
-
-    <a-dropdown-button danger>
-      Danger
+    <a-dropdown>
       <template #overlay>
-        <a-menu>
-          <a-menu-item item-key="1" danger>Delete</a-menu-item>
+        <a-menu @click="handleMenuClick">
+          <a-menu-item key="1">
+            <UserOutlined />
+            1st menu item
+          </a-menu-item>
+          <a-menu-item key="2">
+            <UserOutlined />
+            2nd menu item
+          </a-menu-item>
+          <a-menu-item key="3">
+            <UserOutlined />
+            3rd item
+          </a-menu-item>
         </a-menu>
       </template>
-    </a-dropdown-button>
+      <a-button>
+        Button
+        <DownOutlined />
+      </a-button>
+    </a-dropdown>
   </div>
 </template>
-
-<script setup lang="ts">
-function handleButtonClick() {
-  console.log('button clicked')
-}
-
-function handleMenuClick(info: any) {
-  console.log('menu item clicked:', info)
-}
+<script lang="ts" setup>
+import { UserOutlined, DownOutlined } from '@ant-design/icons-vue';
+import type { MenuProps } from 'ant-design-vue';
+const handleButtonClick = (e: Event) => {
+  console.log('click left button', e);
+};
+const handleMenuClick: MenuProps['onClick'] = e => {
+  console.log('click', e);
+};
 </script>
+<style lang="less" scoped>
+.demo-dropdown-wrap :deep(.ant-dropdown-button) {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+</style>

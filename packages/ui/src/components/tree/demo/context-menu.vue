@@ -1,8 +1,24 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { TreeDataNode, Key } from '../types'
+<template>
+  <a-tree v-model:expanded-keys="expandedKeys" :tree-data="treeData">
+    <template #title="{ key: treeKey, title }">
+      <a-dropdown :trigger="['contextmenu']">
+        <span>{{ title }}</span>
+        <template #overlay>
+          <a-menu @click="({ key: menuKey }) => onContextMenuClick(treeKey, menuKey)">
+            <a-menu-item key="1">1st menu item</a-menu-item>
+            <a-menu-item key="2">2nd menu item</a-menu-item>
+            <a-menu-item key="3">3rd menu item</a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
+    </template>
+  </a-tree>
+</template>
 
-const treeData: TreeDataNode[] = [
+<script lang="ts" setup>
+import { watch, ref } from 'vue';
+
+const treeData = [
   {
     title: '0-0',
     key: '0-0',
@@ -27,28 +43,13 @@ const treeData: TreeDataNode[] = [
       },
     ],
   },
-]
+];
+const onContextMenuClick = (treeKey: string, menuKey: string | number) => {
+  console.log(`treeKey: ${treeKey}, menuKey: ${menuKey}`);
+};
+const expandedKeys = ref<string[]>(['0-0-0', '0-0-1']);
 
-const expandedKeys = ref<Key[]>(['0-0-0', '0-0-1'])
-
-function onContextMenuClick(treeKey: Key, menuKey: string | number) {
-  console.log(`treeKey: ${treeKey}, menuKey: ${menuKey}`)
-}
+watch(expandedKeys, () => {
+  console.log('expandedKeys', expandedKeys);
+});
 </script>
-
-<template>
-  <a-tree v-model:expanded-keys="expandedKeys" :tree-data="treeData">
-    <template #title="{ key: treeKey, title }">
-      <a-dropdown :trigger="['contextmenu']">
-        <span>{{ title }}</span>
-        <template #overlay>
-          <a-menu @click="({ key: menuKey }: { key: string | number }) => onContextMenuClick(treeKey, menuKey)">
-            <a-menu-item key="1">1st menu item</a-menu-item>
-            <a-menu-item key="2">2nd menu item</a-menu-item>
-            <a-menu-item key="3">3rd menu item</a-menu-item>
-          </a-menu>
-        </template>
-      </a-dropdown>
-    </template>
-  </a-tree>
-</template>

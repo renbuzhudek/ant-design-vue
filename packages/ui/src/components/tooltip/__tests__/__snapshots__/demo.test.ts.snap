@@ -1,112 +1,186 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Tooltip demos > demo: Arrow 1`] = `
-"<div style="display: flex; gap: 16px; padding: 40px;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">With arrow</span></button></span>
-  <!--teleport start-->
-  <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Without arrow</span></button></span>
-  <!--teleport start-->
-  <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-</div>"
-`;
-
-exports[`Tooltip demos > demo: Basic 1`] = `
-"<div style="display: flex; gap: 16px; flex-wrap: wrap; padding: 40px;"><span class="ant-trigger-wrapper"><span>Tooltip will show on mouse enter.</span></span>
-  <!--teleport start-->
-  <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-</div>"
-`;
-
-exports[`Tooltip demos > demo: Color 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; padding: 40px;">
-  <h4 style="margin: 0px;">Preset colors</h4>
-  <div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">pink</span></button></span>
+"<div data-v-bf157145="" id="components-a-tooltip-demo-arrow">
+  <div data-v-bf157145="" style="margin-bottom: 24px;">
+    <div data-v-bf157145="" class="ant-segmented" role="radiogroup">
+      <div class="ant-segmented-group">
+        <div class="ant-segmented-thumb" aria-hidden="true"></div>
+        <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Show"><span class="ant-segmented-item-label">Show</span></div>
+        <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Hide"><span class="ant-segmented-item-label">Hide</span></div>
+        <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Center"><span class="ant-segmented-item-label">Center</span></div>
+      </div>
+    </div>
+  </div>
+  <div data-v-bf157145="" style="margin-left: 70px; white-space: nowrap;"><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">TL</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">red</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Top</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">yellow</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">orange</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">cyan</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">green</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">blue</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">purple</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">geekblue</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">magenta</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">volcano</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">gold</span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">lime</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">TR</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
     <!--teleport end-->
   </div>
-  <h4 style="margin: 0px;">Custom color</h4>
-  <div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#f50</span></button></span>
+  <div data-v-bf157145="" style="width: 70px; float: left;"><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">LT</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#2db7f5</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Left</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#87d068</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">LB</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end-->
+  </div>
+  <div data-v-bf157145="" style="width: 70px; margin-left: 304px;"><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">RT</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Right</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">RB</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end-->
+  </div>
+  <div data-v-bf157145="" style="margin-left: 70px; clear: both; white-space: nowrap;"><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">BL</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Bottom</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-bf157145="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">BR</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end-->
+  </div>
+</div>"
+`;
+
+exports[`Tooltip demos > demo: Basic 1`] = `
+"<span class="ant-trigger-wrapper"> Tooltip will show when mouse enter. </span>
+<!--teleport start-->
+
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+
+<!--teleport end-->"
+`;
+
+exports[`Tooltip demos > demo: Color 1`] = `
+"<div data-v-6cac8c94="" id="components-a-tooltip-demo-color">
+  <div data-v-6cac8c94="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Presets</span></div>
+  <div data-v-6cac8c94=""><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">pink</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">red</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">yellow</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">orange</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">cyan</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">green</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">blue</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">purple</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">geekblue</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">magenta</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">volcano</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">gold</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">lime</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end-->
+  </div>
+  <div data-v-6cac8c94="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Custom</span></div>
+  <div data-v-6cac8c94=""><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#f50</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#2db7f5</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#87d068</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-6cac8c94="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">#108ee9</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
@@ -117,71 +191,69 @@ exports[`Tooltip demos > demo: Color 1`] = `
 `;
 
 exports[`Tooltip demos > demo: Placement 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 8px; align-items: center; padding: 60px;">
-  <div style="display: flex; gap: 8px; justify-content: center;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">TL</span></button></span>
+"<div data-v-3f5ce8bf="" id="components-a-tooltip-demo-placement">
+  <div data-v-3f5ce8bf="" style="margin-left: 70px; white-space: nowrap;"><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">TL</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Top</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Top</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">TR</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">TR</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
     <!--teleport end-->
   </div>
-  <div style="display: flex; justify-content: space-between; width: 340px;">
-    <div style="display: flex; flex-direction: column; gap: 8px;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">LT</span></button></span>
-      <!--teleport start-->
-      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-      <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Left</span></button></span>
-      <!--teleport start-->
-      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-      <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">LB</span></button></span>
-      <!--teleport start-->
-      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-      <!--teleport end-->
-    </div>
-    <div style="display: flex; flex-direction: column; gap: 8px;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">RT</span></button></span>
-      <!--teleport start-->
-      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-      <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Right</span></button></span>
-      <!--teleport start-->
-      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-      <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">RB</span></button></span>
-      <!--teleport start-->
-      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-      <!--teleport end-->
-    </div>
+  <div data-v-3f5ce8bf="" style="width: 70px; float: left;"><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">LT</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Left</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">LB</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end-->
   </div>
-  <div style="display: flex; gap: 8px; justify-content: center;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">BL</span></button></span>
+  <div data-v-3f5ce8bf="" style="width: 70px; margin-left: 304px;"><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">RT</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Bottom</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Right</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">BR</span></button></span>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">RB</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end-->
+  </div>
+  <div data-v-3f5ce8bf="" style="margin-left: 70px; clear: both; white-space: nowrap;"><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">BL</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Bottom</span></button></span>
+    <!--teleport start-->
+    <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+    <!--teleport end--><span class="ant-trigger-wrapper"><button data-v-3f5ce8bf="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">BR</span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
       <!--v-if-->

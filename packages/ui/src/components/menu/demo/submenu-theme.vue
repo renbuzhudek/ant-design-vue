@@ -1,38 +1,67 @@
 <template>
   <div>
     <a-switch
-      :checked="currentTheme === 'dark'"
-      @change="changeTheme"
+      :checked="theme === 'dark'"
+      checked-children="dark"
+      un-checked-children="light"
+      @Change="changeTheme"
     />
-    <span style="margin-left: 8px;">Change SubMenu Theme</span>
-    <br /><br />
-    <div style="width: 256px;">
-      <a-menu
-        v-model:selected-keys="selectedKeys"
-        v-model:open-keys="openKeys"
-        mode="vertical"
-        theme="dark"
-      >
-        <a-sub-menu menu-key="sub1" title="Navigation One">
-          <a-menu-item item-key="1">Option 1</a-menu-item>
-          <a-menu-item item-key="2">Option 2</a-menu-item>
-          <a-menu-item item-key="3">Option 3</a-menu-item>
-        </a-sub-menu>
-        <a-menu-item item-key="5">Option 5</a-menu-item>
-        <a-menu-item item-key="6">Option 6</a-menu-item>
-      </a-menu>
-    </div>
+    <br />
+    <br />
+    <a-menu
+      :style="{ width: '256px' }"
+      :open-keys="openKeys"
+      :selected-keys="selectedKeys"
+      mode="vertical"
+      theme="dark"
+      :items="items"
+      @click="handleClick"
+    />
   </div>
 </template>
+<script lang="ts" setup>
+import type { VueElement, ComputedRef} from 'vue';
+import { computed, ref, h } from 'vue';
+import { MailOutlined } from '@ant-design/icons-vue';
+import type { MenuProps } from 'ant-design-vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const selectedKeys = ref<string[]>(['1']);
+const openKeys = ref<string[]>(['sub1']);
+const theme = ref<MenuProps['theme']>('light');
 
-const selectedKeys = ref(['1'])
-const openKeys = ref(['sub1'])
-const currentTheme = ref<'light' | 'dark'>('light')
+function getItem(
+  label: VueElement | string,
+  key: string,
+  icon?: any,
+  children?: MenuProps['items'],
+  theme?: 'light' | 'dark',
+): MenuProps['items'][number] {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    theme,
+  };
+}
+
+const items: ComputedRef<MenuProps['items']> = computed(() => [
+  getItem(
+    'Navigation One',
+    'sub1',
+    () => h(MailOutlined),
+    [getItem('Option 1', '1'), getItem('Option 2', '2'), getItem('Option 3', '3')],
+    theme.value,
+  ),
+  getItem('Option 5', '5'),
+  getItem('Option 6', '6'),
+]);
+
+function handleClick(info: any) {
+  console.log('click', info);
+}
 
 function changeTheme(checked: boolean) {
-  currentTheme.value = checked ? 'dark' : 'light'
+  theme.value = checked ? 'dark' : 'light';
 }
 </script>

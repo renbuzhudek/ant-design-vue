@@ -1,36 +1,33 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue'
+<template>
+  <p :style="{ marginBottom: '20px' }">
+    <a-checkbox v-model:checked="checked" :disabled="disabled">
+      {{ label }}
+    </a-checkbox>
+  </p>
+  <p>
+    <a-button type="primary" size="small" @click="toggleChecked">
+      {{ !checked ? 'Check' : 'Uncheck' }}
+    </a-button>
+    <a-button :style="{ marginLeft: '10px' }" type="primary" size="small" @click="toggleDisable">
+      {{ !disabled ? 'Disable' : 'Enable' }}
+    </a-button>
+  </p>
+</template>
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
 
-const checked = ref(false)
-const disabled = ref(false)
+const checked = ref(false);
+const disabled = ref(false);
 
-function toggleChecked() {
-  checked.value = !checked.value
-}
+const toggleChecked = () => {
+  checked.value = !checked.value;
+};
 
-function toggleDisabled() {
-  disabled.value = !disabled.value
-}
+const toggleDisable = () => {
+  disabled.value = !disabled.value;
+};
 
 const label = computed(() => {
-  return `${checked.value ? 'Checked' : 'Unchecked'}-${disabled.value ? 'Disabled' : 'Enabled'}`
-})
+  return `${checked.value ? 'Checked' : 'Unchecked'}-${disabled.value ? 'Disabled' : 'Enabled'}`;
+});
 </script>
-
-<template>
-  <div>
-    <p style="margin-bottom: 20px;">
-      <a-checkbox v-model:checked="checked" :disabled="disabled">
-        {{ label }}
-      </a-checkbox>
-    </p>
-    <p style="display: flex; gap: 10px;">
-      <a-button variant="solid" size="sm" @click="toggleChecked">
-        {{ !checked ? 'Check' : 'Uncheck' }}
-      </a-button>
-      <a-button variant="solid" size="sm" @click="toggleDisabled">
-        {{ !disabled ? 'Disable' : 'Enable' }}
-      </a-button>
-    </p>
-  </div>
-</template>

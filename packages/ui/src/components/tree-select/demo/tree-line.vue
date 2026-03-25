@@ -1,51 +1,65 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Show Tree Line</h4>
-    <div style="display: flex; gap: 16px">
-      <a-switch
-        v-model:checked="treeLine"
-        checked-children="treeLine"
-        un-checked-children="treeLine"
-      />
-      <a-switch
-        v-model:checked="showLeafIcon"
-        :disabled="!treeLine"
-        checked-children="showLeafIcon"
-        un-checked-children="showLeafIcon"
-      />
-    </div>
+  <a-space direction="vertical">
+    <a-switch
+      v-model:checked="treeLine"
+      checked-children="treeLine"
+      un-checked-children="treeLine"
+    ></a-switch>
+    <a-switch
+      v-model:checked="showLeafIcon"
+      :disabled="!treeLine"
+      checked-children="showLeafIcon"
+      un-checked-children="showLeafIcon"
+    ></a-switch>
     <a-tree-select
       v-model:value="value"
-      style="width: 100%"
+      style="width: 300px"
       placeholder="Please select"
-      :tree-line="treeLine"
+      :tree-line="treeLine && { showLeafIcon }"
       :tree-data="treeData"
-    />
-  </div>
+      tree-node-filter-prop="title"
+    >
+      <template #title="{ value: val, title }">
+        <b v-if="val === 'parent 1-1'" style="color: #08c">sss</b>
+        <template v-else>{{ title }}</template>
+      </template>
+    </a-tree-select>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+import type { TreeSelectProps } from 'ant-design-vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const treeLine = ref(true)
-const showLeafIcon = ref(false)
-const value = ref<string | undefined>(undefined)
-
-const treeData = [
+const treeLine = ref(true);
+const showLeafIcon = ref(false);
+const value = ref<string>();
+const treeData = ref<TreeSelectProps['treeData']>([
   {
-    label: 'parent 1',
+    title: 'parent 1',
     value: 'parent 1',
     children: [
       {
-        label: 'parent 1-0',
+        title: 'parent 1-0',
         value: 'parent 1-0',
         children: [
-          { label: 'my leaf', value: 'leaf1' },
-          { label: 'your leaf', value: 'leaf2' },
+          {
+            title: 'my leaf',
+            value: 'leaf1',
+          },
+          {
+            title: 'your leaf',
+            value: 'leaf2',
+          },
         ],
       },
-      { label: 'parent 1-1', value: 'parent 1-1' },
+      {
+        title: 'parent 1-1',
+        value: 'parent 1-1',
+      },
     ],
   },
-]
+]);
+watch(value, () => {
+  console.log(value.value);
+});
 </script>

@@ -1,15 +1,9 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref('Daily')
-</script>
-
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a-segmented
-      v-model:value="value"
-      :options="['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']"
-    />
-    <p>Selected: {{ value }}</p>
-  </div>
+  <a-segmented v-model:value="value" :options="data" />
 </template>
+
+<script lang="ts" setup>
+import { reactive, ref } from 'vue';
+const data = reactive(['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']);
+const value = ref(data[0]);
+</script>

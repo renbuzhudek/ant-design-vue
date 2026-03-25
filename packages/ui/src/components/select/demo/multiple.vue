@@ -1,35 +1,17 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Multiple Select</h4>
-    <a-select
-      v-model:value="value"
-      mode="multiple"
-      placeholder="Select multiple items"
-      :options="options"
-    />
-
-    <h4>Tags Mode</h4>
-    <a-select
-      v-model:value="tags"
-      mode="tags"
-      placeholder="Enter tags"
-      :options="options"
-      :token-separators="[',']"
-    />
-  </div>
+  <a-select
+    v-model:value="value"
+    mode="multiple"
+    style="width: 100%"
+    placeholder="Please select"
+    :options="[...Array(25)].map((_, i) => ({ value: (i + 10).toString(36) + (i + 1) }))"
+    @change="handleChange"
+  ></a-select>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<string[]>(['jack', 'lucy'])
-const tags = ref<string[]>([])
-
-const options = [
-  { value: 'jack', label: 'Jack' },
-  { value: 'lucy', label: 'Lucy' },
-  { value: 'tom', label: 'Tom' },
-  { value: 'jerry', label: 'Jerry' },
-  { value: 'spike', label: 'Spike' },
-]
+<script lang="ts" setup>
+import { ref } from 'vue';
+const handleChange = (value: string[]) => {
+  console.log(`selected ${value}`);
+};
+const value = ref(['a1', 'b2']);
 </script>

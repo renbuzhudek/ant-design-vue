@@ -1,55 +1,56 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Async Loading</h4>
-    <a-mentions
-      v-model:value="value"
-      :options="options"
-      placeholder="Type @ then a username"
-      @search="onSearch"
-    />
-  </div>
+  <a-mentions v-model:value="value" :options="options" :loading="loading" @search="onSearch">
+    <template #option="{ payload }">
+      <img :src="payload.avatar_url" :alt="payload.login" />
+      <span>{{ payload.login }}</span>
+    </template>
+  </a-mentions>
 </template>
 
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-
-const value = ref('')
-const loading = ref(false)
-const search = ref('')
-const users = ref<{ login: string; avatar_url: string }[]>([])
-
-let debounceTimer: ReturnType<typeof setTimeout> | null = null
-
-const loadUsers = (key: string) => {
+<script lang="ts" setup>
+import { debounce } from 'lodash-es';
+import { computed, ref } from 'vue';
+import type { MentionsProps } from '..';
+const value = ref<string>('');
+const loading = ref<boolean>(false);
+const users = ref<{ login: string; avatar_url: string }[]>([]);
+const search = ref<string>('');
+const loadGithubUsers = debounce((key: string) => {
   if (!key) {
-    users.value = []
-    loading.value = false
-    return
+    users.value = [];
+    return;
   }
-  // Simulated async data loading
-  loading.value = true
-  if (debounceTimer) clearTimeout(debounceTimer)
-  debounceTimer = setTimeout(() => {
-    // Simulate fetched results
-    users.value = [
-      { login: `${key}_user1`, avatar_url: '' },
-      { login: `${key}_user2`, avatar_url: '' },
-      { login: `${key}_dev`, avatar_url: '' },
-    ]
-    loading.value = false
-  }, 500)
-}
+
+  fetch(`https://api.github.com/search/users?q=${key}`)
+    .then(res => res.json())
+    .then(({ items = [] }) => {
+      if (search.value !== key) return;
+      users.value = items.slice(0, 10);
+      loading.value = false;
+    });
+}, 800);
 
 const onSearch = (searchValue: string) => {
-  search.value = searchValue
-  users.value = []
-  loadUsers(searchValue)
-}
-
-const options = computed(() =>
-  users.value.map((user) => ({
+  search.value = searchValue;
+  loading.value = !!searchValue;
+  console.log(!!searchValue);
+  users.value = [];
+  console.log('Search:', searchValue);
+  loadGithubUsers(searchValue);
+};
+const options = computed<MentionsProps['options']>(() =>
+  users.value.map(user => ({
+    key: user.login,
     value: user.login,
-    label: user.login,
+    class: 'antd-demo-dynamic-option',
+    payload: user,
   })),
-)
+);
 </script>
+<style scoped>
+.antd-demo-dynamic-option img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+</style>

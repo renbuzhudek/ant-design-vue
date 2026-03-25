@@ -12,23 +12,31 @@
     }"
   >
     Render in this
-    <div style="margin-top: 16px;">
-      <a-button variant="solid" @click="open = true">Open</a-button>
+    <div style="margin-top: 16px">
+      <a-button type="primary" @click="showDrawer">Open</a-button>
     </div>
     <a-drawer
-      v-model:open="open"
       title="Basic Drawer"
       placement="right"
       :closable="false"
+      :open="open"
+      :get-container="false"
       :style="{ position: 'absolute' }"
+      @close="onClose"
     >
       <p>Some contents...</p>
     </a-drawer>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const open = ref(false);
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const showDrawer = () => {
+  open.value = true;
+};
 
-const open = ref(false)
+const onClose = () => {
+  open.value = false;
+};
 </script>

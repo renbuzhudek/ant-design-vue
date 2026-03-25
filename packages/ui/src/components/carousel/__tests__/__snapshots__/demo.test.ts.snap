@@ -1,39 +1,39 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Carousel demos > demo: Autoplay 1`] = `
-"<div class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0">
+"<div data-v-99ebe5b7="" class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0">
   <div class="ant-carousel-container">
     <!-- Scrollx mode -->
     <div class="ant-carousel-track" style="transform: translateX(-16.666666666666668%); transition: none; width: 600%;">
       <!-- Clone last slide at beginning (for infinite) -->
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-99ebe5b7="">
+          <h3 data-v-99ebe5b7="">4</h3>
         </div>
       </div><!-- Actual slides -->
       <div class="ant-carousel-slide ant-carousel-slide-active" style="width: 16.666666666666668%;" aria-hidden="false" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-99ebe5b7="">
+          <h3 data-v-99ebe5b7="">1</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>2</h3>
+        <div data-v-99ebe5b7="">
+          <h3 data-v-99ebe5b7="">2</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>3</h3>
+        <div data-v-99ebe5b7="">
+          <h3 data-v-99ebe5b7="">3</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-99ebe5b7="">
+          <h3 data-v-99ebe5b7="">4</h3>
         </div>
       </div><!-- Clone first slide at end (for infinite) -->
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-99ebe5b7="">
+          <h3 data-v-99ebe5b7="">1</h3>
         </div>
       </div>
     </div>
@@ -48,39 +48,41 @@ exports[`Carousel demos > demo: Autoplay 1`] = `
 `;
 
 exports[`Carousel demos > demo: Basic 1`] = `
-"<div class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0">
+"<div data-v-3d89934c="" class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0" after-change="(current) => {
+      console.log(current);
+    }">
   <div class="ant-carousel-container">
     <!-- Scrollx mode -->
     <div class="ant-carousel-track" style="transform: translateX(-16.666666666666668%); transition: none; width: 600%;">
       <!-- Clone last slide at beginning (for infinite) -->
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-3d89934c="">
+          <h3 data-v-3d89934c="">4</h3>
         </div>
       </div><!-- Actual slides -->
       <div class="ant-carousel-slide ant-carousel-slide-active" style="width: 16.666666666666668%;" aria-hidden="false" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-3d89934c="">
+          <h3 data-v-3d89934c="">1</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>2</h3>
+        <div data-v-3d89934c="">
+          <h3 data-v-3d89934c="">2</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>3</h3>
+        <div data-v-3d89934c="">
+          <h3 data-v-3d89934c="">3</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-3d89934c="">
+          <h3 data-v-3d89934c="">4</h3>
         </div>
       </div><!-- Clone first slide at end (for infinite) -->
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-3d89934c="">
+          <h3 data-v-3d89934c="">1</h3>
         </div>
       </div>
     </div>
@@ -95,29 +97,29 @@ exports[`Carousel demos > demo: Basic 1`] = `
 `;
 
 exports[`Carousel demos > demo: Fade 1`] = `
-"<div class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0">
+"<div data-v-824082d3="" class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0">
   <div class="ant-carousel-container">
     <!-- Scrollx mode -->
     <!-- Fade mode -->
     <div class="ant-carousel-track ant-carousel-track-fade">
       <div class="ant-carousel-slide ant-carousel-slide-fade ant-carousel-slide-active" style="opacity: 1; transition: opacity 500ms ease;" aria-hidden="false" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-824082d3="">
+          <h3 data-v-824082d3="">1</h3>
         </div>
       </div>
       <div class="ant-carousel-slide ant-carousel-slide-fade" style="opacity: 0; transition: opacity 500ms ease;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>2</h3>
+        <div data-v-824082d3="">
+          <h3 data-v-824082d3="">2</h3>
         </div>
       </div>
       <div class="ant-carousel-slide ant-carousel-slide-fade" style="opacity: 0; transition: opacity 500ms ease;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>3</h3>
+        <div data-v-824082d3="">
+          <h3 data-v-824082d3="">3</h3>
         </div>
       </div>
       <div class="ant-carousel-slide ant-carousel-slide-fade" style="opacity: 0; transition: opacity 500ms ease;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-824082d3="">
+          <h3 data-v-824082d3="">4</h3>
         </div>
       </div>
     </div>
@@ -132,42 +134,40 @@ exports[`Carousel demos > demo: Fade 1`] = `
 `;
 
 exports[`Carousel demos > demo: Position 1`] = `
-"<div style="margin-bottom: 16px; display: flex; gap: 8px;">
-  <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">top</span></label><label class="ant-radio-button-wrapper ant-radio-button-wrapper-checked"><input type="radio" class="ant-radio-button-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-button-inner">bottom</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">left</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">right</span></label></div>
-</div>
-<div class="ant-carousel ant-carousel-dots-bottom" role="region" aria-roledescription="carousel" tabindex="0" style="height: 200px;">
+"<div data-v-6f4fc07e="" class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup" style="margin-bottom: 8px;"><label data-v-6f4fc07e="" class="ant-radio-button-wrapper ant-radio-button-wrapper-checked"><input type="radio" class="ant-radio-button-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-button-inner">Top</span></label><label data-v-6f4fc07e="" class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Bottom</span></label><label data-v-6f4fc07e="" class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Left</span></label><label data-v-6f4fc07e="" class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Right</span></label></div>
+<div data-v-6f4fc07e="" class="ant-carousel ant-carousel-dots-top" role="region" aria-roledescription="carousel" tabindex="0">
   <div class="ant-carousel-container">
     <!-- Scrollx mode -->
     <div class="ant-carousel-track" style="transform: translateX(-16.666666666666668%); transition: none; width: 600%;">
       <!-- Clone last slide at beginning (for infinite) -->
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-6f4fc07e="">
+          <h3 data-v-6f4fc07e="">4</h3>
         </div>
       </div><!-- Actual slides -->
       <div class="ant-carousel-slide ant-carousel-slide-active" style="width: 16.666666666666668%;" aria-hidden="false" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-6f4fc07e="">
+          <h3 data-v-6f4fc07e="">1</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>2</h3>
+        <div data-v-6f4fc07e="">
+          <h3 data-v-6f4fc07e="">2</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>3</h3>
+        <div data-v-6f4fc07e="">
+          <h3 data-v-6f4fc07e="">3</h3>
         </div>
       </div>
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true" role="tabpanel">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>4</h3>
+        <div data-v-6f4fc07e="">
+          <h3 data-v-6f4fc07e="">4</h3>
         </div>
       </div><!-- Clone first slide at end (for infinite) -->
       <div class="ant-carousel-slide" style="width: 16.666666666666668%;" aria-hidden="true">
-        <div class="carousel-slide" style="background: rgb(54, 77, 121);">
-          <h3>1</h3>
+        <div data-v-6f4fc07e="">
+          <h3 data-v-6f4fc07e="">1</h3>
         </div>
       </div>
     </div>

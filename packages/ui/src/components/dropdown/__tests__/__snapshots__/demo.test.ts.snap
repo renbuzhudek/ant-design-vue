@@ -1,12 +1,27 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Dropdown demos > demo: Arrow 1`] = `
-"<div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 40px;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomLeft</span></button></span>
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px; display: flex; flex-wrap: wrap;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topLeft</span></button></span>
+  <!--teleport start-->
+  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">top</span></button></span>
+  <!--teleport start-->
+  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topRight</span></button></span>
+  <!--teleport start-->
+  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomLeft</span></button></span>
   <!--teleport start-->
   <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomCenter</span></button></span>
+  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottom</span></button></span>
   <!--teleport start-->
   <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
     <!--v-if-->
@@ -21,28 +36,30 @@ exports[`Dropdown demos > demo: Arrow 1`] = `
 `;
 
 exports[`Dropdown demos > demo: Basic 1`] = `
-"<div style="padding: 40px;"><span class="ant-trigger-wrapper"><a>Hover me</a></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-</div>"
+"<span class="ant-trigger-wrapper"><a class="ant-dropdown-link"> Hover me <span role="img" aria-label="down" class="anticon anticon-down"><svg focusable="false" class="" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></span></a></span>
+<!--teleport start-->
+
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+
+<!--teleport end-->"
 `;
 
 exports[`Dropdown demos > demo: ContextMenu 1`] = `
-"<div style="padding: 40px;"><span class="ant-trigger-wrapper"><div style="width: 300px; height: 200px; display: flex; align-items: center; justify-content: center; background: var(--color-neutral-bg-hover, #f5f5f5); border-radius: 8px; color: var(--color-neutral-secondary); user-select: none;"> Right Click on here </div></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-</div>"
+"<span class="ant-trigger-wrapper"><div style="text-align: center; background: rgb(247, 247, 247); height: 200px; line-height: 200px; color: rgb(119, 119, 119);"> Right Click on here </div></span>
+<!--teleport start-->
+
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+
+<!--teleport end-->"
 `;
 
 exports[`Dropdown demos > demo: DropdownButton 1`] = `
-"<div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 40px;">
-  <div class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-outlined ant-btn-md" type="button">
+"<div data-v-4a78d18e="" class="demo-dropdown-wrap">
+  <div data-v-4a78d18e="" class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-outlined ant-btn-md" type="button">
       <!--v-if-->
       <!--v-if--><span class="ant-btn-content"> Dropdown </span>
     </button><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-outlined ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></span></button></span>
@@ -52,80 +69,81 @@ exports[`Dropdown demos > demo: DropdownButton 1`] = `
     </transition-stub>
     <!--teleport end-->
   </div>
-  <div class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <div data-v-4a78d18e="" class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-outlined ant-btn-md" type="button">
       <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Primary </span>
-    </button><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></span></button></span>
+      <!--v-if--><span class="ant-btn-content"> Dropdown </span>
+    </button><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-outlined ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content"><span data-v-4a78d18e="" role="img" aria-label="user" class="anticon anticon-user"><svg focusable="false" class="" data-icon="user" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M858.5 763.6a374 374 0 00-80.6-119.5 375.63 375.63 0 00-119.5-80.6c-.4-.2-.8-.3-1.2-.5C719.5 518 760 444.7 760 362c0-137-111-248-248-248S264 225 264 362c0 82.7 40.5 156 102.8 201.1-.4.2-.8.3-1.2.5-44.8 18.9-85 46-119.5 80.6a375.63 375.63 0 00-80.6 119.5A371.7 371.7 0 00136 901.8a8 8 0 008 8.2h60c4.4 0 7.9-3.5 8-7.8 2-77.2 33-149.5 87.8-204.3 56.7-56.7 132-87.9 212.2-87.9s155.5 31.2 212.2 87.9C779 752.7 810 825 812 902.2c.1 4.4 3.6 7.8 8 7.8h60a8 8 0 008-8.2c-1-47.8-10.9-94.3-29.5-138.2zM512 534c-45.9 0-89.1-17.9-121.6-50.4S340 407.9 340 362c0-45.9 17.9-89.1 50.4-121.6S466.1 190 512 190s89.1 17.9 121.6 50.4S684 316.1 684 362c0 45.9-17.9 89.1-50.4 121.6S557.9 534 512 534z"></path></svg></span></span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
     <!--teleport end-->
   </div>
-  <div class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-outlined ant-btn-md ant-btn-disabled" disabled="" aria-disabled="true" type="button">
+  <div data-v-4a78d18e="" class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-outlined ant-btn-md ant-btn-disabled" disabled="" aria-disabled="true" type="button">
       <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Disabled </span>
+      <!--v-if--><span class="ant-btn-content"> Dropdown </span>
     </button><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-outlined ant-btn-md ant-btn-disabled" disabled="" aria-disabled="true" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></span></button></span>
     <!--teleport start-->
     <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
     <!--teleport end-->
-  </div>
-  <div class="ant-space-compact ant-space-compact-horizontal ant-dropdown-button" role="group"><button class="ant-btn ant-btn-outlined ant-btn-md ant-btn-danger ant-btn-custom-color" style="--color-accent-1: #fff1f0; --color-accent-2: #ffccc7; --color-accent-3: #ffa39e; --color-accent-4: #ff7875; --color-accent-5: #ff4d4f; --color-accent-6: #f5222d; --color-accent-7: #cf1322; --color-accent-8: #a8071a; --color-accent-9: #820014; --color-accent-10: #5c0011; --color-accent: #f5222d; --color-accent-hover: #ff4d4f; --color-accent-active: #cf1322; --color-accent-content: #ffffff; --color-error: #ff4d4f; --color-warning: #ffec3d; --color-success: #73d13d; --color-info: #4096ff; --color-neutral: #000000e0; --color-neutral-secondary: #000000a6; --color-neutral-disabled: #00000040; --color-neutral-disabled-bg: #0000000a; --color-neutral-border: #d9d9d9; --color-neutral-separator: #0505050f; --color-neutral-bg: #f5f5f5;" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Danger </span>
-    </button><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-outlined ant-btn-md ant-btn-danger ant-btn-custom-color" style="--color-accent-1: #fff1f0; --color-accent-2: #ffccc7; --color-accent-3: #ffa39e; --color-accent-4: #ff7875; --color-accent-5: #ff4d4f; --color-accent-6: #f5222d; --color-accent-7: #cf1322; --color-accent-8: #a8071a; --color-accent-9: #820014; --color-accent-10: #5c0011; --color-accent: #f5222d; --color-accent-hover: #ff4d4f; --color-accent-active: #cf1322; --color-accent-content: #ffffff; --color-error: #ff4d4f; --color-warning: #ffec3d; --color-success: #73d13d; --color-info: #4096ff; --color-neutral: #000000e0; --color-neutral-secondary: #000000a6; --color-neutral-disabled: #00000040; --color-neutral-disabled-bg: #0000000a; --color-neutral-border: #d9d9d9; --color-neutral-separator: #0505050f; --color-neutral-bg: #f5f5f5;" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></span></button></span>
-    <!--teleport start-->
-    <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-    <!--teleport end-->
-  </div>
+  </div><span class="ant-trigger-wrapper"><button data-v-4a78d18e="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content"> Button <span data-v-4a78d18e="" role="img" aria-label="down" class="anticon anticon-down"><svg focusable="false" class="" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></span></span></button></span>
+  <!--teleport start-->
+  <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport end-->
 </div>"
 `;
 
 exports[`Dropdown demos > demo: Placement 1`] = `
-"<div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 40px;"><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomLeft</span></button></span>
+"<div data-v-41e3bb7b="" id="components-dropdown-demo-placement"><span class="ant-trigger-wrapper"><button data-v-41e3bb7b="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomLeft</span></button></span>
   <!--teleport start-->
   <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomCenter</span></button></span>
+  <!--teleport end-->
+  <!--v-if--><span class="ant-trigger-wrapper"><button data-v-41e3bb7b="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottom</span></button></span>
   <!--teleport start-->
   <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomRight</span></button></span>
+  <!--teleport end-->
+  <!--v-if--><span class="ant-trigger-wrapper"><button data-v-41e3bb7b="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">bottomRight</span></button></span>
   <!--teleport start-->
   <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topLeft</span></button></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topCenter</span></button></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end--><span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topRight</span></button></span>
+  <!--teleport end--><br data-v-41e3bb7b=""><span class="ant-trigger-wrapper"><button data-v-41e3bb7b="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topLeft</span></button></span>
   <!--teleport start-->
   <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
   <!--teleport end-->
+  <!--v-if--><span class="ant-trigger-wrapper"><button data-v-41e3bb7b="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">top</span></button></span>
+  <!--teleport start-->
+  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport end-->
+  <!--v-if--><span class="ant-trigger-wrapper"><button data-v-41e3bb7b="" class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">topRight</span></button></span>
+  <!--teleport start-->
+  <transition-stub name="ant-slide-down" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <!--teleport end-->
+  <!--v-if-->
 </div>"
 `;
 
 exports[`Dropdown demos > demo: Trigger 1`] = `
-"<div style="display: flex; gap: 16px; padding: 40px;"><span class="ant-trigger-wrapper"><a>Click me</a></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-</div>"
+"<span class="ant-trigger-wrapper"><a class="ant-dropdown-link"> Click me <span role="img" aria-label="down" class="anticon anticon-down"><svg focusable="false" class="" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></span></a></span>
+<!--teleport start-->
+
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+
+<!--teleport end-->"
 `;

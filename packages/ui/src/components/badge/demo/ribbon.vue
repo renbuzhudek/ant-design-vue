@@ -1,19 +1,28 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
+  <a-space direction="vertical" style="width: 100%">
     <a-badge-ribbon text="Hippies">
-      <div style="padding: 16px; background: #ebebeb; border-radius: 6px;">
-        Push to far.
-      </div>
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
     </a-badge-ribbon>
-    <a-badge-ribbon text="Hippies" placement="start">
-      <div style="padding: 16px; background: #ebebeb; border-radius: 6px;">
-        Push to far.
-      </div>
+    <a-badge-ribbon text="Hippies" color="pink">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
     </a-badge-ribbon>
-    <a-badge-ribbon text="Custom Color" color="volcano">
-      <div style="padding: 16px; background: #ebebeb; border-radius: 6px;">
-        Push to far.
-      </div>
+    <a-badge-ribbon text="Hippies" color="red">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
     </a-badge-ribbon>
-  </div>
+    <a-badge-ribbon text="Hippies" color="cyan">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
+    </a-badge-ribbon>
+    <a-badge-ribbon text="Hippies" color="green">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
+    </a-badge-ribbon>
+    <a-badge-ribbon text="Hippies" color="purple">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
+    </a-badge-ribbon>
+    <a-badge-ribbon text="Hippies" color="volcano">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
+    </a-badge-ribbon>
+    <a-badge-ribbon text="Hippies" color="magenta">
+      <a-card title="Pushes open the window" size="small">and raises the spyglass.</a-card>
+    </a-badge-ribbon>
+  </a-space>
 </template>

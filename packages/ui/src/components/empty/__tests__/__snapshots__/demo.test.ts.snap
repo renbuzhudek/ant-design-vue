@@ -24,24 +24,28 @@ exports[`Empty demos > demo: Basic 1`] = `
 `;
 
 exports[`Empty demos > demo: ConfigProviderDemo 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 24px;">
-  <div>
-    <h4>Select</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-    <!--v-if--><span class="ant-select-selection-placeholder"></span>
-  </div><!-- Clear icon -->
+"<button data-v-fe71c916="" type="button" role="switch" aria-checked="false" class="ant-switch" un-checked-children="default" checked-children="customize">
+  <wave-stub disabled="false"></wave-stub>
+  <div class="ant-switch-handle">
+    <!--v-if-->
+  </div><span class="ant-switch-inner"><span class="ant-switch-inner-checked"></span><span class="ant-switch-inner-unchecked"></span></span>
+</button>
+<div data-v-fe71c916="" class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
   <!--v-if-->
-  <!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span>
-</div></span>
+</div>
+<div data-v-fe71c916="" class="config-provider">
+  <h3 data-v-fe71c916="">Select</h3><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
+  <!--v-if--><span class="ant-select-selection-placeholder"></span>
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
 <!--teleport start-->
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
 <!--teleport end-->
-</div>
-<div>
-  <h4>TreeSelect</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-tree-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-  <!--v-if--><span class="ant-select-selection-placeholder"></span>
-</div><!-- Clear -->
+<h3 data-v-fe71c916="">TreeSelect</h3><span class="ant-trigger-wrapper"><div class="ant-select ant-tree-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
+<!--v-if--><span class="ant-select-selection-placeholder"></span></div><!-- Clear -->
 <!--v-if-->
 <!-- Arrow --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
 <!--teleport start-->
@@ -49,68 +53,147 @@ exports[`Empty demos > demo: ConfigProviderDemo 1`] = `
   <!--v-if-->
 </transition-stub>
 <!--teleport end-->
+<h3 data-v-fe71c916="">Cascader</h3><span class="ant-trigger-wrapper"><div class="ant-select ant-cascader ant-select-single ant-select-show-search ant-select-show-arrow ant-select-allow-clear" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode tags --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" value=""></span>
+<!--v-if--><span class="ant-select-selection-placeholder"></span></div><!-- Clear -->
+<!--v-if-->
+<!-- Arrow --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+<!--teleport start-->
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end-->
+<h3 data-v-fe71c916="">Transfer</h3>
+<div data-v-fe71c916="" class="ant-transfer">
+  <div class="ant-transfer-list">
+    <div class="ant-transfer-list-header"><label class="ant-transfer-list-header-select-all"><span class="ant-checkbox ant-checkbox-disabled"><input type="checkbox" class="ant-checkbox-input" disabled=""><span class="ant-checkbox-inner"></span></span></label><span class="ant-transfer-list-header-title"></span><span class="ant-transfer-list-header-count"><!--v-if-->0 items </span></div>
+    <div class="ant-transfer-list-body">
+      <!--v-if-->
+      <div class="ant-transfer-list-empty">No data</div>
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="ant-transfer-operation"><button type="button" class="ant-btn ant-btn-primary ant-btn-sm ant-btn-icon-only" disabled="" aria-label="Move selected to right"><span role="img" aria-label="right" class="anticon anticon-right"><svg focusable="false" class="" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span>
+      <!--v-if-->
+    </button><button type="button" class="ant-btn ant-btn-primary ant-btn-sm ant-btn-icon-only" disabled="" aria-label="Move selected to left"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span>
+      <!--v-if-->
+    </button></div>
+  <div class="ant-transfer-list">
+    <div class="ant-transfer-list-header"><label class="ant-transfer-list-header-select-all"><span class="ant-checkbox ant-checkbox-disabled"><input type="checkbox" class="ant-checkbox-input" disabled=""><span class="ant-checkbox-inner"></span></span></label><span class="ant-transfer-list-header-title"></span><span class="ant-transfer-list-header-count"><!--v-if-->0 items </span></div>
+    <div class="ant-transfer-list-body">
+      <!--v-if-->
+      <div class="ant-transfer-list-empty">No data</div>
+    </div>
+    <!--v-if-->
+  </div>
 </div>
-<div>
-  <h4>Table</h4>
-  <div class="ant-table-wrapper">
-    <!-- Spin wrapper -->
-    <!-- Without Spin wrapper -->
-    <div class="ant-table ant-table-middle ant-table-ping-right ant-table-empty">
-      <!-- Title -->
-      <!--v-if-->
-      <!-- Pagination top -->
-      <!--v-if-->
-      <!-- Table content -->
-      <div class="ant-table-container">
-        <div class="ant-table-content">
-          <table class="" role="table">
-            <!-- Colgroup -->
-            <colgroup>
-              <col>
-              <col>
-            </colgroup><!-- Header -->
-            <thead class="ant-table-thead">
-              <tr>
-                <th class="ant-table-cell">
-                  <!-- Selection column header -->
-                  <!-- Regular column header -->
-                  <div class=""><span class="ant-table-column-title">Name</span>
+<h3 data-v-fe71c916="">Table</h3>
+<div data-v-fe71c916="" class="ant-table-wrapper" style="margin-top: 8px;">
+  <!-- Spin wrapper -->
+  <!-- Without Spin wrapper -->
+  <div class="ant-table ant-table-middle ant-table-ping-right ant-table-empty">
+    <!-- Title -->
+    <!--v-if-->
+    <!-- Pagination top -->
+    <!--v-if-->
+    <!-- Table content -->
+    <div class="ant-table-container">
+      <div class="ant-table-content">
+        <table class="" role="table">
+          <!-- Colgroup -->
+          <colgroup>
+            <col>
+            <col>
+          </colgroup><!-- Header -->
+          <thead class="ant-table-thead">
+            <tr>
+              <th class="ant-table-cell">
+                <!-- Selection column header -->
+                <!-- Regular column header -->
+                <div class=""><span class="ant-table-column-title">Name</span>
+                  <!--v-if-->
+                </div>
+              </th>
+              <th class="ant-table-cell">
+                <!-- Selection column header -->
+                <!-- Regular column header -->
+                <div class=""><span class="ant-table-column-title">Age</span>
+                  <!--v-if-->
+                </div>
+              </th>
+            </tr>
+          </thead><!-- Body -->
+          <tbody class="ant-table-tbody">
+            <tr class="ant-table-placeholder">
+              <td colspan="2" class="ant-table-cell">
+                <div class="ant-table-empty">
+                  <div class="ant-empty" role="status">
+                    <div class="ant-empty-image" aria-hidden="true"><svg width="184" height="152" viewBox="0 0 184 152" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" fill-rule="evenodd">
+                          <g transform="translate(24 31.67)">
+                            <ellipse fill-opacity=".8" fill="#f5f5f7" cx="67.797" cy="106.89" rx="67.797" ry="12.668"></ellipse>
+                            <path d="M122.034 69.674L98.109 40.229c-1.148-1.386-2.826-2.225-4.593-2.225H42.569c-1.766 0-3.444.839-4.592 2.225L13.852 69.674v20.076h108.182V69.674z" fill="#aeb8c2"></path>
+                            <path d="M101.537 86.214L80.63 61.102c-1.001-1.207-2.507-1.867-4.048-1.867H31.724c-1.54 0-3.047.66-4.048 1.867L6.769 86.214v13.792h94.768V86.214z" fill="url(#linearGradient-1)" transform="translate(13.56)"></path>
+                            <path d="M33.83 0h67.933a4 4 0 0 1 4 4v93.344a4 4 0 0 1-4 4H33.83a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z" fill="#f5f5f7"></path>
+                            <path d="M42.678 9.953h50.237a2 2 0 0 1 2 2V36.91a2 2 0 0 1-2 2H42.678a2 2 0 0 1-2-2V11.953a2 2 0 0 1 2-2zM42.94 49.767h49.713a2.262 2.262 0 1 1 0 4.524H42.94a2.262 2.262 0 0 1 0-4.524zM42.94 61.53h49.713a2.262 2.262 0 1 1 0 4.525H42.94a2.262 2.262 0 0 1 0-4.525zM121.813 105.032c-.775 3.071-3.497 5.36-6.735 5.36H20.515c-3.238 0-5.96-2.29-6.734-5.36a7.309 7.309 0 0 1-.222-1.79V69.675h26.318c2.907 0 5.25 2.448 5.25 5.42v.04c0 2.971 2.37 5.37 5.277 5.37h34.785c2.907 0 5.277-2.421 5.277-5.393V75.1c0-2.972 2.343-5.426 5.25-5.426h26.318v33.569c0 .617-.077 1.216-.221 1.789z" fill="#dce0e6"></path>
+                          </g>
+                          <path d="M149.121 33.292l-6.83 2.65a1 1 0 0 1-1.317-1.23l1.937-6.207c-2.589-2.944-4.109-6.534-4.109-10.408C138.802 8.102 148.92 0 161.402 0 173.881 0 184 8.102 184 18.097c0 9.995-10.118 18.097-22.599 18.097-4.528 0-8.744-1.066-12.28-2.902z" fill="#dce0e6"></path>
+                          <g transform="translate(149.65 15.383)" fill="#fff">
+                            <ellipse cx="20.654" cy="3.167" rx="2.849" ry="2.815"></ellipse>
+                            <path d="M5.698 5.63H0L2.898.704zM9.259.704h4.985V5.63H9.259z"></path>
+                          </g>
+                        </g>
+                      </svg></div>
+                    <div class="ant-empty-description">No data</div>
                     <!--v-if-->
                   </div>
-                </th>
-                <th class="ant-table-cell">
-                  <!-- Selection column header -->
-                  <!-- Regular column header -->
-                  <div class=""><span class="ant-table-column-title">Age</span>
-                    <!--v-if-->
-                  </div>
-                </th>
-              </tr>
-            </thead><!-- Body -->
-            <tbody class="ant-table-tbody">
-              <tr class="ant-table-placeholder">
-                <td colspan="2" class="ant-table-cell">
-                  <div class="ant-table-empty"><span>No data</span></div>
-                </td>
-              </tr>
-            </tbody><!-- Summary -->
-            <!--v-if-->
-          </table>
-        </div>
-      </div><!-- Footer -->
-      <!--v-if-->
-      <!-- Pagination bottom -->
+                </div>
+              </td>
+            </tr>
+          </tbody><!-- Summary -->
+          <!--v-if-->
+        </table>
+      </div>
+    </div><!-- Footer -->
+    <!--v-if-->
+    <!-- Pagination bottom -->
+    <!--v-if-->
+  </div>
+</div>
+<h3 data-v-fe71c916="">List</h3>
+<div data-v-fe71c916="" class="ant-list ant-list-split">
+  <!--v-if-->
+  <div class="ant-list-empty-text">
+    <div class="ant-empty" role="status">
+      <div class="ant-empty-image" aria-hidden="true"><svg width="184" height="152" viewBox="0 0 184 152" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd">
+            <g transform="translate(24 31.67)">
+              <ellipse fill-opacity=".8" fill="#f5f5f7" cx="67.797" cy="106.89" rx="67.797" ry="12.668"></ellipse>
+              <path d="M122.034 69.674L98.109 40.229c-1.148-1.386-2.826-2.225-4.593-2.225H42.569c-1.766 0-3.444.839-4.592 2.225L13.852 69.674v20.076h108.182V69.674z" fill="#aeb8c2"></path>
+              <path d="M101.537 86.214L80.63 61.102c-1.001-1.207-2.507-1.867-4.048-1.867H31.724c-1.54 0-3.047.66-4.048 1.867L6.769 86.214v13.792h94.768V86.214z" fill="url(#linearGradient-1)" transform="translate(13.56)"></path>
+              <path d="M33.83 0h67.933a4 4 0 0 1 4 4v93.344a4 4 0 0 1-4 4H33.83a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z" fill="#f5f5f7"></path>
+              <path d="M42.678 9.953h50.237a2 2 0 0 1 2 2V36.91a2 2 0 0 1-2 2H42.678a2 2 0 0 1-2-2V11.953a2 2 0 0 1 2-2zM42.94 49.767h49.713a2.262 2.262 0 1 1 0 4.524H42.94a2.262 2.262 0 0 1 0-4.524zM42.94 61.53h49.713a2.262 2.262 0 1 1 0 4.525H42.94a2.262 2.262 0 0 1 0-4.525zM121.813 105.032c-.775 3.071-3.497 5.36-6.735 5.36H20.515c-3.238 0-5.96-2.29-6.734-5.36a7.309 7.309 0 0 1-.222-1.79V69.675h26.318c2.907 0 5.25 2.448 5.25 5.42v.04c0 2.971 2.37 5.37 5.277 5.37h34.785c2.907 0 5.277-2.421 5.277-5.393V75.1c0-2.972 2.343-5.426 5.25-5.426h26.318v33.569c0 .617-.077 1.216-.221 1.789z" fill="#dce0e6"></path>
+            </g>
+            <path d="M149.121 33.292l-6.83 2.65a1 1 0 0 1-1.317-1.23l1.937-6.207c-2.589-2.944-4.109-6.534-4.109-10.408C138.802 8.102 148.92 0 161.402 0 173.881 0 184 8.102 184 18.097c0 9.995-10.118 18.097-22.599 18.097-4.528 0-8.744-1.066-12.28-2.902z" fill="#dce0e6"></path>
+            <g transform="translate(149.65 15.383)" fill="#fff">
+              <ellipse cx="20.654" cy="3.167" rx="2.849" ry="2.815"></ellipse>
+              <path d="M5.698 5.63H0L2.898.704zM9.259.704h4.985V5.63H9.259z"></path>
+            </g>
+          </g>
+        </svg></div>
+      <div class="ant-empty-description">No Data</div>
       <!--v-if-->
     </div>
   </div>
+  <!--v-if-->
+  <!--v-if-->
 </div>
 </div>"
 `;
 
 exports[`Empty demos > demo: Customize 1`] = `
 "<div class="ant-empty" role="status">
-  <div class="ant-empty-image" style="height: 60px;" aria-hidden="true"><img src="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg" alt=""></div>
-  <div class="ant-empty-description">No items found</div>
+  <div class="ant-empty-image" style="height: 60px;" aria-hidden="true"><img src="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original" alt=""></div>
+  <div class="ant-empty-description"><span> Customize <a href="#api">Description</a></span></div>
   <div class="ant-empty-footer"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
       <wave-stub disabled="false"></wave-stub>
       <!--v-if--><span class="ant-btn-content">Create Now</span>
@@ -136,23 +219,15 @@ exports[`Empty demos > demo: Description 1`] = `
         </g>
       </g>
     </svg></div>
-  <!--v-if-->
+  <div class="ant-empty-description">No Data</div>
   <!--v-if-->
 </div>"
 `;
 
 exports[`Empty demos > demo: Simple 1`] = `
 "<div class="ant-empty" role="status">
-  <div class="ant-empty-image" aria-hidden="true"><svg width="64" height="41" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
-        <ellipse fill="#f5f5f5" cx="32" cy="33" rx="32" ry="7"></ellipse>
-        <g fill-rule="nonzero" stroke="#d9d9d9">
-          <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
-          <path d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z" fill="#fafafa"></path>
-        </g>
-      </g>
-    </svg></div>
-  <div class="ant-empty-description"><span>Customize <a href="#API">Description</a></span></div>
+  <div class="ant-empty-image" aria-hidden="true"><img src="() => (0, _vue.h)(_simple.default)" alt=""></div>
+  <div class="ant-empty-description">No Data</div>
   <!--v-if-->
 </div>"
 `;

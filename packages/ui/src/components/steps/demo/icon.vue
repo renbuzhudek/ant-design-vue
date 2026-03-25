@@ -1,16 +1,35 @@
 <template>
-  <a-steps>
-    <a-step title="Login" status="finish">
-      <template #icon><span style="font-size: 18px;">&#x1F464;</span></template>
-    </a-step>
-    <a-step title="Verification" status="finish">
-      <template #icon><span style="font-size: 18px;">&#x1F4DD;</span></template>
-    </a-step>
-    <a-step title="Pay" status="process">
-      <template #icon><span style="font-size: 18px;">&#x1F4B3;</span></template>
-    </a-step>
-    <a-step title="Done" status="wait">
-      <template #icon><span style="font-size: 18px;">&#x1F604;</span></template>
-    </a-step>
-  </a-steps>
+  <a-steps :items="items"></a-steps>
 </template>
+<script lang="ts" setup>
+import { h } from 'vue';
+import {
+  UserOutlined,
+  SolutionOutlined,
+  LoadingOutlined,
+  SmileOutlined,
+} from '@ant-design/icons-vue';
+import type { StepProps } from 'ant-design-vue';
+const items = [
+  {
+    title: 'Login',
+    status: 'finish',
+    icon: h(UserOutlined),
+  },
+  {
+    title: 'Verification',
+    status: 'finish',
+    icon: h(SolutionOutlined),
+  },
+  {
+    title: 'Pay',
+    status: 'process',
+    icon: h(LoadingOutlined),
+  },
+  {
+    title: 'Done',
+    status: 'wait',
+    icon: h(SmileOutlined),
+  },
+] as StepProps[];
+</script>

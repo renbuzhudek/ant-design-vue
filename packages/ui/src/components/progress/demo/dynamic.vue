@@ -1,25 +1,28 @@
 <template>
-  <div style="max-width: 400px;">
-    <a-progress :percent="percent" />
-    <div style="margin-top: 16px; display: flex; gap: 8px;">
-      <a-button @click="decline">-</a-button>
-      <a-button @click="increase">+</a-button>
-    </div>
+  <div>
+    <a-progress :percent="defaultPercent" />
+    <a-button-group>
+      <a-button @click="decline">
+        <template #icon><minus-outlined /></template>
+      </a-button>
+      <a-button @click="increase">
+        <template #icon><plus-outlined /></template>
+      </a-button>
+    </a-button-group>
   </div>
 </template>
-
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const percent = ref(0)
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons-vue';
+import { ref } from 'vue';
+const defaultPercent = ref<number>(0);
 
 const increase = () => {
-  const val = percent.value + 10
-  percent.value = val > 100 ? 100 : val
-}
+  const percent = defaultPercent.value + 10;
+  defaultPercent.value = percent > 100 ? 100 : percent;
+};
 
 const decline = () => {
-  const val = percent.value - 10
-  percent.value = val < 0 ? 0 : val
-}
+  const percent = defaultPercent.value - 10;
+  defaultPercent.value = percent < 0 ? 0 : percent;
+};
 </script>

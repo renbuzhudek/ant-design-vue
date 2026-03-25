@@ -1,7 +1,14 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 200px">
-    <a-time-picker size="sm" placeholder="Small" />
-    <a-time-picker placeholder="Default" />
-    <a-time-picker size="lg" placeholder="Large" />
-  </div>
+  <a-space direction="vertical">
+    <a-time-picker v-model:value="value1" size="large" />
+    <a-time-picker v-model:value="value2" />
+    <a-time-picker v-model:value="value3" size="small" />
+  </a-space>
 </template>
+<script lang="ts" setup>
+import dayjs from 'dayjs';
+import { ref } from 'vue';
+const value1 = ref(dayjs('12:08:23', 'HH:mm'));
+const value2 = ref(dayjs('12:08:23', 'HH:mm'));
+const value3 = ref(dayjs('12:08:23', 'HH:mm'));
+</script>

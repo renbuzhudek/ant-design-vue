@@ -1,28 +1,19 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import CheckOutlined from '@ant-design/icons-vue/CheckOutlined'
-import CloseOutlined from '@ant-design/icons-vue/CloseOutlined'
-
-const checked1 = ref(true)
-const checked2 = ref(false)
-const checked3 = ref(true)
-</script>
-
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a-switch v-model:checked="checked1">
-      <template #checkedChildren>ON</template>
-      <template #unCheckedChildren>OFF</template>
+  <a-space direction="vertical">
+    <a-switch v-model:checked="state.checked1" checked-children="开启" un-checked-children="关闭" />
+    <a-switch v-model:checked="state.checked2" checked-children="1" un-checked-children="0" />
+    <a-switch v-model:checked="state.checked3">
+      <template #checkedChildren><check-outlined /></template>
+      <template #unCheckedChildren><close-outlined /></template>
     </a-switch>
-
-    <a-switch v-model:checked="checked2">
-      <template #checkedChildren>1</template>
-      <template #unCheckedChildren>0</template>
-    </a-switch>
-
-    <a-switch v-model:checked="checked3">
-      <template #checkedChildren><CheckOutlined /></template>
-      <template #unCheckedChildren><CloseOutlined /></template>
-    </a-switch>
-  </div>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { reactive } from 'vue';
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons-vue';
+const state = reactive({
+  checked1: true,
+  checked2: false,
+  checked3: true,
+});
+</script>

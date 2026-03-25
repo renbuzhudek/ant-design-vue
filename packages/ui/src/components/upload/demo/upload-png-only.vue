@@ -1,12 +1,27 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { UploadFile, UploadChangeParam } from '../types'
-
-const fileList = ref<UploadFile[]>([
+<template>
+  <a-upload
+    v-model:file-list="fileList"
+    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+    :before-upload="beforeUpload"
+    @change="handleChange"
+  >
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Upload png only
+    </a-button>
+  </a-upload>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { UploadOutlined } from '@ant-design/icons-vue';
+import type { UploadChangeParam, UploadProps } from 'ant-design-vue';
+import { message, Upload } from 'ant-design-vue';
+const fileList = ref<UploadProps['fileList']>([
   {
     uid: '1',
     name: 'xxx.png',
     status: 'done',
+    response: 'Server Error 500', // custom error message to show
     url: 'http://www.baidu.com/xxx.png',
   },
   {
@@ -15,30 +30,25 @@ const fileList = ref<UploadFile[]>([
     status: 'done',
     url: 'http://www.baidu.com/yyy.png',
   },
-])
+  {
+    uid: '3',
+    name: 'zzz.png',
+    status: 'error',
+    response: 'Server Error 500', // custom error message to show
+    url: 'http://www.baidu.com/zzz.png',
+  },
+]);
 
-function handleChange(info: UploadChangeParam) {
-  if (info.file.status !== 'uploading') {
-    console.log(info.file, info.fileList)
+const handleChange = ({ file, fileList }: UploadChangeParam) => {
+  if (file.status !== 'uploading') {
+    console.log(file, fileList);
   }
-}
-
-function beforeUpload(file: File) {
-  const isPNG = file.type === 'image/png'
+};
+const beforeUpload: UploadProps['beforeUpload'] = file => {
+  const isPNG = file.type === 'image/png';
   if (!isPNG) {
-    console.warn(`${file.name} is not a png file`)
+    message.error(`${file.name} is not a png file`);
   }
-  return isPNG
-}
+  return isPNG || Upload.LIST_IGNORE;
+};
 </script>
-
-<template>
-  <a-upload
-    v-model:file-list="fileList"
-    action="https://httpbin.org/post"
-    :before-upload="beforeUpload"
-    @change="handleChange"
-  >
-    <a-button>Upload png only</a-button>
-  </a-upload>
-</template>

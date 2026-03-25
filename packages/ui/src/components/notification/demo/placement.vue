@@ -1,20 +1,49 @@
 <template>
-  <a-space>
-    <a-button @click="open('topLeft')">Top Left</a-button>
-    <a-button @click="open('topRight')">Top Right</a-button>
-    <a-button @click="open('bottomLeft')">Bottom Left</a-button>
-    <a-button @click="open('bottomRight')">Bottom Right</a-button>
-  </a-space>
+  <div>
+    <a-button type="primary" @click="openNotification('top')">
+      <template #icon><BorderTopOutlined /></template>
+      top
+    </a-button>
+    <a-button type="primary" @click="openNotification('bottom')">
+      <template #icon><BorderBottomOutlined /></template>
+      bottom
+    </a-button>
+    <a-button type="primary" @click="openNotification('topLeft')">
+      <template #icon><radius-upleft-outlined /></template>
+      topLeft
+    </a-button>
+    <a-button type="primary" @click="openNotification('topRight')">
+      <template #icon><radius-upright-outlined /></template>
+      topRight
+    </a-button>
+    <a-divider />
+    <a-button type="primary" @click="openNotification('bottomLeft')">
+      <template #icon><radius-bottomleft-outlined /></template>
+      bottomLeft
+    </a-button>
+    <a-button type="primary" @click="openNotification('bottomRight')">
+      <template #icon><radius-bottomright-outlined /></template>
+      bottomRight
+    </a-button>
+  </div>
 </template>
-
-<script setup lang="ts">
-import { notification } from '@ant-design-vue/ui'
-
-function open(placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight') {
-  notification.info({
+<script lang="ts" setup>
+import {
+  RadiusUpleftOutlined,
+  RadiusUprightOutlined,
+  RadiusBottomleftOutlined,
+  RadiusBottomrightOutlined,
+  BorderTopOutlined,
+  BorderBottomOutlined,
+} from '@ant-design/icons-vue';
+import { notification } from 'ant-design-vue';
+import type { NotificationPlacement } from 'ant-design-vue';
+const openNotification = (placement: NotificationPlacement) => {
+  notification.open({
     message: `Notification ${placement}`,
-    description: 'This is the content of the notification.',
+    description:
+      'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
     placement,
-  })
-}
+  });
+};
 </script>

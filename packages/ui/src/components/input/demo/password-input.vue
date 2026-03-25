@@ -1,29 +1,34 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px">
-    <a-input-password v-model:value="value1" placeholder="Input password" />
+  <a-space direction="vertical" size="middle" style="width: 100%">
+    <a-input-password v-model:value="value" placeholder="input password" />
+    <a-input-password v-model:value="value2" placeholder="input password">
+      <template #iconRender="v">
+        <EyeTwoTone v-if="v"></EyeTwoTone>
+        <EyeInvisibleOutlined v-else></EyeInvisibleOutlined>
+      </template>
+    </a-input-password>
     <a-input-password
-      v-model:value="value2"
-      placeholder="No visibility toggle"
+      v-model:value="value3"
+      placeholder="input password"
       :visibility-toggle="false"
     />
-    <div style="display: flex; gap: 8px; align-items: center">
+    <a-space>
       <a-input-password
-        v-model:value="value3"
+        v-model:value="value4"
         v-model:visible="visible"
-        placeholder="Controlled visibility"
+        placeholder="input password"
       />
-      <a-button @click="visible = !visible">
-        {{ visible ? 'Hide' : 'Show' }}
-      </a-button>
-    </div>
-  </div>
+      <a-button @click="visible = !visible">{{ visible ? 'Hide' : 'Show' }}</a-button>
+    </a-space>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { EyeTwoTone, EyeInvisibleOutlined } from '@ant-design/icons-vue';
+const value = ref<string>('');
+const value2 = ref<string>('');
+const value3 = ref<string>('');
+const value4 = ref<string>('');
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value1 = ref('')
-const value2 = ref('')
-const value3 = ref('')
-const visible = ref(false)
+const visible = ref<boolean>(true);
 </script>

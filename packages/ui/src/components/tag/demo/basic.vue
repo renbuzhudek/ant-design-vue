@@ -1,11 +1,13 @@
 <template>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+  <div>
     <a-tag>Tag 1</a-tag>
-    <a-tag>
-      <template #icon><span>&#128279;</span></template>
-      Link
-    </a-tag>
-    <a-tag closable>Closable</a-tag>
+    <a-tag><a href="https://github.com/vueComponent/ant-design">Link</a></a-tag>
+    <a-tag closable @close="log">Tag 2</a-tag>
     <a-tag closable @close.prevent>Prevent Default</a-tag>
   </div>
 </template>
+<script lang="ts" setup>
+const log = (e: MouseEvent) => {
+  console.log(e);
+};
+</script>

@@ -1,19 +1,37 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref(['Apple'])
-const options = ['Apple', 'Pear', 'Orange']
-</script>
-
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a-checkbox-group v-model:value="value" :options="options" />
-    <p>Selected: {{ value }}</p>
-
-    <a-checkbox-group v-model:value="value">
-      <a-checkbox value="Apple">Apple</a-checkbox>
-      <a-checkbox value="Pear">Pear</a-checkbox>
-      <a-checkbox value="Orange">Orange</a-checkbox>
-    </a-checkbox-group>
-  </div>
+  <a-checkbox-group v-model:value="state.value1" name="checkboxgroup" :options="plainOptions" />
+  <br />
+  <br />
+  <a-checkbox-group v-model:value="state.value2" :options="plainOptions" />
+  <br />
+  <br />
+  <a-checkbox-group v-model:value="state.value3" :options="options" />
+  <br />
+  <br />
+  <a-checkbox-group v-model:value="state.value4" :options="optionsWithDisabled" disabled>
+    <template #label="{ label }">
+      <span style="color: red">{{ label }}</span>
+    </template>
+  </a-checkbox-group>
 </template>
+<script lang="ts" setup>
+import { reactive } from 'vue';
+
+const plainOptions = ['Apple', 'Pear', 'Orange'];
+const options = [
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange' },
+];
+const optionsWithDisabled = [
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange', disabled: false },
+];
+const state = reactive({
+  value1: [],
+  value2: ['Apple'],
+  value3: ['Pear'],
+  value4: ['Apple'],
+});
+</script>

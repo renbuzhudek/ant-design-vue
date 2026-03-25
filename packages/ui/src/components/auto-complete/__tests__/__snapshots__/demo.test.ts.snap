@@ -1,23 +1,14 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`AutoComplete demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;">
-  <h4>Basic AutoComplete</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-auto-complete ant-select-single ant-select-show-search"><div class="ant-select-selector"><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" placeholder="Type to search" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span>
-</div>
+"<span class="ant-trigger-wrapper"><div class="ant-select ant-select-auto-complete ant-select-single ant-select-show-search" style="width: 200px;"><div class="ant-select-selector"><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" placeholder="input here" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span></div>
 <!--v-if-->
 </div></span>
 <!--teleport start-->
+
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end-->
-<h4>With Allow Clear</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-auto-complete ant-select-single ant-select-show-search ant-select-allow-clear"><div class="ant-select-selector"><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" placeholder="Select or type" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span></div>
-<!--v-if-->
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end-->
-</div>"
+
+<!--teleport end-->"
 `;

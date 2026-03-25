@@ -1,41 +1,38 @@
 <template>
-  <div style="padding: 80px 160px;">
-    <div ref="targetRef" style="display: inline-block; padding: 16px 24px; border: 1px dashed #d9d9d9; border-radius: 8px;">
-      Target Element
-    </div>
-    <a-divider />
-    <a-space>
-      <a-button variant="solid" @click="startTour('top')">Top</a-button>
-      <a-button variant="solid" @click="startTour('bottom')">Bottom</a-button>
-      <a-button variant="solid" @click="startTour('left')">Left</a-button>
-      <a-button variant="solid" @click="startTour('right')">Right</a-button>
-    </a-space>
-    <a-tour
-      v-model:open="open"
-      :steps="steps"
-    />
-  </div>
+  <a-button ref="btnRef" type="primary" @click="handleOpen(true)">Begin Tour</a-button>
+
+  <a-tour :open="open" :steps="steps" @close="handleOpen(false)" />
 </template>
 
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-import type { TourStepInfo, TourPlacement } from '../types'
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { TourProps } from 'ant-design-vue';
 
-const open = ref(false)
-const placement = ref<TourPlacement>('bottom')
-const targetRef = ref<HTMLElement | null>(null)
+const open = ref<boolean>(false);
 
-function startTour(p: TourPlacement) {
-  placement.value = p
-  open.value = true
-}
+const btnRef = ref(null);
 
-const steps = computed<TourStepInfo[]>(() => [
+const steps: TourProps['steps'] = [
   {
-    title: 'Placement Demo',
-    description: `The tour panel is placed at the "${placement.value}" position.`,
-    placement: placement.value,
-    target: () => targetRef.value,
+    title: 'Center',
+    description: 'Displayed in the center of screen.',
+    target: null,
   },
-])
+  {
+    title: 'Right',
+    description: 'On the right of target.',
+    placement: 'right',
+    target: () => btnRef.value && btnRef.value.$el,
+  },
+  {
+    title: 'Top',
+    description: 'On the top of target.',
+    placement: 'top',
+    target: () => btnRef.value && btnRef.value.$el,
+  },
+];
+
+const handleOpen = (val: boolean): void => {
+  open.value = val;
+};
 </script>

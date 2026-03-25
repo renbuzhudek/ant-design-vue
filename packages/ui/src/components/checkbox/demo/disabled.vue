@@ -1,11 +1,12 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a-checkbox disabled>Disabled</a-checkbox>
-    <a-checkbox disabled checked>Disabled Checked</a-checkbox>
-    <a-checkbox-group
-      disabled
-      :value="['Apple']"
-      :options="['Apple', 'Pear', 'Orange']"
-    />
-  </div>
+  <a-checkbox v-model:checked="state.checked1" disabled />
+  <br />
+  <a-checkbox v-model:checked="state.checked2" disabled />
 </template>
+<script lang="ts" setup>
+import { reactive } from 'vue';
+const state = reactive({
+  checked1: false,
+  checked2: true,
+});
+</script>

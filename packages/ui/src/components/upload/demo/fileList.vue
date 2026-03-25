@@ -1,42 +1,44 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { UploadFile, UploadChangeParam } from '../types'
-
-const fileList = ref<UploadFile[]>([
+<template>
+  <a-upload
+    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+    :multiple="true"
+    :file-list="fileList"
+    @change="handleChange"
+  >
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Upload
+    </a-button>
+  </a-upload>
+</template>
+<script lang="ts" setup>
+import { UploadOutlined } from '@ant-design/icons-vue';
+import { ref } from 'vue';
+import type { UploadChangeParam, UploadProps } from 'ant-design-vue';
+const fileList = ref<UploadProps['fileList']>([
   {
     uid: '-1',
     name: 'xxx.png',
     status: 'done',
     url: 'http://www.baidu.com/xxx.png',
   },
-])
-
-function handleChange(info: UploadChangeParam) {
-  let resFileList = [...info.fileList]
+]);
+const handleChange = (info: UploadChangeParam) => {
+  let resFileList = [...info.fileList];
 
   // 1. Limit the number of uploaded files
-  // Only show two recent uploaded files, old ones will be replaced
-  resFileList = resFileList.slice(-2)
+  //    Only to show two recent uploaded files, and old ones will be replaced by the new
+  resFileList = resFileList.slice(-2);
 
-  // 2. Read from response and show file link
+  // 2. read from response and show file link
   resFileList = resFileList.map(file => {
     if (file.response) {
-      file.url = file.response.url
+      // Component will show file.url as link
+      file.url = file.response.url;
     }
-    return file
-  })
+    return file;
+  });
 
-  fileList.value = resFileList
-}
+  fileList.value = resFileList;
+};
 </script>
-
-<template>
-  <a-upload
-    action="https://httpbin.org/post"
-    :multiple="true"
-    :file-list="fileList"
-    @change="handleChange"
-  >
-    <a-button>Upload</a-button>
-  </a-upload>
-</template>

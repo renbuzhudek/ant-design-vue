@@ -1,26 +1,27 @@
 <template>
   <a-pagination
     v-model:current="current"
-    v-model:page-size="pageSize"
-    :page-size-options="[10, 20, 30, 40, 50]"
-    :total="50"
+    v-model:page-size="pageSizeRef"
+    :page-size-options="pageSizeOptions"
+    :total="total"
     show-size-changer
     @showSizeChange="onShowSizeChange"
   >
-    <template #buildOptionText="{ value: val }">
-      <span v-if="val !== 50">{{ val }} items/page</span>
-      <span v-else>All</span>
+    <template #buildOptionText="props">
+      <span v-if="props.value !== '50'">{{ props.value }}条/页</span>
+      <span v-else>全部</span>
     </template>
   </a-pagination>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const current = ref(1)
-const pageSize = ref(10)
-
-const onShowSizeChange = (current: number, size: number) => {
-  console.log(current, size)
-}
+const pageSizeOptions = ref<string[]>(['10', '20', '30', '40', '50']);
+const current = ref(1);
+const pageSizeRef = ref(10);
+const total = ref(50);
+const onShowSizeChange = (current: number, pageSize: number) => {
+  console.log(current, pageSize);
+  pageSizeRef.value = pageSize;
+};
 </script>

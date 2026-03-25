@@ -3,7 +3,7 @@
     <a-tab-pane key="1">
       <template #tab>
         <span>
-          <AppleOutlined />
+          <apple-outlined />
           Tab 1
         </span>
       </template>
@@ -12,7 +12,7 @@
     <a-tab-pane key="2">
       <template #tab>
         <span>
-          <AndroidOutlined />
+          <android-outlined />
           Tab 2
         </span>
       </template>
@@ -20,10 +20,8 @@
     </a-tab-pane>
   </a-tabs>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import { AppleOutlined, AndroidOutlined } from '@ant-design/icons-vue'
-
-const activeKey = ref('1')
+<script lang="ts" setup>
+import { AppleOutlined, AndroidOutlined } from '@ant-design/icons-vue';
+import { ref } from 'vue';
+const activeKey = ref('1');
 </script>

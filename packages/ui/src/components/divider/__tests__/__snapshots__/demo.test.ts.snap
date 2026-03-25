@@ -15,31 +15,32 @@ exports[`Divider demos > demo: Basic 1`] = `
 `;
 
 exports[`Divider demos > demo: CustomizeStyle 1`] = `
-"<div>
-  <p>Content above a dashed divider.</p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-dashed" role="separator" aria-orientation="horizontal">
-    <!--v-if-->
-  </div>
-  <p>Content between dividers.</p>
-  <div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal" style="border-color: rgb(124, 179, 5);">
-    <!--v-if-->
-  </div>
-  <p>Content below a custom-colored divider.</p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-dashed ant-divider-with-text ant-divider-with-text-center" role="separator" aria-orientation="horizontal" style="border-color: rgb(124, 179, 5);"><span class="ant-divider-inner-text">Custom Color Dashed</span></div>
-  <p>Content at the bottom.</p>
+"<div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal" style="height: 2px; background-color: rgb(124, 179, 5);">
+  <!--v-if-->
+</div>
+<div class="ant-divider ant-divider-horizontal ant-divider-dashed" role="separator" aria-orientation="horizontal" style="border-color: rgb(124, 179, 5);">
+  <!--v-if-->
+</div>
+<div class="ant-divider ant-divider-vertical" role="separator" aria-orientation="vertical" style="height: 60px; background-color: rgb(124, 179, 5);">
+  <!--v-if-->
+</div>
+<div class="ant-divider ant-divider-vertical ant-divider-dashed" role="separator" aria-orientation="vertical" style="height: 60px; border-color: rgb(124, 179, 5);">
+  <!--v-if-->
 </div>"
 `;
 
 exports[`Divider demos > demo: Horizontal 1`] = `
-"<div>
-  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
-  <div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
-    <!--v-if-->
-  </div>
-  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">With Text</span></div>
-  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
-</div>"
+"<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
+  <!--v-if-->
+</div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">With Text</span></div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-dashed" role="separator" aria-orientation="horizontal">
+  <!--v-if-->
+</div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>"
 `;
 
 exports[`Divider demos > demo: OrientationMargin 1`] = `
@@ -63,15 +64,15 @@ exports[`Divider demos > demo: Vertical 1`] = `
 `;
 
 exports[`Divider demos > demo: WithText 1`] = `
-"<div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Center Text</span></div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Left Text</span></div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-right" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Right Text</span></div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  <div class="ant-divider ant-divider-horizontal ant-divider-plain ant-divider-with-text ant-divider-with-text-center" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Plain Text</span></div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-</div>"
+"<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-center" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Text</span></div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Left Text</span></div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-right" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Right Text</span></div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left ant-divider-no-default-orientation-margin-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text" style="margin-left: 0px;"> Left Text with 0 orientationMargin </span></div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-right ant-divider-no-default-orientation-margin-right" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text" style="margin-right: 50px;"> Right Text with 50px orientationMargin </span></div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo. </p>"
 `;

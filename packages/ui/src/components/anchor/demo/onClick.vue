@@ -2,25 +2,42 @@
   <a-anchor
     :affix="false"
     :items="[
-      { key: '1', href: '#basic', title: 'Basic demo' },
-      { key: '2', href: '#static', title: 'Static demo' },
+      {
+        key: '1',
+        href: '#components-anchor-demo-basic',
+        title: 'Basic demo',
+      },
+      {
+        key: '2',
+        href: '#components-anchor-demo-static',
+        title: 'Static demo',
+      },
       {
         key: '3',
         href: '#api',
         title: 'API',
         children: [
-          { key: '4', href: '#anchor-props', title: 'Anchor Props' },
-          { key: '5', href: '#link-props', title: 'Link Props' },
+          {
+            key: '4',
+            href: '#anchor-props',
+            title: 'Anchor Props',
+          },
+          {
+            key: '5',
+            href: '#link-props',
+            title: 'Link Props',
+          },
         ],
       },
     ]"
     @click="handleClick"
-  />
+  ></a-anchor>
 </template>
 
-<script setup lang="ts">
-const handleClick = (e: MouseEvent, link: { title: string; href: string }) => {
-  e.preventDefault()
-  console.log('Clicked:', link)
-}
+<script lang="ts" setup>
+import type { AnchorProps } from 'ant-design-vue';
+const handleClick: AnchorProps['onClick'] = (e, link) => {
+  e.preventDefault();
+  console.log(link);
+};
 </script>

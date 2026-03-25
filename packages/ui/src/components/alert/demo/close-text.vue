@@ -1,5 +1,3 @@
 <template>
-  <a-alert message="Info Text" type="info" closable>
-    <template #closeText>Close Now</template>
-  </a-alert>
+  <a-alert message="Info Text" type="info" close-text="Close Now" />
 </template>

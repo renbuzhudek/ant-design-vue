@@ -1,18 +1,21 @@
 <template>
   <div>
-    <a-button variant="solid" @click="visible = true">Show image preview</a-button>
+    <a-button type="primary" @click="() => setVisible(true)">show image preview</a-button>
     <a-image
       :width="200"
       :style="{ display: 'none' }"
-      :preview="{ open: visible }"
+      :preview="{
+        visible,
+        onVisibleChange: setVisible,
+      }"
       src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-      @click="visible = true"
     />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const visible = ref(false)
+<script lang="ts" setup>
+import { ref } from 'vue';
+const visible = ref<boolean>(false);
+const setVisible = (value): void => {
+  visible.value = value;
+};
 </script>

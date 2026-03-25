@@ -1,263 +1,235 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Grid demos > demo: Basic 1`] = `
-"<div data-v-38d832ba="">
-  <div data-v-38d832ba="" class="ant-row">
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 50%; max-width: 50%;">
-      <div data-v-38d832ba="" class="demo-col">col-12</div>
-    </div>
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 50%; max-width: 50%;">
-      <div data-v-38d832ba="" class="demo-col light">col-12</div>
-    </div>
-  </div>
-  <div data-v-38d832ba="" class="ant-row">
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">
-      <div data-v-38d832ba="" class="demo-col">col-8</div>
-    </div>
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">
-      <div data-v-38d832ba="" class="demo-col light">col-8</div>
-    </div>
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">
-      <div data-v-38d832ba="" class="demo-col">col-8</div>
-    </div>
-  </div>
-  <div data-v-38d832ba="" class="ant-row">
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-38d832ba="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-38d832ba="" class="demo-col light">col-6</div>
-    </div>
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-38d832ba="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-38d832ba="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-38d832ba="" class="demo-col light">col-6</div>
-    </div>
-  </div>
+"<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 100%; max-width: 100%;">col</div>
+</div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 50%; max-width: 50%;">col-12</div>
+  <div class="ant-col" style="flex: 0 0 50%; max-width: 50%;">col-12</div>
+</div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">col-8</div>
+  <div class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">col-8</div>
+  <div class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">col-8</div>
+</div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;">col-6</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;">col-6</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;">col-6</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;">col-6</div>
 </div>"
 `;
 
 exports[`Grid demos > demo: Flex 1`] = `
-"<div data-v-77c5cdbb="">
-  <p data-v-77c5cdbb=""><strong data-v-77c5cdbb="">Flex layout</strong></p>
-  <div data-v-77c5cdbb="" class="ant-row">
-    <div data-v-77c5cdbb="" class="ant-col" style="flex: 2 2 auto;">
-      <div data-v-77c5cdbb="" class="demo-col">2 / 5</div>
-    </div>
-    <div data-v-77c5cdbb="" class="ant-col" style="flex: 3 3 auto;">
-      <div data-v-77c5cdbb="" class="demo-col light">3 / 5</div>
-    </div>
-  </div><br data-v-77c5cdbb="">
-  <div data-v-77c5cdbb="" class="ant-row">
-    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 100px;">
-      <div data-v-77c5cdbb="" class="demo-col">100px</div>
-    </div>
-    <div data-v-77c5cdbb="" class="ant-col" style="flex: 1 1 auto;">
-      <div data-v-77c5cdbb="" class="demo-col light">auto</div>
-    </div>
-  </div><br data-v-77c5cdbb="">
-  <div data-v-77c5cdbb="" class="ant-row">
-    <div data-v-77c5cdbb="" class="ant-col" style="flex: 1 1 200px;">
-      <div data-v-77c5cdbb="" class="demo-col">1 1 200px</div>
-    </div>
-    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 1 300px;">
-      <div data-v-77c5cdbb="" class="demo-col light">0 1 300px</div>
-    </div>
+"<div data-v-77c5cdbb="" id="components-grid-demo-flex">
+  <div data-v-77c5cdbb="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">sub-element align left</span></div>
+  <div data-v-77c5cdbb="" class="ant-row" style="justify-content: flex-start;">
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+  </div>
+  <div data-v-77c5cdbb="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">sub-element align center</span></div>
+  <div data-v-77c5cdbb="" class="ant-row" style="justify-content: center;">
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+  </div>
+  <div data-v-77c5cdbb="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">sub-element align right</span></div>
+  <div data-v-77c5cdbb="" class="ant-row" style="justify-content: flex-end;">
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+  </div>
+  <div data-v-77c5cdbb="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">sub-element monospaced arrangement</span></div>
+  <div data-v-77c5cdbb="" class="ant-row" style="justify-content: space-between;">
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+  </div>
+  <div data-v-77c5cdbb="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">sub-element align full</span></div>
+  <div data-v-77c5cdbb="" class="ant-row" style="justify-content: space-around;">
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+  </div>
+  <div data-v-77c5cdbb="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">sub-element align full</span></div>
+  <div data-v-77c5cdbb="" class="ant-row" style="justify-content: space-evenly;">
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
+    <div data-v-77c5cdbb="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">col-4</div>
   </div>
 </div>"
 `;
 
 exports[`Grid demos > demo: FlexAlign 1`] = `
-"<div data-v-e6b996a1="">
+"<div data-v-e6b996a1="" id="components-grid-demo-flex-align">
   <div data-v-e6b996a1="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Align Top</span></div>
-  <div data-v-e6b996a1="" class="ant-row" style="justify-content: center; align-items: flex-start; background: rgba(128, 128, 128, 0.08);">
+  <div data-v-e6b996a1="" class="ant-row" style="justify-content: center; align-items: flex-start;">
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col" style="height: 100px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-100">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col light" style="height: 50px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-50">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col" style="height: 120px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-120">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col light" style="height: 80px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-80">col-4</p>
     </div>
   </div>
   <div data-v-e6b996a1="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Align Middle</span></div>
-  <div data-v-e6b996a1="" class="ant-row" style="justify-content: space-around; align-items: center; background: rgba(128, 128, 128, 0.08);">
+  <div data-v-e6b996a1="" class="ant-row" style="justify-content: space-around; align-items: center;">
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col" style="height: 100px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-100">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col light" style="height: 50px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-50">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col" style="height: 120px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-120">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col light" style="height: 80px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-80">col-4</p>
     </div>
   </div>
   <div data-v-e6b996a1="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Align Bottom</span></div>
-  <div data-v-e6b996a1="" class="ant-row" style="justify-content: space-between; align-items: flex-end; background: rgba(128, 128, 128, 0.08);">
+  <div data-v-e6b996a1="" class="ant-row" style="justify-content: space-between; align-items: flex-end;">
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col" style="height: 100px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-100">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col light" style="height: 50px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-50">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col" style="height: 120px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-120">col-4</p>
     </div>
     <div data-v-e6b996a1="" class="ant-col" style="flex: 0 0 16.666666666666664%; max-width: 16.666666666666664%;">
-      <div data-v-e6b996a1="" class="demo-col light" style="height: 80px;">col-4</div>
+      <p data-v-e6b996a1="" class="height-80">col-4</p>
     </div>
   </div>
 </div>"
 `;
 
 exports[`Grid demos > demo: FlexOrder 1`] = `
-"<div data-v-caab8a91="">
-  <div data-v-caab8a91="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Normal</span></div>
-  <div data-v-caab8a91="" class="ant-row">
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 4;">
-      <div data-v-caab8a91="" class="demo-col">1 col-order-4</div>
-    </div>
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 3;">
-      <div data-v-caab8a91="" class="demo-col light">2 col-order-3</div>
-    </div>
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 2;">
-      <div data-v-caab8a91="" class="demo-col">3 col-order-2</div>
-    </div>
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 1;">
-      <div data-v-caab8a91="" class="demo-col light">4 col-order-1</div>
-    </div>
-  </div>
-  <div data-v-caab8a91="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Responsive</span></div>
-  <div data-v-caab8a91="" class="ant-row">
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-caab8a91="" class="demo-col">1 col-order-responsive</div>
-    </div>
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-caab8a91="" class="demo-col light">2 col-order-responsive</div>
-    </div>
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-caab8a91="" class="demo-col">3 col-order-responsive</div>
-    </div>
-    <div data-v-caab8a91="" class="ant-col" style="flex: 0 0 25%; max-width: 25%;">
-      <div data-v-caab8a91="" class="demo-col light">4 col-order-responsive</div>
-    </div>
-  </div>
+"<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Normal</span></div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 4;">1 col-order-4</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 3;">2 col-order-3</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 2;">3 col-order-2</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; order: 1;">4 col-order-1</div>
+</div>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Responsive</span></div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;"> 1 col-order-responsive </div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;"> 2 col-order-responsive </div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;"> 3 col-order-responsive </div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%;"> 4 col-order-responsive </div>
 </div>"
 `;
 
 exports[`Grid demos > demo: FlexStretch 1`] = `
-"<div data-v-3822f743="">
-  <div data-v-3822f743="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Percentage columns</span></div>
-  <div data-v-3822f743="" class="ant-row">
-    <div data-v-3822f743="" class="ant-col" style="flex: 2 2 auto;">
-      <div data-v-3822f743="" class="demo-col">2 / 5</div>
-    </div>
-    <div data-v-3822f743="" class="ant-col" style="flex: 3 3 auto;">
-      <div data-v-3822f743="" class="demo-col light">3 / 5</div>
-    </div>
+"<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Percentage columns</span></div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 2 2 auto;">2 / 5</div>
+  <div class="ant-col" style="flex: 3 3 auto;">3 / 5</div>
+</div>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Fill rest</span></div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 100px;">100px</div>
+  <div class="ant-col" style="flex: 1 1 auto;">auto</div>
+</div>
+<div class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Raw flex style</span></div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 1 1 200px;">1 1 200px</div>
+  <div class="ant-col" style="flex: 0 1 300px;">0 1 300px</div>
+</div>
+<div class="ant-row" style="flex-wrap: nowrap;">
+  <div class="ant-col" style="flex: 0 0 auto;">
+    <div style="padding: 0px 16px;">none</div>
   </div>
-  <div data-v-3822f743="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Fill rest</span></div>
-  <div data-v-3822f743="" class="ant-row">
-    <div data-v-3822f743="" class="ant-col" style="flex: 0 0 100px;">
-      <div data-v-3822f743="" class="demo-col">100px</div>
-    </div>
-    <div data-v-3822f743="" class="ant-col" style="flex: 1 1 auto;">
-      <div data-v-3822f743="" class="demo-col light">auto</div>
-    </div>
-  </div>
-  <div data-v-3822f743="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Raw flex style</span></div>
-  <div data-v-3822f743="" class="ant-row">
-    <div data-v-3822f743="" class="ant-col" style="flex: 1 1 200px;">
-      <div data-v-3822f743="" class="demo-col">1 1 200px</div>
-    </div>
-    <div data-v-3822f743="" class="ant-col" style="flex: 0 1 300px;">
-      <div data-v-3822f743="" class="demo-col light">0 1 300px</div>
-    </div>
-  </div>
-  <div data-v-3822f743="" class="ant-row" style="flex-wrap: nowrap;">
-    <div data-v-3822f743="" class="ant-col" style="flex: 0 0 auto;">
-      <div data-v-3822f743="" class="demo-col" style="padding: 0px 16px;">none</div>
-    </div>
-    <div data-v-3822f743="" class="ant-col" style="flex: 1 1 auto;">
-      <div data-v-3822f743="" class="demo-col light">auto with no-wrap</div>
-    </div>
-  </div>
+  <div class="ant-col" style="flex: 1 1 auto;">auto with no-wrap</div>
 </div>"
 `;
 
 exports[`Grid demos > demo: Gutter 1`] = `
-"<div data-v-c59d452d="">
-  <p data-v-c59d452d=""><strong data-v-c59d452d="">Horizontal gutter: 16</strong></p>
-  <div data-v-c59d452d="" class="ant-row" style="margin-left: -8px; margin-right: -8px;">
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-  </div><br data-v-c59d452d="">
-  <p data-v-c59d452d=""><strong data-v-c59d452d="">Horizontal + Vertical gutter: [16, 24]</strong></p>
-  <div data-v-c59d452d="" class="ant-row" style="margin-left: -8px; margin-right: -8px; row-gap: 24px;">
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
-    <div data-v-c59d452d="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
-      <div data-v-c59d452d="" class="demo-col">col-6</div>
-    </div>
+"<div data-v-c59d452d="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Horizontal</span></div>
+<div data-v-c59d452d="" class="ant-row" style="margin-left: -8px; margin-right: -8px;">
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+</div>
+<div data-v-c59d452d="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Responsive</span></div>
+<div data-v-c59d452d="" class="ant-row">
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+</div>
+<div data-v-c59d452d="" class="ant-divider ant-divider-horizontal ant-divider-with-text ant-divider-with-text-left" role="separator" aria-orientation="horizontal"><span class="ant-divider-inner-text">Vertical</span></div>
+<div data-v-c59d452d="" class="ant-row" style="margin-left: -8px; margin-right: -8px; row-gap: 24px;">
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
+  </div>
+  <div data-v-c59d452d="" class="ant-col gutter-row" style="flex: 0 0 25%; max-width: 25%; padding-left: 8px; padding-right: 8px;">
+    <div data-v-c59d452d="" class="gutter-box">col-6</div>
   </div>
 </div>"
 `;
 
 exports[`Grid demos > demo: Offset 1`] = `
-"<div data-v-32a733d5="">
-  <div data-v-32a733d5="" class="ant-row">
-    <div data-v-32a733d5="" class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">
-      <div data-v-32a733d5="" class="demo-col">col-8</div>
-    </div>
-    <div data-v-32a733d5="" class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%; margin-inline-start: 33.33333333333333%;">
-      <div data-v-32a733d5="" class="demo-col">col-8 offset-8</div>
-    </div>
-  </div>
-  <div data-v-32a733d5="" class="ant-row">
-    <div data-v-32a733d5="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; margin-inline-start: 25%;">
-      <div data-v-32a733d5="" class="demo-col">col-6 offset-6</div>
-    </div>
-    <div data-v-32a733d5="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; margin-inline-start: 25%;">
-      <div data-v-32a733d5="" class="demo-col">col-6 offset-6</div>
-    </div>
-  </div>
+"<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%;">col-8</div>
+  <div class="ant-col" style="flex: 0 0 33.33333333333333%; max-width: 33.33333333333333%; margin-inline-start: 33.33333333333333%;">col-8</div>
+</div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; margin-inline-start: 25%;">col-6 col-offset-6</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; margin-inline-start: 25%;">col-6 col-offset-6</div>
+</div>
+<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 50%; max-width: 50%; margin-inline-start: 25%;">col-12 col-offset-6</div>
 </div>"
 `;
 
@@ -314,42 +286,26 @@ exports[`Grid demos > demo: Playground 1`] = `
 `;
 
 exports[`Grid demos > demo: Responsive 1`] = `
-"<div data-v-e51282bb="" class="ant-row">
-  <div data-v-e51282bb="" class="ant-col">
-    <div data-v-e51282bb="" class="demo-col">Col</div>
-  </div>
-  <div data-v-e51282bb="" class="ant-col">
-    <div data-v-e51282bb="" class="demo-col light">Col</div>
-  </div>
-  <div data-v-e51282bb="" class="ant-col">
-    <div data-v-e51282bb="" class="demo-col">Col</div>
-  </div>
+"<div class="ant-row">
+  <div class="ant-col">Col</div>
+  <div class="ant-col">Col</div>
+  <div class="ant-col">Col</div>
 </div>"
 `;
 
 exports[`Grid demos > demo: ResponsiveMore 1`] = `
-"<div data-v-e5a52f5a="" class="ant-row">
-  <div data-v-e5a52f5a="" class="ant-col">
-    <div data-v-e5a52f5a="" class="demo-col">Col</div>
-  </div>
-  <div data-v-e5a52f5a="" class="ant-col">
-    <div data-v-e5a52f5a="" class="demo-col">Col</div>
-  </div>
-  <div data-v-e5a52f5a="" class="ant-col">
-    <div data-v-e5a52f5a="" class="demo-col">Col</div>
-  </div>
+"<div class="ant-row">
+  <div class="ant-col">Col</div>
+  <div class="ant-col">Col</div>
+  <div class="ant-col">Col</div>
 </div>"
 `;
 
 exports[`Grid demos > demo: Sort 1`] = `
-"<div data-v-63675684="" class="ant-row">
-  <div data-v-63675684="" class="ant-col" style="flex: 0 0 75%; max-width: 75%; inset-inline-start: 25%;">
-    <div data-v-63675684="" class="demo-col">col-18 col-push-6</div>
-  </div>
-  <div data-v-63675684="" class="ant-col" style="flex: 0 0 25%; max-width: 25%; inset-inline-end: 75%;">
-    <div data-v-63675684="" class="demo-col light">col-6 col-pull-18</div>
-  </div>
+"<div class="ant-row">
+  <div class="ant-col" style="flex: 0 0 75%; max-width: 75%; inset-inline-start: 25%;">col-18 col-push-6</div>
+  <div class="ant-col" style="flex: 0 0 25%; max-width: 25%; inset-inline-end: 75%;">col-6 col-pull-18</div>
 </div>"
 `;
 
-exports[`Grid demos > demo: UseBreakpoint 1`] = `"<div> Current break point: </div>"`;
+exports[`Grid demos > demo: UseBreakpoint 1`] = `" Current break point:"`;

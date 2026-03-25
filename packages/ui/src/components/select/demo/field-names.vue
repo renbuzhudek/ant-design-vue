@@ -1,30 +1,49 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Custom Field Names</h4>
-    <a-select
-      v-model:value="value"
-      style="width: 200px"
-      :options="options"
-      :field-names="{ label: 'name', value: 'id', options: 'children' }"
-    />
-  </div>
+  <a-select
+    ref="select"
+    v-model:value="value"
+    style="width: 120px"
+    :options="options"
+    :field-names="{ label: 'name', value: 'id', options: 'children' }"
+    @focus="focus"
+    @change="handleChange"
+  ></a-select>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref('lucy')
-
-const options = [
+<script lang="ts" setup>
+import type { SelectProps } from 'ant-design-vue';
+import { ref } from 'vue';
+const value = ref('lucy');
+const options = ref<SelectProps['options']>([
   {
     id: 'jack',
     name: 'Jack',
     children: [
-      { id: 'small-jack', name: 'Small Jack' },
+      {
+        id: 'small jack',
+        name: 'samll Jack',
+      },
     ],
   },
-  { id: 'lucy', name: 'Lucy' },
-  { id: 'disabled', name: 'Disabled', disabled: true },
-  { id: 'yiminghe', name: 'Yiminghe' },
-]
+  {
+    id: 'lucy',
+    name: 'Lucy',
+  },
+  {
+    id: 'disabled',
+    name: 'Disabled',
+    disabled: true,
+  },
+  {
+    id: 'yiminghe',
+    name: 'Yiminghe',
+  },
+]);
+
+const focus = () => {
+  console.log('focus');
+};
+
+const handleChange = (value: string) => {
+  console.log(`selected ${value}`);
+};
 </script>

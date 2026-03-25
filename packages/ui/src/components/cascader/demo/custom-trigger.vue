@@ -1,26 +1,20 @@
 <template>
-  <div>
-    <h4>Custom Trigger</h4>
-    <span>{{ text }}</span>
-    &nbsp;
+  <span>
+    {{ text }} &nbsp;
     <a-cascader
       v-model:value="value"
-      :options="options"
       placeholder="Please select"
+      :options="options"
       @change="onChange"
     >
-      <a href="#" @click.prevent>Change city</a>
+      <a href="#">Change city</a>
     </a-cascader>
-  </div>
+  </span>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[]>([])
-const text = ref('Unselected')
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -29,7 +23,10 @@ const options = [
         value: 'hangzhou',
         label: 'Hangzhou',
         children: [
-          { value: 'xihu', label: 'West Lake' },
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
         ],
       },
     ],
@@ -42,14 +39,19 @@ const options = [
         value: 'nanjing',
         label: 'Nanjing',
         children: [
-          { value: 'zhonghuamen', label: 'Zhong Hua Men' },
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
         ],
       },
     ],
   },
-]
+];
+const value = ref<string[]>([]);
+const text = ref<string>('Unselect');
 
-const onChange = (_value: any, selectedOptions: any[]) => {
-  text.value = selectedOptions.map(o => o.label).join(', ')
-}
+const onChange: CascaderProps['onChange'] = (_value, selectedOptions) => {
+  text.value = selectedOptions.map(o => o.label).join(', ');
+};
 </script>

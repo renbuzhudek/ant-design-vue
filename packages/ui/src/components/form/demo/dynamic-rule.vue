@@ -1,47 +1,5 @@
-<script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
-import type { FormInstance } from '../types'
-
-interface FormState {
-  username: string
-  nickname: string
-  checkNick: boolean
-}
-
-const formRef = ref<FormInstance>()
-
-const formState = reactive<FormState>({
-  username: '',
-  nickname: '',
-  checkNick: false,
-})
-
-watch(
-  () => formState.checkNick,
-  () => {
-    formRef.value?.validateFields(['nickname'])
-  },
-  { flush: 'post' },
-)
-
-async function onCheck() {
-  try {
-    const values = await formRef.value?.validateFields()
-    console.log('Success:', values)
-  } catch (errorInfo) {
-    console.log('Failed:', errorInfo)
-  }
-}
-</script>
-
 <template>
-  <a-form
-    ref="formRef"
-    :model="formState"
-    name="dynamic_rule"
-    :label-col="{ span: 4 }"
-    :wrapper-col="{ span: 8 }"
-  >
+  <a-form ref="formRef" :model="formState" name="dynamic_rule" v-bind="formItemLayout">
     <a-form-item
       label="Username"
       name="username"
@@ -58,17 +16,51 @@ async function onCheck() {
       <a-input v-model:value="formState.nickname" />
     </a-form-item>
 
-    <a-form-item
-      name="checkNick"
-      :wrapper-col="{ span: 8, offset: 4 }"
-    >
-      <a-checkbox v-model:checked="formState.checkNick">
-        Nickname is required
-      </a-checkbox>
+    <a-form-item name="checkNick" v-bind="formTailLayout">
+      <a-checkbox v-model:checked="formState.checkNick">Nickname is required</a-checkbox>
     </a-form-item>
 
-    <a-form-item :wrapper-col="{ span: 8, offset: 4 }">
+    <a-form-item v-bind="formTailLayout">
       <a-button type="primary" @click="onCheck">Check</a-button>
     </a-form-item>
   </a-form>
 </template>
+<script lang="ts" setup>
+import { reactive, ref, watch } from 'vue';
+import type { FormInstance } from 'ant-design-vue';
+
+interface FormState {
+  username: string;
+  nickname: string;
+  checkNick: boolean;
+}
+const formRef = ref<FormInstance>();
+const formState = reactive<FormState>({
+  username: '',
+  nickname: '',
+  checkNick: false,
+});
+watch(
+  () => formState.checkNick,
+  () => {
+    formRef.value.validateFields(['nickname']);
+  },
+  { flush: 'post' },
+);
+const onCheck = async () => {
+  try {
+    const values = await formRef.value.validateFields();
+    console.log('Success:', values);
+  } catch (errorInfo) {
+    console.log('Failed:', errorInfo);
+  }
+};
+const formItemLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 8 },
+};
+const formTailLayout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 8, offset: 4 },
+};
+</script>

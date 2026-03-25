@@ -1,7 +1,12 @@
 <template>
-  <div style="max-width: 400px;">
-    <a-card title="Loading Card" :loading="true">
-      <p>This content will not be shown while loading.</p>
-    </a-card>
-  </div>
+  <a-card :loading="loading" title="Card title">whatever content</a-card>
+  <a-button style="margin-top: 16px" @click="handleClick">Toggle loading</a-button>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const loading = ref(true);
+
+const handleClick = () => {
+  loading.value = !loading.value;
+};
+</script>

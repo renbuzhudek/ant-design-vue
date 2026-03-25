@@ -1,25 +1,29 @@
-<script setup lang="ts">
-import type { ColumnsType, ColumnFilterItem } from '../types'
-
-interface DataType {
-  key: string
-  name: string
-  age: number
-  address: string
-}
-
-const columns: ColumnsType<DataType> = [
+<template>
+  <a-table :columns="columns" :data-source="data" @change="onChange"></a-table>
+</template>
+<script lang="ts" setup>
+import type { TableProps } from 'ant-design-vue';
+const columns: TableProps['columns'] = [
   {
     title: 'Name',
     dataIndex: 'name',
     filters: [
-      { text: 'Joe', value: 'Joe' },
-      { text: 'Category 1', value: 'Category 1' },
-      { text: 'Category 2', value: 'Category 2' },
+      {
+        text: 'Joe',
+        value: 'Joe',
+      },
+      {
+        text: 'Category 1',
+        value: 'Category 1',
+      },
+      {
+        text: 'Category 2',
+        value: 'Category 2',
+      },
     ],
     filterMode: 'tree',
     filterSearch: true,
-    onFilter: (value, record) => record.name.startsWith(String(value)),
+    onFilter: (value, record) => record.name.startsWith(value),
     width: '30%',
   },
   {
@@ -31,28 +35,48 @@ const columns: ColumnsType<DataType> = [
     title: 'Address',
     dataIndex: 'address',
     filters: [
-      { text: 'London', value: 'London' },
-      { text: 'New York', value: 'New York' },
+      {
+        text: 'London',
+        value: 'London',
+      },
+      {
+        text: 'New York',
+        value: 'New York',
+      },
     ],
-    onFilter: (value, record) => record.address.startsWith(String(value)),
-    filterSearch: (input: string, filter: ColumnFilterItem) =>
-      String(filter.value).indexOf(input) > -1,
+    onFilter: (value, record) => record.address.startsWith(value),
+    filterSearch: (input, filter) => (filter.value as string).indexOf(input) > -1,
     width: '40%',
   },
-]
+];
+const data = [
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+  },
+  {
+    key: '4',
+    name: 'Jim Red',
+    age: 32,
+    address: 'London No. 2 Lake Park',
+  },
+];
 
-const data: DataType[] = [
-  { key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park' },
-  { key: '2', name: 'Jim Green', age: 42, address: 'London No. 1 Lake Park' },
-  { key: '3', name: 'Joe Black', age: 32, address: 'Sydney No. 1 Lake Park' },
-  { key: '4', name: 'Jim Red', age: 32, address: 'London No. 2 Lake Park' },
-]
-
-function onChange(pagination: any, filters: any, sorter: any, extra: any) {
-  console.log('params', pagination, filters, sorter, extra)
+function onChange(pagination, filters, sorter, extra) {
+  console.log('params', pagination, filters, sorter, extra);
 }
 </script>
-
-<template>
-  <a-table :columns="columns" :data-source="data" @change="onChange" />
-</template>

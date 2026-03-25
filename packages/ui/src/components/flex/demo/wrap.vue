@@ -1,5 +1,5 @@
 <template>
-  <a-flex :wrap="true" gap="small">
-    <a-button v-for="i in 20" :key="i" variant="solid">Button {{ i }}</a-button>
+  <a-flex wrap="wrap" gap="small">
+    <a-button v-for="item in new Array(24)" :key="item" type="primary">Button</a-button>
   </a-flex>
 </template>

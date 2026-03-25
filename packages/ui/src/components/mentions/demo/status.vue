@@ -1,32 +1,43 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Error Status</h4>
+  <a-space direction="vertical">
     <a-mentions
-      v-model:value="value1"
+      v-model:value="value"
       :options="options"
+      autofocus
       status="error"
-      placeholder="Error status"
-    />
-
-    <h4>Warning Status</h4>
+      @select="onSelect"
+    ></a-mentions>
     <a-mentions
-      v-model:value="value2"
+      v-model:value="value"
       :options="options"
+      autofocus
       status="warning"
-      placeholder="Warning status"
-    />
-  </div>
+      @select="onSelect"
+    ></a-mentions>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value1 = ref('@afc163')
-const value2 = ref('')
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+const value = ref<string>('@afc163');
+watch(value, () => {
+  console.log('value', value);
+});
+const onSelect = (option: { value: string }) => {
+  console.log('select', option);
+};
 
 const options = [
-  { value: 'afc163', label: 'afc163' },
-  { value: 'zombieJ', label: 'zombieJ' },
-  { value: 'yesmeck', label: 'yesmeck' },
-]
+  {
+    value: 'afc163',
+    label: 'afc163',
+  },
+  {
+    value: 'zombieJ',
+    label: 'zombieJ',
+  },
+  {
+    value: 'yesmeck',
+    label: 'yesmeck',
+  },
+];
 </script>

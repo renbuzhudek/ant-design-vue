@@ -1,21 +1,15 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Custom Field Names</h4>
-    <a-cascader
-      v-model:value="value"
-      :field-names="{ label: 'name', value: 'code', children: 'items' }"
-      :options="options"
-      placeholder="Please select"
-    />
-  </div>
+  <a-cascader
+    v-model:value="value"
+    :field-names="{ label: 'name', value: 'code', children: 'items' }"
+    :options="options"
+    placeholder="Please select"
+  />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[]>([])
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     code: 'zhejiang',
     name: 'Zhejiang',
@@ -24,7 +18,10 @@ const options = [
         code: 'hangzhou',
         name: 'Hangzhou',
         items: [
-          { code: 'xihu', name: 'West Lake' },
+          {
+            code: 'xihu',
+            name: 'West Lake',
+          },
         ],
       },
     ],
@@ -37,10 +34,14 @@ const options = [
         code: 'nanjing',
         name: 'Nanjing',
         items: [
-          { code: 'zhonghuamen', name: 'Zhong Hua Men' },
+          {
+            code: 'zhonghuamen',
+            name: 'Zhong Hua Men',
+          },
         ],
       },
     ],
   },
-]
+];
+const value = ref<string[]>([]);
 </script>

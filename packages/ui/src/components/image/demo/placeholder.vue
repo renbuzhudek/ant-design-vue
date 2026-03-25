@@ -1,16 +1,21 @@
 <template>
-  <div style="display: flex; align-items: center; gap: 12px;">
+  <a-space :size="12">
     <a-image
       :width="200"
       :src="`https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?${random}`"
-      :placeholder="true"
-    />
-    <a-button variant="solid" @click="random = Date.now()">Reload</a-button>
-  </div>
+    >
+      <template #placeholder>
+        <a-image
+          src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png?x-oss-process=image/blur,r_50,s_50/quality,q_1/resize,m_mfit,h_200,w_200"
+          :width="200"
+          :preview="false"
+        />
+      </template>
+    </a-image>
+    <a-button type="primary" @click="random = Date.now()">reload</a-button>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const random = ref(Date.now())
+<script lang="ts" setup>
+import { ref } from 'vue';
+const random = ref();
 </script>

@@ -1,18 +1,20 @@
 <template>
   <a-button @click="success">Customized style</a-button>
 </template>
-
-<script setup lang="ts">
-import { message } from '@ant-design-vue/ui'
-
-function success() {
-  message.open({
-    content: 'This is a prompt message with custom className and style',
-    type: 'success',
+<script lang="ts" setup>
+import { message } from 'ant-design-vue';
+const success = () => {
+  message.success({
+    content: () => 'This is a prompt message with custom className and style',
     class: 'custom-class',
     style: {
       marginTop: '20vh',
     },
-  })
-}
+  });
+};
 </script>
+<style>
+.custom-class {
+  color: red;
+}
+</style>

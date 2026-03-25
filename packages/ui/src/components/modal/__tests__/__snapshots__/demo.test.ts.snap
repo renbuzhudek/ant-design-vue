@@ -1,43 +1,39 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Modal demos > demo: Async 1`] = `
-"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-  <!--v-if-->
-  <!--v-if--><span class="ant-btn-content">Open Modal with async logic</span>
-</button>
-<!--teleport start-->
-
-<div class="ant-modal-wrap">
-  <transition-stub name="ant-zoom" appear="false" persisted="false" css="true">
+"<div><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content">Open Modal with async logic</span>
+  </button>
+  <!--teleport start-->
+  <div class="ant-modal-wrap">
+    <transition-stub name="ant-zoom" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div><!-- Mask -->
+  <transition-stub name="ant-fade" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-</div>
-<!-- Mask -->
-<transition-stub name="ant-fade" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-
-<!--teleport end-->"
+  <!--teleport end-->
+</div>"
 `;
 
 exports[`Modal demos > demo: Basic 1`] = `
-"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-  <!--v-if-->
-  <!--v-if--><span class="ant-btn-content">Open Modal</span>
-</button>
-<!--teleport start-->
-
-<div class="ant-modal-wrap">
-  <transition-stub name="ant-zoom" appear="false" persisted="false" css="true">
+"<div><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content">Open Modal</span>
+  </button>
+  <!--teleport start-->
+  <div class="ant-modal-wrap">
+    <transition-stub name="ant-zoom" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div><!-- Mask -->
+  <transition-stub name="ant-fade" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-</div>
-<!-- Mask -->
-<transition-stub name="ant-fade" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-
-<!--teleport end-->"
+  <!--teleport end-->
+</div>"
 `;
 
 exports[`Modal demos > demo: Centered 1`] = `
@@ -61,23 +57,21 @@ exports[`Modal demos > demo: Centered 1`] = `
 `;
 
 exports[`Modal demos > demo: Footer 1`] = `
-"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-  <!--v-if-->
-  <!--v-if--><span class="ant-btn-content">Open Modal with custom footer</span>
-</button>
-<!--teleport start-->
-
-<div class="ant-modal-wrap">
-  <transition-stub name="ant-zoom" appear="false" persisted="false" css="true">
+"<div><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content">Open Modal with customized footer</span>
+  </button>
+  <!--teleport start-->
+  <div class="ant-modal-wrap">
+    <transition-stub name="ant-zoom" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div><!-- Mask -->
+  <transition-stub name="ant-fade" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
-</div>
-<!-- Mask -->
-<transition-stub name="ant-fade" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-
-<!--teleport end-->"
+  <!--teleport end-->
+</div>"
 `;
 
 exports[`Modal demos > demo: NoFooter 1`] = `

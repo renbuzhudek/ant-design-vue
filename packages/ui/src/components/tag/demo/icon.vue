@@ -1,28 +1,34 @@
 <template>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-    <a-tag color="#55acee">
-      <template #icon>
-        <span style="margin-right: 4px;">&#128038;</span>
-      </template>
-      Twitter
-    </a-tag>
-    <a-tag color="#cd201f">
-      <template #icon>
-        <span style="margin-right: 4px;">&#9654;</span>
-      </template>
-      Youtube
-    </a-tag>
-    <a-tag color="#3b5999">
-      <template #icon>
-        <span style="margin-right: 4px;">&#102;</span>
-      </template>
-      Facebook
-    </a-tag>
-    <a-tag color="#55acee">
-      <template #icon>
-        <span style="margin-right: 4px;">&#128279;</span>
-      </template>
-      LinkedIn
-    </a-tag>
-  </div>
+  <a-tag color="#55acee">
+    <template #icon>
+      <twitter-outlined />
+    </template>
+    Twitter
+  </a-tag>
+  <a-tag color="#cd201f">
+    <template #icon>
+      <youtube-outlined />
+    </template>
+    Youtube
+  </a-tag>
+  <a-tag color="#3b5999">
+    <template #icon>
+      <facebook-outlined />
+    </template>
+    Facebook
+  </a-tag>
+  <a-tag color="#55acee">
+    <template #icon>
+      <linkedin-outlined />
+    </template>
+    LinkedIn
+  </a-tag>
 </template>
+<script lang="ts" setup>
+import {
+  TwitterOutlined,
+  YoutubeOutlined,
+  FacebookOutlined,
+  LinkedinOutlined,
+} from '@ant-design/icons-vue';
+</script>

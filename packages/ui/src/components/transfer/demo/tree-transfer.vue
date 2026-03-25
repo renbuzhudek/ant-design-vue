@@ -4,7 +4,7 @@
       v-model:target-keys="targetKeys"
       class="tree-transfer"
       :data-source="dataSource"
-      :render="(item: any) => item.title"
+      :render="item => item.title"
       :show-select-all="false"
     >
       <template #children="{ direction, selectedKeys, onItemSelect }">
@@ -17,13 +17,13 @@
           :checked-keys="[...selectedKeys, ...targetKeys]"
           :tree-data="treeData"
           @check="
-            (_: any, props: any) => {
-              onChecked(props, [...selectedKeys, ...targetKeys], onItemSelect)
+            (_, props) => {
+              onChecked(props, [...selectedKeys, ...targetKeys], onItemSelect);
             }
           "
           @select="
-            (_: any, props: any) => {
-              onChecked(props, [...selectedKeys, ...targetKeys], onItemSelect)
+            (_, props) => {
+              onChecked(props, [...selectedKeys, ...targetKeys], onItemSelect);
             }
           "
         />
@@ -31,18 +31,10 @@
     </a-transfer>
   </div>
 </template>
-
-<script setup lang="ts">
-import { computed, ref } from 'vue'
-
-interface TreeNode {
-  key: string
-  title: string
-  children?: TreeNode[]
-  disabled?: boolean
-}
-
-const tData: TreeNode[] = [
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
+import type { TransferProps, TreeProps } from 'ant-design-vue';
+const tData: TransferProps['dataSource'] = [
   { key: '0-0', title: '0-0' },
   {
     key: '0-1',
@@ -52,49 +44,48 @@ const tData: TreeNode[] = [
       { key: '0-1-1', title: '0-1-1' },
     ],
   },
-  { key: '0-2', title: '0-2' },
-]
+  { key: '0-2', title: '0-3' },
+];
 
-const transferDataSource: TreeNode[] = []
-function flatten(list: TreeNode[] = []) {
-  list.forEach((item) => {
-    transferDataSource.push(item)
-    flatten(item.children)
-  })
+const transferDataSource: TransferProps['dataSource'] = [];
+function flatten(list: TransferProps['dataSource'] = []) {
+  list.forEach(item => {
+    transferDataSource.push(item);
+    flatten(item.children);
+  });
 }
-flatten(JSON.parse(JSON.stringify(tData)))
+flatten(JSON.parse(JSON.stringify(tData)));
 
 function isChecked(selectedKeys: (string | number)[], eventKey: string | number) {
-  return selectedKeys.indexOf(eventKey) !== -1
+  return selectedKeys.indexOf(eventKey) !== -1;
 }
 
-function handleTreeData(treeNodes: TreeNode[], targetKeys: string[] = []): TreeNode[] {
+function handleTreeData(treeNodes: TransferProps['dataSource'], targetKeys: string[] = []) {
   return treeNodes.map(({ children, ...props }) => ({
     ...props,
-    disabled: targetKeys.includes(props.key),
+    disabled: targetKeys.includes(props.key as string),
     children: handleTreeData(children ?? [], targetKeys),
-  }))
+  }));
 }
+const targetKeys = ref<string[]>([]);
 
-const targetKeys = ref<string[]>([])
-const dataSource = ref(transferDataSource)
+const dataSource = ref(transferDataSource);
 
 const treeData = computed(() => {
-  return handleTreeData(tData, targetKeys.value)
-})
+  return handleTreeData(tData, targetKeys.value);
+});
 
 const onChecked = (
-  e: any,
+  e: Parameters<TreeProps['onCheck']>[1] | Parameters<TreeProps['onSelect']>[1],
   checkedKeys: string[],
-  onItemSelect: (key: any, checked: boolean) => void,
+  onItemSelect: (n: any, c: boolean) => void,
 ) => {
-  const { eventKey } = e.node
-  onItemSelect(eventKey, !isChecked(checkedKeys, eventKey))
-}
+  const { eventKey } = e.node;
+  onItemSelect(eventKey, !isChecked(checkedKeys, eventKey));
+};
 </script>
-
 <style scoped>
-.tree-transfer :deep(.ant-transfer-list:first-child) {
+.tree-transfer .ant-transfer-list:first-child {
   width: 50%;
   flex: none;
 }

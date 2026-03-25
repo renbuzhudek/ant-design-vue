@@ -1,22 +1,41 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { ColumnsType, Key } from '../types'
+<template>
+  <a-space align="center" style="margin-bottom: 16px">
+    CheckStrictly:
+    <a-switch v-model:checked="rowSelection.checkStrictly"></a-switch>
+  </a-space>
+  <a-table :columns="columns" :data-source="data" :row-selection="rowSelection" />
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+    width: '12%',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    width: '30%',
+    key: 'address',
+  },
+];
 
-interface DataType {
-  key: number
-  name: string
-  age: number
-  address: string
-  children?: DataType[]
+interface DataItem {
+  key: number;
+  name: string;
+  age: number;
+  address: string;
+  children?: DataItem[];
 }
 
-const columns: ColumnsType<DataType> = [
-  { title: 'Name', dataIndex: 'name', key: 'name' },
-  { title: 'Age', dataIndex: 'age', key: 'age', width: '12%' },
-  { title: 'Address', dataIndex: 'address', key: 'address', width: '30%' },
-]
-
-const data: DataType[] = [
+const data: DataItem[] = [
   {
     key: 1,
     name: 'John Brown sr.',
@@ -77,34 +96,20 @@ const data: DataType[] = [
     key: 2,
     name: 'Joe Black',
     age: 32,
-    address: 'Sydney No. 1 Lake Park',
+    address: 'Sidney No. 1 Lake Park',
   },
-]
-
-const checkStrictly = ref(false)
+];
 
 const rowSelection = ref({
   checkStrictly: false,
-  onChange: (selectedRowKeys: Key[], selectedRows: DataType[]) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
+  onChange: (selectedRowKeys: (string | number)[], selectedRows: DataItem[]) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
   },
-})
-
-// Keep checkStrictly in sync
-import { watch } from 'vue'
-watch(checkStrictly, (val) => {
-  rowSelection.value = { ...rowSelection.value, checkStrictly: val }
-})
+  onSelect: (record: DataItem, selected: boolean, selectedRows: DataItem[]) => {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: (selected: boolean, selectedRows: DataItem[], changeRows: DataItem[]) => {
+    console.log(selected, selectedRows, changeRows);
+  },
+});
 </script>
-
-<template>
-  <a-space align="center" style="margin-bottom: 16px;">
-    CheckStrictly:
-    <a-switch v-model:checked="checkStrictly" />
-  </a-space>
-  <a-table
-    :columns="columns"
-    :data-source="data"
-    :row-selection="rowSelection"
-  />
-</template>

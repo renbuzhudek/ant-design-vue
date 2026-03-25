@@ -1,14 +1,17 @@
-<script setup lang="ts">
-import type { ColumnsType } from '../types'
-
-interface DataType {
-  key: string
-  name: string
-  age: number
-  address: string
-}
-
-const columns: ColumnsType<DataType> = [
+<template>
+  <a-table :columns="columns" :row-key="record => record.key" :data-source="data">
+    <template #bodyCell="{ column, record }">
+      <template v-if="column.key === 'name'">
+        <a>
+          {{ record.name }}
+        </a>
+      </template>
+    </template>
+  </a-table>
+</template>
+<script lang="ts" setup>
+import type { ColumnsType } from 'ant-design-vue/es/table/interface';
+const columns: ColumnsType = [
   {
     title: 'Name (all screens)',
     dataIndex: 'name',
@@ -26,13 +29,14 @@ const columns: ColumnsType<DataType> = [
     key: 'address',
     responsive: ['lg'],
   },
-]
+];
 
-const data: DataType[] = [
-  { key: '1', name: 'John Brown', age: 32, address: 'New York No. 1 Lake Park' },
-]
+const data = [
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+  },
+];
 </script>
-
-<template>
-  <a-table :columns="columns" :data-source="data" />
-</template>

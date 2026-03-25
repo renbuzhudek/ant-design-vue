@@ -1,7 +1,23 @@
 <template>
-  <a-steps :current="1" direction="vertical">
-    <a-step title="Finished" description="This is a description." />
-    <a-step title="In Progress" description="This is a description." />
-    <a-step title="Waiting" description="This is a description." />
-  </a-steps>
+  <a-steps
+    direction="vertical"
+    :current="1"
+    :items="[
+      {
+        title: 'Finished',
+        description,
+      },
+      {
+        title: 'In Progress',
+        description,
+      },
+      {
+        title: 'Waiting',
+        description,
+      },
+    ]"
+  ></a-steps>
 </template>
+<script lang="ts" setup>
+const description = 'This is a description.';
+</script>

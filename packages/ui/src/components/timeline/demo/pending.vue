@@ -5,14 +5,14 @@
       <a-timeline-item>Solve initial network problems 2015-09-01</a-timeline-item>
       <a-timeline-item>Technical testing 2015-09-01</a-timeline-item>
     </a-timeline>
-    <a-button type="primary" style="margin-top: 16px;" @click="reverse = !reverse">
-      Toggle Reverse
-    </a-button>
+    <a-button type="primary" style="margin-top: 16px" @click="handleClick">Toggle Reverse</a-button>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const reverse = ref<boolean>(false);
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const reverse = ref(false)
+const handleClick = () => {
+  reverse.value = !reverse.value;
+};
 </script>

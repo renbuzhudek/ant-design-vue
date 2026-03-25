@@ -1,65 +1,104 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const topSelectedKeys = ref(['1'])
-const siderSelectedKeys = ref(['1-1'])
-const openKeys = ref(['sub1'])
-
-const topMenuItems = [
-  { key: '1', label: 'Navigation One' },
-  { key: '2', label: 'Navigation Two' },
-  { key: '3', label: 'Navigation Three' },
-]
-
-const siderMenuItems = [
-  {
-    key: 'sub1',
-    label: 'Subnav 1',
-    children: [
-      { key: '1-1', label: 'Option 1' },
-      { key: '1-2', label: 'Option 2' },
-      { key: '1-3', label: 'Option 3' },
-      { key: '1-4', label: 'Option 4' },
-    ],
-  },
-  {
-    key: 'sub2',
-    label: 'Subnav 2',
-    children: [
-      { key: '2-1', label: 'Option 5' },
-      { key: '2-2', label: 'Option 6' },
-    ],
-  },
-]
-</script>
-
 <template>
   <a-layout>
-    <a-layout-header style="display: flex; align-items: center; background: #001529">
-      <div style="width: 120px; height: 31px; margin-right: 24px; background: rgba(255, 255, 255, 0.2); border-radius: 4px" />
+    <a-layout-header class="header">
+      <div class="logo" />
       <a-menu
-        v-model:selected-keys="topSelectedKeys"
+        v-model:selected-keys="selectedKeys1"
         theme="dark"
         mode="horizontal"
-        :items="topMenuItems"
-        style="flex: 1; min-width: 0"
-      />
+        :style="{ lineHeight: '64px' }"
+      >
+        <a-menu-item key="1">nav 1</a-menu-item>
+        <a-menu-item key="2">nav 2</a-menu-item>
+        <a-menu-item key="3">nav 3</a-menu-item>
+      </a-menu>
     </a-layout-header>
-    <a-layout has-sider>
-      <a-layout-sider :width="200" theme="light">
-        <a-menu
-          v-model:selected-keys="siderSelectedKeys"
-          v-model:open-keys="openKeys"
-          mode="inline"
-          :items="siderMenuItems"
-          style="height: 100%; border-right: 0"
-        />
-      </a-layout-sider>
-      <a-layout style="padding: 24px">
-        <a-layout-content style="padding: 24px; min-height: 280px; background: #fff">
+    <a-layout-content style="padding: 0 50px">
+      <a-breadcrumb style="margin: 16px 0">
+        <a-breadcrumb-item>Home</a-breadcrumb-item>
+        <a-breadcrumb-item>List</a-breadcrumb-item>
+        <a-breadcrumb-item>App</a-breadcrumb-item>
+      </a-breadcrumb>
+      <a-layout style="padding: 24px 0; background: #fff">
+        <a-layout-sider width="200" style="background: #fff">
+          <a-menu
+            v-model:selected-keys="selectedKeys2"
+            v-model:open-keys="openKeys"
+            mode="inline"
+            style="height: 100%"
+          >
+            <a-sub-menu key="sub1">
+              <template #title>
+                <span>
+                  <user-outlined />
+                  subnav 1
+                </span>
+              </template>
+              <a-menu-item key="1">option1</a-menu-item>
+              <a-menu-item key="2">option2</a-menu-item>
+              <a-menu-item key="3">option3</a-menu-item>
+              <a-menu-item key="4">option4</a-menu-item>
+            </a-sub-menu>
+            <a-sub-menu key="sub2">
+              <template #title>
+                <span>
+                  <laptop-outlined />
+                  subnav 2
+                </span>
+              </template>
+              <a-menu-item key="5">option5</a-menu-item>
+              <a-menu-item key="6">option6</a-menu-item>
+              <a-menu-item key="7">option7</a-menu-item>
+              <a-menu-item key="8">option8</a-menu-item>
+            </a-sub-menu>
+            <a-sub-menu key="sub3">
+              <template #title>
+                <span>
+                  <notification-outlined />
+                  subnav 3
+                </span>
+              </template>
+              <a-menu-item key="9">option9</a-menu-item>
+              <a-menu-item key="10">option10</a-menu-item>
+              <a-menu-item key="11">option11</a-menu-item>
+              <a-menu-item key="12">option12</a-menu-item>
+            </a-sub-menu>
+          </a-menu>
+        </a-layout-sider>
+        <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
           Content
         </a-layout-content>
       </a-layout>
-    </a-layout>
+    </a-layout-content>
+    <a-layout-footer style="text-align: center">
+      Ant Design ©2018 Created by Ant UED
+    </a-layout-footer>
   </a-layout>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue';
+const selectedKeys1 = ref<string[]>(['2']);
+const selectedKeys2 = ref<string[]>(['1']);
+const openKeys = ref<string[]>(['sub1']);
+</script>
+
+<style scoped>
+#components-layout-demo-top-side .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-row-rtl #components-layout-demo-top-side .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+</style>

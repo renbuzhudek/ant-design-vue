@@ -1,11 +1,45 @@
 <template>
-  <a-anchor
-    direction="horizontal"
-    :items="[
-      { key: '1', href: '#overview', title: 'Overview' },
-      { key: '2', href: '#installation', title: 'Installation' },
-      { key: '3', href: '#usage', title: 'Usage' },
-      { key: '4', href: '#api', title: 'API' },
-    ]"
-  />
+  <div
+    style="
+       {
+        padding: '20px';
+      }
+    "
+  >
+    <a-anchor
+      direction="horizontal"
+      :items="[
+        {
+          key: 'horizontally-part-1',
+          href: '#horizontally-part-1',
+          title: 'Part 1',
+        },
+        {
+          key: 'horizontally-part-2',
+          href: '#horizontally-part-2',
+          title: 'Part 2',
+        },
+        {
+          key: 'horizontally-part-3',
+          href: '#horizontally-part-3',
+          title: 'Part 3',
+        },
+        {
+          key: 'horizontally-part-4',
+          href: '#horizontally-part-4',
+          title: 'Part 4',
+        },
+        {
+          key: 'horizontally-part-5',
+          href: '#horizontally-part-5',
+          title: 'Part 5',
+        },
+        {
+          key: 'horizontally-part-6',
+          href: '#horizontally-part-6',
+          title: 'Part 6',
+        },
+      ]"
+    />
+  </div>
 </template>

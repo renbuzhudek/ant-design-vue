@@ -1,32 +1,37 @@
 <template>
-  <div style="height: 300px; position: relative; overflow: hidden;">
-    <!-- Square button with icon and description -->
-    <a-float-button
-      shape="square"
-      description="HELP INFO"
-      style="position: absolute; right: 0; bottom: 24px;"
-    >
-      <svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-        <path d="M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" />
-      </svg>
-    </a-float-button>
+  <a-float-button
+    shape="square"
+    description="HELP INFO"
+    :style="{
+      right: '24px',
+    }"
+  >
+    <template #icon>
+      <FileTextOutlined />
+    </template>
+  </a-float-button>
 
-    <!-- Square button with description only -->
-    <a-float-button
-      shape="square"
-      description="HELP INFO"
-      style="position: absolute; right: 70px; bottom: 24px;"
-    />
+  <a-float-button
+    shape="square"
+    description="HELP INFO"
+    :style="{
+      right: '94px',
+    }"
+  ></a-float-button>
 
-    <!-- Square button with short description and icon -->
-    <a-float-button
-      shape="square"
-      description="HELP"
-      style="position: absolute; right: 140px; bottom: 24px;"
-    >
-      <svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-        <path d="M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" />
-      </svg>
-    </a-float-button>
-  </div>
+  <a-float-button
+    shape="square"
+    description="HELP"
+    :style="{
+      right: '164px',
+    }"
+  >
+    <template #icon>
+      <FileTextOutlined />
+    </template>
+  </a-float-button>
 </template>
+
+<script lang="ts" setup>
+import { FileTextOutlined } from '@ant-design/icons-vue';
+</script>

@@ -3,7 +3,7 @@
 exports[`Drawer demos > demo: Basic 1`] = `
 "<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
   <!--v-if-->
-  <!--v-if--><span class="ant-btn-content">Open Drawer</span>
+  <!--v-if--><span class="ant-btn-content">Open</span>
 </button>
 <!--teleport start-->
 
@@ -20,9 +20,10 @@ exports[`Drawer demos > demo: Basic 1`] = `
 `;
 
 exports[`Drawer demos > demo: Extra 1`] = `
-"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+"<div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup" style="margin-right: 8px;"><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">top</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">right</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">bottom</span></label><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">left</span></label></div>
+<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
   <!--v-if-->
-  <!--v-if--><span class="ant-btn-content">Open Drawer with extra</span>
+  <!--v-if--><span class="ant-btn-content">Open</span>
 </button>
 <!--teleport start-->
 
@@ -31,7 +32,7 @@ exports[`Drawer demos > demo: Extra 1`] = `
   <!--v-if-->
 </transition-stub>
 <!-- Drawer -->
-<transition-stub name="ant-slide-right" appear="false" persisted="false" css="true">
+<transition-stub name="ant-slide-left" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
 
@@ -58,12 +59,11 @@ exports[`Drawer demos > demo: Footer 1`] = `
 `;
 
 exports[`Drawer demos > demo: Placement 1`] = `
-"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
-  <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Top</span></label><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Right</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Bottom</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Left</span></label></div><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-    <!--v-if-->
-    <!--v-if--><span class="ant-btn-content">Open</span>
-  </button>
-</div>
+"<div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup" style="margin-right: 8px;"><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">top</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">right</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">bottom</span></label><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">left</span></label></div>
+<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content">Open</span>
+</button>
 <!--teleport start-->
 
 <!-- Mask -->
@@ -71,7 +71,7 @@ exports[`Drawer demos > demo: Placement 1`] = `
   <!--v-if-->
 </transition-stub>
 <!-- Drawer -->
-<transition-stub name="ant-slide-right" appear="false" persisted="false" css="true">
+<transition-stub name="ant-slide-left" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
 
@@ -79,13 +79,14 @@ exports[`Drawer demos > demo: Placement 1`] = `
 `;
 
 exports[`Drawer demos > demo: Size 1`] = `
-"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-    <!--v-if-->
-    <!--v-if--><span class="ant-btn-content">Default Size</span>
-  </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-    <!--v-if-->
-    <!--v-if--><span class="ant-btn-content">Large Size</span>
-  </button></div>
+"<button class="ant-btn ant-btn-solid ant-btn-md" style="margin-right: 8px;" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content"> Open Default Size (378px) </span>
+</button>
+<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content">Open Large Size (736px)</span>
+</button>
 <!--teleport start-->
 
 <!-- Mask -->

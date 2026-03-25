@@ -1,24 +1,39 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const loading = ref(false)
-
-function toggleLoading() {
-  loading.value = true
-  setTimeout(() => {
-    loading.value = false
-  }, 2000)
-}
-</script>
-
 <template>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px">
-    <a-button variant="solid" :loading="true">Loading</a-button>
-    <a-button variant="outlined" :loading="{ delay: 500 }" @click="toggleLoading">
-      Click me (delay 500ms)
-    </a-button>
-    <a-button variant="solid" :loading="loading" @click="toggleLoading">
-      Click to load
-    </a-button>
-  </div>
+  <a-space direction="vertical">
+    <a-space>
+      <a-button type="primary" loading>Loading</a-button>
+      <a-button type="primary" size="small" loading>Loading</a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" :loading="loading" @mouseenter="loading = true">
+        mouseenter me!
+      </a-button>
+      <a-button type="primary" :loading="iconLoading" @click="enterIconLoading">
+        <template #icon><PoweroffOutlined /></template>
+        延迟1s
+      </a-button>
+    </a-space>
+    <a-space>
+      <a-button type="primary" loading />
+      <a-button type="primary" shape="circle" loading />
+      <a-button danger shape="round" loading />
+    </a-space>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { PoweroffOutlined } from '@ant-design/icons-vue';
+
+interface DelayLoading {
+  delay: number;
+}
+const loading = ref<boolean>(false);
+const iconLoading = ref<boolean | DelayLoading>(false);
+const enterIconLoading = () => {
+  iconLoading.value = { delay: 1000 };
+
+  setTimeout(() => {
+    iconLoading.value = false;
+  }, 6000);
+};
+</script>

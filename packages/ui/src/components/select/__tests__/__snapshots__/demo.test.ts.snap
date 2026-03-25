@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Select demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;">
-  <h4>Basic Select</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-  <!--v-if--><span class="ant-select-selection-placeholder">Please select</span>
+"<h2>use a-select-option</h2>
+<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 120px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="lucy">lucy</span>
+  <!--v-if-->
 </div><!-- Clear icon -->
 <!--v-if-->
 <!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
@@ -11,10 +11,50 @@ exports[`Select demos > demo: Basic 1`] = `
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end-->
-<h4>With Allow Clear</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow ant-select-allow-clear" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="Lucy">Lucy</span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-disabled ant-select-single ant-select-show-arrow" style="width: 120px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" disabled="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="lucy">lucy</span>
 <!--v-if-->
-</div><!-- Clear icon --><span class="ant-select-clear"><span class="ant-select-clear-icon">×</span></span><!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+<!--teleport start-->
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow ant-select-loading" tabindex="0" style="width: 120px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="lucy">lucy</span>
+<!--v-if-->
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-loading"><span class="ant-select-arrow-loading-icon"></span></span></span></div></span>
+<!--teleport start-->
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end-->
+</div>
+<h2 style="margin-top: 10px;">use options (recommend)</h2>
+<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 120px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="Lucy">Lucy</span>
+  <!--v-if-->
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+<!--teleport start-->
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-disabled ant-select-single ant-select-show-arrow" style="width: 120px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" disabled="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="Lucy">Lucy</span>
+<!--v-if-->
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+<!--teleport start-->
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow ant-select-loading" tabindex="0" style="width: 120px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="Lucy">Lucy</span>
+<!--v-if-->
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-loading"><span class="ant-select-arrow-loading-icon"></span></span></span></div></span>
 <!--teleport start-->
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
@@ -24,61 +64,44 @@ exports[`Select demos > demo: Basic 1`] = `
 `;
 
 exports[`Select demos > demo: Multiple 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px;">
-  <h4>Multiple Select</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-multiple ant-select-show-search"><div class="ant-select-selector"><!-- Multiple mode --><!-- Selected tags --><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">Jack</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">Lucy</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><!-- Overflow indicator -->
-  <!--v-if-->
-  <!-- Search input for multiple --><span class="ant-select-selection-search" style="width: 10px;"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span><!-- Placeholder -->
-  <!--v-if-->
+"<span class="ant-trigger-wrapper"><div class="ant-select ant-select-multiple ant-select-show-search" style="width: 100%;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Selected tags --><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">a1</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">b2</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><!-- Overflow indicator -->
+<!--v-if-->
+<!-- Search input for multiple --><span class="ant-select-selection-search" style="width: 10px;"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span><!-- Placeholder -->
+<!--v-if-->
 </div><!-- Clear icon -->
 <!--v-if-->
 <!-- Arrow / Loading -->
 <!--v-if-->
 </div></span>
 <!--teleport start-->
+
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end-->
-<h4>Tags Mode</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-multiple ant-select-show-search"><div class="ant-select-selector"><!-- Multiple mode --><!-- Selected tags --><!-- Overflow indicator --><!--v-if--><!-- Search input for multiple --><span class="ant-select-selection-search" style="width: 10px;"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span><!-- Placeholder --><span class="ant-select-selection-placeholder">Enter tags</span></div><!-- Clear icon -->
-<!--v-if-->
-<!-- Arrow / Loading -->
-<!--v-if-->
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end-->
-</div>"
+
+<!--teleport end-->"
 `;
 
 exports[`Select demos > demo: Search 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;">
-  <h4>Search Select</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-search ant-select-show-arrow"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span>
-  <!--v-if--><span class="ant-select-selection-placeholder">Search and select</span>
-</div><!-- Clear icon -->
+"<span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-search ant-select-show-arrow" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span>
+<!--v-if--><span class="ant-select-selection-placeholder">Select a person</span></div><!-- Clear icon -->
 <!--v-if-->
 <!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
 <!--teleport start-->
+
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end-->
-<h4>Option Groups</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-search ant-select-show-arrow"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span>
-<!--v-if--><span class="ant-select-selection-placeholder">Select from groups</span></div><!-- Clear icon -->
-<!--v-if-->
-<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
-<!--teleport start-->
-<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end-->
-</div>"
+
+<!--teleport end-->"
 `;
 
 exports[`Select demos > demo: Size 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow ant-select-sm" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-  <!--v-if--><span class="ant-select-selection-placeholder">Small</span>
+"<div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Large</span></label><label class="ant-radio-button-wrapper ant-radio-button-wrapper-checked"><input type="radio" class="ant-radio-button-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-button-inner">Middle</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Small</span></label></div>
+<br>
+<br>
+<div class="ant-space ant-space-vertical" style="column-gap: 8px; row-gap: 8px;"><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span><span class="ant-select-selection-item" title="a1">a1</span>
+  <!--v-if-->
 </div><!-- Clear icon -->
 <!--v-if-->
 <!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
@@ -86,18 +109,28 @@ exports[`Select demos > demo: Size 1`] = `
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-<!--v-if--><span class="ant-select-selection-placeholder">Middle (default)</span></div><!-- Clear icon -->
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-multiple ant-select-show-search" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Selected tags --><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">a1</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">b2</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><!-- Overflow indicator -->
 <!--v-if-->
-<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+<!-- Search input for multiple --><span class="ant-select-selection-search" style="width: 10px;"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span><!-- Placeholder -->
+<!--v-if-->
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading -->
+<!--v-if-->
+</div></span>
 <!--teleport start-->
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow ant-select-lg" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-<!--v-if--><span class="ant-select-selection-placeholder">Large</span></div><!-- Clear icon -->
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-select ant-select-multiple ant-select-show-search" style="width: 200px;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Selected tags --><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">a1</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><span class="ant-select-selection-item"><span class="ant-select-selection-item-content">b2</span><span class="ant-select-selection-item-remove"><span class="ant-select-selection-item-remove-icon">×</span></span></span><!-- Overflow indicator -->
 <!--v-if-->
-<!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
+<!-- Search input for multiple --><span class="ant-select-selection-search" style="width: 10px;"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-autocomplete="list" value=""></span><!-- Placeholder -->
+<!--v-if-->
+</div><!-- Clear icon -->
+<!--v-if-->
+<!-- Arrow / Loading -->
+<!--v-if-->
+</div></span>
 <!--teleport start-->
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->

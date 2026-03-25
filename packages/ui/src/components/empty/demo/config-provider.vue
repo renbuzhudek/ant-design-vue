@@ -1,33 +1,48 @@
-<script setup lang="ts">
-import { h } from 'vue'
-import type { RenderEmptyHandler } from '../../config-provider/types'
-
-const renderEmpty: RenderEmptyHandler = (componentName) => {
-  if (componentName === 'Select') {
-    return h('span', 'No options available')
-  }
-  if (componentName === 'Table') {
-    return h('span', 'No data')
-  }
-  return h('span', 'Nothing here')
-}
-</script>
-
 <template>
-  <a-config-provider :render-empty="renderEmpty">
-    <div style="display: flex; flex-direction: column; gap: 24px">
-      <div>
-        <h4>Select</h4>
-        <a-select style="width: 200px" />
+  <a-switch
+    v-model:checked="customize"
+    un-checked-children="default"
+    checked-children="customize"
+  />
+  <a-divider />
+  <a-config-provider>
+    <template v-if="customize" #renderEmpty>
+      <div style="text-align: center">
+        <smile-outlined style="font-size: 20px" />
+        <p>Data Not Found</p>
       </div>
-      <div>
-        <h4>TreeSelect</h4>
-        <a-tree-select style="width: 200px" />
-      </div>
-      <div>
-        <h4>Table</h4>
-        <a-table :columns="[{ title: 'Name', dataIndex: 'name' }, { title: 'Age', dataIndex: 'age' }]" :data-source="[]" />
-      </div>
+    </template>
+    <div class="config-provider">
+      <h3>Select</h3>
+      <a-select :style="style" :options="[]" />
+
+      <h3>TreeSelect</h3>
+      <a-tree-select :style="style" :tree-data="[]" />
+
+      <h3>Cascader</h3>
+      <a-cascader :style="style" :options="[]" :show-search="true" />
+
+      <h3>Transfer</h3>
+      <a-transfer :data-source="[]" />
+
+      <h3>Table</h3>
+      <a-table style="margin-top: 8px" :columns="columns" :data-source="[]" />
+      <h3>List</h3>
+      <a-list :data-source="[]" />
     </div>
   </a-config-provider>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { SmileOutlined } from '@ant-design/icons-vue';
+const customize = ref<boolean>(false);
+
+const style = { width: '200px' };
+const columns = [{ title: 'Name' }, { title: 'Age' }];
+</script>
+<style scoped>
+.code-box-demo .config-provider h3 {
+  font-size: inherit;
+  margin: 16px 0 8px 0;
+}
+</style>

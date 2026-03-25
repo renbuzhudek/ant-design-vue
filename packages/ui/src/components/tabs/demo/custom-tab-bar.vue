@@ -10,8 +10,7 @@
     </a-tabs>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const activeKey = ref('1')
+<script lang="ts" setup>
+import { ref } from 'vue';
+const activeKey = ref('1');
 </script>

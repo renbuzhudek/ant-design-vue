@@ -1,51 +1,68 @@
 <template>
-  <div style="width: 256px;">
-    <a-menu
-      v-model:selected-keys="selectedKeys"
-      v-model:open-keys="openKeys"
-      mode="inline"
-      @click="handleClick"
-    >
-      <a-sub-menu menu-key="sub1" title="Navigation One">
-        <a-menu-item-group title="Item 1">
-          <a-menu-item item-key="1">Option 1</a-menu-item>
-          <a-menu-item item-key="2">Option 2</a-menu-item>
-        </a-menu-item-group>
-        <a-menu-item-group title="Item 2">
-          <a-menu-item item-key="3">Option 3</a-menu-item>
-          <a-menu-item item-key="4">Option 4</a-menu-item>
-        </a-menu-item-group>
-      </a-sub-menu>
-      <a-sub-menu menu-key="sub2" title="Navigation Two">
-        <a-menu-item item-key="5">Option 5</a-menu-item>
-        <a-menu-item item-key="6">Option 6</a-menu-item>
-        <a-sub-menu menu-key="sub3" title="Submenu">
-          <a-menu-item item-key="7">Option 7</a-menu-item>
-          <a-menu-item item-key="8">Option 8</a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-      <a-menu-divider />
-      <a-sub-menu menu-key="sub4" title="Navigation Three">
-        <a-menu-item item-key="9">Option 9</a-menu-item>
-        <a-menu-item item-key="10">Option 10</a-menu-item>
-        <a-menu-item item-key="11">Option 11</a-menu-item>
-        <a-menu-item item-key="12">Option 12</a-menu-item>
-      </a-sub-menu>
-      <a-menu-item-group title="Group">
-        <a-menu-item item-key="13">Option 13</a-menu-item>
-        <a-menu-item item-key="14">Option 14</a-menu-item>
-      </a-menu-item-group>
-    </a-menu>
-  </div>
+  <a-menu
+    id="dddddd"
+    v-model:open-keys="openKeys"
+    v-model:selected-keys="selectedKeys"
+    style="width: 256px"
+    mode="inline"
+    :items="items"
+    @click="handleClick"
+  ></a-menu>
 </template>
+<script lang="ts" setup>
+import type { VueElement} from 'vue';
+import { reactive, ref, watch, h } from 'vue';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import type { MenuProps, ItemType } from 'ant-design-vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const selectedKeys = ref<string[]>(['1']);
+const openKeys = ref<string[]>(['sub1']);
 
-const selectedKeys = ref(['1'])
-const openKeys = ref(['sub1'])
-
-function handleClick(info: any) {
-  console.log('click', info)
+function getItem(
+  label: VueElement | string,
+  key: string,
+  icon?: any,
+  children?: ItemType[],
+  type?: 'group',
+): ItemType {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as ItemType;
 }
+
+const items: ItemType[] = reactive([
+  getItem('Navigation One', 'sub1', () => h(MailOutlined), [
+    getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
+    getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+  ]),
+
+  getItem('Navigation Two', 'sub2', () => h(AppstoreOutlined), [
+    getItem('Option 5', '5'),
+    getItem('Option 6', '6'),
+    getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
+  ]),
+
+  { type: 'divider' },
+
+  getItem('Navigation Three', 'sub4', () => h(SettingOutlined), [
+    getItem('Option 9', '9'),
+    getItem('Option 10', '10'),
+    getItem('Option 11', '11'),
+    getItem('Option 12', '12'),
+  ]),
+
+  getItem('Group', 'grp', null, [getItem('Option 13', '13'), getItem('Option 14', '14')], 'group'),
+]);
+
+const handleClick: MenuProps['onClick'] = e => {
+  console.log('click', e);
+};
+
+watch(openKeys, val => {
+  console.log('openKeys', val);
+});
 </script>

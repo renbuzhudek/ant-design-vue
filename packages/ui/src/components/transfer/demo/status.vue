@@ -1,6 +1,6 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
+  <a-space direction="vertical">
     <a-transfer status="error" />
     <a-transfer status="warning" show-search />
-  </div>
+  </a-space>
 </template>

@@ -7,21 +7,34 @@ exports[`Spin demos > demo: Basic 1`] = `
 `;
 
 exports[`Spin demos > demo: CustomIndicator 1`] = `
-"<div data-v-509fc281="" class="ant-spin ant-spin-spinning" role="status" aria-label="Loading"><span data-v-509fc281="" class="custom-spinner"></span>
+"<div class="ant-spin ant-spin-spinning" role="status" aria-label="Loading" indicator="[object Object]"><span class="ant-spin-dot ant-spin-dot-spin" aria-hidden="true"><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i></span>
   <!--v-if-->
 </div>"
 `;
 
 exports[`Spin demos > demo: Delay 1`] = `
-"<div>
-  <div class="ant-spin-nested-loading" aria-busy="false">
-    <!--v-if-->
-    <div class="ant-spin-container">
-      <div style="padding: 50px; background: rgba(0, 0, 0, 0.05); border-radius: 4px;"> Content that can load </div>
-    </div>
+"<div data-v-48262a96="" class="ant-spin-nested-loading" aria-busy="false">
+  <!--v-if-->
+  <div class="ant-spin-container">
+    <transition-stub data-v-48262a96="" name="ant-alert-slide-up" appear="false" persisted="false" css="true">
+      <div class="ant-alert ant-alert-info ant-alert-with-description ant-alert-no-icon" role="alert">
+        <!--v-if-->
+        <div class="ant-alert-content">
+          <div class="ant-alert-message">Alert message title</div>
+          <div class="ant-alert-description">Further details about the context of this alert.</div>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-stub>
   </div>
-  <div style="margin-top: 16px;"><label><input type="checkbox"> Toggle loading (500ms delay)</label></div>
-</div>"
+</div>
+<div data-v-48262a96="" class="spin-state"> Loading state： <button data-v-48262a96="" type="button" role="switch" aria-checked="false" class="ant-switch">
+    <wave-stub disabled="false"></wave-stub>
+    <div class="ant-switch-handle">
+      <!--v-if-->
+    </div><span class="ant-switch-inner"><span class="ant-switch-inner-checked"></span><span class="ant-switch-inner-unchecked"></span></span>
+  </button></div>"
 `;
 
 exports[`Spin demos > demo: Inside 1`] = `
@@ -33,24 +46,32 @@ exports[`Spin demos > demo: Inside 1`] = `
 `;
 
 exports[`Spin demos > demo: Nested 1`] = `
-"<div class="ant-spin-nested-loading" aria-busy="true">
-  <div class="ant-spin-nested-loading-blur">
-    <div class="ant-spin ant-spin-spinning ant-spin-show-text" role="status" aria-label="Loading..."><span class="ant-spin-dot ant-spin-dot-spin" aria-hidden="true"><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i></span>
-      <div class="ant-spin-text" aria-hidden="true">Loading...</div>
-    </div>
+"<div data-v-9aa445ee="" class="ant-spin-nested-loading" aria-busy="false">
+  <!--v-if-->
+  <div class="ant-spin-container">
+    <transition-stub data-v-9aa445ee="" name="ant-alert-slide-up" appear="false" persisted="false" css="true">
+      <div class="ant-alert ant-alert-info ant-alert-with-description ant-alert-no-icon" role="alert">
+        <!--v-if-->
+        <div class="ant-alert-content">
+          <div class="ant-alert-message">Alert message title</div>
+          <div class="ant-alert-description">Further details about the context of this alert.</div>
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </transition-stub>
   </div>
-  <div class="ant-spin-container ant-spin-blur" aria-hidden="true">
-    <div style="padding: 50px; background: rgba(0, 0, 0, 0.05); border-radius: 4px;">
-      <p>Some content</p>
-      <p>More content</p>
-      <p>Loading state...</p>
-    </div>
-  </div>
-</div>"
+</div>
+<div data-v-9aa445ee="" class="spin-state"> Loading state： <button data-v-9aa445ee="" type="button" role="switch" aria-checked="false" class="ant-switch">
+    <wave-stub disabled="false"></wave-stub>
+    <div class="ant-switch-handle">
+      <!--v-if-->
+    </div><span class="ant-switch-inner"><span class="ant-switch-inner-checked"></span><span class="ant-switch-inner-unchecked"></span></span>
+  </button></div>"
 `;
 
 exports[`Spin demos > demo: Size 1`] = `
-"<div style="display: flex; gap: 24px; align-items: center;">
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <div class="ant-spin ant-spin-spinning ant-spin-sm" role="status" aria-label="Loading"><span class="ant-spin-dot ant-spin-dot-spin" aria-hidden="true"><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i><i class="ant-spin-dot-item"></i></span>
     <!--v-if-->
   </div>

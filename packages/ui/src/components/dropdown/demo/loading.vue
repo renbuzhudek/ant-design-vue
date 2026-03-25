@@ -1,61 +1,56 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 8px; padding: 40px;">
+  <a-space direction="vertical">
     <a-dropdown-button type="primary" loading>
       <template #overlay>
         <a-menu>
-          <a-menu-item item-key="1">Submit and continue</a-menu-item>
+          <a-menu-item key="1">Submit and continue</a-menu-item>
         </a-menu>
       </template>
       Submit
     </a-dropdown-button>
-
-    <a-dropdown-button type="primary" size="sm" loading>
+    <a-dropdown-button type="primary" size="small" loading>
       <template #overlay>
         <a-menu>
-          <a-menu-item item-key="1">Submit and continue</a-menu-item>
+          <a-menu-item key="1">Submit and continue</a-menu-item>
         </a-menu>
       </template>
       Submit
     </a-dropdown-button>
-
     <a-dropdown-button type="primary" :loading="loading1" @click="enterLoading1">
       <template #overlay>
         <a-menu>
-          <a-menu-item item-key="1">Submit and continue</a-menu-item>
+          <a-menu-item key="1">Submit and continue</a-menu-item>
         </a-menu>
       </template>
       Submit
     </a-dropdown-button>
-
     <a-dropdown-button :loading="loading2" @click="enterLoading2">
+      Submit
       <template #overlay>
         <a-menu>
-          <a-menu-item item-key="1">Submit and continue</a-menu-item>
+          <a-menu-item key="1">Submit and continue</a-menu-item>
         </a-menu>
       </template>
-      Submit
+      <template #icon><DownOutlined /></template>
     </a-dropdown-button>
-  </div>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref, type Ref } from 'vue'
-
-const loading1 = ref(false)
-const loading2 = ref(false)
-
-function enterLoading(loading: Ref<boolean>) {
-  loading.value = true
+<script lang="ts" setup>
+import type { Ref} from 'vue';
+import { ref } from 'vue';
+import { DownOutlined } from '@ant-design/icons-vue';
+const loading1 = ref(false);
+const loading2 = ref(false);
+const enterLoading = (loading: Ref<boolean>) => {
+  loading.value = true;
   setTimeout(() => {
-    loading.value = false
-  }, 6000)
-}
-
+    loading.value = false;
+  }, 6000);
+};
 function enterLoading1() {
-  enterLoading(loading1)
+  enterLoading(loading1);
 }
-
 function enterLoading2() {
-  enterLoading(loading2)
+  enterLoading(loading2);
 }
 </script>

@@ -1,8 +1,42 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { UploadFile, UploadChangeParam } from '../types'
+<template>
+  <a-upload
+    v-model:file-list="fileList"
+    name="file"
+    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+    :headers="headers"
+    @change="handleChange"
+  >
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Click to Upload
+    </a-button>
+    <template #itemRender="{ file, actions }">
+      <a-space>
+        <span :style="file.status === 'error' ? 'color: red' : ''">{{ file.name }}</span>
+        <a href="javascript:;" @click="actions.download">download</a>
+        <a href="javascript:;" @click="actions.remove">delete</a>
+      </a-space>
+    </template>
+  </a-upload>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { message } from 'ant-design-vue';
+import { UploadOutlined } from '@ant-design/icons-vue';
+import type { UploadChangeParam, UploadProps } from 'ant-design-vue';
 
-const fileList = ref<UploadFile[]>([
+const handleChange = (info: UploadChangeParam) => {
+  if (info.file.status !== 'uploading') {
+    console.log(info.file, info.fileList);
+  }
+  if (info.file.status === 'done') {
+    message.success(`${info.file.name} file uploaded successfully`);
+  } else if (info.file.status === 'error') {
+    message.error(`${info.file.name} file upload failed.`);
+  }
+};
+
+const fileList = ref<UploadProps['fileList']>([
   {
     uid: '-1',
     name: 'xxx.png',
@@ -18,39 +52,12 @@ const fileList = ref<UploadFile[]>([
     thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
   },
   {
-    uid: '-3',
+    uid: '3',
     name: 'zzz.png',
     status: 'error',
+    response: 'Server Error 500', // custom error message to show
     url: 'http://www.baidu.com/zzz.png',
   },
-])
-
-const headers = { authorization: 'authorization-text' }
-
-function handleChange(info: UploadChangeParam) {
-  if (info.file.status === 'done') {
-    console.log(`${info.file.name} file uploaded successfully`)
-  } else if (info.file.status === 'error') {
-    console.log(`${info.file.name} file upload failed.`)
-  }
-}
+]);
+const headers = { authorization: 'authorization-text' };
 </script>
-
-<template>
-  <a-upload
-    v-model:file-list="fileList"
-    name="file"
-    action="https://httpbin.org/post"
-    :headers="headers"
-    @change="handleChange"
-  >
-    <a-button>Click to Upload</a-button>
-    <template #itemRender="{ file, actions }">
-      <div style="display: flex; align-items: center; gap: 8px">
-        <span :style="file.status === 'error' ? 'color: red' : ''">{{ file.name }}</span>
-        <a href="javascript:;" @click="actions.download">download</a>
-        <a href="javascript:;" @click="actions.remove">delete</a>
-      </div>
-    </template>
-  </a-upload>
-</template>

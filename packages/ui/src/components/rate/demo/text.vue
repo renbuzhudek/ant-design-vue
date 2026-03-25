@@ -1,13 +1,11 @@
 <template>
-  <div style="display: flex; align-items: center; gap: 8px">
-    <a-rate v-model:value="value" />
-    <span v-if="value" style="color: rgba(0, 0, 0, 0.45)">{{ desc[value - 1] }}</span>
-  </div>
+  <span>
+    <a-rate v-model:value="value" :tooltips="desc" />
+    <span class="ant-rate-text">{{ desc[value - 1] }}</span>
+  </span>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref(3)
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful']
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref<number>(3);
+const desc = ref<string[]>(['terrible', 'bad', 'normal', 'good', 'wonderful']);
 </script>

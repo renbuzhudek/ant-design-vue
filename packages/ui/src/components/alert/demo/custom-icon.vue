@@ -1,19 +1,19 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
+  <a-space direction="vertical" style="width: 100%">
     <a-alert message="showIcon = false" type="success">
-      <template #icon><span style="font-size: 14px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert message="Success Tips" type="success" show-icon>
-      <template #icon><span style="font-size: 14px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert message="Informational Notes" type="info" show-icon>
-      <template #icon><span style="font-size: 14px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert message="Warning" type="warning" show-icon>
-      <template #icon><span style="font-size: 14px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert message="Error" type="error" show-icon>
-      <template #icon><span style="font-size: 14px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert
       message="Success Tips"
@@ -21,15 +21,15 @@
       type="success"
       show-icon
     >
-      <template #icon><span style="font-size: 24px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert
       message="Informational Notes"
-      description="Additional description and information about copywriting."
+      description="Additional description and informations about copywriting."
       type="info"
       show-icon
     >
-      <template #icon><span style="font-size: 24px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert
       message="Warning"
@@ -37,7 +37,7 @@
       type="warning"
       show-icon
     >
-      <template #icon><span style="font-size: 24px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
     <a-alert
       message="Error"
@@ -45,7 +45,11 @@
       type="error"
       show-icon
     >
-      <template #icon><span style="font-size: 24px;">&#9786;</span></template>
+      <template #icon><smile-outlined /></template>
     </a-alert>
-  </div>
+  </a-space>
 </template>
+
+<script lang="ts" setup>
+import { SmileOutlined } from '@ant-design/icons-vue';
+</script>

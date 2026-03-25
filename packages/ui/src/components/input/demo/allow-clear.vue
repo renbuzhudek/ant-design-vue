@@ -1,8 +1,13 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px">
-    <a-input placeholder="Type and clear" :allow-clear="true" value="Clearable text" />
-    <a-input placeholder="With prefix and clear" :allow-clear="true">
-      <template #prefix>$</template>
-    </a-input>
+  <div>
+    <a-input v-model:value="value1" placeholder="input with clear icon" allow-clear />
+    <br />
+    <br />
+    <a-textarea v-model:value="value2" placeholder="textarea with clear icon" allow-clear />
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value1 = ref<string>('');
+const value2 = ref<string>('');
+</script>

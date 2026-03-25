@@ -1,27 +1,12 @@
-<script setup lang="ts">
-import { reactive } from 'vue'
-
-const formState = reactive({
-  username: '',
-  password: '',
-})
-
-function onFinish(values: any) {
-  console.log('Success:', values)
-}
-
-function onFinishFailed(errorInfo: any) {
-  console.log('Failed:', errorInfo)
-}
-</script>
-
 <template>
   <a-form
     :model="formState"
-    :label-col="{ span: 6 }"
-    :wrapper-col="{ span: 18 }"
+    name="basic"
+    :label-col="{ span: 8 }"
+    :wrapper-col="{ span: 16 }"
+    autocomplete="off"
     @finish="onFinish"
-    @finish-failed="onFinishFailed"
+    @finishFailed="onFinishFailed"
   >
     <a-form-item
       label="Username"
@@ -39,8 +24,34 @@ function onFinishFailed(errorInfo: any) {
       <a-input-password v-model:value="formState.password" />
     </a-form-item>
 
-    <a-form-item :wrapper-col="{ offset: 6, span: 18 }">
-      <button type="submit" class="ant-btn ant-btn-primary">Submit</button>
+    <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
+      <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>
+    </a-form-item>
+
+    <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+      <a-button type="primary" html-type="submit">Submit</a-button>
     </a-form-item>
   </a-form>
 </template>
+<script lang="ts" setup>
+import { reactive } from 'vue';
+
+interface FormState {
+  username: string;
+  password: string;
+  remember: boolean;
+}
+
+const formState = reactive<FormState>({
+  username: '',
+  password: '',
+  remember: true,
+});
+const onFinish = (values: any) => {
+  console.log('Success:', values);
+};
+
+const onFinishFailed = (errorInfo: any) => {
+  console.log('Failed:', errorInfo);
+};
+</script>

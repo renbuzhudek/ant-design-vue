@@ -1,14 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`QRCode demos > demo: base 1`] = `
-"<div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <!--v-if-->
-  </div>
-  <div style="margin-top: 16px;">
-    <!-- With addon wrapper -->
-    <!-- Plain input --><input class="ant-input" type="text" placeholder="Enter text" maxlength="60" value="https://ant-design-vue.com">
-  </div>
+"<div class="ant-space ant-space-vertical ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+  <a-qrcode value="https://www.antdv.com/"></a-qrcode><!-- With addon wrapper -->
+  <!-- Plain input --><input class="ant-input" type="text" placeholder="-" maxlength="60" value="https://www.antdv.com/">
 </div>"
 `;
 
@@ -33,89 +28,61 @@ exports[`QRCode demos > demo: custom-color 1`] = `
 `;
 
 exports[`QRCode demos > demo: customColor 1`] = `
-"<div style="display: flex; gap: 16px;">
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <!--v-if-->
-  </div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <!--v-if-->
-  </div>
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+  <a-qrcode color="#52c41a" value="http://www.antdv.com"></a-qrcode>
+  <a-qrcode color="#1677ff" bg-color="#f5f5f5" value="http://www.antdv.com"></a-qrcode>
 </div>"
 `;
 
 exports[`QRCode demos > demo: customSize 1`] = `
-"<div>
-  <div style="display: flex; gap: 8px; margin-bottom: 16px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Smaller </span>
-    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Larger </span>
-    </button></div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
+"<div class="ant-btn-group" role="group"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
     <!--v-if-->
-  </div>
-</div>"
+    <!--v-if--><span role="img" aria-label="minus" class="anticon anticon-minus"><svg focusable="false" class="" data-icon="minus" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path></svg></span><span class="ant-btn-content"> small </span>
+  </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span role="img" aria-label="plus" class="anticon anticon-plus"><svg focusable="false" class="" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M192 474h672q8 0 8 8v60q0 8-8 8H160q-8 0-8-8v-60q0-8 8-8z"></path></svg></span><span class="ant-btn-content"> large </span>
+  </button></div>
+<br>
+<br>
+<a-qrcode size="160" icon-size="40" error-level="H" icon="https://www.antdv.com/assets/logo.1ef800a8.svg" value="https://www.antdv.com"></a-qrcode>"
 `;
 
 exports[`QRCode demos > demo: customType 1`] = `
-"<div style="display: flex; gap: 16px;">
-  <div>
-    <div style="margin-bottom: 8px;">Canvas</div>
-    <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-      <!--v-if-->
-    </div>
-  </div>
-  <div>
-    <div style="margin-bottom: 8px;">SVG (via icon)</div>
-    <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-      <!--v-if-->
-    </div>
-  </div>
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+  <a-qrcode type="canvas" value="http://www.antdv.com"></a-qrcode>
+  <a-qrcode type="svg" value="http://www.antdv.com"></a-qrcode>
 </div>"
 `;
 
 exports[`QRCode demos > demo: download 1`] = `
-"<div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <!--v-if-->
-  </div>
-  <div style="margin-top: 16px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Download</span>
-    </button></div>
-</div>"
+"<a-qrcode value="http://www.antdv.com"></a-qrcode>
+<br>
+<br>
+<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content">Downlaod</span>
+</button>"
 `;
 
 exports[`QRCode demos > demo: errorLevel 1`] = `
-"<div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <!--v-if-->
+"<a-qrcode error-level="L" value="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"></a-qrcode>
+<br>
+<br>
+<div class="ant-segmented" role="radiogroup">
+  <div class="ant-segmented-group">
+    <div class="ant-segmented-thumb" aria-hidden="true"></div>
+    <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="L"><span class="ant-segmented-item-label">L</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="M"><span class="ant-segmented-item-label">M</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Q"><span class="ant-segmented-item-label">Q</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="H"><span class="ant-segmented-item-label">H</span></div>
   </div>
-  <div style="margin-top: 16px; display: flex; gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">L</span>
-    </button><button class="ant-btn ant-btn-outlined ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">M</span>
-    </button><button class="ant-btn ant-btn-outlined ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Q</span>
-    </button><button class="ant-btn ant-btn-outlined ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">H</span>
-    </button></div>
 </div>"
 `;
 
-exports[`QRCode demos > demo: icon 1`] = `
-"<div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-  <!--v-if-->
-</div>"
-`;
+exports[`QRCode demos > demo: icon 1`] = `"<a-qrcode error-level="H" icon="https://www.antdv.com/assets/logo.1ef800a8.svg" value="https://www.antdv.com"></a-qrcode>"`;
 
 exports[`QRCode demos > demo: popover 1`] = `
-"<span class="ant-trigger-wrapper"><button class="ant-btn ant-btn-solid ant-btn-md" type="button"><!--v-if--><!--v-if--><span class="ant-btn-content">Hover to see QR Code</span></button></span>
+"<span class="ant-trigger-wrapper"><img width="100" height="100" src="https://aliyuncdn.antdv.com/logo.png"></span>
 <!--teleport start-->
 
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
@@ -126,22 +93,9 @@ exports[`QRCode demos > demo: popover 1`] = `
 `;
 
 exports[`QRCode demos > demo: status 1`] = `
-"<div style="display: flex; gap: 16px; flex-wrap: wrap;">
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <div class="ant-qrcode-mask"><span class="ant-qrcode-loading"><span class="ant-qrcode-loading-icon"></span></span></div>
-  </div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <div class="ant-qrcode-mask">
-      <p class="ant-qrcode-expired-text">QR code expired</p><button class="ant-qrcode-expired-btn" type="button"> Refresh </button>
-    </div>
-  </div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <div class="ant-qrcode-mask">
-      <p class="ant-qrcode-scanned-text">Scanned</p>
-    </div>
-  </div>
-  <div class="ant-qrcode"><canvas width="160" height="160" style="width: 160px; height: 160px;"></canvas><!-- Mask overlay for non-active states -->
-    <!--v-if-->
-  </div>
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+  <a-qrcode status="loading" value="http://www.antdv.com"></a-qrcode>
+  <a-qrcode status="expired" value="http://www.antdv.com"></a-qrcode>
+  <a-qrcode status="scanned" value="http://www.antdv.com"></a-qrcode>
 </div>"
 `;

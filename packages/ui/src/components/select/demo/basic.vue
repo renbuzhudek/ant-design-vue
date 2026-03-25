@@ -1,32 +1,81 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px">
-    <h4>Basic Select</h4>
+  <h2>use a-select-option</h2>
+  <a-space>
     <a-select
-      v-model:value="value"
-      placeholder="Please select"
-      :options="options"
-    />
-
-    <h4>With Allow Clear</h4>
+      ref="select"
+      v-model:value="value1"
+      style="width: 120px"
+      @focus="focus"
+      @change="handleChange"
+    >
+      <a-select-option value="jack">Jack</a-select-option>
+      <a-select-option value="lucy">Lucy</a-select-option>
+      <a-select-option value="disabled" disabled>Disabled</a-select-option>
+      <a-select-option value="Yiminghe">yiminghe</a-select-option>
+    </a-select>
+    <a-select v-model:value="value2" style="width: 120px" disabled>
+      <a-select-option value="lucy">Lucy</a-select-option>
+    </a-select>
+    <a-select v-model:value="value3" style="width: 120px" loading>
+      <a-select-option value="lucy">Lucy</a-select-option>
+    </a-select>
+  </a-space>
+  <h2 style="margin-top: 10px">use options (recommend)</h2>
+  <a-space>
     <a-select
-      v-model:value="value2"
-      placeholder="Select with clear"
-      :options="options"
-      allow-clear
-    />
-  </div>
+      ref="select"
+      v-model:value="value1"
+      style="width: 120px"
+      :options="options1"
+      @focus="focus"
+      @change="handleChange"
+    ></a-select>
+    <a-select v-model:value="value2" style="width: 120px" disabled :options="options2"></a-select>
+    <a-select v-model:value="value3" style="width: 120px" loading :options="options3"></a-select>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { SelectProps } from 'ant-design-vue';
+const value1 = ref('lucy');
+const value2 = ref('lucy');
+const value3 = ref('lucy');
+const options1 = ref<SelectProps['options']>([
+  {
+    value: 'jack',
+    label: 'Jack',
+  },
+  {
+    value: 'lucy',
+    label: 'Lucy',
+  },
+  {
+    value: 'disabled',
+    label: 'Disabled',
+    disabled: true,
+  },
+  {
+    value: 'yiminghe',
+    label: 'Yiminghe',
+  },
+]);
+const options2 = ref<SelectProps['options']>([
+  {
+    value: 'lucy',
+    label: 'Lucy',
+  },
+]);
+const options3 = ref<SelectProps['options']>([
+  {
+    value: 'lucy',
+    label: 'Lucy',
+  },
+]);
+const focus = () => {
+  console.log('focus');
+};
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<string | undefined>(undefined)
-const value2 = ref('lucy')
-
-const options = [
-  { value: 'jack', label: 'Jack' },
-  { value: 'lucy', label: 'Lucy' },
-  { value: 'tom', label: 'Tom' },
-  { value: 'disabled', label: 'Disabled', disabled: true },
-]
+const handleChange = (value: string) => {
+  console.log(`selected ${value}`);
+};
 </script>

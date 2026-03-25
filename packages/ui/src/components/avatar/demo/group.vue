@@ -1,23 +1,84 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a-avatar-group>
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" alt="User 1" />
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" alt="User 2" />
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=3" alt="User 3" />
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=4" alt="User 4" />
-    </a-avatar-group>
-
-    <a-avatar-group :max-count="2" :max-style="{ backgroundColor: '#f56a00' }">
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=5" alt="User 5" />
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=6" alt="User 6" />
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=7" alt="User 7" />
-      <a-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" alt="User 8" />
-    </a-avatar-group>
-
-    <a-avatar-group size="large" shape="square">
-      <a-avatar>A</a-avatar>
-      <a-avatar>B</a-avatar>
-      <a-avatar>C</a-avatar>
-    </a-avatar-group>
-  </div>
+  <a-avatar-group>
+    <a-avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+    <a href="https://www.antdv.com">
+      <a-avatar style="background-color: #f56a00">K</a-avatar>
+    </a>
+    <a-tooltip title="Ant User" placement="top">
+      <a-avatar style="background-color: #87d068">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-tooltip>
+    <a-avatar style="background-color: #1890ff">
+      <template #icon><AntDesignOutlined /></template>
+    </a-avatar>
+  </a-avatar-group>
+  <a-divider />
+  <a-avatar-group :max-count="2" :max-style="{ color: '#f56a00', backgroundColor: '#fde3cf' }">
+    <a-avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2" />
+    <a-avatar style="background-color: #1890ff">K</a-avatar>
+    <a-tooltip title="Ant User" placement="top">
+      <a-avatar style="background-color: #87d068">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-tooltip>
+    <a-avatar style="background-color: #1890ff">
+      <template #icon><AntDesignOutlined /></template>
+    </a-avatar>
+  </a-avatar-group>
+  <a-divider />
+  <a-avatar-group
+    :max-count="2"
+    size="large"
+    :max-style="{
+      color: '#f56a00',
+      backgroundColor: '#fde3cf',
+    }"
+  >
+    <a-avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=3" />
+    <a-avatar style="background-color: #1890ff">K</a-avatar>
+    <a-tooltip title="Ant User" placement="top">
+      <a-avatar style="background-color: #87d068">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-tooltip>
+    <a-avatar style="background-color: #1890ff">
+      <template #icon><AntDesignOutlined /></template>
+    </a-avatar>
+  </a-avatar-group>
+  <a-divider />
+  <a-avatar-group
+    :max-count="2"
+    max-popover-trigger="click"
+    size="large"
+    :max-style="{ color: '#f56a00', backgroundColor: '#fde3cf', cursor: 'pointer' }"
+  >
+    <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <a-avatar style="background-color: #f56a00">K</a-avatar>
+    <a-tooltip title="Ant User" placement="top">
+      <a-avatar style="background-color: #87d068">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-tooltip>
+    <a-avatar style="background-color: #1890ff">
+      <template #icon><AntDesignOutlined /></template>
+    </a-avatar>
+  </a-avatar-group>
+  <a-divider />
+  <a-avatar-group shape="square">
+    <a-avatar style="background-color: #fde3cf">A</a-avatar>
+    <a-avatar style="background-color: #f56a00">K</a-avatar>
+    <a-tooltip title="Ant User" placement="top">
+      <a-avatar style="background-color: #87d068">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-tooltip>
+    <a-avatar style="background-color: #1890ff">
+      <template #icon><AntDesignOutlined /></template>
+    </a-avatar>
+  </a-avatar-group>
 </template>
+
+<script lang="ts" setup>
+import { UserOutlined, AntDesignOutlined } from '@ant-design/icons-vue';
+</script>

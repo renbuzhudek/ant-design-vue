@@ -1,68 +1,54 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Tour demos > demo: Basic 1`] = `
-"<div style="padding: 40px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content">Begin Tour</span>
+</button>
+<div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
+  <!--v-if-->
+</div>
+<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
     <!--v-if-->
-    <!--v-if--><span class="ant-btn-content"> Begin Tour </span>
-  </button>
-  <div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
+    <!--v-if--><span class="ant-btn-content">Upload</span>
+  </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
     <!--v-if-->
-  </div>
-  <div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 60px; row-gap: 60px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Upload</span>
-    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Save</span>
-    </button></div>
-  <!--teleport start-->
-  <!--teleport end-->
-</div>"
+    <!--v-if--><span class="ant-btn-content">Save</span>
+  </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></span>
+  </button></div>
+<!--teleport start-->
+<!--teleport end-->"
 `;
 
 exports[`Tour demos > demo: Mask 1`] = `
-"<div style="padding: 40px;">
-  <div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> With Mask </span>
-    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Without Mask </span>
-    </button><button class="ant-btn ant-btn-dashed ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content"> Custom Mask Color </span>
-    </button></div><!-- Tour with mask (default) -->
-  <!--teleport start-->
-  <!--teleport end-->
-  <!-- Tour without mask -->
-  <!--teleport start-->
-  <!--teleport end-->
-  <!-- Tour with custom mask color -->
-  <!--teleport start-->
-  <!--teleport end-->
-</div>"
+"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content">Begin Tour</span>
+</button>
+<div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
+  <!--v-if-->
+</div>
+<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content">Upload</span>
+  </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content">Save</span>
+  </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+    <!--v-if-->
+    <!--v-if--><span class="ant-btn-content"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></span>
+  </button></div>
+<!--teleport start-->
+<!--teleport end-->"
 `;
 
 exports[`Tour demos > demo: Placement 1`] = `
-"<div style="padding: 80px 160px;">
-  <div style="display: inline-block; padding: 16px 24px; border: 1px dashed rgb(217, 217, 217); border-radius: 8px;"> Target Element </div>
-  <div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
-    <!--v-if-->
-  </div>
-  <div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Top</span>
-    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Bottom</span>
-    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Left</span>
-    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-      <!--v-if-->
-      <!--v-if--><span class="ant-btn-content">Right</span>
-    </button></div>
-  <!--teleport start-->
-  <!--teleport end-->
-</div>"
+"<button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+  <!--v-if-->
+  <!--v-if--><span class="ant-btn-content">Begin Tour</span>
+</button>
+<!--teleport start-->
+<!--teleport end-->"
 `;

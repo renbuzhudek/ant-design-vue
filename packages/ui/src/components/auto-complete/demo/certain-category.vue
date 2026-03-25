@@ -1,8 +1,9 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Lookup Patterns - Certain Category</h4>
+  <div class="certain-category-search-wrapper" style="width: 250px">
     <a-auto-complete
       v-model:value="value"
+      class="certain-category-search"
+      popup-class-name="certain-category-search-dropdown"
       :dropdown-match-select-width="500"
       style="width: 250px"
       :options="dataSource"
@@ -33,42 +34,84 @@
         <template v-else>
           <div style="display: flex; justify-content: space-between">
             {{ item.value }}
-            <span>{{ item.count }} people</span>
+            <span>
+              <UserOutlined />
+              {{ item.count }}
+            </span>
           </div>
         </template>
       </template>
+      <a-input-search placeholder="input here" size="large"></a-input-search>
     </a-auto-complete>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { UserOutlined } from '@ant-design/icons-vue';
 const dataSource = [
   {
     value: 'Libraries',
     options: [
-      { value: 'AntDesignVue', count: 10000 },
-      { value: 'AntDesignVue UI', count: 10600 },
+      {
+        value: 'AntDesignVue',
+        count: 10000,
+      },
+      {
+        value: 'AntDesignVue UI',
+        count: 10600,
+      },
     ],
   },
   {
     value: 'Solutions',
     options: [
-      { value: 'AntDesignVue UI FAQ', count: 60100 },
-      { value: 'AntDesignVue FAQ', count: 30010 },
+      {
+        value: 'AntDesignVue UI FAQ',
+        count: 60100,
+      },
+      {
+        value: 'AntDesignVue FAQ',
+        count: 30010,
+      },
     ],
   },
   {
     value: 'Articles',
     options: [
-      { value: 'AntDesignVue design language', count: 100000 },
+      {
+        value: 'AntDesignVue design language',
+        count: 100000,
+      },
     ],
   },
   {
     value: 'all',
   },
-]
-
-const value = ref('')
+];
+const value = ref('');
 </script>
+
+<style scoped>
+.certain-category-search-dropdown .ant-select-dropdown-menu-item-group-title {
+  color: #666;
+  font-weight: bold;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item-group {
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item {
+  padding-left: 16px;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu-item.show-all {
+  text-align: center;
+  cursor: default;
+}
+
+.certain-category-search-dropdown .ant-select-dropdown-menu {
+  max-height: 300px;
+}
+</style>

@@ -1,12 +1,7 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { Dayjs } from 'dayjs'
-
-const value = ref<Dayjs | null>(null)
-</script>
-
 <template>
-  <div style="max-width: 200px">
-    <a-time-picker v-model:value="value" :minute-step="15" :second-step="10" />
-  </div>
+  <a-time-picker v-model:value="value" :minute-step="15" :second-step="10" />
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref();
+</script>

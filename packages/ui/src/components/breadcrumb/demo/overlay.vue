@@ -1,18 +1,23 @@
 <template>
   <a-breadcrumb>
-    <a-breadcrumb-item href="/">Home</a-breadcrumb-item>
-    <a-breadcrumb-item href="/apps">
-      <a-dropdown>
-        <a @click.prevent>Applications</a>
-        <template #overlay>
-          <a-menu>
-            <a-menu-item item-key="app1">Application 1</a-menu-item>
-            <a-menu-item item-key="app2">Application 2</a-menu-item>
-            <a-menu-item item-key="app3">Application 3</a-menu-item>
-          </a-menu>
-        </template>
-      </a-dropdown>
+    <a-breadcrumb-item>Ant Design Vue</a-breadcrumb-item>
+    <a-breadcrumb-item><a href="">Component</a></a-breadcrumb-item>
+    <a-breadcrumb-item>
+      <a href="">General</a>
+      <template #overlay>
+        <a-menu>
+          <a-menu-item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">General</a>
+          </a-menu-item>
+          <a-menu-item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">Layout</a>
+          </a-menu-item>
+          <a-menu-item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">Navigation</a>
+          </a-menu-item>
+        </a-menu>
+      </template>
     </a-breadcrumb-item>
-    <a-breadcrumb-item>Current Page</a-breadcrumb-item>
+    <a-breadcrumb-item>Button</a-breadcrumb-item>
   </a-breadcrumb>
 </template>

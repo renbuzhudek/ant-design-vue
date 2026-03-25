@@ -1,21 +1,16 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Search</h4>
-    <a-cascader
-      v-model:value="value"
-      :options="options"
-      :show-search="{ filter }"
-      placeholder="Try searching"
-    />
-  </div>
+  <a-cascader
+    v-model:value="value"
+    :options="options"
+    :show-search="{ filter }"
+    placeholder="Please select"
+  />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[]>([])
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+import type { ShowSearchType } from 'ant-design-vue/es/cascader';
+const options: CascaderProps['options'] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -24,8 +19,15 @@ const options = [
         value: 'hangzhou',
         label: 'Hangzhou',
         children: [
-          { value: 'xihu', label: 'West Lake' },
-          { value: 'xiasha', label: 'Xia Sha', disabled: true },
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+          {
+            value: 'xiasha',
+            label: 'Xia Sha',
+            disabled: true,
+          },
         ],
       },
     ],
@@ -38,16 +40,18 @@ const options = [
         value: 'nanjing',
         label: 'Nanjing',
         children: [
-          { value: 'zhonghuamen', label: 'Zhong Hua Men' },
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua men',
+          },
         ],
       },
     ],
   },
-]
+];
+const filter: ShowSearchType['filter'] = (inputValue, path) => {
+  return path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
+};
 
-const filter = (inputValue: string, path: any[]) => {
-  return path.some(
-    option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1,
-  )
-}
+const value = ref<string[]>([]);
 </script>

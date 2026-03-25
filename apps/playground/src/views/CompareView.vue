@@ -2,35 +2,83 @@
   <div v-if="componentName" class="compare">
     <div class="compare-header">
       <h1 class="compare-title">{{ componentName }}</h1>
-      <div class="compare-legend">
-        <span class="legend-new">New (refactored)</span>
-        <span class="legend-old">Old (ant-design-vue@4)</span>
+      <div class="compare-controls">
+        <div class="compare-legend">
+          <span class="legend-new">New (refactored)</span>
+          <span class="legend-old">Old (ant-design-vue@4)</span>
+        </div>
+        <label v-if="newOnlyDemos.length || oldOnlyDemos.length" class="compare-toggle">
+          <input v-model="showUnmatched" type="checkbox" />
+          Show unmatched ({{ newOnlyDemos.length + oldOnlyDemos.length }})
+        </label>
       </div>
     </div>
 
-    <div v-for="demoName in matchedDemos" :key="demoName" class="compare-row">
+    <div v-for="demoName in bothDemos" :key="demoName" class="compare-row">
       <h3 class="compare-demo-name">{{ demoName }}</h3>
       <div class="compare-panels">
         <div class="compare-panel panel-new">
           <div class="panel-label">New</div>
           <div class="panel-content">
-            <component :is="newDemos[demoName]" v-if="newDemos[demoName]" />
-            <div v-else class="panel-missing">Demo not found in new components</div>
+            <component :is="newDemos[demoName]" />
           </div>
         </div>
         <div class="compare-panel panel-old">
           <div class="panel-label">Old</div>
           <div class="panel-content">
             <ErrorBoundary>
-              <component :is="oldDemos[demoName]" v-if="oldDemos[demoName]" />
-              <div v-else class="panel-missing">Demo not found in old components</div>
+              <component :is="oldDemos[demoName]" />
             </ErrorBoundary>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-if="matchedDemos.length === 0" class="compare-empty">
+    <template v-if="showUnmatched && newOnlyDemos.length">
+      <h2 class="compare-section-title">New only</h2>
+      <div v-for="demoName in newOnlyDemos" :key="'new-' + demoName" class="compare-row">
+        <h3 class="compare-demo-name">{{ demoName }}</h3>
+        <div class="compare-panels">
+          <div class="compare-panel panel-new">
+            <div class="panel-label">New</div>
+            <div class="panel-content">
+              <component :is="newDemos[demoName]" />
+            </div>
+          </div>
+          <div class="compare-panel panel-placeholder">
+            <div class="panel-label">Old</div>
+            <div class="panel-content">
+              <div class="panel-missing">No matching demo in old</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template v-if="showUnmatched && oldOnlyDemos.length">
+      <h2 class="compare-section-title">Old only</h2>
+      <div v-for="demoName in oldOnlyDemos" :key="'old-' + demoName" class="compare-row">
+        <h3 class="compare-demo-name">{{ demoName }}</h3>
+        <div class="compare-panels">
+          <div class="compare-panel panel-placeholder">
+            <div class="panel-label">New</div>
+            <div class="panel-content">
+              <div class="panel-missing">No matching demo in new</div>
+            </div>
+          </div>
+          <div class="compare-panel panel-old">
+            <div class="panel-label">Old</div>
+            <div class="panel-content">
+              <ErrorBoundary>
+                <component :is="oldDemos[demoName]" />
+              </ErrorBoundary>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div v-if="bothDemos.length === 0 && !showUnmatched" class="compare-empty">
       No matching demos found for {{ componentName }}
     </div>
   </div>
@@ -60,6 +108,7 @@ const ErrorBoundary = defineComponent({
 
 const route = useRoute()
 const componentName = computed(() => route.params.component as string)
+const showUnmatched = ref(false)
 
 const newGroup = computed(() => findComponent(componentName.value))
 const oldGroup = computed(() => findOldComponent(componentName.value))
@@ -80,13 +129,23 @@ const oldDemos = computed(() => {
   return map
 })
 
-// Union of all demo names from both old and new, sorted
-const matchedDemos = computed(() => {
-  const names = new Set<string>()
-  for (const d of newGroup.value?.demos ?? []) names.add(d.name)
-  for (const d of oldGroup.value?.demos ?? []) names.add(d.name)
-  return [...names].sort()
-})
+const newNames = computed(() => new Set(Object.keys(newDemos.value)))
+const oldNames = computed(() => new Set(Object.keys(oldDemos.value)))
+
+// Demos present in both old and new
+const bothDemos = computed(() =>
+  [...newNames.value].filter(n => oldNames.value.has(n)).sort(),
+)
+
+// Demos only in new
+const newOnlyDemos = computed(() =>
+  [...newNames.value].filter(n => !oldNames.value.has(n)).sort(),
+)
+
+// Demos only in old
+const oldOnlyDemos = computed(() =>
+  [...oldNames.value].filter(n => !newNames.value.has(n)).sort(),
+)
 </script>
 
 <style>
@@ -195,6 +254,45 @@ const matchedDemos = computed(() => {
   background: #fff1f0;
   padding: 8px 12px;
   border-radius: 4px;
+}
+
+.compare-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.compare-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  user-select: none;
+}
+
+.compare-toggle input {
+  cursor: pointer;
+}
+
+.compare-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #999;
+  margin: 32px 0 16px;
+  padding-top: 16px;
+  border-top: 1px dashed #e8e8e8;
+}
+
+.panel-placeholder {
+  border-color: #e8e8e8;
+  background: #fafafa;
+}
+
+.panel-placeholder .panel-label {
+  background: #f5f5f5;
+  color: #bbb;
 }
 
 .compare-empty {

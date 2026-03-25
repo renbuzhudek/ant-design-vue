@@ -1,16 +1,19 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref(30)
-const disabled = ref(false)
-</script>
-
 <template>
-  <div style="max-width: 400px;">
-    <a-slider v-model:value="value" />
-    <a-slider v-model:value="value" :disabled="disabled" />
-    <div style="margin-top: 16px;">
-      Disabled: <input v-model="disabled" type="checkbox" />
-    </div>
+  <div>
+    <a-slider id="test" v-model:value="value1" :disabled="disabled" />
+    <a-slider v-model:value="value2" range :disabled="disabled" />
+    Disabled:
+    <a-switch v-model:checked="disabled" size="small" />
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value1 = ref<number>(0);
+const value2 = ref<[number, number]>([20, 50]);
+const disabled = ref<boolean>(false);
+</script>
+<style scoped>
+.code-box-demo .ant-slider {
+  margin-bottom: 16px;
+}
+</style>

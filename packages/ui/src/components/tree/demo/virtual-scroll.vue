@@ -1,29 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { TreeDataNode, Key } from '../types'
-
-function generateData(path = '0', level = 3): TreeDataNode[] {
-  const list: TreeDataNode[] = []
-  for (let i = 0; i < 10; i++) {
-    const key = `${path}-${i}`
-    const node: TreeDataNode = {
-      title: key,
-      key,
-    }
-    if (level > 0) {
-      node.children = generateData(key, level - 1)
-    }
-    list.push(node)
-  }
-  return list
-}
-
-const treeData = generateData()
-
-const selectedKeys = ref<Key[]>([])
-const checkedKeys = ref<Key[]>([])
-</script>
-
 <template>
   <a-tree
     v-model:selected-keys="selectedKeys"
@@ -31,11 +5,42 @@ const checkedKeys = ref<Key[]>([])
     default-expand-all
     checkable
     :height="233"
-    :tree-data="treeData"
+    :tree-data="dig()"
   >
     <template #title="{ title, key }">
-      <span v-if="key === '0-0-1-0'" style="color: #1677ff">{{ title }}</span>
+      <span v-if="key === '0-0-1-0'" style="color: #1890ff">{{ title }}</span>
       <template v-else>{{ title }}</template>
     </template>
   </a-tree>
 </template>
+<script lang="ts" setup>
+import type { TreeProps } from 'ant-design-vue';
+import { ref, watch } from 'vue';
+
+function dig(path = '0', level = 3) {
+  const list: TreeProps['treeData'] = [];
+  for (let i = 0; i < 10; i += 1) {
+    const key = `${path}-${i}`;
+    const treeNode: TreeProps['treeData'][number] = {
+      title: key,
+      key,
+    };
+
+    if (level > 0) {
+      treeNode.children = dig(key, level - 1);
+    }
+
+    list.push(treeNode);
+  }
+  return list;
+}
+
+const selectedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+const checkedKeys = ref<string[]>(['0-0-0', '0-0-1']);
+watch(selectedKeys, () => {
+  console.log('selectedKeys', selectedKeys);
+});
+watch(checkedKeys, () => {
+  console.log('checkedKeys', checkedKeys);
+});
+</script>

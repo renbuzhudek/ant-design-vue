@@ -1,21 +1,15 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Hover to Expand</h4>
-    <a-cascader
-      v-model:value="value"
-      :options="options"
-      expand-trigger="hover"
-      placeholder="Hover to expand"
-    />
-  </div>
+  <a-cascader
+    v-model:value="value"
+    :options="options"
+    expand-trigger="hover"
+    placeholder="Please select"
+  />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[]>([])
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -24,7 +18,10 @@ const options = [
         value: 'hangzhou',
         label: 'Hangzhou',
         children: [
-          { value: 'xihu', label: 'West Lake' },
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
         ],
       },
     ],
@@ -37,10 +34,15 @@ const options = [
         value: 'nanjing',
         label: 'Nanjing',
         children: [
-          { value: 'zhonghuamen', label: 'Zhong Hua Men' },
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
         ],
       },
     ],
   },
-]
+];
+
+const value = ref<string[]>([]);
 </script>

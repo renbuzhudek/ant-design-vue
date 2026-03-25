@@ -1,28 +1,25 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Non-case-sensitive AutoComplete</h4>
-    <a-auto-complete
-      v-model:value="value"
-      :options="options"
-      style="width: 200px"
-      placeholder="Try typing 'burns'"
-      :filter-option="filterOption"
-    />
-  </div>
+  <a-auto-complete
+    v-model:value="value"
+    :options="options"
+    style="width: 200px"
+    placeholder="input here"
+    :filter-option="filterOption"
+  />
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const filterOption = (input: string, option: { value: string }) => {
-  return option.value.toUpperCase().includes(input.toUpperCase())
+<script lang="ts" setup>
+import { ref } from 'vue';
+interface Option {
+  value: string;
 }
-
-const value = ref('')
-
-const options = [
+const filterOption = (input: string, option: Option) => {
+  return option.value.toUpperCase().indexOf(input.toUpperCase()) >= 0;
+};
+const value = ref('');
+const options = ref<Option[]>([
   { value: 'Burns Bay Road' },
   { value: 'Downing Street' },
   { value: 'Wall Street' },
-]
+]);
 </script>

@@ -1,37 +1,29 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Custom Display Render</h4>
-    <a-cascader
-      v-model:value="value"
-      :options="options"
-      placeholder="Please select"
-      style="width: 100%"
-    >
-      <template #displayRender="{ labels, selectedOptions }">
-        <span v-for="(label, index) in labels" :key="index">
-          <span v-if="index === labels.length - 1">
-            {{ label }} (
-            <a
-              style="color: #1677ff"
-              @click.stop="handleAreaClick(label, selectedOptions[index])"
-            >
-              {{ (selectedOptions[index] as any).code }}
-            </a>
-            )
-          </span>
-          <span v-else>{{ label }} / </span>
+  <a-cascader
+    v-model:value="value"
+    placeholder="Please select"
+    :options="options"
+    style="width: 100%"
+  >
+    <template #displayRender="{ labels, selectedOptions }">
+      <span v-for="(label, index) in labels" :key="selectedOptions[index].value">
+        <span v-if="index === labels.length - 1">
+          {{ label }} (
+          <a @click="e => handleAreaClick(e, label, selectedOptions[index])">
+            {{ selectedOptions[index].code }}
+          </a>
+          )
         </span>
-      </template>
-    </a-cascader>
-  </div>
+        <span v-else>{{ label }} /</span>
+      </span>
+    </template>
+  </a-cascader>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[]>(['zhejiang', 'hangzhou', 'xihu'])
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -40,7 +32,11 @@ const options = [
         value: 'hangzhou',
         label: 'Hangzhou',
         children: [
-          { value: 'xihu', label: 'West Lake', code: 752100 },
+          {
+            value: 'xihu',
+            label: 'West Lake',
+            code: 752100,
+          },
         ],
       },
     ],
@@ -53,14 +49,21 @@ const options = [
         value: 'nanjing',
         label: 'Nanjing',
         children: [
-          { value: 'zhonghuamen', label: 'Zhong Hua Men', code: 453400 },
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+            code: 453400,
+          },
         ],
       },
     ],
   },
-]
+];
 
-const handleAreaClick = (label: string, option: any) => {
-  console.log('clicked', label, option)
-}
+const handleAreaClick = (e: Event, label: string, option: CascaderProps['options'][number]) => {
+  e.stopPropagation();
+  console.log('clicked', label, option);
+};
+
+const value = ref<string[]>(['zhejiang', 'hangzhou', 'xihu']);
 </script>

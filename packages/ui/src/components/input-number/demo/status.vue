@@ -1,12 +1,16 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px">
+  <a-space direction="vertical" style="width: 100%">
     <a-input-number status="error" style="width: 100%" />
     <a-input-number status="warning" style="width: 100%" />
     <a-input-number status="error" style="width: 100%">
-      <template #prefix>$</template>
+      <template #prefix><ClockCircleOutlined /></template>
     </a-input-number>
     <a-input-number status="warning" style="width: 100%">
-      <template #prefix>$</template>
+      <template #prefix><ClockCircleOutlined /></template>
     </a-input-number>
-  </div>
+  </a-space>
 </template>
+
+<script lang="ts" setup>
+import { ClockCircleOutlined } from '@ant-design/icons-vue';
+</script>

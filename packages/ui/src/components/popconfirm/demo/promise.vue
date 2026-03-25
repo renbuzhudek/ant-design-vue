@@ -1,19 +1,19 @@
-<script setup lang="ts">
-function onConfirm() {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(true), 2000)
-  })
-}
-
-function onCancel() {
-  console.log('Clicked cancel')
-}
-</script>
-
 <template>
-  <div style="padding: 40px;">
-    <a-popconfirm title="Title" @confirm="onConfirm" @cancel="onCancel">
-      <a-button variant="solid">Open Popconfirm with Promise</a-button>
-    </a-popconfirm>
-  </div>
+  <a-popconfirm title="Title" @confirm="confirm" @cancel="cancel">
+    <a-button type="primary">Open Popconfirm with Promise</a-button>
+  </a-popconfirm>
 </template>
+<script lang="ts" setup>
+import { message } from 'ant-design-vue';
+const confirm = (e: MouseEvent) => {
+  console.log(e);
+  return new Promise(resolve => {
+    setTimeout(() => resolve(true), 3000);
+  });
+};
+
+const cancel = (e: MouseEvent) => {
+  console.log(e);
+  message.error('Click on No');
+};
+</script>

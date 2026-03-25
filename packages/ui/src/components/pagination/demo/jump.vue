@@ -1,29 +1,22 @@
 <template>
   <div>
-    <a-pagination
-      v-model:current="current1"
-      show-quick-jumper
-      :total="500"
-      @change="onChange"
-    />
+    <a-pagination v-model:current="current1" show-quick-jumper :total="500" @change="onChange" />
     <br />
     <a-pagination
       v-model:current="current2"
       show-quick-jumper
       :total="500"
       disabled
+      show-less-items
       @change="onChange"
     />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const current1 = ref(1)
-const current2 = ref(2)
-
-const onChange = (page: number) => {
-  console.log('Page:', page)
-}
+<script lang="ts" setup>
+import { ref } from 'vue';
+const current1 = ref<number>(1);
+const current2 = ref<number>(2);
+const onChange = (pageNumber: number) => {
+  console.log('Page: ', pageNumber);
+};
 </script>

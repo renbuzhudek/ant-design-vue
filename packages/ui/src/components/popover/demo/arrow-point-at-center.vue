@@ -1,18 +1,24 @@
 <template>
-  <div style="display: flex; gap: 16px; padding: 40px;">
-    <a-popover placement="topLeft" title="Title">
+  <a-space>
+    <a-popover placement="topLeft">
       <template #content>
-        <p style="margin: 0;">Content</p>
-        <p style="margin: 0;">Content</p>
+        <p>Content</p>
+        <p>Content</p>
       </template>
-      <a-button>Align edge</a-button>
+      <template #title>
+        <span>Title</span>
+      </template>
+      <a-button>Align edge / 边缘对齐</a-button>
     </a-popover>
-    <a-popover placement="topLeft" :arrow="{ pointAtCenter: true }" title="Title">
+    <a-popover placement="topLeft" arrow-point-at-center>
       <template #content>
-        <p style="margin: 0;">Content</p>
-        <p style="margin: 0;">Content</p>
+        <p>Content</p>
+        <p>Content</p>
       </template>
-      <a-button>Arrow points to center</a-button>
+      <template #title>
+        <span>Title</span>
+      </template>
+      <a-button>Arrow points to center / 箭头指向中心</a-button>
     </a-popover>
-  </div>
+  </a-space>
 </template>

@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <a-alert v-if="selectedDate" style="margin-bottom: 16px">
-      <template #message>
-        Selected: {{ selectedDate.format('YYYY-MM-DD') }}
-      </template>
-    </a-alert>
-    <div style="max-width: 300px">
-      <a-calendar v-model:value="selectedDate" :fullscreen="false" />
-    </div>
-  </div>
+  <a-alert :message="`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`" />
+  <a-calendar :value="date" @select="onSelect" @panelChange="onPanelChange" />
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+const date = ref(dayjs('2017-01-25'));
+const selectedValue = ref(dayjs('2017-01-25'));
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import dayjs from 'dayjs'
-import type { Dayjs } from 'dayjs'
-
-const selectedDate = ref<Dayjs>(dayjs())
+const onSelect = (value: Dayjs) => {
+  date.value = value;
+  selectedValue.value = value;
+};
+const onPanelChange = (value: Dayjs) => {
+  date.value = value;
+};
 </script>

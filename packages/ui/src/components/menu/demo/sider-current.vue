@@ -1,48 +1,68 @@
 <template>
-  <div style="width: 256px;">
+  <div>
     <a-menu
-      v-model:selected-keys="selectedKeys"
+      v-model:selected-keys="state.selectedKeys"
+      style="width: 256px"
       mode="inline"
-      :open-keys="openKeys"
+      :open-keys="state.openKeys"
+      :items="items"
       @openChange="onOpenChange"
-    >
-      <a-sub-menu menu-key="sub1" title="Navigation One">
-        <a-menu-item item-key="1">Option 1</a-menu-item>
-        <a-menu-item item-key="2">Option 2</a-menu-item>
-        <a-menu-item item-key="3">Option 3</a-menu-item>
-        <a-menu-item item-key="4">Option 4</a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu menu-key="sub2" title="Navigation Two">
-        <a-menu-item item-key="5">Option 5</a-menu-item>
-        <a-menu-item item-key="6">Option 6</a-menu-item>
-        <a-sub-menu menu-key="sub3" title="Submenu">
-          <a-menu-item item-key="7">Option 7</a-menu-item>
-          <a-menu-item item-key="8">Option 8</a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-      <a-sub-menu menu-key="sub4" title="Navigation Three">
-        <a-menu-item item-key="9">Option 9</a-menu-item>
-        <a-menu-item item-key="10">Option 10</a-menu-item>
-        <a-menu-item item-key="11">Option 11</a-menu-item>
-        <a-menu-item item-key="12">Option 12</a-menu-item>
-      </a-sub-menu>
-    </a-menu>
+    ></a-menu>
   </div>
 </template>
+<script lang="ts" setup>
+import type { VueElement} from 'vue';
+import { h, reactive } from 'vue';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons-vue';
+import type { ItemType } from 'ant-design-vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const rootSubmenuKeys = ['sub1', 'sub2', 'sub4']
-const selectedKeys = ref<string[]>([])
-const openKeys = ref<string[]>(['sub1'])
-
-function onOpenChange(keys: string[]) {
-  const latestOpenKey = keys.find(key => !openKeys.value.includes(key))
-  if (latestOpenKey && !rootSubmenuKeys.includes(latestOpenKey)) {
-    openKeys.value = keys
-  } else {
-    openKeys.value = latestOpenKey ? [latestOpenKey] : []
-  }
+function getItem(
+  label: VueElement | string,
+  key: string,
+  icon?: any,
+  children?: ItemType[],
+  type?: 'group',
+): ItemType {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as ItemType;
 }
+
+const items: ItemType[] = reactive([
+  getItem('Navigation One', 'sub1', () => h(MailOutlined), [
+    getItem('Option 1', '1'),
+    getItem('Option 2', '2'),
+    getItem('Option 3', '3'),
+    getItem('Option 4', '4'),
+  ]),
+  getItem('Navigation Two', 'sub2', () => h(AppstoreOutlined), [
+    getItem('Option 5', '5'),
+    getItem('Option 6', '6'),
+    getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
+  ]),
+  getItem('Navigation Three', 'sub4', () => h(SettingOutlined), [
+    getItem('Option 9', '9'),
+    getItem('Option 10', '10'),
+    getItem('Option 11', '11'),
+    getItem('Option 12', '12'),
+  ]),
+]);
+
+const state = reactive({
+  rootSubmenuKeys: ['sub1', 'sub2', 'sub4'],
+  openKeys: ['sub1'],
+  selectedKeys: [],
+});
+const onOpenChange = (openKeys: string[]) => {
+  const latestOpenKey = openKeys.find(key => state.openKeys.indexOf(key) === -1);
+  if (state.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+    state.openKeys = openKeys;
+  } else {
+    state.openKeys = latestOpenKey ? [latestOpenKey] : [];
+  }
+};
 </script>

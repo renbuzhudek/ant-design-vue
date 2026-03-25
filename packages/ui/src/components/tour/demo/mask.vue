@@ -1,72 +1,67 @@
 <template>
-  <div style="padding: 40px;">
-    <a-space>
-      <a-button ref="btn1Ref" variant="solid" @click="openMask = true">
-        With Mask
-      </a-button>
-      <a-button ref="btn2Ref" @click="openNoMask = true">
-        Without Mask
-      </a-button>
-      <a-button ref="btn3Ref" variant="dashed" @click="openCustom = true">
-        Custom Mask Color
-      </a-button>
-    </a-space>
+  <a-button type="primary" @click="handleOpen(true)">Begin Tour</a-button>
 
-    <!-- Tour with mask (default) -->
-    <a-tour
-      v-model:open="openMask"
-      :steps="stepsWithMask"
-    />
+  <a-divider />
 
-    <!-- Tour without mask -->
-    <a-tour
-      v-model:open="openNoMask"
-      :mask="false"
-      :steps="stepsNoMask"
-    />
+  <a-space>
+    <a-button ref="ref1">Upload</a-button>
+    <a-button ref="ref2" type="primary">Save</a-button>
+    <a-button ref="ref3"><EllipsisOutlined /></a-button>
+  </a-space>
 
-    <!-- Tour with custom mask color -->
-    <a-tour
-      v-model:open="openCustom"
-      :mask="{ color: 'rgba(0, 100, 200, 0.4)' }"
-      :steps="stepsCustomMask"
-    />
-  </div>
+  <a-tour
+    :open="open"
+    :steps="steps"
+    :mask="{
+      style: {
+        boxShadow: 'inset 0 0 15px #333',
+      },
+      color: 'rgba(80, 255, 255, .4)',
+    }"
+    @close="handleOpen(false)"
+  />
 </template>
 
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-import type { TourStepInfo } from '../types'
+<script lang="ts" setup>
+import { ref, createVNode } from 'vue';
+import { EllipsisOutlined } from '@ant-design/icons-vue';
+import type { TourProps } from 'ant-design-vue';
+const open = ref<boolean>(false);
 
-const openMask = ref(false)
-const openNoMask = ref(false)
-const openCustom = ref(false)
+const ref1 = ref(null);
+const ref2 = ref(null);
+const ref3 = ref(null);
 
-const btn1Ref = ref<{ $el: HTMLElement } | null>(null)
-const btn2Ref = ref<{ $el: HTMLElement } | null>(null)
-const btn3Ref = ref<{ $el: HTMLElement } | null>(null)
-
-const stepsWithMask = computed<TourStepInfo[]>(() => [
+const steps: TourProps['steps'] = [
   {
-    title: 'With Mask',
-    description: 'The default mask is shown around the target.',
-    target: () => btn1Ref.value?.$el ?? null,
+    title: 'Upload File',
+    description: 'Put your files here.',
+    cover: createVNode('img', {
+      alt: 'tour.png',
+      src: 'https://user-images.githubusercontent.com/5378891/197385811-55df8480-7ff4-44bd-9d43-a7dade598d70.png',
+    }),
+    target: () => ref1.value && ref1.value.$el,
   },
-])
-
-const stepsNoMask = computed<TourStepInfo[]>(() => [
   {
-    title: 'Without Mask',
-    description: 'No mask is displayed.',
-    target: () => btn2Ref.value?.$el ?? null,
+    title: 'Save',
+    description: 'Save your changes.',
+    target: () => ref2.value && ref2.value.$el,
+    mask: {
+      style: {
+        boxShadow: 'inset 0 0 15px #fff',
+      },
+      color: 'rgba(40, 0, 255, .4)',
+    },
   },
-])
-
-const stepsCustomMask = computed<TourStepInfo[]>(() => [
   {
-    title: 'Custom Mask',
-    description: 'The mask color is customized to a blue tint.',
-    target: () => btn3Ref.value?.$el ?? null,
+    title: 'Other Actions',
+    description: 'Click to see other actions.',
+    target: () => ref3.value && ref3.value.$el,
+    mask: false,
   },
-])
+];
+
+const handleOpen = (val: boolean): void => {
+  open.value = val;
+};
 </script>

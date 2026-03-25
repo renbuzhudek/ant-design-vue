@@ -1,31 +1,28 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Basic Mentions</h4>
-    <a-mentions
-      v-model:value="value"
-      placeholder="Type @ to mention someone"
-      :options="options"
-    />
-
-    <h4>Custom Prefix</h4>
-    <a-mentions
-      v-model:value="value2"
-      :prefix="['@', '#']"
-      placeholder="Type @ or # to trigger"
-      :options="options"
-    />
-  </div>
+  <a-mentions v-model:value="value" autofocus :options="options" @select="onSelect"></a-mentions>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref('')
-const value2 = ref('')
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+const value = ref<string>('@afc163');
+watch(value, () => {
+  console.log('value', value);
+});
+const onSelect = (option: { value: string }) => {
+  console.log('select', option);
+};
 
 const options = [
-  { value: 'afc163', label: 'afc163' },
-  { value: 'zombieJ', label: 'zombieJ' },
-  { value: 'yesmeck', label: 'yesmeck' },
-]
+  {
+    value: 'afc163',
+    label: 'afc163',
+  },
+  {
+    value: 'zombieJ',
+    label: 'zombieJ',
+  },
+  {
+    value: 'yesmeck',
+    label: 'yesmeck',
+  },
+];
 </script>

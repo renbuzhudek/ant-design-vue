@@ -1,56 +1,77 @@
 <template>
   <div>
-    <div style="margin-bottom: 16px;">
-      <a-switch :checked="mode === 'vertical'" @change="changeMode" />
-      <span style="margin-left: 8px;">Change Mode</span>
-      <span style="display: inline-block; width: 1px; height: 14px; background: #d9d9d9; margin: 0 16px; vertical-align: middle;" />
-      <a-switch :checked="theme === 'dark'" @change="changeTheme" />
-      <span style="margin-left: 8px;">Change Theme</span>
-    </div>
-    <div style="width: 256px;">
-      <a-menu
-        v-model:selected-keys="selectedKeys"
-        v-model:open-keys="openKeys"
-        :mode="mode"
-        :theme="theme"
-      >
-        <a-menu-item item-key="1">Navigation One</a-menu-item>
-        <a-menu-item item-key="2">Navigation Two</a-menu-item>
-        <a-sub-menu menu-key="sub1" title="Navigation Three">
-          <a-menu-item item-key="3">Option 3</a-menu-item>
-          <a-menu-item item-key="4">Option 4</a-menu-item>
-          <a-sub-menu menu-key="sub1-2" title="Submenu">
-            <a-menu-item item-key="5">Option 5</a-menu-item>
-            <a-menu-item item-key="6">Option 6</a-menu-item>
-          </a-sub-menu>
-        </a-sub-menu>
-        <a-sub-menu menu-key="sub2" title="Navigation Four">
-          <a-menu-item item-key="7">Option 7</a-menu-item>
-          <a-menu-item item-key="8">Option 8</a-menu-item>
-          <a-menu-item item-key="9">Option 9</a-menu-item>
-          <a-menu-item item-key="10">Option 10</a-menu-item>
-        </a-sub-menu>
-      </a-menu>
-    </div>
+    <a-switch :checked="state.mode === 'vertical'" @change="changeMode" />
+    Change Mode
+    <span class="ant-divider" style="margin: 0 1em" />
+    <a-switch :checked="state.theme === 'dark'" @change="changeTheme" />
+    Change Theme
+    <br />
+    <br />
+    <a-menu
+      v-model:open-keys="state.openKeys"
+      v-model:selected-keys="state.selectedKeys"
+      style="width: 256px"
+      :mode="state.mode"
+      :items="items"
+      :theme="state.theme"
+    ></a-menu>
   </div>
 </template>
+<script lang="ts" setup>
+import { h, reactive } from 'vue';
+import {
+  MailOutlined,
+  CalendarOutlined,
+  AppstoreOutlined,
+  SettingOutlined,
+} from '@ant-design/icons-vue';
+import type { MenuMode, MenuTheme } from 'ant-design-vue';
+import type { ItemType } from 'ant-design-vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const state = reactive({
+  mode: 'inline' as MenuMode,
+  theme: 'light' as MenuTheme,
+  selectedKeys: ['1'],
+  openKeys: ['sub1'],
+});
 
-type MenuMode = 'inline' | 'vertical'
-type MenuTheme = 'light' | 'dark'
-
-const mode = ref<MenuMode>('inline')
-const theme = ref<MenuTheme>('light')
-const selectedKeys = ref(['1'])
-const openKeys = ref(['sub1'])
-
-function changeMode(checked: boolean) {
-  mode.value = checked ? 'vertical' : 'inline'
+function getItem(
+  label: string,
+  key: string,
+  icon?: any,
+  children?: ItemType[],
+  type?: 'group',
+): ItemType {
+  return {
+    key,
+    icon,
+    children,
+    label,
+    type,
+  } as ItemType;
 }
 
-function changeTheme(checked: boolean) {
-  theme.value = checked ? 'dark' : 'light'
-}
+const items: ItemType[] = reactive([
+  getItem('Navigation One', '1', h(MailOutlined)),
+  getItem('Navigation Two', '2', h(CalendarOutlined)),
+  getItem('Navigation Two', 'sub1', h(AppstoreOutlined), [
+    getItem('Option 3', '3'),
+    getItem('Option 4', '4'),
+    getItem('Submenu', 'sub1-2', null, [getItem('Option 5', '5'), getItem('Option 6', '6')]),
+  ]),
+  getItem('Navigation Three', 'sub2', h(SettingOutlined), [
+    getItem('Option 7', '7'),
+    getItem('Option 8', '8'),
+    getItem('Option 9', '9'),
+    getItem('Option 10', '10'),
+  ]),
+]);
+
+const changeMode = (checked: boolean) => {
+  state.mode = checked ? 'vertical' : 'inline';
+};
+
+const changeTheme = (checked: boolean) => {
+  state.theme = checked ? 'dark' : 'light';
+};
 </script>

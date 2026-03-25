@@ -1,9 +1,9 @@
 <template>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px">
-    <a-button variant="solid" danger>Solid Danger</a-button>
-    <a-button variant="outlined" danger>Outlined Danger</a-button>
-    <a-button variant="dashed" danger>Dashed Danger</a-button>
-    <a-button variant="text" danger>Text Danger</a-button>
-    <a-button variant="link" danger>Link Danger</a-button>
-  </div>
+  <a-space warp>
+    <a-button type="primary" danger>Primary</a-button>
+    <a-button danger>Default</a-button>
+    <a-button type="dashed" danger>Dashed</a-button>
+    <a-button type="text" danger>Text</a-button>
+    <a-button type="link" danger>Link</a-button>
+  </a-space>
 </template>

@@ -1,30 +1,30 @@
 <template>
-  <a-space>
-    <a-button variant="solid" @click="showDefault">Default Size</a-button>
-    <a-button variant="solid" @click="showLarge">Large Size</a-button>
-  </a-space>
-  <a-drawer
-    v-model:open="open"
-    title="Drawer"
-    :size="size"
-  >
+  <a-button type="primary" style="margin-right: 8px" @click="showDrawer('default')">
+    Open Default Size (378px)
+  </a-button>
+  <a-button type="primary" @click="showDrawer('large')">Open Large Size (736px)</a-button>
+  <a-drawer title="Basic Drawer" :size="size" :open="open" @close="onClose">
+    <template #extra>
+      <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
+      <a-button type="primary" @click="onClose">Submit</a-button>
+    </template>
+    <p>Some contents...</p>
     <p>Some contents...</p>
     <p>Some contents...</p>
   </a-drawer>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { DrawerProps } from 'ant-design-vue';
+const open = ref<boolean>(false);
+const size = ref<DrawerProps['size']>('default');
 
-<script setup lang="ts">
-import { ref } from 'vue'
-const open = ref(false)
-const size = ref<'default' | 'large'>('default')
+const showDrawer = (val: DrawerProps['size']) => {
+  size.value = val;
+  open.value = true;
+};
 
-function showDefault() {
-  size.value = 'default'
-  open.value = true
-}
-
-function showLarge() {
-  size.value = 'large'
-  open.value = true
-}
+const onClose = () => {
+  open.value = false;
+};
 </script>

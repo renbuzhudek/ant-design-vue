@@ -1,36 +1,38 @@
 <template>
-  <div>
-    <a-button variant="solid" @click="open = true">Open</a-button>
-    <a-drawer
-      v-model:open="open"
-      title="Multi-level drawer"
-      :width="520"
-      :closable="false"
-    >
-      <a-button variant="solid" @click="childOpen = true">Two-level drawer</a-button>
-
-      <a-drawer
-        v-model:open="childOpen"
-        title="Two-level Drawer"
-        :width="320"
-        :closable="false"
-      >
-        <p>This is a two-level drawer.</p>
-      </a-drawer>
-
-      <template #footer>
-        <div style="text-align: right;">
-          <a-button style="margin-right: 8px;" @click="open = false">Cancel</a-button>
-          <a-button variant="solid" @click="open = false">Submit</a-button>
-        </div>
-      </template>
+  <a-button type="primary" @click="showDrawer">Open</a-button>
+  <a-drawer
+    v-model:open="open"
+    title="Multi-level drawer"
+    width="520"
+    :closable="false"
+    :footer-style="{ textAlign: 'right' }"
+    @close="onClose"
+  >
+    <a-button type="primary" @click="showChildrenDrawer">Two-level drawer</a-button>
+    <a-drawer v-model:open="childrenDrawer" title="Two-level Drawer" width="320" :closable="false">
+      <a-button type="primary" @click="showChildrenDrawer">This is two-level drawer</a-button>
     </a-drawer>
-  </div>
+
+    <template #footer>
+      <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
+      <a-button type="primary" @click="onClose">Submit</a-button>
+    </template>
+  </a-drawer>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const open = ref<boolean>(false);
 
-const open = ref(false)
-const childOpen = ref(false)
+const childrenDrawer = ref<boolean>(false);
+
+const showDrawer = () => {
+  open.value = true;
+};
+const onClose = () => {
+  open.value = false;
+};
+const showChildrenDrawer = () => {
+  childrenDrawer.value = true;
+};
 </script>

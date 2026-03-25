@@ -1,29 +1,42 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; padding: 40px;">
-    <h4 style="margin: 0;">Preset colors</h4>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <a-tooltip v-for="c in presetColors" :key="c" :title="`${c} prompt text`" :color="c">
-        <a-button>{{ c }}</a-button>
+  <div id="components-a-tooltip-demo-color">
+    <a-divider orientation="left">Presets</a-divider>
+    <div>
+      <a-tooltip v-for="color in colors" :key="color" title="prompt text" :color="color">
+        <a-button>{{ color }}</a-button>
       </a-tooltip>
     </div>
-    <h4 style="margin: 0;">Custom color</h4>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <a-tooltip title="Custom color #f50" color="#f50">
-        <a-button>#f50</a-button>
-      </a-tooltip>
-      <a-tooltip title="Custom color #2db7f5" color="#2db7f5">
-        <a-button>#2db7f5</a-button>
-      </a-tooltip>
-      <a-tooltip title="Custom color #87d068" color="#87d068">
-        <a-button>#87d068</a-button>
+    <a-divider orientation="left">Custom</a-divider>
+    <div>
+      <a-tooltip v-for="color in customColors" :key="color" title="prompt text" :color="color">
+        <a-button>{{ color }}</a-button>
       </a-tooltip>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-const presetColors = [
-  'pink', 'red', 'yellow', 'orange', 'cyan', 'green',
-  'blue', 'purple', 'geekblue', 'magenta', 'volcano', 'gold', 'lime',
-]
+<script lang="ts" setup>
+const colors = [
+  'pink',
+  'red',
+  'yellow',
+  'orange',
+  'cyan',
+  'green',
+  'blue',
+  'purple',
+  'geekblue',
+  'magenta',
+  'volcano',
+  'gold',
+  'lime',
+];
+const customColors = ['#f50', '#2db7f5', '#87d068', '#108ee9'];
 </script>
+
+<style scoped>
+:deep(#components-a-tooltip-demo-color) .ant-btn {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+</style>

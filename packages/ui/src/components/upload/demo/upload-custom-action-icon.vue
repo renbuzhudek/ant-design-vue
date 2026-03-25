@@ -1,13 +1,29 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { UploadFile, UploadChangeParam } from '../types'
+<template>
+  <a-upload
+    v-model:file-list="fileList"
+    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+    :show-upload-list="{ showDownloadIcon: true, showRemoveIcon: true }"
+    @change="handleChange"
+  >
+    <a-button>
+      <upload-outlined></upload-outlined>
+      Upload
+    </a-button>
+    <template #downloadIcon>download</template>
+    <template #removeIcon><StarOutlined @click="handleClick"></StarOutlined></template>
+  </a-upload>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { UploadOutlined, StarOutlined } from '@ant-design/icons-vue';
+import type { UploadChangeParam, UploadProps } from 'ant-design-vue';
 
-const fileList = ref<UploadFile[]>([
+const fileList = ref<UploadProps['fileList']>([
   {
     uid: '1',
     name: 'xxx.png',
     status: 'done',
-    response: 'Server Error 500',
+    response: 'Server Error 500', // custom error message to show
     url: 'http://www.baidu.com/xxx.png',
   },
   {
@@ -20,29 +36,17 @@ const fileList = ref<UploadFile[]>([
     uid: '3',
     name: 'zzz.png',
     status: 'error',
-    response: 'Server Error 500',
+    response: 'Server Error 500', // custom error message to show
     url: 'http://www.baidu.com/zzz.png',
   },
-])
+]);
 
-function handleChange(info: UploadChangeParam) {
-  if (info.file.status !== 'uploading') {
-    console.log(info.file, info.fileList)
+const handleChange = ({ file, fileList }: UploadChangeParam) => {
+  if (file.status !== 'uploading') {
+    console.log(file, fileList);
   }
+};
+function handleClick(e: MouseEvent) {
+  console.log(e, 'custom removeIcon event');
 }
 </script>
-
-<template>
-  <a-upload
-    v-model:file-list="fileList"
-    action="https://httpbin.org/post"
-    :show-upload-list="{ showDownloadIcon: true, showRemoveIcon: true }"
-    @change="handleChange"
-  >
-    <a-button>Upload</a-button>
-    <template #downloadIcon>download</template>
-    <template #removeIcon>
-      <span style="color: red; cursor: pointer">x</span>
-    </template>
-  </a-upload>
-</template>

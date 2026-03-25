@@ -1,48 +1,55 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px">
-    <h4>Error Status</h4>
+  <a-space direction="vertical" style="width: 100%">
     <a-auto-complete
       v-model:value="value"
       :options="options"
       style="width: 200px"
-      placeholder="Error status"
+      placeholder="input here"
       status="error"
+      @select="onSelect"
       @search="onSearch"
     />
-
-    <h4>Warning Status with Allow Clear</h4>
     <a-auto-complete
-      v-model:value="value2"
-      :options="options2"
+      v-model:value="value1"
+      :options="options"
       style="width: 200px"
-      placeholder="Warning status"
+      placeholder="input here"
       status="warning"
       allow-clear
-      @search="onSearch2"
+      @select="onSelect"
+      @search="onSearch"
+      @clear="onClear"
     />
-  </div>
+  </a-space>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
 
-const mockVal = (str: string, repeat = 1) => ({
-  value: str.repeat(repeat),
-})
-
-const value = ref('')
-const options = ref<{ value: string }[]>([])
+interface MockVal {
+  value: string;
+}
+const mockVal = (str: string, repeat = 1): MockVal => {
+  return {
+    value: str.repeat(repeat),
+  };
+};
+const value = ref('');
+const value1 = ref('');
+const options = ref<MockVal[]>([]);
 const onSearch = (searchText: string) => {
+  console.log('searchText');
   options.value = !searchText
     ? []
-    : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
-}
-
-const value2 = ref('')
-const options2 = ref<{ value: string }[]>([])
-const onSearch2 = (searchText: string) => {
-  options2.value = !searchText
-    ? []
-    : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)]
-}
+    : [mockVal(searchText), mockVal(searchText, 2), mockVal(searchText, 3)];
+};
+const onSelect = (value: string) => {
+  console.log('onSelect', value);
+};
+const onClear = () => {
+  console.log('onClear');
+};
+watch(value, () => {
+  console.log('value', value.value);
+});
 </script>

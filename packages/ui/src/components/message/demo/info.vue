@@ -1,11 +1,9 @@
 <template>
-  <a-button variant="solid" @click="info">Display normal message</a-button>
+  <a-button type="primary" @click="info">Display normal message</a-button>
 </template>
-
-<script setup lang="ts">
-import { message } from '@ant-design-vue/ui'
-
-function info() {
-  message.info('This is a normal message')
-}
+<script lang="ts" setup>
+import { message } from 'ant-design-vue';
+const info = () => {
+  message.info('This is a normal message');
+};
 </script>

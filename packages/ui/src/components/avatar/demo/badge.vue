@@ -1,6 +1,18 @@
 <template>
-  <div style="display: flex; gap: 24px;">
-    <a-badge :count="1"><a-avatar shape="square" src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" /></a-badge>
-    <a-badge dot><a-avatar shape="square" src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" /></a-badge>
-  </div>
+  <a-space :size="24">
+    <a-badge :count="1">
+      <a-avatar shape="square">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-badge>
+    <a-badge dot>
+      <a-avatar shape="square">
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </a-badge>
+  </a-space>
 </template>
+
+<script lang="ts" setup>
+import { UserOutlined } from '@ant-design/icons-vue';
+</script>

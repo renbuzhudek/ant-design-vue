@@ -1,6 +1,8 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px">
-    <a-date-picker status="error" placeholder="Error" />
-    <a-date-picker status="warning" placeholder="Warning" />
-  </div>
+  <a-space direction="vertical" style="width: 100%">
+    <a-date-picker status="error" />
+    <a-date-picker status="warning" />
+    <a-range-picker status="error" />
+    <a-range-picker status="warning" />
+  </a-space>
 </template>

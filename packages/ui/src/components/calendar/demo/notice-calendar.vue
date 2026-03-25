@@ -1,7 +1,7 @@
 <template>
   <a-calendar v-model:value="value">
     <template #dateCellRender="{ current }">
-      <ul v-if="getListData(current).length" class="events">
+      <ul class="events">
         <li v-for="item in getListData(current)" :key="item.content">
           <a-badge :status="item.type" :text="item.content" />
         </li>
@@ -15,62 +15,66 @@
     </template>
   </a-calendar>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { Dayjs } from 'dayjs';
+const value = ref<Dayjs>();
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import dayjs from 'dayjs'
-import type { Dayjs } from 'dayjs'
-import type { PresetStatusColor } from '../../badge/types'
-
-const value = ref<Dayjs>(dayjs())
-
-function getListData(date: Dayjs): { type: PresetStatusColor; content: string }[] {
-  switch (date.date()) {
+const getListData = (value: Dayjs) => {
+  let listData;
+  switch (value.date()) {
     case 8:
-      return [
+      listData = [
         { type: 'warning', content: 'This is warning event.' },
         { type: 'success', content: 'This is usual event.' },
-      ]
+      ];
+      break;
     case 10:
-      return [
+      listData = [
         { type: 'warning', content: 'This is warning event.' },
         { type: 'success', content: 'This is usual event.' },
         { type: 'error', content: 'This is error event.' },
-      ]
+      ];
+      break;
     case 15:
-      return [
-        { type: 'warning', content: 'This is warning event.' },
-        { type: 'success', content: 'This is very long usual event.' },
+      listData = [
+        { type: 'warning', content: 'This is warning event' },
+        { type: 'success', content: 'This is very long usual event。。....' },
         { type: 'error', content: 'This is error event 1.' },
         { type: 'error', content: 'This is error event 2.' },
-      ]
+        { type: 'error', content: 'This is error event 3.' },
+        { type: 'error', content: 'This is error event 4.' },
+      ];
+      break;
     default:
-      return []
   }
-}
+  return listData || [];
+};
 
-function getMonthData(date: Dayjs) {
-  if (date.month() === 8) {
-    return 1394
+const getMonthData = (value: Dayjs) => {
+  if (value.month() === 8) {
+    return 1394;
   }
-  return null
-}
+};
 </script>
-
 <style scoped>
 .events {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
+.events .ant-badge-status {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
 .notes-month {
   text-align: center;
   font-size: 28px;
 }
-
-.notes-month span {
-  font-size: 14px;
-  color: #999;
+.notes-month section {
+  font-size: 28px;
 }
 </style>

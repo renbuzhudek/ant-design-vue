@@ -1,8 +1,8 @@
 <template>
-  <a-popover>
+  <a-popover :overlay-inner-style="{ padding: 0 }">
     <template #content>
-      <a-q-r-code value="https://ant-design-vue.com" :bordered="false" />
+      <a-qrcode value="http://www.antdv.com" :bordered="false" />
     </template>
-    <a-button>Hover to see QR Code</a-button>
+    <img width="100" height="100" src="https://aliyuncdn.antdv.com/logo.png" />
   </a-popover>
 </template>

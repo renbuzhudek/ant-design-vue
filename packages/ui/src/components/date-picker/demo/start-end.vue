@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px">
+  <a-space direction="vertical">
     <a-date-picker
       v-model:value="startValue"
       :disabled-date="disabledStartDate"
@@ -17,38 +17,46 @@
       :open="endOpen"
       @openChange="handleEndOpenChange"
     />
-  </div>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import type { Dayjs } from 'dayjs';
+import { ref, watch } from 'vue';
+const startValue = ref<Dayjs>();
+const endValue = ref<Dayjs>();
+const endOpen = ref<boolean>(false);
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { Dayjs } from 'dayjs'
-
-const startValue = ref<Dayjs | null>(null)
-const endValue = ref<Dayjs | null>(null)
-const endOpen = ref(false)
-
-function disabledStartDate(current: Dayjs): boolean {
-  if (!current || !endValue.value) {
-    return false
+const disabledStartDate = (startValue: Dayjs) => {
+  if (!startValue || !endValue.value) {
+    return false;
   }
-  return current.valueOf() > endValue.value.valueOf()
-}
 
-function disabledEndDate(current: Dayjs): boolean {
-  if (!current || !startValue.value) {
-    return false
+  return startValue.valueOf() > endValue.value.valueOf();
+};
+
+const disabledEndDate = (endValue: Dayjs) => {
+  if (!endValue || !startValue.value) {
+    return false;
   }
-  return startValue.value.valueOf() >= current.valueOf()
-}
 
-function handleStartOpenChange(open: boolean) {
+  return startValue.value.valueOf() >= endValue.valueOf();
+};
+
+const handleStartOpenChange = (open: boolean) => {
   if (!open) {
-    endOpen.value = true
+    endOpen.value = true;
   }
-}
+};
 
-function handleEndOpenChange(open: boolean) {
-  endOpen.value = open
-}
+const handleEndOpenChange = (open: boolean) => {
+  endOpen.value = open;
+};
+
+watch(startValue, () => {
+  console.log('startValue', startValue.value);
+});
+
+watch(endValue, () => {
+  console.log('endValue', endValue.value);
+});
 </script>

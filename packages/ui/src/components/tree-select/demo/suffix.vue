@@ -1,6 +1,5 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Custom Suffix Icon (Single)</h4>
+  <a-space direction="vertical" style="width: 100%">
     <a-tree-select
       v-model:value="value"
       show-search
@@ -10,15 +9,18 @@
       allow-clear
       tree-default-expand-all
       :tree-data="treeData"
+      :field-names="{
+        children: 'children',
+        value: 'value',
+        label: 'title',
+      }"
+      tree-node-filter-prop="title"
     >
-      <template #suffixIcon>
-        <span style="color: #52c41a">^_^</span>
-      </template>
+      <template #suffixIcon><SmileOutlined /></template>
     </a-tree-select>
 
-    <h4>Custom Suffix Icon (Multiple)</h4>
     <a-tree-select
-      v-model:value="multiValue"
+      v-model:value="value1"
       show-search
       style="width: 100%"
       :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
@@ -28,35 +30,50 @@
       show-arrow
       tree-default-expand-all
       :tree-data="treeData"
+      :field-names="{
+        children: 'children',
+        value: 'value',
+        label: 'title',
+      }"
+      tree-node-filter-prop="title"
     >
-      <template #suffixIcon>
-        <span style="color: #52c41a">^_^</span>
-      </template>
+      <template #suffixIcon><SmileOutlined /></template>
     </a-tree-select>
-  </div>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<string | undefined>(undefined)
-const multiValue = ref<string[]>([])
-
-const treeData = [
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+import { SmileOutlined } from '@ant-design/icons-vue';
+import type { TreeSelectProps } from 'ant-design-vue';
+const value = ref<string>();
+const value1 = ref<string[]>([]);
+const treeData = ref<TreeSelectProps['treeData']>([
   {
-    label: 'parent 1',
+    title: 'parent 1',
     value: 'parent 1',
     children: [
       {
-        label: 'parent 1-0',
+        title: 'parent 1-0',
         value: 'parent 1-0',
         children: [
-          { label: 'my leaf', value: 'leaf1' },
-          { label: 'your leaf', value: 'leaf2' },
+          {
+            title: 'my leaf',
+            value: 'leaf1',
+          },
+          {
+            title: 'your leaf',
+            value: 'leaf2',
+          },
         ],
       },
-      { label: 'parent 1-1', value: 'parent 1-1' },
+      {
+        title: 'parent 1-1',
+        value: 'parent 1-1',
+      },
     ],
   },
-]
+]);
+watch(value, () => {
+  console.log('select', value.value);
+});
 </script>

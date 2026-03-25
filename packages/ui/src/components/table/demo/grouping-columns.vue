@@ -1,19 +1,26 @@
-<script setup lang="ts">
-import type { ColumnsType } from '../types'
-
-interface DataType {
-  key: number
-  name: string
-  age: number
-  street: string
-  building: string
-  number: number
-  companyAddress: string
-  companyName: string
-  gender: string
-}
-
-const columns: ColumnsType<DataType> = [
+<template>
+  <a-table
+    :columns="columns"
+    :data-source="data"
+    bordered
+    size="middle"
+    :scroll="{ x: 'calc(700px + 50%)', y: 240 }"
+  />
+</template>
+<script lang="ts" setup>
+import type { TableColumnsType } from 'ant-design-vue';
+type TableDataType = {
+  key: number;
+  name: string;
+  age: number;
+  street: string;
+  building: string;
+  number: number;
+  companyAddress: string;
+  companyName: string;
+  gender: string;
+};
+const columns: TableColumnsType = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -21,10 +28,16 @@ const columns: ColumnsType<DataType> = [
     width: 100,
     fixed: 'left',
     filters: [
-      { text: 'Joe', value: 'Joe' },
-      { text: 'John', value: 'John' },
+      {
+        text: 'Joe',
+        value: 'Joe',
+      },
+      {
+        text: 'John',
+        value: 'John',
+      },
     ],
-    onFilter: (value, record) => record.name.indexOf(String(value)) === 0,
+    onFilter: (value: string, record: TableDataType) => record.name.indexOf(value) === 0,
   },
   {
     title: 'Other',
@@ -34,7 +47,7 @@ const columns: ColumnsType<DataType> = [
         dataIndex: 'age',
         key: 'age',
         width: 200,
-        sorter: (a, b) => a.age - b.age,
+        sorter: (a: TableDataType, b: TableDataType) => a.age - b.age,
       },
       {
         title: 'Address',
@@ -89,9 +102,8 @@ const columns: ColumnsType<DataType> = [
     width: 80,
     fixed: 'right',
   },
-]
-
-const data: DataType[] = Array.from({ length: 100 }, (_, i) => ({
+];
+const data = [...Array(100)].map((_, i) => ({
   key: i,
   name: 'John Brown',
   age: i + 1,
@@ -101,15 +113,5 @@ const data: DataType[] = Array.from({ length: 100 }, (_, i) => ({
   companyAddress: 'Lake Street 42',
   companyName: 'SoftLake Co',
   gender: 'M',
-}))
+}));
 </script>
-
-<template>
-  <a-table
-    :columns="columns"
-    :data-source="data"
-    bordered
-    size="middle"
-    :scroll="{ x: 'calc(700px + 50%)', y: 240 }"
-  />
-</template>

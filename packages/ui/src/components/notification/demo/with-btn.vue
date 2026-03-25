@@ -1,30 +1,34 @@
 <template>
-  <a-button variant="solid" @click="openNotification">Open the notification box</a-button>
+  <a-button type="primary" @click="openNotification">Open the notification box</a-button>
 </template>
 
-<script setup lang="ts">
-import { h } from 'vue'
-import { notification } from '@ant-design-vue/ui'
+<script lang="ts" setup>
+import { notification, Button } from 'ant-design-vue';
+import { h } from 'vue';
 
-function openNotification() {
-  const key = `open${Date.now()}`
+const close = () => {
+  console.log(
+    'Notification was closed. Either the close button was clicked or duration time elapsed.',
+  );
+};
+const openNotification = () => {
+  const key = `open${Date.now()}`;
   notification.open({
     message: 'Notification Title',
     description:
-      'A function will be called after the notification is closed (automatically after the "duration" time or manually).',
+      'A function will be be called after the notification is closed (automatically after the "duration" time of manually).',
     btn: () =>
       h(
-        'button',
+        Button,
         {
-          class: 'ant-btn ant-btn-solid ant-btn-sm',
+          type: 'primary',
+          size: 'small',
           onClick: () => notification.close(key),
         },
-        'Confirm',
+        { default: () => 'Confirm' },
       ),
     key,
-    onClose: () => {
-      console.log('Notification was closed.')
-    },
-  })
-}
+    onClose: close,
+  });
+};
 </script>

@@ -1,15 +1,23 @@
-<script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
-import type { ColumnsType, TablePaginationConfig, FilterValue, SorterResult } from '../types'
-
-interface DataType {
-  key: string
-  name: string
-  gender: string
-  email: string
-}
-
-const columns: ColumnsType<DataType> = [
+<template>
+  <a-table
+    :columns="columns"
+    :row-key="record => record.login.uuid"
+    :data-source="dataSource"
+    :pagination="pagination"
+    :loading="loading"
+    @change="handleTableChange"
+  >
+    <template #bodyCell="{ column, text }">
+      <template v-if="column.dataIndex === 'name'">{{ text.first }} {{ text.last }}</template>
+    </template>
+  </a-table>
+</template>
+<script lang="ts" setup>
+import { computed } from 'vue';
+import type { TableProps } from 'ant-design-vue';
+import { usePagination } from 'vue-request';
+import axios from 'axios';
+const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
@@ -29,60 +37,58 @@ const columns: ColumnsType<DataType> = [
     title: 'Email',
     dataIndex: 'email',
   },
-]
+];
 
-const loading = ref(false)
-const dataSource = ref<DataType[]>([])
-const pagination = reactive({
-  current: 1,
-  pageSize: 10,
-  total: 50,
-})
+type APIParams = {
+  results: number;
+  page?: number;
+  sortField?: string;
+  sortOrder?: number;
+  [key: string]: any;
+};
+type APIResult = {
+  results: {
+    gender: 'female' | 'male';
+    name: string;
+    email: string;
+  }[];
+};
 
-function generateData(page: number, pageSize: number): DataType[] {
-  const names = ['John Brown', 'Jim Green', 'Joe Black', 'Jane White', 'Jack Blue']
-  const genders = ['male', 'female']
-  return Array.from({ length: pageSize }, (_, i) => {
-    const idx = (page - 1) * pageSize + i
-    return {
-      key: String(idx),
-      name: names[idx % names.length],
-      gender: genders[idx % 2],
-      email: `user${idx}@example.com`,
-    }
-  })
-}
+const queryData = async (params: APIParams) => {
+  const res = await axios.get<APIResult>('https://randomuser.me/api?noinfo', { params })
+  return res.data.results;
+};
 
-function fetchData() {
-  loading.value = true
-  // Simulate async fetch
-  setTimeout(() => {
-    dataSource.value = generateData(pagination.current, pagination.pageSize)
-    loading.value = false
-  }, 500)
-}
+const {
+  data: dataSource,
+  run,
+  loading,
+  current,
+  pageSize,
+} = usePagination(queryData, {
+  pagination: {
+    currentKey: 'page',
+    pageSizeKey: 'results',
+  },
+});
 
-function handleTableChange(
-  pag: TablePaginationConfig,
-  filters: Record<string, FilterValue | null>,
-  sorter: SorterResult<DataType> | SorterResult<DataType>[],
-) {
-  pagination.current = pag.current ?? 1
-  pagination.pageSize = pag.pageSize ?? 10
-  console.log('filters:', filters, 'sorter:', sorter)
-  fetchData()
-}
+const pagination = computed(() => ({
+  total: 200,
+  current: current.value,
+  pageSize: pageSize.value,
+}));
 
-// Initial load
-fetchData()
+const handleTableChange: TableProps['onChange'] = (
+  pag: { pageSize: number; current: number },
+  filters: any,
+  sorter: any,
+) => {
+  run({
+    results: pag.pageSize,
+    page: pag?.current,
+    sortField: sorter.field,
+    sortOrder: sorter.order,
+    ...filters,
+  });
+};
 </script>
-
-<template>
-  <a-table
-    :columns="columns"
-    :data-source="dataSource"
-    :pagination="pagination"
-    :loading="loading"
-    @change="handleTableChange"
-  />
-</template>

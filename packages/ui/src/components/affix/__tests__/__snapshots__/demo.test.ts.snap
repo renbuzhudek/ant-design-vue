@@ -1,21 +1,20 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Affix demos > demo: Basic 1`] = `
-"<div>
-  <div data-measure-status="0">
-    <!--v-if-->
-    <div style="z-index: 10;" class=""><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-        <wave-stub disabled="false"></wave-stub>
-        <!--v-if--><span class="ant-btn-content"> Affix top (offset: 10px) </span>
-      </button></div>
-  </div><br><br>
-  <div data-measure-status="0">
-    <!--v-if-->
-    <div style="z-index: 10;" class=""><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
-        <wave-stub disabled="false"></wave-stub>
-        <!--v-if--><span class="ant-btn-content"> Affix bottom (offset: 10px) </span>
-      </button></div>
-  </div>
+"<div data-measure-status="0">
+  <!--v-if-->
+  <div style="z-index: 10;" class=""><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <wave-stub disabled="false"></wave-stub>
+      <!--v-if--><span class="ant-btn-content">Affix top</span>
+    </button></div>
+</div>
+<br>
+<div data-measure-status="0">
+  <!--v-if-->
+  <div style="z-index: 10;" class=""><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <wave-stub disabled="false"></wave-stub>
+      <!--v-if--><span class="ant-btn-content">Affix bottom</span>
+    </button></div>
 </div>"
 `;
 
@@ -24,19 +23,19 @@ exports[`Affix demos > demo: OnChange 1`] = `
   <!--v-if-->
   <div style="z-index: 10;" class=""><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
       <wave-stub disabled="false"></wave-stub>
-      <!--v-if--><span class="ant-btn-content">Affix with onChange (offset 120px, check console)</span>
+      <!--v-if--><span class="ant-btn-content">120px to affix top</span>
     </button></div>
 </div>"
 `;
 
 exports[`Affix demos > demo: Target 1`] = `
-"<div style="height: 200px; overflow-y: auto; border: 1px solid rgb(217, 217, 217); border-radius: 6px; padding: 16px;">
-  <div style="height: 600px; padding-top: 60px;">
-    <div data-measure-status="0">
+"<div data-v-ee44d2e9="" id="components-affix-demo-target" class="scrollable-container">
+  <div data-v-ee44d2e9="" class="background">
+    <div data-v-ee44d2e9="" data-measure-status="0">
       <!--v-if-->
-      <div style="z-index: 10;" class=""><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <div style="z-index: 10;" class=""><button data-v-ee44d2e9="" class="ant-btn ant-btn-solid ant-btn-md" type="button">
           <wave-stub disabled="false"></wave-stub>
-          <!--v-if--><span class="ant-btn-content">Fixed to container top</span>
+          <!--v-if--><span class="ant-btn-content">Fixed at the top of container</span>
         </button></div>
     </div>
   </div>

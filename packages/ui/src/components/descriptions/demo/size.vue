@@ -1,24 +1,43 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const size = ref<'default' | 'middle' | 'small'>('default')
-</script>
-
 <template>
   <div>
-    <div style="margin-bottom: 16px;">
-      <span style="margin-right: 8px;">Size:</span>
-      <label style="margin-right: 8px;">
-        <input v-model="size" type="radio" value="default" /> Default
-      </label>
-      <label style="margin-right: 8px;">
-        <input v-model="size" type="radio" value="middle" /> Middle
-      </label>
-      <label>
-        <input v-model="size" type="radio" value="small" /> Small
-      </label>
-    </div>
-    <a-descriptions title="Custom Size" bordered :size="size">
+    <a-radio-group v-model:value="size" @change="onChange">
+      <a-radio value="default">default</a-radio>
+      <a-radio value="middle">middle</a-radio>
+      <a-radio value="small">small</a-radio>
+    </a-radio-group>
+    <br />
+    <br />
+    <a-descriptions bordered title="Custom Size" :size="size">
+      <template #extra>
+        <a-button type="primary">Edit</a-button>
+      </template>
+      <a-descriptions-item label="Product">Cloud Database</a-descriptions-item>
+      <a-descriptions-item label="Billing">Prepaid</a-descriptions-item>
+      <a-descriptions-item label="Time">18:00:00</a-descriptions-item>
+      <a-descriptions-item label="Amount">$80.00</a-descriptions-item>
+      <a-descriptions-item label="Discount">$20.00</a-descriptions-item>
+      <a-descriptions-item label="Official">$60.00</a-descriptions-item>
+      <a-descriptions-item label="Config Info">
+        Data disk type: MongoDB
+        <br />
+        Database version: 3.4
+        <br />
+        Package: dds.mongo.mid
+        <br />
+        Storage space: 10 GB
+        <br />
+        Replication factor: 3
+        <br />
+        Region: East China 1
+        <br />
+      </a-descriptions-item>
+    </a-descriptions>
+    <br />
+    <br />
+    <a-descriptions title="Custom Size" :size="size">
+      <template #extra>
+        <a-button type="primary">Edit</a-button>
+      </template>
       <a-descriptions-item label="Product">Cloud Database</a-descriptions-item>
       <a-descriptions-item label="Billing">Prepaid</a-descriptions-item>
       <a-descriptions-item label="Time">18:00:00</a-descriptions-item>
@@ -28,3 +47,12 @@ const size = ref<'default' | 'middle' | 'small'>('default')
     </a-descriptions>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { DescriptionsProps } from 'ant-design-vue';
+const size = ref<DescriptionsProps['size']>('default');
+const onChange = (e: any) => {
+  console.log('size checked', e.target.value);
+  size.value = e.target.value;
+};
+</script>

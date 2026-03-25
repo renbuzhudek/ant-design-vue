@@ -157,7 +157,7 @@ exports[`Calendar demos > demo: Basic 1`] = `
             <div class="ant-picker-calendar-date-value">23</div>
             <!--v-if-->
           </td>
-          <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
             <div class="ant-picker-calendar-date-value">24</div>
             <!--v-if-->
           </td>
@@ -165,7 +165,7 @@ exports[`Calendar demos > demo: Basic 1`] = `
             <div class="ant-picker-calendar-date-value">25</div>
             <!--v-if-->
           </td>
-          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
             <div class="ant-picker-calendar-date-value">26</div>
             <!--v-if-->
           </td>
@@ -245,7 +245,7 @@ exports[`Calendar demos > demo: Basic 1`] = `
 `;
 
 exports[`Calendar demos > demo: Card 1`] = `
-"<div style="max-width: 300px;">
+"<div style="width: 300px; border: 1px solid rgb(217, 217, 217); border-radius: 4px;">
   <div class="ant-picker-calendar ant-picker-calendar-mini">
     <!-- Header -->
     <div class="ant-picker-calendar-header">
@@ -402,7 +402,7 @@ exports[`Calendar demos > demo: Card 1`] = `
               <div class="ant-picker-calendar-date-value">23</div>
               <!--v-if-->
             </td>
-            <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
+            <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
               <div class="ant-picker-calendar-date-value">24</div>
               <!--v-if-->
             </td>
@@ -410,7 +410,7 @@ exports[`Calendar demos > demo: Card 1`] = `
               <div class="ant-picker-calendar-date-value">25</div>
               <!--v-if-->
             </td>
-            <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
               <div class="ant-picker-calendar-date-value">26</div>
               <!--v-if-->
             </td>
@@ -660,7 +660,7 @@ exports[`Calendar demos > demo: Notice 1`] = `
             <div class="ant-picker-calendar-date-value">23</div>
             <div class="ant-picker-calendar-date-content"></div>
           </td>
-          <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
             <div class="ant-picker-calendar-date-value">24</div>
             <div class="ant-picker-calendar-date-content"></div>
           </td>
@@ -668,7 +668,7 @@ exports[`Calendar demos > demo: Notice 1`] = `
             <div class="ant-picker-calendar-date-value">25</div>
             <div class="ant-picker-calendar-date-content"></div>
           </td>
-          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
             <div class="ant-picker-calendar-date-value">26</div>
             <div class="ant-picker-calendar-date-content"></div>
           </td>
@@ -752,260 +752,256 @@ exports[`Calendar demos > demo: Notice 1`] = `
 `;
 
 exports[`Calendar demos > demo: Select 1`] = `
-"<div>
-  <transition-stub name="ant-alert-slide-up" appear="false" persisted="false" css="true" style="margin-bottom: 16px;">
-    <div class="ant-alert ant-alert-info ant-alert-no-icon" role="alert">
-      <!--v-if-->
-      <div class="ant-alert-content">
-        <div class="ant-alert-message"> Selected: 2026-03-24</div>
-        <!--v-if-->
-      </div>
-      <!--v-if-->
+"<transition-stub name="ant-alert-slide-up" appear="false" persisted="false" css="true">
+  <div class="ant-alert ant-alert-info ant-alert-no-icon" role="alert">
+    <!--v-if-->
+    <div class="ant-alert-content">
+      <div class="ant-alert-message">You selected date: 2017-01-25</div>
       <!--v-if-->
     </div>
-  </transition-stub>
-  <div style="max-width: 300px;">
-    <div class="ant-picker-calendar ant-picker-calendar-mini">
-      <!-- Header -->
-      <div class="ant-picker-calendar-header">
-        <div class="ant-picker-calendar-header-left"><select class="ant-picker-calendar-year-select" value="2026">
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-            <option value="2027">2027</option>
-            <option value="2028">2028</option>
-            <option value="2029">2029</option>
-            <option value="2030">2030</option>
-            <option value="2031">2031</option>
-            <option value="2032">2032</option>
-            <option value="2033">2033</option>
-            <option value="2034">2034</option>
-            <option value="2035">2035</option>
-            <option value="2036">2036</option>
-          </select><select class="ant-picker-calendar-month-select" value="2">
-            <option value="0">Jan</option>
-            <option value="1">Feb</option>
-            <option value="2">Mar</option>
-            <option value="3">Apr</option>
-            <option value="4">May</option>
-            <option value="5">Jun</option>
-            <option value="6">Jul</option>
-            <option value="7">Aug</option>
-            <option value="8">Sep</option>
-            <option value="9">Oct</option>
-            <option value="10">Nov</option>
-            <option value="11">Dec</option>
-          </select></div>
-        <div class="ant-picker-calendar-header-right">
-          <div class="ant-picker-calendar-mode-switch"><button type="button" class="ant-picker-calendar-mode-btn active"> Month </button><button type="button" class="ant-picker-calendar-mode-btn"> Year </button></div>
-        </div>
-      </div><!-- Month mode: date grid -->
-      <div class="ant-picker-calendar-body">
-        <table class="ant-picker-calendar-table">
-          <thead>
-            <tr>
-              <th>Su</th>
-              <th>Mo</th>
-              <th>Tu</th>
-              <th>We</th>
-              <th>Th</th>
-              <th>Fr</th>
-              <th>Sa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">1</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">2</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">3</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">4</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">5</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">6</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">7</div>
-                <!--v-if-->
-              </td>
-            </tr>
-            <tr>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">8</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">9</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">10</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">11</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">12</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">13</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">14</div>
-                <!--v-if-->
-              </td>
-            </tr>
-            <tr>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">15</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">16</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">17</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">18</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">19</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">20</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">21</div>
-                <!--v-if-->
-              </td>
-            </tr>
-            <tr>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">22</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">23</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-today ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">24</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">25</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">26</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">27</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">28</div>
-                <!--v-if-->
-              </td>
-            </tr>
-            <tr>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">29</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">30</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
-                <div class="ant-picker-calendar-date-value">31</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">1</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">2</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">3</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">4</div>
-                <!--v-if-->
-              </td>
-            </tr>
-            <tr>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">5</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">6</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">7</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">8</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">9</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">10</div>
-                <!--v-if-->
-              </td>
-              <td class="ant-picker-calendar-date">
-                <div class="ant-picker-calendar-date-value">11</div>
-                <!--v-if-->
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+</transition-stub>
+<div class="ant-picker-calendar ant-picker-calendar-full">
+  <!-- Header -->
+  <div class="ant-picker-calendar-header">
+    <div class="ant-picker-calendar-header-left"><select class="ant-picker-calendar-year-select" value="2017">
+        <option value="2007">2007</option>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+        <option value="2011">2011</option>
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+      </select><select class="ant-picker-calendar-month-select" value="0">
+        <option value="0">Jan</option>
+        <option value="1">Feb</option>
+        <option value="2">Mar</option>
+        <option value="3">Apr</option>
+        <option value="4">May</option>
+        <option value="5">Jun</option>
+        <option value="6">Jul</option>
+        <option value="7">Aug</option>
+        <option value="8">Sep</option>
+        <option value="9">Oct</option>
+        <option value="10">Nov</option>
+        <option value="11">Dec</option>
+      </select></div>
+    <div class="ant-picker-calendar-header-right">
+      <div class="ant-picker-calendar-mode-switch"><button type="button" class="ant-picker-calendar-mode-btn active"> Month </button><button type="button" class="ant-picker-calendar-mode-btn"> Year </button></div>
     </div>
+  </div><!-- Month mode: date grid -->
+  <div class="ant-picker-calendar-body">
+    <table class="ant-picker-calendar-table">
+      <thead>
+        <tr>
+          <th>Su</th>
+          <th>Mo</th>
+          <th>Tu</th>
+          <th>We</th>
+          <th>Th</th>
+          <th>Fr</th>
+          <th>Sa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">1</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">2</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">3</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">4</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">5</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">6</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">7</div>
+            <!--v-if-->
+          </td>
+        </tr>
+        <tr>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">8</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">9</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">10</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">11</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">12</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">13</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">14</div>
+            <!--v-if-->
+          </td>
+        </tr>
+        <tr>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">15</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">16</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">17</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">18</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">19</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">20</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">21</div>
+            <!--v-if-->
+          </td>
+        </tr>
+        <tr>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">22</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">23</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">24</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-selected ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">25</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">26</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">27</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">28</div>
+            <!--v-if-->
+          </td>
+        </tr>
+        <tr>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">29</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">30</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date ant-picker-calendar-date-in-view">
+            <div class="ant-picker-calendar-date-value">31</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">1</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">2</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">3</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">4</div>
+            <!--v-if-->
+          </td>
+        </tr>
+        <tr>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">5</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">6</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">7</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">8</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">9</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">10</div>
+            <!--v-if-->
+          </td>
+          <td class="ant-picker-calendar-date">
+            <div class="ant-picker-calendar-date-value">11</div>
+            <!--v-if-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>"
 `;

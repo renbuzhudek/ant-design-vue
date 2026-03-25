@@ -1,8 +1,26 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { TreeDataNode, Key } from '../types'
+<template>
+  <a-tree v-model:selected-keys="selectedKeys" :tree-data="treeData" show-icon default-expand-all>
+    <template #switcherIcon="{ switcherCls }"><down-outlined :class="switcherCls" /></template>
+    <template #icon="{ key, selected }">
+      <template v-if="key === '0-0'">
+        <smile-outlined />
+      </template>
+      <template v-else-if="key === '0-0-0'">
+        <smile-outlined />
+      </template>
+      <template v-else>
+        <frown-filled v-if="selected" />
+        <frown-outlined v-else />
+      </template>
+    </template>
+  </a-tree>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import { DownOutlined, SmileOutlined, FrownOutlined, FrownFilled } from '@ant-design/icons-vue';
+import type { TreeProps } from 'ant-design-vue';
 
-const treeData: TreeDataNode[] = [
+const treeData: TreeProps['treeData'] = [
   {
     title: 'parent 1',
     key: '0-0',
@@ -11,26 +29,6 @@ const treeData: TreeDataNode[] = [
       { title: 'leaf', key: '0-0-1' },
     ],
   },
-]
-
-const selectedKeys = ref<Key[]>(['0-0-0'])
+];
+const selectedKeys = ref(['0-0-0']);
 </script>
-
-<template>
-  <a-tree
-    v-model:selected-keys="selectedKeys"
-    :tree-data="treeData"
-    show-icon
-    default-expand-all
-  >
-    <template #icon="{ key, selected }">
-      <template v-if="key === '0-0' || key === '0-0-0'">
-        <span>&#9786;</span>
-      </template>
-      <template v-else>
-        <span v-if="selected">&#9785;</span>
-        <span v-else>&#9788;</span>
-      </template>
-    </template>
-  </a-tree>
-</template>

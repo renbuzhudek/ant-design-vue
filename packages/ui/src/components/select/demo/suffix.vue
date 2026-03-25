@@ -1,38 +1,52 @@
 <template>
-  <div style="display: flex; gap: 16px; max-width: 400px">
+  <a-space>
     <a-select
       v-model:value="value1"
-      style="width: 150px"
-      :options="options"
+      style="width: 120px"
+      :options="options1"
+      @change="handleChange"
     >
-      <template #suffixIcon>
-        <span style="color: #52c41a">^_^</span>
-      </template>
+      <template #suffixIcon><smile-outlined class="ant-select-suffix" /></template>
     </a-select>
-
-    <a-select
-      v-model:value="value2"
-      style="width: 150px"
-      :options="options"
-      disabled
-    >
-      <template #suffixIcon>
-        <span style="color: #999">-_-</span>
-      </template>
+    <a-select v-model:value="value2" style="width: 120px" disabled :options="options2">
+      <template #suffixIcon><meh-outlined class="ant-select-suffix" /></template>
     </a-select>
-  </div>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { SmileOutlined, MehOutlined } from '@ant-design/icons-vue';
+import type { SelectProps } from 'ant-design-vue';
+import { ref } from 'vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const handleChange = (value: string) => {
+  console.log(`selected ${value}`);
+};
 
-const value1 = ref('lucy')
-const value2 = ref('lucy')
-
-const options = [
-  { value: 'jack', label: 'Jack' },
-  { value: 'lucy', label: 'Lucy' },
-  { value: 'disabled', label: 'Disabled', disabled: true },
-  { value: 'yiminghe', label: 'Yiminghe' },
-]
+const options1 = ref<SelectProps['options']>([
+  {
+    value: 'jack',
+    label: 'Jack',
+  },
+  {
+    value: 'lucy',
+    label: 'Lucy',
+  },
+  {
+    value: 'disabled',
+    label: 'Disabled',
+    disabled: true,
+  },
+  {
+    value: 'yiminghe',
+    label: 'Yiminghe',
+  },
+]);
+const options2 = ref<SelectProps['options']>([
+  {
+    value: 'lucy',
+    label: 'Lucy',
+  },
+]);
+const value1 = ref('lucy');
+const value2 = ref('lucy');
 </script>

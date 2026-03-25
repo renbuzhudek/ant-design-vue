@@ -1,12 +1,7 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref(30)
-</script>
-
 <template>
-  <div style="max-width: 400px">
-    <p>Tooltip is always visible (tooltip-open=true):</p>
-    <a-slider v-model:value="value" :tooltip-open="true" />
-  </div>
+  <a-slider v-model:value="value" :tooltip-open="true" />
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref<number>(30);
+</script>

@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <a-q-r-code :value="text" />
-    <div style="margin-top: 16px">
-      <a-input v-model:value="text" placeholder="Enter text" :maxlength="60" />
-    </div>
-  </div>
+  <a-space direction="vertical" align="center">
+    <a-qrcode :value="text" />
+    <a-input v-model:value="text" placeholder="-" :maxlength="60" />
+  </a-space>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script lang="ts" setup>
+import { ref } from 'vue';
 
-const text = ref('https://ant-design-vue.com')
+const text = ref('https://www.antdv.com/');
 </script>

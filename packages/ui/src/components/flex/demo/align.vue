@@ -1,25 +1,38 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
-    <div>
-      <strong>justify: center, align: center</strong>
-      <a-flex justify="center" align="center" style="height: 100px; background: #f5f5f5; border-radius: 8px; margin-top: 8px">
-        <a-button variant="solid">Centered</a-button>
-      </a-flex>
-    </div>
-    <div>
-      <strong>justify: space-between</strong>
-      <a-flex justify="space-between" style="background: #f5f5f5; border-radius: 8px; padding: 16px; margin-top: 8px">
-        <a-button>Start</a-button>
-        <a-button>End</a-button>
-      </a-flex>
-    </div>
-    <div>
-      <strong>justify: space-around</strong>
-      <a-flex justify="space-around" style="background: #f5f5f5; border-radius: 8px; padding: 16px; margin-top: 8px">
-        <a-button>A</a-button>
-        <a-button>B</a-button>
-        <a-button>C</a-button>
-      </a-flex>
-    </div>
-  </div>
+  <a-flex gap="middle" align="start" vertical>
+    <p>Select justify :</p>
+    <a-segmented v-model:value="justify" :options="justifyOptions" />
+    <p>Select align :</p>
+    <a-segmented v-model:value="alignItems" :options="alignOptions" />
+    <a-flex :style="{ ...boxStyle }" :justify="justify" :align="alignItems">
+      <a-button type="primary">Primary</a-button>
+      <a-button type="primary">Primary</a-button>
+      <a-button type="primary">Primary</a-button>
+      <a-button type="primary">Primary</a-button>
+    </a-flex>
+  </a-flex>
 </template>
+
+<script setup lang="ts">
+import { reactive, ref } from 'vue';
+import type { CSSProperties } from 'vue';
+import type { FlexProps } from 'ant-design-vue';
+const justifyOptions = reactive<FlexProps['justify'][]>([
+  'flex-start',
+  'center',
+  'flex-end',
+  'space-between',
+  'space-around',
+  'space-evenly',
+]);
+
+const alignOptions = reactive<FlexProps['align'][]>(['flex-start', 'center', 'flex-end']);
+const justify = ref(justifyOptions[0]);
+const alignItems = ref(alignOptions[0]);
+const boxStyle: CSSProperties = {
+  width: '100%',
+  height: '120px',
+  borderRadius: '6px',
+  border: '1px solid #40a9ff',
+};
+</script>

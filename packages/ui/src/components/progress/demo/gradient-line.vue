@@ -1,19 +1,35 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px;">
+  <div>
     <a-progress
-      :percent="99.9"
       :stroke-color="{
         '0%': '#108ee9',
         '100%': '#87d068',
       }"
+      :percent="99.9"
     />
     <a-progress
-      :percent="99.9"
       :stroke-color="{
         from: '#108ee9',
         to: '#87d068',
       }"
+      :percent="99.9"
       status="active"
+    />
+    <a-progress
+      type="circle"
+      :stroke-color="{
+        '0%': '#108ee9',
+        '100%': '#87d068',
+      }"
+      :percent="90"
+    />
+    <a-progress
+      type="circle"
+      :stroke-color="{
+        '0%': '#108ee9',
+        '100%': '#87d068',
+      }"
+      :percent="100"
     />
   </div>
 </template>

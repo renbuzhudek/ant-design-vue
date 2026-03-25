@@ -1,70 +1,15 @@
-<script setup lang="ts">
-import { reactive, watch } from 'vue'
-
-interface Sight {
-  value: string | undefined
-  price: string | undefined
-  id: number
-}
-
-const areas = [
-  { label: 'Beijing', value: 'Beijing' },
-  { label: 'Shanghai', value: 'Shanghai' },
-]
-
-const sights: Record<string, string[]> = {
-  Beijing: ['Tiananmen', 'Great Wall'],
-  Shanghai: ['Oriental Pearl', 'The Bund'],
-}
-
-const formState = reactive<{ sights: Sight[]; area: string | undefined }>({
-  sights: [],
-  area: undefined,
-})
-
-watch(
-  () => formState.area,
-  () => {
-    formState.sights = []
-  },
-)
-
-function addSight() {
-  formState.sights.push({
-    value: undefined,
-    price: undefined,
-    id: Date.now(),
-  })
-}
-
-function removeSight(item: Sight) {
-  const index = formState.sights.indexOf(item)
-  if (index !== -1) {
-    formState.sights.splice(index, 1)
-  }
-}
-
-function onFinish(values: any) {
-  console.log('Received values of form:', values)
-}
-</script>
-
 <template>
   <a-form
-    name="dynamic_form_complex"
-    :model="formState"
+    ref="formRef"
+    name="dynamic_form_nest_item"
+    :model="dynamicValidateForm"
     @finish="onFinish"
   >
-    <a-form-item
-      name="area"
-      label="Area"
-      :rules="[{ required: true, message: 'Missing area' }]"
-    >
-      <a-select v-model:value="formState.area" :options="areas" />
+    <a-form-item name="area" label="Area" :rules="[{ required: true, message: 'Missing area' }]">
+      <a-select v-model:value="dynamicValidateForm.area" :options="areas" />
     </a-form-item>
-
     <a-space
-      v-for="(sight, index) in formState.sights"
+      v-for="(sight, index) in dynamicValidateForm.sights"
       :key="sight.id"
       style="display: flex; margin-bottom: 8px"
       align="baseline"
@@ -72,35 +17,88 @@ function onFinish(values: any) {
       <a-form-item
         :name="['sights', index, 'value']"
         label="Sight"
-        :rules="[{ required: true, message: 'Missing sight' }]"
+        :rules="{
+          required: true,
+          message: 'Missing sight',
+        }"
       >
         <a-select
           v-model:value="sight.value"
-          :disabled="!formState.area"
-          :options="(sights[formState.area!] || []).map((a: string) => ({ value: a }))"
+          :disabled="!dynamicValidateForm.area"
+          :options="(sights[dynamicValidateForm.area] || []).map(a => ({ value: a }))"
           style="width: 130px"
-        />
+        ></a-select>
       </a-form-item>
-
       <a-form-item
         label="Price"
         :name="['sights', index, 'price']"
-        :rules="[{ required: true, message: 'Missing price' }]"
+        :rules="{
+          required: true,
+          message: 'Missing price',
+        }"
       >
         <a-input v-model:value="sight.price" />
       </a-form-item>
-
-      <a-button type="text" danger @click="removeSight(sight)">Remove</a-button>
+      <MinusCircleOutlined @click="removeSight(sight)" />
     </a-space>
-
     <a-form-item>
       <a-button type="dashed" block @click="addSight">
+        <PlusOutlined />
         Add sights
       </a-button>
     </a-form-item>
-
     <a-form-item>
       <a-button type="primary" html-type="submit">Submit</a-button>
     </a-form-item>
   </a-form>
 </template>
+
+<script lang="ts" setup>
+import { reactive, ref, watch } from 'vue';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons-vue';
+import type { FormInstance } from 'ant-design-vue';
+
+interface Sights {
+  value: string;
+  price: string;
+  id: number;
+}
+const areas = [
+  { label: 'Beijing', value: 'Beijing' },
+  { label: 'Shanghai', value: 'Shanghai' },
+];
+
+const sights = {
+  Beijing: ['Tiananmen', 'Great Wall'],
+  Shanghai: ['Oriental Pearl', 'The Bund'],
+};
+
+const formRef = ref<FormInstance>();
+const dynamicValidateForm = reactive<{ sights: Sights[]; area: string }>({
+  sights: [],
+  area: undefined,
+});
+watch(
+  () => dynamicValidateForm.area,
+  () => {
+    dynamicValidateForm.sights = [];
+  },
+);
+const removeSight = (item: Sights) => {
+  const index = dynamicValidateForm.sights.indexOf(item);
+  if (index !== -1) {
+    dynamicValidateForm.sights.splice(index, 1);
+  }
+};
+const addSight = () => {
+  dynamicValidateForm.sights.push({
+    value: undefined,
+    price: undefined,
+    id: Date.now(),
+  });
+};
+const onFinish = values => {
+  console.log('Received values of form:', values);
+  console.log('dynamicValidateForm:', dynamicValidateForm);
+};
+</script>

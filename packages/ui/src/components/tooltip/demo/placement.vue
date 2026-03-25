@@ -1,50 +1,96 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; padding: 60px;">
-    <div style="display: flex; gap: 8px; justify-content: center;">
-      <a-tooltip placement="topLeft" title="Top Left prompt text">
+  <div id="components-a-tooltip-demo-placement">
+    <div :style="{ marginLeft: `${buttonWidth}px`, whiteSpace: 'nowrap' }">
+      <a-tooltip placement="topLeft">
+        <template #title>
+          <span>prompt text</span>
+        </template>
         <a-button>TL</a-button>
       </a-tooltip>
-      <a-tooltip placement="top" title="Top prompt text">
+      <a-tooltip placement="top">
+        <template #title>
+          <span>prompt text</span>
+        </template>
         <a-button>Top</a-button>
       </a-tooltip>
-      <a-tooltip placement="topRight" title="Top Right prompt text">
+      <a-tooltip placement="topRight">
+        <template #title>
+          <span>prompt text</span>
+        </template>
         <a-button>TR</a-button>
       </a-tooltip>
     </div>
-    <div style="display: flex; justify-content: space-between; width: 340px;">
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <a-tooltip placement="leftTop" title="Left Top prompt text">
-          <a-button>LT</a-button>
-        </a-tooltip>
-        <a-tooltip placement="left" title="Left prompt text">
-          <a-button>Left</a-button>
-        </a-tooltip>
-        <a-tooltip placement="leftBottom" title="Left Bottom prompt text">
-          <a-button>LB</a-button>
-        </a-tooltip>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <a-tooltip placement="rightTop" title="Right Top prompt text">
-          <a-button>RT</a-button>
-        </a-tooltip>
-        <a-tooltip placement="right" title="Right prompt text">
-          <a-button>Right</a-button>
-        </a-tooltip>
-        <a-tooltip placement="rightBottom" title="Right Bottom prompt text">
-          <a-button>RB</a-button>
-        </a-tooltip>
-      </div>
+    <div :style="{ width: `${buttonWidth}px`, float: 'left' }">
+      <a-tooltip placement="leftTop">
+        <template #title>
+          <span>prompt text</span>
+        </template>
+        <a-button>LT</a-button>
+      </a-tooltip>
+      <a-tooltip placement="left">
+        <template #title>
+          <span>prompt text</span>
+        </template>
+        <a-button>Left</a-button>
+      </a-tooltip>
+      <a-tooltip placement="leftBottom">
+        <template #title>
+          <span>prompt text</span>
+        </template>
+        <a-button>LB</a-button>
+      </a-tooltip>
     </div>
-    <div style="display: flex; gap: 8px; justify-content: center;">
-      <a-tooltip placement="bottomLeft" title="Bottom Left prompt text">
+    <div :style="{ width: `${buttonWidth}px`, marginLeft: `${buttonWidth * 4 + 24}px` }">
+      <a-tooltip placement="rightTop">
+        <template #title>
+          <span>prompt text</span>
+        </template>
+        <a-button>RT</a-button>
+      </a-tooltip>
+      <a-tooltip placement="right">
+        <template #title>
+          <span>prompt text</span>
+        </template>
+        <a-button>Right</a-button>
+      </a-tooltip>
+      <a-tooltip placement="rightBottom">
+        <template #title>
+          <span>prompt text</span>
+        </template>
+        <a-button>RB</a-button>
+      </a-tooltip>
+    </div>
+    <div :style="{ marginLeft: `${buttonWidth}px`, clear: 'both', whiteSpace: 'nowrap' }">
+      <a-tooltip placement="bottomLeft">
+        <template #title>
+          <span>prompt text</span>
+        </template>
         <a-button>BL</a-button>
       </a-tooltip>
-      <a-tooltip placement="bottom" title="Bottom prompt text">
+      <a-tooltip placement="bottom">
+        <template #title>
+          <span>prompt text</span>
+        </template>
         <a-button>Bottom</a-button>
       </a-tooltip>
-      <a-tooltip placement="bottomRight" title="Bottom Right prompt text">
+      <a-tooltip placement="bottomRight">
+        <template #title>
+          <span>prompt text</span>
+        </template>
         <a-button>BR</a-button>
       </a-tooltip>
     </div>
   </div>
 </template>
+<script lang="ts" setup>
+const buttonWidth = 70;
+</script>
+<style scoped>
+:deep(#components-a-tooltip-demo-placement) .ant-btn {
+  width: 70px;
+  text-align: center;
+  padding: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+</style>

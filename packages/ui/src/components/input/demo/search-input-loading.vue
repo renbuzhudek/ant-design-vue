@@ -1,10 +1,8 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px">
-    <a-input-search
-      v-model:value="value"
-      placeholder="input search loading default"
-      loading
-    />
+  <div>
+    <a-input-search v-model:value="value" placeholder="input search loading deault" loading />
+    <br />
+    <br />
     <a-input-search
       v-model:value="value"
       placeholder="input search loading with enterButton"
@@ -13,8 +11,7 @@
     />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const value = ref('')
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref<string>('');
 </script>

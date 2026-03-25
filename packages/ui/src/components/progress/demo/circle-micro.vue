@@ -1,12 +1,13 @@
 <template>
-  <div style="display: flex; align-items: center; gap: 8px;">
+  <div>
     <a-progress
       type="circle"
       trail-color="#e6f4ff"
       :percent="60"
-      :size="14"
-      :format="(p: number) => `In progress, ${p}% done`"
+      :stroke-width="20"
+      :size="12"
+      :format="number => `进行中，已完成${number}%`"
     />
-    <span>Code deploy</span>
+    <span :style="{ marginLeft: 8 }">代码发布</span>
   </div>
 </template>

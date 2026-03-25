@@ -1,25 +1,20 @@
 <template>
-  <div>
-    <a-q-r-code ref="qrcodeRef" value="https://ant-design-vue.com" />
-    <div style="margin-top: 16px">
-      <a-button variant="solid" @click="download">Download</a-button>
-    </div>
-  </div>
+  <a-qrcode ref="qrcodeCanvasRef" value="http://www.antdv.com" />
+  <br />
+  <br />
+  <a-button type="primary" @click="dowloadChange">Downlaod</a-button>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const qrcodeRef = ref()
-
-const download = async () => {
-  const url = await qrcodeRef.value?.toDataURL()
-  if (!url) return
-  const a = document.createElement('a')
-  a.download = 'QRCode.png'
-  a.href = url
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-}
+<script lang="ts" setup>
+import { ref } from 'vue';
+const qrcodeCanvasRef = ref();
+const dowloadChange = async () => {
+  const url = await qrcodeCanvasRef.value.toDataURL();
+  const a = document.createElement('a');
+  a.download = 'QRCode.png';
+  a.href = url;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+};
 </script>

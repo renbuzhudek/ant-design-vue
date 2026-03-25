@@ -1,7 +1,11 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px">
-    <a-input placeholder="With count" :show-count="true" :maxlength="20" />
-    <a-input placeholder="Count without max" :show-count="true" />
-    <a-textarea placeholder="TextArea with count" :show-count="true" :maxlength="200" :rows="4" />
-  </div>
+  <a-input v-model:value="value1" show-count :maxlength="20" />
+  <br />
+  <br />
+  <a-textarea v-model:value="value2" show-count :maxlength="100" />
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value1 = ref<string>('test value');
+const value2 = ref<string>('test value');
+</script>

@@ -1,18 +1,22 @@
 <template>
-  <div>
-    <a-spin :spinning="loading" :delay="500">
-      <div style="padding: 50px; background: rgba(0,0,0,0.05); border-radius: 4px;">
-        Content that can load
-      </div>
-    </a-spin>
-    <div style="margin-top: 16px;">
-      <label><input v-model="loading" type="checkbox" /> Toggle loading (500ms delay)</label>
-    </div>
+  <a-spin :spinning="spinning" :delay="delayTime">
+    <a-alert
+      message="Alert message title"
+      description="Further details about the context of this alert."
+    ></a-alert>
+  </a-spin>
+  <div class="spin-state">
+    Loading state：
+    <a-switch v-model:checked="spinning" />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const loading = ref(false)
+<script lang="ts" setup>
+import { ref } from 'vue';
+const spinning = ref<boolean>(false);
+const delayTime = 500;
 </script>
+<style scoped>
+.spin-state {
+  margin-top: 16px;
+}
+</style>

@@ -1,25 +1,13 @@
 <template>
-  <a-spin>
-    <template #indicator>
-      <span class="custom-spinner" />
-    </template>
-  </a-spin>
+  <a-spin :indicator="indicator" />
 </template>
-
-<style scoped>
-.custom-spinner {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: 3px solid currentColor;
-  border-right-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.75s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-</style>
+<script lang="ts" setup>
+import { LoadingOutlined } from '@ant-design/icons-vue';
+import { h } from 'vue';
+const indicator = h(LoadingOutlined, {
+  style: {
+    fontSize: '24px',
+  },
+  spin: true,
+});
+</script>

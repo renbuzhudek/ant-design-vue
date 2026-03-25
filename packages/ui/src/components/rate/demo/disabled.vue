@@ -1,3 +1,3 @@
 <template>
-  <a-rate :value="3" disabled />
+  <a-rate :value="2" disabled />
 </template>

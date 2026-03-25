@@ -1,41 +1,37 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Multiple Selection (SHOW_PARENT)</h4>
+  <a-space direction="vertical" style="width: 100%">
+    <h4>Cascader.SHOW_PARENT</h4>
     <a-cascader
       v-model:value="value"
       style="width: 100%"
       multiple
+      max-tag-count="responsive"
       :options="options"
       placeholder="Please select"
-      show-checked-strategy="SHOW_PARENT"
-    />
-
-    <h4>Multiple Selection (SHOW_CHILD)</h4>
+    ></a-cascader>
+    <h4>Cascader.SHOW_CHILD</h4>
     <a-cascader
-      v-model:value="value2"
+      v-model:value="value"
       style="width: 100%"
       multiple
+      max-tag-count="responsive"
       :options="options"
       placeholder="Please select"
-      show-checked-strategy="SHOW_CHILD"
-    />
-  </div>
+      :show-checked-strategy="Cascader.SHOW_CHILD"
+    ></a-cascader>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[][]>([])
-const value2 = ref<(string | number)[][]>([])
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+import { Cascader } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     label: 'Light',
     value: 'light',
-    children: Array.from({ length: 5 }, (_, i) => ({
-      label: `Number ${i}`,
-      value: i,
-    })),
+    children: new Array(20)
+      .fill(null)
+      .map((_, index) => ({ label: `Number ${index}`, value: index })),
   },
   {
     label: 'Bamboo',
@@ -45,12 +41,23 @@ const options = [
         label: 'Little',
         value: 'little',
         children: [
-          { label: 'Toy Fish', value: 'fish' },
-          { label: 'Toy Cards', value: 'cards' },
-          { label: 'Toy Bird', value: 'bird' },
+          {
+            label: 'Toy Fish',
+            value: 'fish',
+          },
+          {
+            label: 'Toy Cards',
+            value: 'cards',
+          },
+          {
+            label: 'Toy Bird',
+            value: 'bird',
+          },
         ],
       },
     ],
   },
-]
+];
+
+const value = ref<string[]>([]);
 </script>

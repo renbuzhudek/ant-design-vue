@@ -1,58 +1,107 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-import type { TreeDataNode, Key } from '../types'
-
-const treeData: TreeDataNode[] = [
-  {
-    title: 'parent 0',
-    key: '0-0',
-    children: [
-      { title: 'leaf 0-0', key: '0-0-0' },
-      { title: 'leaf 0-1', key: '0-0-1' },
-    ],
-  },
-  {
-    title: 'parent 1',
-    key: '0-1',
-    children: [
-      { title: 'leaf 1-0', key: '0-1-0' },
-      { title: 'leaf 1-1', key: '0-1-1' },
-    ],
-  },
-  {
-    title: 'parent 2',
-    key: '0-2',
-    children: [
-      { title: 'apple', key: '0-2-0' },
-      { title: 'banana', key: '0-2-1' },
-    ],
-  },
-]
-
-const searchValue = ref('')
-const expandedKeys = ref<Key[]>(['0-0', '0-1', '0-2'])
-
-const filterFn = computed(() => {
-  if (!searchValue.value) return undefined
-  const search = searchValue.value.toLowerCase()
-  return (node: TreeDataNode) => {
-    return String(node.title ?? '').toLowerCase().includes(search)
-  }
-})
-</script>
-
 <template>
   <div>
-    <a-input-search
-      v-model:value="searchValue"
-      placeholder="Search"
-      style="margin-bottom: 8px"
-    />
+    <a-input-search v-model:value="searchValue" style="margin-bottom: 8px" placeholder="Search" />
     <a-tree
-      :tree-data="treeData"
       :expanded-keys="expandedKeys"
-      :filter-tree-node="filterFn"
-      default-expand-all
-    />
+      :auto-expand-parent="autoExpandParent"
+      :tree-data="gData"
+      @expand="onExpand"
+    >
+      <template #title="{ title }">
+        <span v-if="title.indexOf(searchValue) > -1">
+          {{ title.substring(0, title.indexOf(searchValue)) }}
+          <span style="color: #f50">{{ searchValue }}</span>
+          {{ title.substring(title.indexOf(searchValue) + searchValue.length) }}
+        </span>
+        <span v-else>{{ title }}</span>
+      </template>
+    </a-tree>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
+import type { TreeProps } from 'ant-design-vue';
+
+const x = 3;
+const y = 2;
+const z = 1;
+const genData: TreeProps['treeData'] = [];
+
+const generateData = (_level: number, _preKey?: string, _tns?: TreeProps['treeData']) => {
+  const preKey = _preKey || '0';
+  const tns = _tns || genData;
+
+  const children = [];
+  for (let i = 0; i < x; i++) {
+    const key = `${preKey}-${i}`;
+    tns.push({ title: key, key });
+    if (i < y) {
+      children.push(key);
+    }
+  }
+  if (_level < 0) {
+    return tns;
+  }
+  const level = _level - 1;
+  children.forEach((key, index) => {
+    tns[index].children = [];
+    return generateData(level, key, tns[index].children);
+  });
+};
+generateData(z);
+
+const dataList: TreeProps['treeData'] = [];
+const generateList = (data: TreeProps['treeData']) => {
+  for (let i = 0; i < data.length; i++) {
+    const node = data[i];
+    const key = node.key;
+    dataList.push({ key, title: key });
+    if (node.children) {
+      generateList(node.children);
+    }
+  }
+};
+generateList(genData);
+
+const getParentKey = (
+  key: string | number,
+  tree: TreeProps['treeData'],
+): string | number | undefined => {
+  let parentKey;
+  for (let i = 0; i < tree.length; i++) {
+    const node = tree[i];
+    if (node.children) {
+      if (node.children.some(item => item.key === key)) {
+        parentKey = node.key;
+      } else if (getParentKey(key, node.children)) {
+        parentKey = getParentKey(key, node.children);
+      }
+    }
+  }
+  return parentKey;
+};
+const expandedKeys = ref<(string | number)[]>([]);
+const searchValue = ref<string>('');
+const autoExpandParent = ref<boolean>(true);
+const gData = ref<TreeProps['treeData']>(genData);
+
+const onExpand = (keys: string[]) => {
+  expandedKeys.value = keys;
+  autoExpandParent.value = false;
+};
+
+watch(searchValue, value => {
+  const expanded = dataList
+    .map((item: TreeProps['treeData'][number]) => {
+      if (item.title.indexOf(value) > -1) {
+        return getParentKey(item.key, gData.value);
+      }
+      return null;
+    })
+    .filter((item, i, self) => item && self.indexOf(item) === i);
+  expandedKeys.value = expanded;
+  searchValue.value = value;
+  autoExpandParent.value = true;
+});
+</script>

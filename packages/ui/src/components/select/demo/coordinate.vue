@@ -1,33 +1,31 @@
 <template>
-  <div style="display: flex; gap: 16px">
+  <a-space>
     <a-select
       v-model:value="province"
       style="width: 120px"
-      :options="provinceData.map(p => ({ value: p, label: p }))"
-    />
+      :options="provinceData.map(pro => ({ value: pro }))"
+    ></a-select>
     <a-select
-      v-model:value="city"
+      v-model:value="secondCity"
       style="width: 120px"
-      :options="cities.map(c => ({ value: c, label: c }))"
-    />
-  </div>
+      :options="cities.map(city => ({ value: city }))"
+    ></a-select>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-
-const provinceData = ['Zhejiang', 'Jiangsu']
-const cityData: Record<string, string[]> = {
+<script lang="ts" setup>
+import { computed, ref, watch } from 'vue';
+const provinceData = ['Zhejiang', 'Jiangsu'];
+const cityData = {
   Zhejiang: ['Hangzhou', 'Ningbo', 'Wenzhou'],
   Jiangsu: ['Nanjing', 'Suzhou', 'Zhenjiang'],
-}
+};
+const province = ref(provinceData[0]);
+const secondCity = ref(cityData[province.value][0]);
+const cities = computed(() => {
+  return cityData[province.value];
+});
 
-const province = ref(provinceData[0])
-const city = ref(cityData[province.value][0])
-
-const cities = computed(() => cityData[province.value])
-
-watch(province, (val) => {
-  city.value = cityData[val][0]
-})
+watch(province, val => {
+  secondCity.value = cityData[val][0];
+});
 </script>

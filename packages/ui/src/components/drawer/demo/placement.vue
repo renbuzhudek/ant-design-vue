@@ -1,25 +1,34 @@
 <template>
-  <a-space>
-    <a-radio-group v-model:value="placement">
-      <a-radio value="top">Top</a-radio>
-      <a-radio value="right">Right</a-radio>
-      <a-radio value="bottom">Bottom</a-radio>
-      <a-radio value="left">Left</a-radio>
-    </a-radio-group>
-    <a-button variant="solid" @click="open = true">Open</a-button>
-  </a-space>
+  <a-radio-group v-model:value="placement" style="margin-right: 8px">
+    <a-radio value="top">top</a-radio>
+    <a-radio value="right">right</a-radio>
+    <a-radio value="bottom">bottom</a-radio>
+    <a-radio value="left">left</a-radio>
+  </a-radio-group>
+  <a-button type="primary" @click="showDrawer">Open</a-button>
   <a-drawer
-    v-model:open="open"
-    title="Placement Drawer"
+    title="Basic Drawer"
     :placement="placement"
+    :closable="false"
+    :open="open"
+    @close="onClose"
   >
+    <p>Some contents...</p>
+    <p>Some contents...</p>
     <p>Some contents...</p>
   </a-drawer>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { DrawerProps } from 'ant-design-vue';
+const placement = ref<DrawerProps['placement']>('left');
+const open = ref<boolean>(false);
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { DrawerPlacement } from '../types'
-const open = ref(false)
-const placement = ref<DrawerPlacement>('right')
+const showDrawer = () => {
+  open.value = true;
+};
+
+const onClose = () => {
+  open.value = false;
+};
 </script>

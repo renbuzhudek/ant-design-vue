@@ -1,59 +1,55 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Search and Select Users</h4>
-    <a-select
-      v-model:value="selectedUsers"
-      mode="multiple"
-      label-in-value
-      placeholder="Select users"
-      style="width: 100%"
-      :filter-option="false"
-      :not-found-content="fetching ? undefined : null"
-      :options="data"
-      :loading="fetching"
-      @search="fetchUsers"
-    >
-      <template v-if="fetching" #notFoundContent>
-        <a-spin size="small" />
-      </template>
-    </a-select>
-  </div>
+  <a-select
+    v-model:value="state.value"
+    mode="multiple"
+    label-in-value
+    placeholder="Select users"
+    style="width: 100%"
+    :filter-option="false"
+    :not-found-content="state.fetching ? undefined : null"
+    :options="state.data"
+    @search="fetchUser"
+  >
+    <template v-if="state.fetching" #notFoundContent>
+      <a-spin size="small" />
+    </template>
+  </a-select>
 </template>
+<script lang="ts" setup>
+import { reactive, watch } from 'vue';
+import { debounce } from 'lodash-es';
+let lastFetchId = 0;
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const state = reactive({
+  data: [],
+  value: [],
+  fetching: false,
+});
 
-interface UserOption {
-  value: string
-  label: string
-}
+const fetchUser = debounce(value => {
+  console.log('fetching user', value);
+  lastFetchId += 1;
+  const fetchId = lastFetchId;
+  state.data = [];
+  state.fetching = true;
+  fetch('https://randomuser.me/api/?results=5')
+    .then(response => response.json())
+    .then(body => {
+      if (fetchId !== lastFetchId) {
+        // for fetch callback order
+        return;
+      }
+      const data = body.results.map(user => ({
+        label: `${user.name.first} ${user.name.last}`,
+        value: user.login.username,
+      }));
+      state.data = data;
+      state.fetching = false;
+    });
+}, 300);
 
-const selectedUsers = ref<UserOption[]>([])
-const data = ref<UserOption[]>([])
-const fetching = ref(false)
-
-let fetchId = 0
-let debounceTimer: ReturnType<typeof setTimeout> | null = null
-
-const fetchUsers = (searchValue: string) => {
-  if (debounceTimer) clearTimeout(debounceTimer)
-
-  debounceTimer = setTimeout(() => {
-    fetchId += 1
-    const currentFetchId = fetchId
-    data.value = []
-    fetching.value = true
-
-    // Simulate API call with mock data
-    setTimeout(() => {
-      if (currentFetchId !== fetchId) return
-      data.value = [
-        { value: 'user1', label: `${searchValue} - Alice` },
-        { value: 'user2', label: `${searchValue} - Bob` },
-        { value: 'user3', label: `${searchValue} - Carol` },
-      ]
-      fetching.value = false
-    }, 500)
-  }, 300)
-}
+watch(state.value, () => {
+  state.data = [];
+  state.fetching = false;
+});
 </script>

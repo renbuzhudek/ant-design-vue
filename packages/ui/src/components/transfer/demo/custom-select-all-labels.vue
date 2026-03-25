@@ -5,10 +5,12 @@
       v-model:selected-keys="selectedKeys"
       :data-source="mockData"
       :titles="['Source', 'Target']"
-      :render="(item: any) => item.title"
+      :render="item => item.title"
+      :select-all-labels="selectAllLabels"
       :disabled="disabled"
       @change="handleChange"
       @selectChange="handleSelectChange"
+      @scroll="handleScroll"
     />
     <a-switch
       v-model:checked="disabled"
@@ -18,38 +20,49 @@
     />
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { SelectAllLabel } from 'ant-design-vue/es/transfer';
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-interface MockItem {
-  key: string
-  title: string
-  description: string
-  disabled: boolean
+interface MockData {
+  key: string;
+  title: string;
+  description: string;
+  disabled: boolean;
+}
+const mockData: MockData[] = [];
+for (let i = 0; i < 20; i++) {
+  mockData.push({
+    key: i.toString(),
+    title: `content${i + 1}`,
+    description: `description of content${i + 1}`,
+    disabled: i % 3 < 1,
+  });
 }
 
-const mockData: MockItem[] = Array.from({ length: 20 }, (_, i) => ({
-  key: i.toString(),
-  title: `content${i + 1}`,
-  description: `description of content${i + 1}`,
-  disabled: i % 3 < 1,
-}))
+const oriTargetKeys = mockData.filter(item => +item.key % 3 > 1).map(item => item.key);
+const disabled = ref<boolean>(false);
 
-const oriTargetKeys = mockData.filter((item) => +item.key % 3 > 1).map((item) => item.key)
+const targetKeys = ref<string[]>(oriTargetKeys);
 
-const disabled = ref(false)
-const targetKeys = ref<string[]>(oriTargetKeys)
-const selectedKeys = ref<string[]>(['1', '4'])
+const selectedKeys = ref<string[]>(['1', '4']);
 
 const handleChange = (nextTargetKeys: string[], direction: string, moveKeys: string[]) => {
-  console.log('targetKeys:', nextTargetKeys)
-  console.log('direction:', direction)
-  console.log('moveKeys:', moveKeys)
-}
-
+  console.log('targetKeys: ', nextTargetKeys);
+  console.log('direction: ', direction);
+  console.log('moveKeys: ', moveKeys);
+};
 const handleSelectChange = (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {
-  console.log('sourceSelectedKeys:', sourceSelectedKeys)
-  console.log('targetSelectedKeys:', targetSelectedKeys)
-}
+  console.log('sourceSelectedKeys: ', sourceSelectedKeys);
+  console.log('targetSelectedKeys: ', targetSelectedKeys);
+};
+const handleScroll = (direction: string, e: Event) => {
+  console.log('direction:', direction);
+  console.log('target:', e.target);
+};
+
+const selectAllLabels: SelectAllLabel[] = [
+  'Select All',
+  ({ selectedCount, totalCount }) => `${selectedCount}/${totalCount}`,
+];
 </script>

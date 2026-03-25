@@ -1,17 +1,24 @@
 <template>
-  <div style="max-width: 300px;">
-    <a-card hoverable>
-      <template #cover>
-        <img
-          alt="example"
-          src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-        />
+  <a-card hoverable style="width: 300px">
+    <template #cover>
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    </template>
+    <template #actions>
+      <setting-outlined key="setting" />
+      <edit-outlined key="edit" />
+      <ellipsis-outlined key="ellipsis" />
+    </template>
+    <a-card-meta title="Card title" description="This is the description">
+      <template #avatar>
+        <a-avatar src="https://joeschmoe.io/api/v1/random" />
       </template>
-      <a-card-meta title="Card Title" description="This is the description">
-        <template #avatar>
-          <div style="width: 32px; height: 32px; border-radius: 50%; background: #1677ff;" />
-        </template>
-      </a-card-meta>
-    </a-card>
-  </div>
+    </a-card-meta>
+  </a-card>
 </template>
+
+<script lang="ts" setup>
+import { SettingOutlined, EditOutlined, EllipsisOutlined } from '@ant-design/icons-vue';
+</script>

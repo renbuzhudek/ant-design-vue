@@ -4,30 +4,8 @@ exports[`Tree demos > demo: Basic 1`] = `
 "<div class="ant-tree ant-tree-icon-hide" role="tree" tabindex="0">
   <!-- Virtual scroll mode -->
   <!-- Non-virtual mode -->
-  <div class="ant-tree-treenode" role="treeitem" aria-expanded="true" aria-selected="false" aria-disabled="false" aria-level="1">
-    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher_open"><span class="ant-tree-switcher-icon"></span></span><!-- Checkbox -->
-    <!--v-if-->
-    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-open"><!-- Icon --><!--v-if--><!-- Title --><span class="ant-tree-title">parent 1</span></span>
-  </div>
-  <div class="ant-tree-treenode" role="treeitem" aria-expanded="true" aria-selected="false" aria-disabled="false" aria-level="2">
-    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"><span class="ant-tree-indent-unit"></span></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher_open"><span class="ant-tree-switcher-icon"></span></span><!-- Checkbox -->
-    <!--v-if-->
-    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-open"><!-- Icon --><!--v-if--><!-- Title --><span class="ant-tree-title">parent 1-0</span></span>
-  </div>
-  <div class="ant-tree-treenode" role="treeitem" aria-selected="false" aria-disabled="false" aria-level="3">
-    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"><span class="ant-tree-indent-unit"></span><span class="ant-tree-indent-unit"></span></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher-noop"><!--v-if--></span><!-- Checkbox -->
-    <!--v-if-->
-    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-normal"><!-- Icon --><!--v-if--><!-- Title --><span class="ant-tree-title">leaf</span></span>
-  </div>
-  <div class="ant-tree-treenode" role="treeitem" aria-selected="false" aria-disabled="false" aria-level="3">
-    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"><span class="ant-tree-indent-unit"></span><span class="ant-tree-indent-unit"></span></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher-noop"><!--v-if--></span><!-- Checkbox -->
-    <!--v-if-->
-    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-normal"><!-- Icon --><!--v-if--><!-- Title --><span class="ant-tree-title">leaf</span></span>
-  </div>
-  <div class="ant-tree-treenode" role="treeitem" aria-expanded="false" aria-selected="false" aria-disabled="false" aria-level="2">
-    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"><span class="ant-tree-indent-unit"></span></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher_close"><span class="ant-tree-switcher-icon"></span></span><!-- Checkbox -->
-    <!--v-if-->
-    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-close"><!-- Icon --><!--v-if--><!-- Title --><span class="ant-tree-title">parent 1-1</span></span>
+  <div class="ant-tree-treenode" role="treeitem" aria-expanded="false" aria-selected="false" aria-checked="false" aria-disabled="false" aria-level="1">
+    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher_close"><span class="ant-tree-switcher-icon"></span></span><!-- Checkbox --><span class="ant-tree-checkbox ant-tree-checkbox-indeterminate"><span class="ant-tree-checkbox-inner"></span></span><!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-close"><!-- Icon --><!--v-if--><!-- Title --><span class="ant-tree-title">parent 1</span></span>
   </div>
 </div>"
 `;
@@ -108,10 +86,20 @@ exports[`Tree demos > demo: Directory 1`] = `
     <!--v-if-->
     <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-normal"><!-- Icon --><span class="ant-tree-iconEle"><span class="ant-tree-icon-file"></span></span><!-- Title --><span class="ant-tree-title">leaf 0-1</span></span>
   </div>
-  <div class="ant-tree-treenode" role="treeitem" aria-expanded="false" aria-selected="false" aria-disabled="false" aria-level="1">
-    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher_close"><span class="ant-tree-switcher-icon"></span></span><!-- Checkbox -->
+  <div class="ant-tree-treenode" role="treeitem" aria-expanded="true" aria-selected="false" aria-disabled="false" aria-level="1">
+    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher_open"><span class="ant-tree-switcher-icon"></span></span><!-- Checkbox -->
     <!--v-if-->
-    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-close"><!-- Icon --><span class="ant-tree-iconEle"><span class="ant-tree-icon-folder"></span></span><!-- Title --><span class="ant-tree-title">parent 1</span></span>
+    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-open"><!-- Icon --><span class="ant-tree-iconEle"><span class="ant-tree-icon-folder-open"></span></span><!-- Title --><span class="ant-tree-title">parent 1</span></span>
+  </div>
+  <div class="ant-tree-treenode" role="treeitem" aria-selected="false" aria-disabled="false" aria-level="2">
+    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"><span class="ant-tree-indent-unit"></span></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher-noop"><!--v-if--></span><!-- Checkbox -->
+    <!--v-if-->
+    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-normal"><!-- Icon --><span class="ant-tree-iconEle"><span class="ant-tree-icon-file"></span></span><!-- Title --><span class="ant-tree-title">leaf 1-0</span></span>
+  </div>
+  <div class="ant-tree-treenode" role="treeitem" aria-selected="false" aria-disabled="false" aria-level="2">
+    <!-- Indent --><span class="ant-tree-indent" aria-hidden="true"><span class="ant-tree-indent-unit"></span></span><!-- Switcher --><span class="ant-tree-switcher ant-tree-switcher-noop"><!--v-if--></span><!-- Checkbox -->
+    <!--v-if-->
+    <!-- Content --><span class="ant-tree-node-content-wrapper ant-tree-node-content-wrapper-normal"><!-- Icon --><span class="ant-tree-iconEle"><span class="ant-tree-icon-file"></span></span><!-- Title --><span class="ant-tree-title">leaf 1-1</span></span>
   </div>
 </div>"
 `;

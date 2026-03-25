@@ -1,10 +1,10 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
+  <a-space direction="vertical" style="width: 100%">
     <a-alert message="Success Text" type="success">
       <template #description>
         <p>
           Success Description
-          <span style="color: red;">Success</span>
+          <span style="color: red">Success</span>
           Description Success Description
         </p>
       </template>
@@ -24,5 +24,5 @@
       description="Error Description Error Description Error Description Error Description"
       type="error"
     />
-  </div>
+  </a-space>
 </template>

@@ -1,23 +1,21 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Placement (Top)</h4>
-    <a-mentions
-      v-model:value="value"
-      placement="top"
-      :options="options"
-      placeholder="Type @ to see suggestions above"
-    />
-  </div>
+  <a-mentions v-model:value="value" placement="top" :options="options"></a-mentions>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref('')
-
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref<string>('');
 const options = [
-  { value: 'afc163', label: 'afc163' },
-  { value: 'zombieJ', label: 'zombieJ' },
-  { value: 'yesmeck', label: 'yesmeck' },
-]
+  {
+    value: 'afc163',
+    label: 'afc163',
+  },
+  {
+    value: 'zombieJ',
+    label: 'zombieJ',
+  },
+  {
+    value: 'yesmeck',
+    label: 'yesmeck',
+  },
+];
 </script>

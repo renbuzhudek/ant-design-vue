@@ -1,15 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Pagination demos > demo: Basic 1`] = `
-"<nav class="ant-pagination" role="navigation" aria-label="Pagination">
+"<nav class="ant-pagination" role="navigation" aria-label="Pagination" show-less-items="">
   <!-- Simple mode -->
   <!-- Full mode -->
   <!-- Total -->
   <!--v-if-->
   <!-- Prev -->
-  <li class="ant-pagination-prev ant-pagination-disabled"><button type="button" disabled="" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
-  <li class="ant-pagination-item ant-pagination-item-active"><button type="button" aria-label="Page 1" aria-current="page">1</button></li>
-  <li class="ant-pagination-item"><button type="button" aria-label="Page 2">2</button></li>
+  <li class="ant-pagination-prev"><button type="button" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
+  <li class="ant-pagination-item"><button type="button" aria-label="Page 1">1</button></li>
+  <li class="ant-pagination-item ant-pagination-item-active"><button type="button" aria-label="Page 2" aria-current="page">2</button></li>
   <li class="ant-pagination-item"><button type="button" aria-label="Page 3">3</button></li>
   <li class="ant-pagination-item"><button type="button" aria-label="Page 4">4</button></li>
   <li class="ant-pagination-item"><button type="button" aria-label="Page 5">5</button></li><!-- Next -->
@@ -21,26 +21,55 @@ exports[`Pagination demos > demo: Basic 1`] = `
 `;
 
 exports[`Pagination demos > demo: Changer 1`] = `
-"<nav class="ant-pagination" role="navigation" aria-label="Pagination">
-  <!-- Simple mode -->
-  <!-- Full mode -->
-  <!-- Total -->
-  <li class="ant-pagination-total-text">Total 500 items</li><!-- Prev -->
-  <li class="ant-pagination-prev ant-pagination-disabled"><button type="button" disabled="" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
-  <li class="ant-pagination-item ant-pagination-item-active"><button type="button" aria-label="Page 1" aria-current="page">1</button></li>
-  <li class="ant-pagination-item"><button type="button" aria-label="Page 2">2</button></li>
-  <li class="ant-pagination-item"><button type="button" aria-label="Page 3">3</button></li>
-  <li class="ant-pagination-jump-next"><button type="button" aria-label="Next 5 pages"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></button></li>
-  <li class="ant-pagination-item"><button type="button" aria-label="Page 50">50</button></li><!-- Next -->
-  <li class="ant-pagination-next"><button type="button" aria-label="Next page"><span role="img" aria-label="right" class="anticon anticon-right"><svg focusable="false" class="" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></button></li><!-- Page size changer -->
-  <li class="ant-pagination-options"><select class="ant-pagination-options-size-changer" aria-label="Items per page" value="10">
-      <option value="10">10 / page </option>
-      <option value="20">20 / page </option>
-      <option value="50">50 / page </option>
-      <option value="100">100 / page </option>
-    </select></li><!-- Quick jumper -->
-  <!--v-if-->
-</nav>"
+"<div>
+  <nav class="ant-pagination" role="navigation" aria-label="Pagination">
+    <!-- Simple mode -->
+    <!-- Full mode -->
+    <!-- Total -->
+    <!--v-if-->
+    <!-- Prev -->
+    <li class="ant-pagination-prev"><button type="button" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
+    <li class="ant-pagination-item"><button type="button" aria-label="Page 1">1</button></li>
+    <li class="ant-pagination-item"><button type="button" aria-label="Page 2">2</button></li>
+    <li class="ant-pagination-item ant-pagination-item-active"><button type="button" aria-label="Page 3" aria-current="page">3</button></li>
+    <li class="ant-pagination-item"><button type="button" aria-label="Page 4">4</button></li>
+    <li class="ant-pagination-item"><button type="button" aria-label="Page 5">5</button></li>
+    <li class="ant-pagination-jump-next"><button type="button" aria-label="Next 5 pages"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></button></li>
+    <li class="ant-pagination-item"><button type="button" aria-label="Page 25">25</button></li><!-- Next -->
+    <li class="ant-pagination-next"><button type="button" aria-label="Next page"><span role="img" aria-label="right" class="anticon anticon-right"><svg focusable="false" class="" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></button></li><!-- Page size changer -->
+    <li class="ant-pagination-options"><select class="ant-pagination-options-size-changer" aria-label="Items per page" value="20">
+        <option value="10">10 / page </option>
+        <option value="20">20 / page </option>
+        <option value="50">50 / page </option>
+        <option value="100">100 / page </option>
+      </select></li><!-- Quick jumper -->
+    <!--v-if-->
+  </nav><br>
+  <nav class="ant-pagination ant-pagination-disabled" role="navigation" aria-label="Pagination">
+    <!-- Simple mode -->
+    <!-- Full mode -->
+    <!-- Total -->
+    <!--v-if-->
+    <!-- Prev -->
+    <li class="ant-pagination-prev ant-pagination-disabled"><button type="button" disabled="" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
+    <li class="ant-pagination-item"><button type="button" disabled="" aria-label="Page 1">1</button></li>
+    <li class="ant-pagination-item"><button type="button" disabled="" aria-label="Page 2">2</button></li>
+    <li class="ant-pagination-item"><button type="button" disabled="" aria-label="Page 3">3</button></li>
+    <li class="ant-pagination-item ant-pagination-item-active"><button type="button" disabled="" aria-label="Page 4" aria-current="page">4</button></li>
+    <li class="ant-pagination-item"><button type="button" disabled="" aria-label="Page 5">5</button></li>
+    <li class="ant-pagination-item"><button type="button" disabled="" aria-label="Page 6">6</button></li>
+    <li class="ant-pagination-jump-next"><button type="button" disabled="" aria-label="Next 5 pages"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></button></li>
+    <li class="ant-pagination-item"><button type="button" disabled="" aria-label="Page 50">50</button></li><!-- Next -->
+    <li class="ant-pagination-next ant-pagination-disabled"><button type="button" disabled="" aria-label="Next page"><span role="img" aria-label="right" class="anticon anticon-right"><svg focusable="false" class="" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></button></li><!-- Page size changer -->
+    <li class="ant-pagination-options"><select class="ant-pagination-options-size-changer" disabled="" aria-label="Items per page" value="10">
+        <option value="10">10 / page </option>
+        <option value="20">20 / page </option>
+        <option value="50">50 / page </option>
+        <option value="100">100 / page </option>
+      </select></li><!-- Quick jumper -->
+    <!--v-if-->
+  </nav>
+</div>"
 `;
 
 exports[`Pagination demos > demo: Jumper 1`] = `
@@ -70,10 +99,14 @@ exports[`Pagination demos > demo: More 1`] = `
   <!-- Total -->
   <!--v-if-->
   <!-- Prev -->
-  <li class="ant-pagination-prev ant-pagination-disabled"><button type="button" disabled="" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
-  <li class="ant-pagination-item ant-pagination-item-active"><button type="button" aria-label="Page 1" aria-current="page">1</button></li>
-  <li class="ant-pagination-item"><button type="button" aria-label="Page 2">2</button></li>
-  <li class="ant-pagination-item"><button type="button" aria-label="Page 3">3</button></li>
+  <li class="ant-pagination-prev"><button type="button" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li><!-- Page items -->
+  <li class="ant-pagination-item"><button type="button" aria-label="Page 1">1</button></li>
+  <li class="ant-pagination-jump-prev"><button type="button" aria-label="Previous 5 pages"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></button></li>
+  <li class="ant-pagination-item"><button type="button" aria-label="Page 4">4</button></li>
+  <li class="ant-pagination-item"><button type="button" aria-label="Page 5">5</button></li>
+  <li class="ant-pagination-item ant-pagination-item-active"><button type="button" aria-label="Page 6" aria-current="page">6</button></li>
+  <li class="ant-pagination-item"><button type="button" aria-label="Page 7">7</button></li>
+  <li class="ant-pagination-item"><button type="button" aria-label="Page 8">8</button></li>
   <li class="ant-pagination-jump-next"><button type="button" aria-label="Next 5 pages"><span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis"><svg focusable="false" class="" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg></span></button></li>
   <li class="ant-pagination-item"><button type="button" aria-label="Page 50">50</button></li><!-- Next -->
   <li class="ant-pagination-next"><button type="button" aria-label="Next page"><span role="img" aria-label="right" class="anticon anticon-right"><svg focusable="false" class="" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></button></li><!-- Page size changer -->
@@ -86,8 +119,8 @@ exports[`Pagination demos > demo: More 1`] = `
 exports[`Pagination demos > demo: Simple 1`] = `
 "<nav class="ant-pagination ant-pagination-simple" role="navigation" aria-label="Pagination">
   <!-- Simple mode -->
-  <li class="ant-pagination-prev ant-pagination-disabled"><button type="button" disabled="" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li>
-  <li class="ant-pagination-simple-pager"><input type="text" size="3" value="1"><span class="ant-pagination-slash">/</span> 5</li>
+  <li class="ant-pagination-prev"><button type="button" aria-label="Previous page"><span role="img" aria-label="left" class="anticon anticon-left"><svg focusable="false" class="" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></span></button></li>
+  <li class="ant-pagination-simple-pager"><input type="text" size="3" value="2"><span class="ant-pagination-slash">/</span> 5</li>
   <li class="ant-pagination-next"><button type="button" aria-label="Next page"><span role="img" aria-label="right" class="anticon anticon-right"><svg focusable="false" class="" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg></span></button></li>
 </nav>"
 `;

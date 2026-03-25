@@ -1,15 +1,9 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref('Daily')
-</script>
-
 <template>
-  <div style="max-width: 600px;">
-    <a-segmented
-      v-model:value="value"
-      :options="['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly']"
-      block
-    />
-  </div>
+  <a-segmented v-model:value="value" block :options="data" />
 </template>
+
+<script lang="ts" setup>
+import { reactive, ref } from 'vue';
+const data = reactive([123, 456, 'longtext-longtext-longtext-longtext']);
+const value = ref(data[0]);
+</script>

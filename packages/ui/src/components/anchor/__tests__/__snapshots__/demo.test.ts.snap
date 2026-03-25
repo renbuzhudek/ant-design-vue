@@ -4,13 +4,13 @@ exports[`Anchor demos > demo: Basic 1`] = `
 "<div class="ant-anchor ant-anchor-vertical">
   <div class="ant-anchor-wrapper">
     <!-- Ink indicator (vertical only) --><span class="ant-anchor-ink" style="display: none;"></span><!-- Items-based rendering -->
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#basic" title="Basic Usage">Basic Usage</a><!-- Nested children (vertical only) -->
+    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#part-1" title="() => $setup.h(&quot;span&quot;, { style: &quot;color: red&quot; }, &quot;Part 1&quot;)">() =&gt; $setup.h("span", { style: "color: red" }, "Part 1")</a><!-- Nested children (vertical only) -->
       <!--v-if-->
     </div>
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#api" title="API">API</a><!-- Nested children (vertical only) -->
+    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#part-2" title="Part 2">Part 2</a><!-- Nested children (vertical only) -->
       <!--v-if-->
     </div>
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#examples" title="Examples">Examples</a><!-- Nested children (vertical only) -->
+    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#part-3" title="Part 3">Part 3</a><!-- Nested children (vertical only) -->
       <!--v-if-->
     </div>
   </div>
@@ -18,22 +18,30 @@ exports[`Anchor demos > demo: Basic 1`] = `
 `;
 
 exports[`Anchor demos > demo: Horizontal 1`] = `
-"<div class="ant-anchor ant-anchor-horizontal">
-  <div class="ant-anchor-wrapper">
-    <!-- Ink indicator (vertical only) -->
-    <!--v-if-->
-    <!-- Items-based rendering -->
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#overview" title="Overview">Overview</a><!-- Nested children (vertical only) -->
+"<div>
+  <div class="ant-anchor ant-anchor-horizontal">
+    <div class="ant-anchor-wrapper">
+      <!-- Ink indicator (vertical only) -->
       <!--v-if-->
-    </div>
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#installation" title="Installation">Installation</a><!-- Nested children (vertical only) -->
-      <!--v-if-->
-    </div>
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#usage" title="Usage">Usage</a><!-- Nested children (vertical only) -->
-      <!--v-if-->
-    </div>
-    <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#api" title="API">API</a><!-- Nested children (vertical only) -->
-      <!--v-if-->
+      <!-- Items-based rendering -->
+      <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#horizontally-part-1" title="Part 1">Part 1</a><!-- Nested children (vertical only) -->
+        <!--v-if-->
+      </div>
+      <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#horizontally-part-2" title="Part 2">Part 2</a><!-- Nested children (vertical only) -->
+        <!--v-if-->
+      </div>
+      <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#horizontally-part-3" title="Part 3">Part 3</a><!-- Nested children (vertical only) -->
+        <!--v-if-->
+      </div>
+      <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#horizontally-part-4" title="Part 4">Part 4</a><!-- Nested children (vertical only) -->
+        <!--v-if-->
+      </div>
+      <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#horizontally-part-5" title="Part 5">Part 5</a><!-- Nested children (vertical only) -->
+        <!--v-if-->
+      </div>
+      <div class="ant-anchor-link"><a class="ant-anchor-link-title" href="#horizontally-part-6" title="Part 6">Part 6</a><!-- Nested children (vertical only) -->
+        <!--v-if-->
+      </div>
     </div>
   </div>
 </div>"

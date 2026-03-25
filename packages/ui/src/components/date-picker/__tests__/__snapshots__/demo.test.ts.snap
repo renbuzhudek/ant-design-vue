@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`DatePicker demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+"<div class="ant-space ant-space-vertical" style="column-gap: 12px; row-gap: 12px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
   <!--v-if-->
 </div>
 </div></span>
@@ -9,21 +9,50 @@ exports[`DatePicker demos > demo: Basic 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div>
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div>
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div>
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div>
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
 <!--teleport end-->
-<p>Selected: None</p>
 </div>"
 `;
 
 exports[`DatePicker demos > demo: Disabled 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md ant-picker-disabled"><div class="ant-picker-input"><input placeholder="Disabled" disabled="" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
-  <!--v-if-->
-</div>
+"<div class="ant-space ant-space-vertical" style="column-gap: 8px; row-gap: 8px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value="2015-06-06"><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span><span class="ant-picker-clear"><span role="img" aria-label="close-circle" class="anticon anticon-close-circle"><svg focusable="false" class="" data-icon="close-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true" fill-rule="evenodd" viewBox="64 64 896 896"><path d="M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm127.98 274.82h-.04l-.08.06L512 466.75 384.14 338.88c-.04-.05-.06-.06-.08-.06a.12.12 0 00-.07 0c-.03 0-.05.01-.09.05l-45.02 45.02a.2.2 0 00-.05.09.12.12 0 000 .07v.02a.27.27 0 00.06.06L466.75 512 338.88 639.86c-.05.04-.06.06-.06.08a.12.12 0 000 .07c0 .03.01.05.05.09l45.02 45.02a.2.2 0 00.09.05.12.12 0 00.07 0c.02 0 .04-.01.08-.05L512 557.25l127.86 127.87c.04.04.06.05.08.05a.12.12 0 00.07 0c.03 0 .05-.01.09-.05l45.02-45.02a.2.2 0 00.05-.09.12.12 0 000-.07v-.02a.27.27 0 00-.05-.06L557.25 512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12 0 000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2 0 00-.09-.05.12.12 0 00-.07 0z"></path></svg></span></span></div>
 </div></span>
 <!--teleport start-->
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Disabled weekends" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md ant-picker-disabled"><div class="ant-picker-input"><input placeholder="Select date" disabled="" autocomplete="off" value="2015-06"><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
 <!--v-if-->
 </div>
 </div></span>
@@ -31,23 +60,16 @@ exports[`DatePicker demos > demo: Disabled 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end-->
-</div>"
-`;
-
-exports[`DatePicker demos > demo: Format 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="YYYY/MM/DD" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
-  <!--v-if-->
-</div>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md ant-picker-disabled"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start date" disabled="" autocomplete="off" value="2015-06-06"></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End date" disabled="" autocomplete="off" value="2015-06-06"></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
 </div></span>
 <!--teleport start-->
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="DD-MM-YYYY" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
-<!--v-if-->
-</div>
-</div></span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start date" autocomplete="off" value="2019-09-03"></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End date" disabled="" autocomplete="off" value="2019-11-22"></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span><span class="ant-picker-clear"><span role="img" aria-label="close-circle" class="anticon anticon-close-circle"><svg focusable="false" class="" data-icon="close-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true" fill-rule="evenodd" viewBox="64 64 896 896"><path d="M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm127.98 274.82h-.04l-.08.06L512 466.75 384.14 338.88c-.04-.05-.06-.06-.08-.06a.12.12 0 00-.07 0c-.03 0-.05.01-.09.05l-45.02 45.02a.2.2 0 00-.05.09.12.12 0 000 .07v.02a.27.27 0 00.06.06L466.75 512 338.88 639.86c-.05.04-.06.06-.06.08a.12.12 0 000 .07c0 .03.01.05.05.09l45.02 45.02a.2.2 0 00.09.05.12.12 0 00.07 0c.02 0 .04-.01.08-.05L512 557.25l127.86 127.87c.04.04.06.05.08.05a.12.12 0 00.07 0c.03 0 .05-.01.09-.05l45.02-45.02a.2.2 0 00.05-.09.12.12 0 000-.07v-.02a.27.27 0 00-.05-.06L557.25 512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12 0 000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2 0 00-.09-.05.12.12 0 00-.07 0z"></path></svg></span></span></div></span>
 <!--teleport start-->
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
@@ -57,7 +79,7 @@ exports[`DatePicker demos > demo: Format 1`] = `
 `;
 
 exports[`DatePicker demos > demo: Mode 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Date (default)" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+"<div class="ant-space ant-space-vertical" style="column-gap: 12px; row-gap: 12px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
   <!--v-if-->
 </div>
 </div></span>
@@ -65,33 +87,9 @@ exports[`DatePicker demos > demo: Mode 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Week" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md" mode="month,month"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start month" autocomplete="off" value=""></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End month" autocomplete="off" value=""></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
 <!--v-if-->
-</div>
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Month" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
-<!--v-if-->
-</div>
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Quarter" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
-<!--v-if-->
-</div>
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Year" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
-<!--v-if-->
-</div>
 </div></span>
 <!--teleport start-->
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
@@ -129,7 +127,8 @@ exports[`DatePicker demos > demo: Range 1`] = `
 `;
 
 exports[`DatePicker demos > demo: Size 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-sm"><div class="ant-picker-input"><input placeholder="Small" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+"<div class="ant-space ant-space-vertical" style="column-gap: 12px; row-gap: 12px;">
+  <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Large</span></label><label class="ant-radio-button-wrapper ant-radio-button-wrapper-checked"><input type="radio" class="ant-radio-button-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-button-inner">Default</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Small</span></label></div><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
   <!--v-if-->
 </div>
 </div></span>
@@ -137,7 +136,7 @@ exports[`DatePicker demos > demo: Size 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Default" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select Month" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
 <!--v-if-->
 </div>
 </div></span>
@@ -145,7 +144,15 @@ exports[`DatePicker demos > demo: Size 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-lg"><div class="ant-picker-input"><input placeholder="Large" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start date" autocomplete="off" value=""></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End date" autocomplete="off" value=""></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select Week" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
 <!--v-if-->
 </div>
 </div></span>
@@ -158,7 +165,7 @@ exports[`DatePicker demos > demo: Size 1`] = `
 `;
 
 exports[`DatePicker demos > demo: Status 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md ant-picker-status-error"><div class="ant-picker-input"><input placeholder="Error" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+"<div class="ant-space ant-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md ant-picker-status-error"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
   <!--v-if-->
 </div>
 </div></span>
@@ -166,9 +173,25 @@ exports[`DatePicker demos > demo: Status 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md ant-picker-status-warning"><div class="ant-picker-input"><input placeholder="Warning" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md ant-picker-status-warning"><div class="ant-picker-input"><input placeholder="Select date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
 <!--v-if-->
 </div>
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md ant-picker-status-error"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start date" autocomplete="off" value=""></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End date" autocomplete="off" value=""></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md ant-picker-status-warning"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start date" autocomplete="off" value=""></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End date" autocomplete="off" value=""></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
 </div></span>
 <!--teleport start-->
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
@@ -179,7 +202,7 @@ exports[`DatePicker demos > demo: Status 1`] = `
 `;
 
 exports[`DatePicker demos > demo: Time 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select date &amp; time" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+"<div class="ant-space ant-space-vertical" style="column-gap: 12px; row-gap: 12px;"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md"><div class="ant-picker-input"><input placeholder="Select Time" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
   <!--v-if-->
 </div>
 </div></span>
@@ -187,7 +210,14 @@ exports[`DatePicker demos > demo: Time 1`] = `
 <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
+<!--teleport end--><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-range ant-picker-md"><div class="ant-picker-input ant-picker-input-start"><input placeholder="Start Time" autocomplete="off" value=""></div><div class="ant-picker-range-separator"><span class="ant-picker-separator">~</span></div>
+<div class="ant-picker-input ant-picker-input-end"><input placeholder="End Time" autocomplete="off" value=""></div><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+<!--v-if-->
+</div></span>
+<!--teleport start-->
+<transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
 <!--teleport end-->
-<p>Selected: None</p>
 </div>"
 `;

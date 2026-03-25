@@ -2,32 +2,252 @@
 
 exports[`Watermark demos > demo: basic 1`] = `
 "<div class="ant-watermark" style="position: relative;">
-  <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
-    <p style="color: rgba(0, 0, 0, 0.45);">Content area</p>
-  </div>
+  <div style="height: 500px;"></div>
 </div>"
 `;
 
 exports[`Watermark demos > demo: custom 1`] = `
-"<div class="ant-watermark" style="position: relative;">
-  <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
-    <p style="color: rgba(0, 0, 0, 0.45);">Custom font and rotation</p>
+"<div style="display: flex;">
+  <div class="ant-watermark" style="position: relative;">
+    <a-typography>
+      <div class="ant-typography"> The light-speed iteration of the digital world makes products more complex. However, human consciousness and attention resources are limited. Facing this design contradiction, the pursuit of natural interaction will be the consistent direction of Ant Design.
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <div class="ant-typography"> Natural user cognition: According to cognitive psychology, about 80% of external information is obtained through visual channels. The most important visual elements in the interface design, including layout, colors, illustrations, icons, etc., should fully absorb the laws of nature, thereby reducing the user's cognitive cost and bringing authentic and smooth feelings. In some scenarios, opportunely adding other sensory channels such as hearing, touch can create a richer and more natural product experience.
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+      <div class="ant-typography"> Natural user behavior: In the interaction with the system, the designer should fully understand the relationship between users, system roles, and task objectives, and also contextually organize system functions and services. At the same time, a series of methods such as behavior analysis, artificial intelligence and sensors could be applied to assist users to make effective decisions and reduce extra operations of users, to save users' mental and physical resources and make human-computer interaction more natural.
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </a-typography><img style="z-index: 10; width: 100%; max-width: 800px; position: relative;" src="https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*zx7LTI_ECSAAAAAAAAAAAABkARQnAQ" alt="示例图片">
   </div>
+  <form class="ant-form ant-form-vertical" style="width: 280px; flex-shrink: 0; border-left: 1px solid rgb(238, 238, 238); padding-left: 20px; margin-left: 20px;">
+    <div class="ant-form-item" data-field-id="content">
+      <div class="ant-form-item-label"><label for="content">
+          <!--v-if-->Content
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </label></div>
+      <div class="ant-form-item-control">
+        <div class="ant-form-item-control-input">
+          <div class="ant-form-item-control-input-content">
+            <!-- With addon wrapper -->
+            <!-- Plain input --><input class="ant-input" type="text" value="Ant Design Vue">
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="ant-form-item" data-field-id="font.fontSize">
+      <div class="ant-form-item-label"><label for="font.fontSize">
+          <!--v-if-->FontSize
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </label></div>
+      <div class="ant-form-item-control">
+        <div class="ant-form-item-control-input">
+          <div class="ant-form-item-control-input-content">
+            <div class="ant-slider">
+              <div class="ant-slider-rail"></div>
+              <div class="ant-slider-track" style="left: 0%; width: 16%;"></div><!-- Steps/dots -->
+              <!--v-if-->
+              <!-- Marks -->
+              <!--v-if-->
+              <!-- Handle(s) -->
+              <div class="ant-slider-handle" style="left: 16%;" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="16" tabindex="0"></div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="ant-form-item" data-field-id="zIndex">
+      <div class="ant-form-item-label"><label for="zIndex">
+          <!--v-if-->zIndex
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </label></div>
+      <div class="ant-form-item-control">
+        <div class="ant-form-item-control-input">
+          <div class="ant-form-item-control-input-content">
+            <div class="ant-slider">
+              <div class="ant-slider-rail"></div>
+              <div class="ant-slider-track" style="left: 0%; width: 11%;"></div><!-- Steps/dots -->
+              <!--v-if-->
+              <!-- Marks -->
+              <!--v-if-->
+              <!-- Handle(s) -->
+              <div class="ant-slider-handle" style="left: 11%;" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="11" tabindex="0"></div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="ant-form-item" data-field-id="rotate">
+      <div class="ant-form-item-label"><label for="rotate">
+          <!--v-if-->Rotate
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </label></div>
+      <div class="ant-form-item-control">
+        <div class="ant-form-item-control-input">
+          <div class="ant-form-item-control-input-content">
+            <div class="ant-slider">
+              <div class="ant-slider-rail"></div>
+              <div class="ant-slider-track" style="left: 0%; width: 43.888888888888886%;"></div><!-- Steps/dots -->
+              <!--v-if-->
+              <!-- Marks -->
+              <!--v-if-->
+              <!-- Handle(s) -->
+              <div class="ant-slider-handle" style="left: 43.888888888888886%;" role="slider" aria-valuemin="-180" aria-valuemax="180" aria-valuenow="-22" tabindex="0"></div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="ant-form-item" data-field-id="" style="margin-bottom: 0px;">
+      <div class="ant-form-item-label"><label>
+          <!--v-if-->Gap
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </label></div>
+      <div class="ant-form-item-control">
+        <div class="ant-form-item-control-input">
+          <div class="ant-form-item-control-input-content">
+            <div class="ant-space ant-space-horizontal ant-space-align-baseline" style="column-gap: 8px; row-gap: 8px; display: flex;">
+              <div class="ant-form-item" data-field-id="gap_0">
+                <!--v-if-->
+                <div class="ant-form-item-control">
+                  <div class="ant-form-item-control-input">
+                    <div class="ant-form-item-control-input-content">
+                      <!-- With addon wrapper -->
+                      <!-- Standard (no addon) -->
+                      <div class="ant-input-number">
+                        <!--v-if-->
+                        <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="100" placeholder="gapX" value="100"></div>
+                        <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
+                      </div>
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <!--v-if-->
+                  <!--v-if-->
+                </div>
+              </div>
+              <div class="ant-form-item" data-field-id="gap_1">
+                <!--v-if-->
+                <div class="ant-form-item-control">
+                  <div class="ant-form-item-control-input">
+                    <div class="ant-form-item-control-input-content">
+                      <!-- With addon wrapper -->
+                      <!-- Standard (no addon) -->
+                      <div class="ant-input-number">
+                        <!--v-if-->
+                        <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="100" placeholder="gapY" value="100"></div>
+                        <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
+                      </div>
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <!--v-if-->
+                  <!--v-if-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="ant-form-item" data-field-id="" style="margin-bottom: 0px;">
+      <div class="ant-form-item-label"><label>
+          <!--v-if-->Offset
+          <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
+        </label></div>
+      <div class="ant-form-item-control">
+        <div class="ant-form-item-control-input">
+          <div class="ant-form-item-control-input-content">
+            <div class="ant-space ant-space-horizontal ant-space-align-baseline" style="column-gap: 8px; row-gap: 8px; display: flex;">
+              <div class="ant-form-item" data-field-id="offset_0">
+                <!--v-if-->
+                <div class="ant-form-item-control">
+                  <div class="ant-form-item-control-input">
+                    <div class="ant-form-item-control-input-content">
+                      <!-- With addon wrapper -->
+                      <!-- Standard (no addon) -->
+                      <div class="ant-input-number">
+                        <!--v-if-->
+                        <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" placeholder="offsetLeft" value=""></div>
+                        <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
+                      </div>
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <!--v-if-->
+                  <!--v-if-->
+                </div>
+              </div>
+              <div class="ant-form-item" data-field-id="offset_1">
+                <!--v-if-->
+                <div class="ant-form-item-control">
+                  <div class="ant-form-item-control-input">
+                    <div class="ant-form-item-control-input-content">
+                      <!-- With addon wrapper -->
+                      <!-- Standard (no addon) -->
+                      <div class="ant-input-number">
+                        <!--v-if-->
+                        <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" placeholder="offsetTop" value=""></div>
+                        <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
+                      </div>
+                    </div>
+                    <!--v-if-->
+                  </div>
+                  <!--v-if-->
+                  <!--v-if-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <!--v-if-->
+      </div>
+    </div>
+  </form>
 </div>"
 `;
 
 exports[`Watermark demos > demo: image 1`] = `
 "<div class="ant-watermark" style="position: relative;">
-  <div style="height: 500px; display: flex; align-items: center; justify-content: center;">
-    <p style="color: rgba(0, 0, 0, 0.45);">Content area</p>
-  </div>
+  <div style="height: 500px;"></div>
 </div>"
 `;
 
 exports[`Watermark demos > demo: multi-line 1`] = `
 "<div class="ant-watermark" style="position: relative;">
-  <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
-    <p style="color: rgba(0, 0, 0, 0.45);">Multi-line watermark</p>
-  </div>
+  <div style="height: 500px;"></div>
 </div>"
 `;

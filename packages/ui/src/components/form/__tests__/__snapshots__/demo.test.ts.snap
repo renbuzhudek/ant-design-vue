@@ -1,13 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Form demos > demo: Basic 1`] = `
-"<form class="ant-form ant-form-horizontal">
+"<form class="ant-form ant-form-horizontal" autocomplete="off">
   <div class="ant-form-item" data-field-id="username">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="username"><span class="ant-form-item-required" aria-hidden="true">*</span>Username
+    <div class="ant-form-item-label" style="width: 33.33333333333333%; max-width: 33.33333333333333%;"><label for="username"><span class="ant-form-item-required" aria-hidden="true">*</span>Username
         <!--v-if--><span class="ant-form-item-colon">:</span>
         <!--v-if-->
       </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
+    <div class="ant-form-item-control" style="width: 66.66666666666666%; max-width: 66.66666666666666%;">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
           <!-- With addon wrapper -->
@@ -20,11 +20,11 @@ exports[`Form demos > demo: Basic 1`] = `
     </div>
   </div>
   <div class="ant-form-item" data-field-id="password">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="password"><span class="ant-form-item-required" aria-hidden="true">*</span>Password
+    <div class="ant-form-item-label" style="width: 33.33333333333333%; max-width: 33.33333333333333%;"><label for="password"><span class="ant-form-item-required" aria-hidden="true">*</span>Password
         <!--v-if--><span class="ant-form-item-colon">:</span>
         <!--v-if-->
       </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
+    <div class="ant-form-item-control" style="width: 66.66666666666666%; max-width: 66.66666666666666%;">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
           <div class="ant-input-password">
@@ -38,11 +38,25 @@ exports[`Form demos > demo: Basic 1`] = `
       <!--v-if-->
     </div>
   </div>
+  <div class="ant-form-item" data-field-id="remember">
+    <!--v-if-->
+    <div class="ant-form-item-control" style="width: 66.66666666666666%; max-width: 66.66666666666666%; margin-inline-start: 33.33333333333333%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content"><label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked"><span class="ant-checkbox ant-checkbox-checked"><input type="checkbox" class="ant-checkbox-input" checked="" role="checkbox" aria-checked="true"><span class="ant-checkbox-inner"></span></span><span class="ant-checkbox-label">Remember me</span></label></div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
   <div class="ant-form-item" data-field-id="">
     <!--v-if-->
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%; margin-inline-start: 25%;">
+    <div class="ant-form-item-control" style="width: 66.66666666666666%; max-width: 66.66666666666666%; margin-inline-start: 33.33333333333333%;">
       <div class="ant-form-item-control-input">
-        <div class="ant-form-item-control-input-content"><button type="submit" class="ant-btn ant-btn-primary">Submit</button></div>
+        <div class="ant-form-item-control-input-content"><button class="ant-btn ant-btn-solid ant-btn-md" type="submit">
+            <!--v-if-->
+            <!--v-if--><span class="ant-btn-content">Submit</span>
+          </button></div>
         <!--v-if-->
       </div>
       <!--v-if-->
@@ -107,72 +121,17 @@ exports[`Form demos > demo: Dynamic 1`] = `
 `;
 
 exports[`Form demos > demo: Layout 1`] = `
-"<div>
-  <div style="margin-bottom: 16px;">
-    <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Horizontal</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Vertical</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Inline</span></label></div>
-  </div>
-  <form class="ant-form ant-form-horizontal">
-    <div class="ant-form-item" data-field-id="field1">
-      <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="field1"><span class="ant-form-item-required" aria-hidden="true">*</span>Field A
-          <!--v-if--><span class="ant-form-item-colon">:</span>
-          <!--v-if-->
-        </label></div>
-      <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
-        <div class="ant-form-item-control-input">
-          <div class="ant-form-item-control-input-content">
-            <!-- With addon wrapper -->
-            <!-- Plain input --><input class="ant-input" type="text" placeholder="Enter something" value="">
-          </div>
-          <!--v-if-->
-        </div>
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-    </div>
-    <div class="ant-form-item" data-field-id="field2">
-      <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="field2"><span class="ant-form-item-required" aria-hidden="true">*</span>Field B
-          <!--v-if--><span class="ant-form-item-colon">:</span>
-          <!--v-if-->
-        </label></div>
-      <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
-        <div class="ant-form-item-control-input">
-          <div class="ant-form-item-control-input-content">
-            <!-- With addon wrapper -->
-            <!-- Plain input --><input class="ant-input" type="text" placeholder="Enter something" value="">
-          </div>
-          <!--v-if-->
-        </div>
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-    </div>
-    <div class="ant-form-item" data-field-id="">
-      <!--v-if-->
-      <div class="ant-form-item-control" style="width: 75%; max-width: 75%; margin-inline-start: 25%;">
-        <div class="ant-form-item-control-input">
-          <div class="ant-form-item-control-input-content"><button type="submit" class="ant-btn ant-btn-primary">Submit</button></div>
-          <!--v-if-->
-        </div>
-        <!--v-if-->
-        <!--v-if-->
-      </div>
-    </div>
-  </form>
-</div>"
-`;
-
-exports[`Form demos > demo: Validation 1`] = `
 "<form class="ant-form ant-form-horizontal">
-  <div class="ant-form-item" data-field-id="name">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="name"><span class="ant-form-item-required" aria-hidden="true">*</span>Name
+  <div class="ant-form-item" data-field-id="">
+    <div class="ant-form-item-label" style="width: 16.666666666666664%; max-width: 16.666666666666664%;"><label>
+        <!--v-if-->Form Layout
         <!--v-if--><span class="ant-form-item-colon">:</span>
         <!--v-if-->
       </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
+    <div class="ant-form-item-control" style="width: 58.333333333333336%; max-width: 58.333333333333336%;">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
-          <!-- With addon wrapper -->
-          <!-- Plain input --><input class="ant-input" type="text" placeholder="2-20 characters" value="">
+          <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-button-wrapper ant-radio-button-wrapper-checked"><input type="radio" class="ant-radio-button-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-button-inner">Horizontal</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Vertical</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">Inline</span></label></div>
         </div>
         <!--v-if-->
       </div>
@@ -180,16 +139,17 @@ exports[`Form demos > demo: Validation 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <div class="ant-form-item" data-field-id="email">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="email"><span class="ant-form-item-required" aria-hidden="true">*</span>Email
+  <div class="ant-form-item" data-field-id="">
+    <div class="ant-form-item-label" style="width: 16.666666666666664%; max-width: 16.666666666666664%;"><label>
+        <!--v-if-->Field A
         <!--v-if--><span class="ant-form-item-colon">:</span>
         <!--v-if-->
       </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
+    <div class="ant-form-item-control" style="width: 58.333333333333336%; max-width: 58.333333333333336%;">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
           <!-- With addon wrapper -->
-          <!-- Plain input --><input class="ant-input" type="text" placeholder="user@example.com" value="">
+          <!-- Plain input --><input class="ant-input" type="text" placeholder="input placeholder" value="">
         </div>
         <!--v-if-->
       </div>
@@ -197,56 +157,17 @@ exports[`Form demos > demo: Validation 1`] = `
       <!--v-if-->
     </div>
   </div>
-  <div class="ant-form-item" data-field-id="age">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="age"><span class="ant-form-item-required" aria-hidden="true">*</span>Age
+  <div class="ant-form-item" data-field-id="">
+    <div class="ant-form-item-label" style="width: 16.666666666666664%; max-width: 16.666666666666664%;"><label>
+        <!--v-if-->Field B
         <!--v-if--><span class="ant-form-item-colon">:</span>
         <!--v-if-->
       </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
+    <div class="ant-form-item-control" style="width: 58.333333333333336%; max-width: 58.333333333333336%;">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
           <!-- With addon wrapper -->
-          <!-- Standard (no addon) -->
-          <div class="ant-input-number" style="width: 100%;">
-            <!--v-if-->
-            <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="0" aria-valuemax="150" value=""></div>
-            <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-disabled" disabled="" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
-          </div>
-        </div>
-        <!--v-if-->
-      </div>
-      <!--v-if-->
-      <!--v-if-->
-    </div>
-  </div>
-  <div class="ant-form-item" data-field-id="website">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="website">
-        <!--v-if-->Website
-        <!--v-if--><span class="ant-form-item-colon">:</span>
-        <!--v-if-->
-      </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
-      <div class="ant-form-item-control-input">
-        <div class="ant-form-item-control-input-content">
-          <!-- With addon wrapper -->
-          <!-- Plain input --><input class="ant-input" type="text" placeholder="https://example.com" value="">
-        </div>
-        <!--v-if-->
-      </div>
-      <!--v-if-->
-      <!--v-if-->
-    </div>
-  </div>
-  <div class="ant-form-item" data-field-id="note">
-    <div class="ant-form-item-label" style="width: 25%; max-width: 25%;"><label for="note"><span class="ant-form-item-required" aria-hidden="true">*</span>Note
-        <!--v-if--><span class="ant-form-item-colon">:</span>
-        <!--v-if-->
-      </label></div>
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%;">
-      <div class="ant-form-item-control-input">
-        <div class="ant-form-item-control-input-content">
-          <!-- With addon wrapper -->
-          <!-- Plain input --><input class="ant-input" type="text" placeholder="At least 10 characters" value="">
+          <!-- Plain input --><input class="ant-input" type="text" placeholder="input placeholder" value="">
         </div>
         <!--v-if-->
       </div>
@@ -256,9 +177,165 @@ exports[`Form demos > demo: Validation 1`] = `
   </div>
   <div class="ant-form-item" data-field-id="">
     <!--v-if-->
-    <div class="ant-form-item-control" style="width: 75%; max-width: 75%; margin-inline-start: 25%;">
+    <div class="ant-form-item-control" style="width: 58.333333333333336%; max-width: 58.333333333333336%; margin-inline-start: 16.666666666666664%;">
       <div class="ant-form-item-control-input">
-        <div class="ant-form-item-control-input-content"><button type="submit" class="ant-btn ant-btn-primary">Validate &amp; Submit</button></div>
+        <div class="ant-form-item-control-input-content"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+            <!--v-if-->
+            <!--v-if--><span class="ant-btn-content">Submit</span>
+          </button></div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+</form>"
+`;
+
+exports[`Form demos > demo: Validation 1`] = `
+"<form class="ant-form ant-form-horizontal">
+  <div class="ant-form-item" data-field-id="name">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="name"><span class="ant-form-item-required" aria-hidden="true">*</span>Activity name
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content">
+          <!-- With addon wrapper -->
+          <!-- Plain input --><input class="ant-input" type="text" value="">
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class="ant-form-item" data-field-id="region">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="region"><span class="ant-form-item-required" aria-hidden="true">*</span>Activity zone
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content"><span class="ant-trigger-wrapper"><div class="ant-select ant-select-single ant-select-show-arrow" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" aria-expanded="false" aria-haspopup="listbox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
+          <!--v-if--><span class="ant-select-selection-placeholder">please select your zone</span>
+        </div><!-- Clear icon -->
+        <!--v-if-->
+        <!-- Arrow / Loading --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span>
+      </div></span>
+      <!--teleport start-->
+      <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+      <!--teleport end-->
+    </div>
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+  </div>
+  </div>
+  <div class="ant-form-item" data-field-id="date1">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="date1"><span class="ant-form-item-required" aria-hidden="true">*</span>Activity time
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content"><span class="ant-trigger-wrapper"><div class="ant-picker ant-picker-md" type="date" style="width: 100%;"><div class="ant-picker-input"><input placeholder="Pick a date" autocomplete="off" value=""><span class="ant-picker-suffix"><span role="img" aria-label="calendar" class="anticon anticon-calendar"><svg focusable="false" class="" data-icon="calendar" width="1em" height="1em" fill="currentColor" aria-hidden="true" viewBox="64 64 896 896"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></span></span>
+          <!--v-if-->
+        </div>
+      </div></span>
+      <!--teleport start-->
+      <transition-stub name="ant-zoom-big-fast" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+      <!--teleport end-->
+    </div>
+    <!--v-if-->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+  </div>
+  </div>
+  <div class="ant-form-item" data-field-id="delivery">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="delivery">
+        <!--v-if-->Instant delivery
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content"><button type="button" role="switch" aria-checked="false" class="ant-switch">
+            <!--v-if-->
+            <div class="ant-switch-handle">
+              <!--v-if-->
+            </div><span class="ant-switch-inner"><span class="ant-switch-inner-checked"></span><span class="ant-switch-inner-unchecked"></span></span>
+          </button></div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class="ant-form-item" data-field-id="type">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="type"><span class="ant-form-item-required" aria-hidden="true">*</span>Activity type
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content">
+          <div class="ant-checkbox-group" role="group"><label class="ant-checkbox-wrapper"><span class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input" role="checkbox" aria-checked="false"><span class="ant-checkbox-inner"></span></span><span class="ant-checkbox-label">Online</span></label><label class="ant-checkbox-wrapper"><span class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input" role="checkbox" aria-checked="false"><span class="ant-checkbox-inner"></span></span><span class="ant-checkbox-label">Promotion</span></label><label class="ant-checkbox-wrapper"><span class="ant-checkbox"><input type="checkbox" class="ant-checkbox-input" role="checkbox" aria-checked="false"><span class="ant-checkbox-inner"></span></span><span class="ant-checkbox-label">Offline</span></label></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class="ant-form-item" data-field-id="resource">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="resource"><span class="ant-form-item-required" aria-hidden="true">*</span>Resources
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content">
+          <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Sponsor</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Venue</span></label></div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class="ant-form-item" data-field-id="desc">
+    <div class="ant-form-item-label" style="width: 20.833333333333336%; max-width: 20.833333333333336%;"><label for="desc"><span class="ant-form-item-required" aria-hidden="true">*</span>Activity form
+        <!--v-if--><span class="ant-form-item-colon">:</span>
+        <!--v-if-->
+      </label></div>
+    <div class="ant-form-item-control" style="width: 54.166666666666664%; max-width: 54.166666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content"><span class="ant-input-textarea"><textarea class="ant-input" value=""></textarea><!--v-if--></span></div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+  </div>
+  <div class="ant-form-item" data-field-id="">
+    <!--v-if-->
+    <div class="ant-form-item-control" style="width: 58.333333333333336%; max-width: 58.333333333333336%; margin-inline-start: 16.666666666666664%;">
+      <div class="ant-form-item-control-input">
+        <div class="ant-form-item-control-input-content"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+            <!--v-if-->
+            <!--v-if--><span class="ant-btn-content">Create</span>
+          </button><button class="ant-btn ant-btn-solid ant-btn-md" style="margin-left: 10px;" type="button">
+            <!--v-if-->
+            <!--v-if--><span class="ant-btn-content">Reset</span>
+          </button></div>
         <!--v-if-->
       </div>
       <!--v-if-->

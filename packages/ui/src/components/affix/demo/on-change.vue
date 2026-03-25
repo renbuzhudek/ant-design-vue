@@ -1,11 +1,10 @@
-<script setup lang="ts">
-function onChange(affixed: boolean) {
-  console.log('Affix state changed:', affixed)
-}
-</script>
-
 <template>
-  <a-affix :offset-top="120" @change="onChange">
-    <a-button>Affix with onChange (offset 120px, check console)</a-button>
+  <a-affix :offset-top="120" @change="change">
+    <a-button>120px to affix top</a-button>
   </a-affix>
 </template>
+<script lang="ts" setup>
+const change = (affixed: boolean) => {
+  console.log(affixed);
+};
+</script>

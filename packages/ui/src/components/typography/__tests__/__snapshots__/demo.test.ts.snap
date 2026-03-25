@@ -1,40 +1,84 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Typography demos > demo: Basic 1`] = `
-"<div>
+"<a-typography>
   <h1 class="ant-typography">Introduction
     <!--v-if-->
     <!--v-if-->
   </h1>
-  <div class="ant-typography"> Ant Design Vue is an enterprise-class UI design language and Vue-based implementation.
+  <div class="ant-typography"> In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development.
     <!--v-if-->
     <!--v-if-->
   </div>
-  <h2 class="ant-typography">Heading Levels
+  <div class="ant-typography"> After massive project practice and summaries, Ant Design, a design language for background applications, is refined by Ant UED Team, which aims to <span class="ant-typography ant-typography-strong"> uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources of design and front-end development. <!--v-if--><!--v-if--></span>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <h2 class="ant-typography">Guidelines and Resources
     <!--v-if-->
     <!--v-if-->
   </h2>
-  <h1 class="ant-typography">h1. Heading
+  <div class="ant-typography"> We supply a series of design principles, practical patterns and high quality design resources ( <span class="ant-typography"><code>Sketch</code><!--v-if--><!--v-if--></span> and <span class="ant-typography"><code>Axure</code><!--v-if--><!--v-if--></span> ), to help people create their product prototypes beautifully and efficiently.
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class="ant-typography">
+    <ul>
+      <li><a class="ant-typography" href="/docs/resources">Resource Download
+          <!--v-if-->
+        </a></li>
+    </ul>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class="ant-typography"> Press <span class="ant-typography"><kbd>Esc</kbd><!--v-if--><!--v-if--></span> to exit...
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class="ant-divider ant-divider-horizontal" role="separator" aria-orientation="horizontal">
+    <!--v-if-->
+  </div>
+  <h1 class="ant-typography">介绍
     <!--v-if-->
     <!--v-if-->
   </h1>
-  <h2 class="ant-typography">h2. Heading
+  <div class="ant-typography"> 蚂蚁的企业级产品是一个庞大且复杂的体系。这类产品不仅量级巨大且功能复杂，而且变动和并发频繁，常常需要设计与开发能够快速的做出响应。同时这类产品中有存在很多类似的页面以及组件，可以通过抽象得到一些稳定且高复用性的内容。
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class="ant-typography"> 随着商业化的趋势，越来越多的企业级产品对更好的用户体验有了进一步的要求。带着这样的一个终极目标，我们（蚂蚁金服体验技术部）经过大量的项目实践和总结，逐步打磨出一个服务于企业级产品的设计体系 Ant Design。基于 <span class="ant-typography ant-typography-mark">『确定』和『自然』<!--v-if--><!--v-if--></span> 的设计价值观，通过模块化的解决方案，降低冗余的生产成本，让设计者专注于 <span class="ant-typography ant-typography-strong">更好的用户体验<!--v-if--><!--v-if--></span> 。
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <h2 class="ant-typography">设计资源
     <!--v-if-->
     <!--v-if-->
   </h2>
-  <h3 class="ant-typography">h3. Heading
+  <div class="ant-typography"> 我们提供完善的设计原则、最佳实践和设计资源文件（ <span class="ant-typography"><code>Sketch</code><!--v-if--><!--v-if--></span> 和 <span class="ant-typography"><code>Axure</code><!--v-if--><!--v-if--></span> ），来帮助业务快速设计出高质量的产品原型。
     <!--v-if-->
     <!--v-if-->
-  </h3>
-  <h4 class="ant-typography">h4. Heading
+  </div>
+  <div class="ant-typography">
+    <ul>
+      <li><a class="ant-typography" href="/docs/resources-cn">设计资源
+          <!--v-if-->
+        </a></li>
+    </ul>
     <!--v-if-->
     <!--v-if-->
-  </h4>
-  <h5 class="ant-typography">h5. Heading
+  </div>
+  <div class="ant-typography">
+    <blockquote>AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV 经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+ 业务系统，通过了日均千万级 UV 产品的严苛考验。
+      我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。</blockquote><pre>AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV 经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+ 业务系统，通过了日均千万级 UV 产品的严苛考验。
+我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。</pre>
     <!--v-if-->
     <!--v-if-->
-  </h5>
-</div>"
+  </div>
+  <div class="ant-typography"> 按 <span class="ant-typography"><kbd>Esc</kbd><!--v-if--><!--v-if--></span> 键退出阅读……
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+</a-typography>"
 `;
 
 exports[`Typography demos > demo: Copyable 1`] = `
@@ -49,27 +93,74 @@ exports[`Typography demos > demo: Copyable 1`] = `
 `;
 
 exports[`Typography demos > demo: Ellipsis 1`] = `
-"<div style="max-width: 400px;"><strong>Single-line ellipsis:</strong>
-  <div class="ant-typography" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"> Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team.
+"<button type="button" role="switch" aria-checked="true" class="ant-switch ant-switch-checked">
+  <!--v-if-->
+  <div class="ant-switch-handle">
     <!--v-if-->
-    <!--v-if-->
-  </div><strong>Multi-line (3 rows) ellipsis:</strong>
-  <div class="ant-typography" style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3;"> Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team.
-    <!--v-if-->
-    <!--v-if-->
-  </div><strong>Expandable:</strong>
-  <div class="ant-typography" style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2;"> Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. <button type="button" class="ant-typography-expand">Expand</button>
-    <!--v-if-->
-  </div>
-</div>"
+  </div><span class="ant-switch-inner"><span class="ant-switch-inner-checked"></span><span class="ant-switch-inner-unchecked"></span></span>
+</button>
+<div class="ant-typography" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" content=" Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team.">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography" style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2;" content="Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team."><button type="button" class="ant-typography-expand">more</button>
+  <!--v-if-->
+</div>
+<span class="ant-typography" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;" content="Ant Design, a design language for background applications, is refined by Ant UED Team."><!--v-if--><!--v-if--></span>"
 `;
 
 exports[`Typography demos > demo: Interactive 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px;">
-  <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Copyable</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Editable</span></label></div>
-  <div class="ant-typography">This is a copyable text.
-    <!--v-if--><button type="button" class="ant-typography-copy" aria-label="Copy">⎘</button>
-  </div><span class="ant-typography">Inline copyable text<!--v-if--><button type="button" class="ant-typography-copy" aria-label="Copy">⎘</button></span>
+"<div class="ant-typography" content="This is an editable text." editable="">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography" content="Custom Edit icon and replace tooltip text." editable="">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+ Trigger edit with:  
+<div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">icon</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">text</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">both</span></label></div>
+<div class="ant-typography" content="Text or icon as trigger - click to start editing." editable="[object Object]">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography" content="Editable text with a custom enter icon in edit field." editable="">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography" content="Editable text with no enter icon in edit field." editable="">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography" content="Hide Edit tooltip." editable="[object Object]">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography" content="This is an editable text with limited length." editable="[object Object]">
+  <!--v-if-->
+  <!--v-if-->
+</div>
+<div class="ant-typography">This is a copyable text.
+  <!--v-if--><button type="button" class="ant-typography-copy" aria-label="Copy">⎘</button>
+</div>
+<div class="ant-typography"> Replace copy text.
+  <!--v-if--><button type="button" class="ant-typography-copy" aria-label="Copy">⎘</button>
+</div>
+<div class="ant-typography" content="Custom Copy icon and replace tooltips text.">
+  <!--v-if--><button type="button" class="ant-typography-copy" aria-label="Copy">⎘</button>
+</div>
+<div class="ant-typography"> Hide Copy tooltips.
+  <!--v-if--><button type="button" class="ant-typography-copy" aria-label="Copy">⎘</button>
 </div>"
 `;
 
@@ -84,48 +175,45 @@ exports[`Typography demos > demo: LinkDemo 1`] = `
 `;
 
 exports[`Typography demos > demo: Suffix 1`] = `
-"<div style="max-width: 400px;">
-  <div style="margin-bottom: 16px;"><span>Rows: 1</span>
-    <div class="ant-slider">
-      <div class="ant-slider-rail"></div>
-      <div class="ant-slider-track" style="left: 0%; width: 0%;"></div><!-- Steps/dots -->
-      <!--v-if-->
-      <!-- Marks -->
-      <!--v-if-->
-      <!-- Handle(s) -->
-      <div class="ant-slider-handle" style="left: 0%;" role="slider" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1" tabindex="0"></div>
-    </div>
-  </div>
-  <div class="ant-typography" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team.
-    <!--v-if-->
-    <!--v-if-->
-  </div>
+"<div class="ant-slider">
+  <div class="ant-slider-rail"></div>
+  <div class="ant-slider-track" style="left: 0%; width: 0%;"></div><!-- Steps/dots -->
+  <!--v-if-->
+  <!-- Marks -->
+  <!--v-if-->
+  <!-- Handle(s) -->
+  <div class="ant-slider-handle" style="left: 0%;" role="slider" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1" tabindex="0"></div>
+</div>
+<div class="ant-typography" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="To be, or not to be, that is a question: Whether it is nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them? To die: to sleep; No more; and by a sleep to say we end The heart-ache and the thousand natural shocks That flesh is heir to, 'tis a consummation Devoutly to be wish'd. To die, to sleep To sleep- perchance to dream: ay, there's the rub! For in that sleep of death what dreams may come When we have shuffled off this mortal coil, Must give us pause. There 's the respect That makes calamity of so long life--William Shakespeare" content="To be, or not to be, that is a question: Whether it is nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them? To die: to sleep; No more; and by a sleep to say we end The heart-ache and the thousand natural shocks That flesh is heir to, 'tis a consummation Devoutly to be wish'd. To die, to sleep To sleep- perchance to dream: ay, there's the rub! For in that sleep of death what dreams may come When we have shuffled off this mortal coil, Must give us pause. There 's the respect That makes calamity of so long life"><button type="button" class="ant-typography-expand">Expand</button>
+  <!--v-if-->
 </div>"
 `;
 
-exports[`Typography demos > demo: TextDemo 1`] = `"<div class="ant-space ant-space-vertical" style="column-gap: 8px; row-gap: 8px;"><span class="ant-typography">Default text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-secondary">Secondary text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-success">Success text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-warning">Warning text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-danger">Danger text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-disabled">Disabled text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-strong">Bold text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-italic">Italic text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-underline">Underline text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-delete">Deleted text<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-mark">Marked text<!--v-if--><!--v-if--></span><span class="ant-typography"><code>Code text</code><!--v-if--><!--v-if--></span><span class="ant-typography"><kbd>Ctrl + C</kbd><!--v-if--><!--v-if--></span></div>"`;
+exports[`Typography demos > demo: TextDemo 1`] = `
+"<div class="ant-space ant-space-vertical" style="column-gap: 8px; row-gap: 8px;"><span class="ant-typography">Ant Design Vue (default)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-secondary">Ant Design Vue (secondary)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-success">Ant Design Vue (success)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-warning">Ant Design Vue (warning)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-danger">Ant Design Vue (danger)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-disabled">Ant Design Vue (disabled)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-mark">Ant Design Vue (mark)<!--v-if--><!--v-if--></span><span class="ant-typography"><code>Ant Design Vue (code)</code><!--v-if--><!--v-if--></span><span class="ant-typography"><kbd>Ant Design Vue (keyboard)</kbd><!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-underline">Ant Design Vue (underline)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-delete">Ant Design Vue (delete)<!--v-if--><!--v-if--></span><span class="ant-typography ant-typography-strong">Ant Design Vue (strong)<!--v-if--><!--v-if--></span><a class="ant-typography" href="https://antdv.com" target="_blank" rel="noopener noreferrer"> Ant Design Vue (Link)
+    <!--v-if-->
+  </a></div>"
+`;
 
 exports[`Typography demos > demo: Title 1`] = `
-"<div>
-  <h1 class="ant-typography">h1. Ant Design Vue
-    <!--v-if-->
-    <!--v-if-->
-  </h1>
-  <h2 class="ant-typography">h2. Ant Design Vue
-    <!--v-if-->
-    <!--v-if-->
-  </h2>
-  <h3 class="ant-typography">h3. Ant Design Vue
-    <!--v-if-->
-    <!--v-if-->
-  </h3>
-  <h4 class="ant-typography">h4. Ant Design Vue
-    <!--v-if-->
-    <!--v-if-->
-  </h4>
-  <h5 class="ant-typography">h5. Ant Design Vue
-    <!--v-if-->
-    <!--v-if-->
-  </h5>
-</div>"
+"<h1 class="ant-typography">h1. Ant Design Vue
+  <!--v-if-->
+  <!--v-if-->
+</h1>
+<h2 class="ant-typography">h2. Ant Design Vue
+  <!--v-if-->
+  <!--v-if-->
+</h2>
+<h3 class="ant-typography">h3. Ant Design Vue
+  <!--v-if-->
+  <!--v-if-->
+</h3>
+<h4 class="ant-typography">h4. Ant Design Vue
+  <!--v-if-->
+  <!--v-if-->
+</h4>
+<h5 class="ant-typography">h5. Ant Design Vue
+  <!--v-if-->
+  <!--v-if-->
+</h5>"
 `;

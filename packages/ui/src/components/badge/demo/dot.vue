@@ -1,10 +1,11 @@
 <template>
-  <div style="display: flex; gap: 24px; align-items: center;">
-    <a-badge dot>
-      <div style="width: 42px; height: 42px; background: #ebebeb; border-radius: 6px;" />
-    </a-badge>
-    <a-badge :count="0" dot>
-      <div style="width: 42px; height: 42px; background: #ebebeb; border-radius: 6px;" />
-    </a-badge>
-  </div>
+  <a-badge dot>
+    <notification-outlined style="font-size: 16px" />
+  </a-badge>
+  <a-badge dot>
+    <a href="#">Link something</a>
+  </a-badge>
 </template>
+<script lang="ts" setup>
+import { NotificationOutlined } from '@ant-design/icons-vue';
+</script>

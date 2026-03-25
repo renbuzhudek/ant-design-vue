@@ -1,38 +1,48 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const selectedKeys = ref(['1'])
-
-const menuItems = [
-  { key: '1', label: 'Home' },
-  { key: '2', label: 'Products' },
-  { key: '3', label: 'About' },
-]
-</script>
-
 <template>
   <a-layout>
-    <a-layout-header
-      style="position: sticky; top: 0; z-index: 1; width: 100%; display: flex; align-items: center; background: #001529"
-    >
-      <div style="width: 120px; height: 31px; margin-right: 24px; background: rgba(255, 255, 255, 0.2); border-radius: 4px" />
+    <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
+      <div class="logo" />
       <a-menu
         v-model:selected-keys="selectedKeys"
         theme="dark"
         mode="horizontal"
-        :items="menuItems"
-        style="flex: 1; min-width: 0"
-      />
+        :style="{ lineHeight: '64px' }"
+      >
+        <a-menu-item key="1">nav 1</a-menu-item>
+        <a-menu-item key="2">nav 2</a-menu-item>
+        <a-menu-item key="3">nav 3</a-menu-item>
+      </a-menu>
     </a-layout-header>
-    <a-layout-content style="padding: 0 48px">
-      <div style="padding: 24px; min-height: 600px; background: #fff; margin-top: 16px">
-        Scroll down to see the fixed header remain at the top.
-        <br /><br />
-        <p v-for="i in 20" :key="i">Content line {{ i }}</p>
-      </div>
+    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
+      <a-breadcrumb :style="{ margin: '16px 0' }">
+        <a-breadcrumb-item>Home</a-breadcrumb-item>
+        <a-breadcrumb-item>List</a-breadcrumb-item>
+        <a-breadcrumb-item>App</a-breadcrumb-item>
+      </a-breadcrumb>
+      <div :style="{ background: '#fff', padding: '24px', minHeight: '380px' }">Content</div>
     </a-layout-content>
-    <a-layout-footer style="text-align: center; background: #f5f5f5">
-      Ant Design Vue &copy; 2024
+    <a-layout-footer :style="{ textAlign: 'center' }">
+      Ant Design ©2018 Created by Ant UED
     </a-layout-footer>
   </a-layout>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const selectedKeys = ref<string[]>(['2']);
+</script>
+<style scoped>
+#components-layout-demo-fixed .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+[data-theme='dark'] .site-layout .site-layout-background {
+  background: #141414;
+}
+</style>

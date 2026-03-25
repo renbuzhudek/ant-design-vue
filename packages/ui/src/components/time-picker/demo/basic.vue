@@ -1,13 +1,20 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 200px">
-    <a-time-picker v-model:value="value" placeholder="Select time" />
-    <p>Selected: {{ value ? value.format('HH:mm:ss') : 'None' }}</p>
-  </div>
+  <a-space direction="vertical">
+    <a-time-picker v-model:value="value" />
+    <a-time-picker v-model:value="strValue" value-format="HH:mm:ss" />
+  </a-space>
 </template>
+<script lang="ts" setup>
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import { ref, watch } from 'vue';
+const value = ref<Dayjs>(dayjs('08:00:00', 'HH:mm:ss'));
+const strValue = ref<string>('09:00:00');
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { Dayjs } from 'dayjs'
-
-const value = ref<Dayjs | null>(null)
+watch(value, () => {
+  console.log(value.value);
+});
+watch(strValue, () => {
+  console.log(strValue.value);
+});
 </script>

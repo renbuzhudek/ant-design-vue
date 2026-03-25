@@ -1,31 +1,21 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
-    <div>
-      <strong>small (8px)</strong>
-      <br />
-      <a-space size="small">
-        <a-button variant="solid">1</a-button>
-        <a-button variant="solid">2</a-button>
-        <a-button variant="solid">3</a-button>
-      </a-space>
-    </div>
-    <div>
-      <strong>middle (16px)</strong>
-      <br />
-      <a-space size="middle">
-        <a-button variant="solid">1</a-button>
-        <a-button variant="solid">2</a-button>
-        <a-button variant="solid">3</a-button>
-      </a-space>
-    </div>
-    <div>
-      <strong>large (24px)</strong>
-      <br />
-      <a-space size="large">
-        <a-button variant="solid">1</a-button>
-        <a-button variant="solid">2</a-button>
-        <a-button variant="solid">3</a-button>
-      </a-space>
-    </div>
+  <div>
+    <a-radio-group v-model:value="size">
+      <a-radio value="small">Small</a-radio>
+      <a-radio value="middle">Middle</a-radio>
+      <a-radio value="large">Large</a-radio>
+    </a-radio-group>
+    <br />
+    <br />
+    <a-space :size="size">
+      <a-button type="primary">Primary</a-button>
+      <a-button>Default</a-button>
+      <a-button type="dashed">Dashed</a-button>
+      <a-button type="link">Link</a-button>
+    </a-space>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const size = ref('small' as const);
+</script>

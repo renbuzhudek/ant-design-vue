@@ -1,28 +1,25 @@
 <template>
-  <div style="display: flex; align-items: center; gap: 8px;">
-    <span>Categories:</span>
+  <span :style="{ marginRight: '8px' }">Categories:</span>
+  <template v-for="tag in state.tags" :key="tag">
     <a-checkable-tag
-      v-for="tag in tags"
-      :key="tag"
-      :checked="selectedTags.includes(tag)"
-      @change="(checked: boolean) => handleChange(tag, checked)"
+      :checked="state.selectedTags.indexOf(tag) > -1"
+      @change="checked => handleChange(tag, checked)"
     >
       {{ tag }}
     </a-checkable-tag>
-  </div>
+  </template>
 </template>
+<script lang="ts" setup>
+import { reactive } from 'vue';
+const state = reactive({
+  tags: ['Movies', 'Books', 'Music', 'Sports'],
+  selectedTags: [] as string[],
+});
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const tags = ['Movies', 'Books', 'Music', 'Sports']
-const selectedTags = ref<string[]>([])
-
-function handleChange(tag: string, checked: boolean) {
-  if (checked) {
-    selectedTags.value = [...selectedTags.value, tag]
-  } else {
-    selectedTags.value = selectedTags.value.filter(t => t !== tag)
-  }
-}
+const handleChange = (tag: string, checked: boolean) => {
+  const { selectedTags } = state;
+  const nextSelectedTags = checked ? [...selectedTags, tag] : selectedTags.filter(t => t !== tag);
+  console.log('You are interested in: ', nextSelectedTags);
+  state.selectedTags = nextSelectedTags;
+};
 </script>

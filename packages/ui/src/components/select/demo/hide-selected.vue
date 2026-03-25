@@ -1,25 +1,17 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Hide Already Selected</h4>
-    <a-select
-      v-model:value="selectedItems"
-      mode="multiple"
-      placeholder="Selected items are hidden"
-      style="width: 100%"
-      :options="filteredOptions"
-    />
-  </div>
+  <a-select
+    v-model:value="selectedItems"
+    mode="multiple"
+    placeholder="Inserted are removed"
+    style="width: 100%"
+    :options="filteredOptions.map(item => ({ value: item }))"
+  ></a-select>
 </template>
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
 
-<script setup lang="ts">
-import { ref, computed } from 'vue'
+const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters'];
+const selectedItems = ref<string[]>([]);
 
-const allOptions = ['Apples', 'Nails', 'Bananas', 'Helicopters']
-const selectedItems = ref<string[]>([])
-
-const filteredOptions = computed(() =>
-  allOptions
-    .filter(o => !selectedItems.value.includes(o))
-    .map(o => ({ value: o, label: o })),
-)
+const filteredOptions = computed(() => OPTIONS.filter(o => !selectedItems.value.includes(o)));
 </script>

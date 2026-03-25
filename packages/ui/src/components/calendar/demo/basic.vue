@@ -1,11 +1,11 @@
 <template>
-  <a-calendar v-model:value="value" />
+  <a-calendar v-model:value="value" @panelChange="onPanelChange" />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import dayjs from 'dayjs'
-import type { Dayjs } from 'dayjs'
-
-const value = ref<Dayjs>(dayjs())
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { Dayjs } from 'dayjs';
+const value = ref<Dayjs>();
+const onPanelChange = (value: Dayjs, mode: string) => {
+  console.log(value, mode);
+};
 </script>

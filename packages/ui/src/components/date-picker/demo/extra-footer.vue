@@ -1,9 +1,9 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
-    <a-date-picker placeholder="Date with footer">
+  <a-space direction="vertical">
+    <a-date-picker>
       <template #renderExtraFooter>extra footer</template>
     </a-date-picker>
-    <a-date-picker show-time placeholder="DateTime with footer">
+    <a-date-picker show-time>
       <template #renderExtraFooter>extra footer</template>
     </a-date-picker>
     <a-range-picker>
@@ -12,11 +12,8 @@
     <a-range-picker show-time>
       <template #renderExtraFooter>extra footer</template>
     </a-range-picker>
-    <a-date-picker placeholder="Month with footer" picker="month">
+    <a-date-picker placeholder="Select month" picker="month">
       <template #renderExtraFooter>extra footer</template>
     </a-date-picker>
-  </div>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-</script>

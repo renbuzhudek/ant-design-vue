@@ -1,57 +1,64 @@
 <template>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-    <template v-for="tag in tags" :key="tag">
-      <a-tooltip v-if="tag.length > 20" :title="tag">
-        <a-tag closable @close="handleClose(tag)">
-          {{ `${tag.slice(0, 20)}...` }}
-        </a-tag>
-      </a-tooltip>
-      <a-tag v-else closable @close="handleClose(tag)">
-        {{ tag }}
+  <template v-for="(tag, index) in state.tags" :key="tag">
+    <a-tooltip v-if="tag.length > 20" :title="tag">
+      <a-tag :closable="index !== 0" @close="handleClose(tag)">
+        {{ `${tag.slice(0, 20)}...` }}
       </a-tag>
-    </template>
-
-    <a-input
-      v-if="inputVisible"
-      ref="inputRef"
-      v-model:value="inputValue"
-      type="text"
-      size="small"
-      style="width: 78px;"
-      @blur="handleInputConfirm"
-      @keyup.enter="handleInputConfirm"
-    />
-    <a-tag v-else style="border-style: dashed; cursor: pointer;" @click="showInput">
-      + New Tag
+    </a-tooltip>
+    <a-tag v-else :closable="index !== 0" @close="handleClose(tag)">
+      {{ tag }}
     </a-tag>
-  </div>
+  </template>
+  <a-input
+    v-if="state.inputVisible"
+    ref="inputRef"
+    v-model:value="state.inputValue"
+    type="text"
+    size="small"
+    :style="{ width: '78px' }"
+    @blur="handleInputConfirm"
+    @keyup.enter="handleInputConfirm"
+  />
+  <a-tag v-else style="background: #fff; border-style: dashed" @click="showInput">
+    <plus-outlined />
+    New Tag
+  </a-tag>
 </template>
+<script lang="ts" setup>
+import { ref, reactive, nextTick } from 'vue';
+import { PlusOutlined } from '@ant-design/icons-vue';
 
-<script setup lang="ts">
-import { ref, nextTick } from 'vue'
+const inputRef = ref();
+const state = reactive({
+  tags: ['Unremovable', 'Tag 2', 'Tag 3Tag 3Tag 3Tag 3Tag 3Tag 3Tag 3'],
+  inputVisible: false,
+  inputValue: '',
+});
 
-const tags = ref(['Unremovable', 'Tag 2', 'Tag 3'])
-const inputVisible = ref(false)
-const inputValue = ref('')
-const inputRef = ref<{ focus: () => void } | null>(null)
+const handleClose = (removedTag: string) => {
+  const tags = state.tags.filter(tag => tag !== removedTag);
+  console.log(tags);
+  state.tags = tags;
+};
 
-function handleClose(removedTag: string) {
-  tags.value = tags.value.filter(tag => tag !== removedTag)
-}
-
-function showInput() {
-  inputVisible.value = true
+const showInput = () => {
+  state.inputVisible = true;
   nextTick(() => {
-    inputRef.value?.focus()
-  })
-}
+    inputRef.value.focus();
+  });
+};
 
-function handleInputConfirm() {
-  const value = inputValue.value.trim()
-  if (value && !tags.value.includes(value)) {
-    tags.value = [...tags.value, value]
+const handleInputConfirm = () => {
+  const inputValue = state.inputValue;
+  let tags = state.tags;
+  if (inputValue && tags.indexOf(inputValue) === -1) {
+    tags = [...tags, inputValue];
   }
-  inputVisible.value = false
-  inputValue.value = ''
-}
+  console.log(tags);
+  Object.assign(state, {
+    tags,
+    inputVisible: false,
+    inputValue: '',
+  });
+};
 </script>

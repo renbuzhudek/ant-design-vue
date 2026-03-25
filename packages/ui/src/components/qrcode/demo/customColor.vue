@@ -1,6 +1,17 @@
 <template>
-  <div style="display: flex; gap: 16px">
-    <a-q-r-code value="https://ant-design-vue.com" color="#52c41a" />
-    <a-q-r-code value="https://ant-design-vue.com" color="#1677ff" bg-color="#f5f5f5" />
-  </div>
+  <a-space>
+    <a-qrcode value="http://www.antdv.com" :color="token.colorSuccessText" />
+    <a-qrcode
+      value="http://www.antdv.com"
+      :color="token.colorInfoText"
+      :bg-color="token.colorBgLayout"
+    />
+  </a-space>
 </template>
+
+<script lang="ts" setup>
+import { theme } from 'ant-design-vue';
+
+const { useToken } = theme;
+const { token } = useToken();
+</script>

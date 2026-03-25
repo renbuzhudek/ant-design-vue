@@ -1,23 +1,27 @@
 <template>
-  <div>
-    <div style="margin-bottom: 16px;">
-      <label>
-        <input type="checkbox" :checked="loading" @change="loading = !loading" />
-        Loading
-      </label>
-    </div>
-    <a-skeleton :loading="loading" active>
+  <a-space direction="vertical" style="width: 100%" :size="16">
+    <a-skeleton :loading="loading">
       <div>
-        <h4 style="margin-bottom: 16px;">Ant Design Vue, a design language</h4>
+        <h4>Ant Design Vue, a design language</h4>
         <p>
           We supply a series of design principles, practical patterns and high quality design
-          resources, to help people create their product prototypes beautifully and efficiently.
+          resources (Sketch and Axure), to help people create their product prototypes beautifully
+          and efficiently.
         </p>
       </div>
     </a-skeleton>
-  </div>
+    <a-button :disabled="loading" @click="showSkeleton">Show Skeleton</a-button>
+  </a-space>
 </template>
-<script setup>
-import { ref } from 'vue'
-const loading = ref(true)
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+const loading = ref<boolean>(false);
+
+const showSkeleton = () => {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+  }, 3000);
+};
 </script>

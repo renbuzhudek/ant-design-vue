@@ -1,31 +1,28 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Label In Value</h4>
-    <p style="margin-bottom: 8px; color: #666">
-      onChange returns { value, label } instead of just value
-    </p>
-    <a-select
-      v-model:value="value"
-      label-in-value
-      style="width: 200px"
-      :options="options"
-      @change="handleChange"
-    />
-    <p style="margin-top: 8px">Selected: {{ JSON.stringify(value) }}</p>
-  </div>
+  <a-select
+    v-model:value="value"
+    label-in-value
+    style="width: 120px"
+    :options="options"
+    @change="handleChange"
+  ></a-select>
 </template>
+<script lang="ts" setup>
+import type { SelectProps } from 'ant-design-vue';
+import { ref } from 'vue';
+const options = ref<SelectProps['options']>([
+  {
+    value: 'jack',
+    label: 'Jack (100)',
+  },
+  {
+    value: 'lucy',
+    label: 'Lucy (101)',
+  },
+]);
+const handleChange: SelectProps['onChange'] = value => {
+  console.log(value); // { key: "lucy", label: "Lucy (101)" }
+};
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const options = [
-  { value: 'jack', label: 'Jack (100)' },
-  { value: 'lucy', label: 'Lucy (101)' },
-]
-
-const value = ref({ value: 'lucy', label: 'Lucy (101)' })
-
-const handleChange = (val: any) => {
-  console.log('onChange:', val)
-}
+const value = ref({ value: 'lucy', label: 'Lucy (101)' });
 </script>

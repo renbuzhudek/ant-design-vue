@@ -1,31 +1,57 @@
 <template>
-  <div>
-    <p><strong>Flex layout</strong></p>
-    <a-row>
-      <a-col :flex="2"><div class="demo-col">2 / 5</div></a-col>
-      <a-col :flex="3"><div class="demo-col light">3 / 5</div></a-col>
+  <div id="components-grid-demo-flex">
+    <a-divider orientation="left">sub-element align left</a-divider>
+    <a-row justify="start">
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
     </a-row>
-    <br />
-    <a-row>
-      <a-col flex="100px"><div class="demo-col">100px</div></a-col>
-      <a-col flex="auto"><div class="demo-col light">auto</div></a-col>
+
+    <a-divider orientation="left">sub-element align center</a-divider>
+    <a-row justify="center">
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
     </a-row>
-    <br />
-    <a-row>
-      <a-col flex="1 1 200px"><div class="demo-col">1 1 200px</div></a-col>
-      <a-col flex="0 1 300px"><div class="demo-col light">0 1 300px</div></a-col>
+
+    <a-divider orientation="left">sub-element align right</a-divider>
+    <a-row justify="end">
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+    </a-row>
+
+    <a-divider orientation="left">sub-element monospaced arrangement</a-divider>
+    <a-row justify="space-between">
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+    </a-row>
+
+    <a-divider orientation="left">sub-element align full</a-divider>
+    <a-row justify="space-around">
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+    </a-row>
+
+    <a-divider orientation="left">sub-element align full</a-divider>
+    <a-row justify="space-evenly">
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
+      <a-col :span="4">col-4</a-col>
     </a-row>
   </div>
 </template>
 
-<style scoped>
-.demo-col {
-  background: #1677ff;
-  color: #fff;
-  text-align: center;
-  padding: 16px 0;
-}
-.demo-col.light {
-  background: #1677ffbf;
+<style lang="less" scoped>
+:deep(#components-grid-demo-flex) [class~='ant-row'] {
+  background: rgba(128, 128, 128, 0.08);
 }
 </style>

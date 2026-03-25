@@ -1,7 +1,17 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px">
-    <a-input placeholder="Small" size="small" />
-    <a-input placeholder="Middle (default)" />
-    <a-input placeholder="Large" size="large" />
+  <div class="components-input-demo-size">
+    <a-input v-model:value="value" size="large" placeholder="large size" />
+    <a-input v-model:value="value" placeholder="default size" />
+    <a-input v-model:value="value" size="small" placeholder="small size" />
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const value = ref<string>('');
+</script>
+<style scoped>
+.components-input-demo-size .ant-input {
+  width: 200px;
+  margin: 0 8px 8px 0;
+}
+</style>

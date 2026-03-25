@@ -1,57 +1,52 @@
-<script setup lang="ts">
-import { reactive, ref } from 'vue'
-import type { FormLayout } from '../types'
-
-const layout = ref<FormLayout>('horizontal')
-
-const formState = reactive({
-  field1: '',
-  field2: '',
-})
-
-function onFinish(values: any) {
-  console.log('Submitted:', values)
-}
-</script>
-
 <template>
-  <div>
-    <div style="margin-bottom: 16px">
-      <a-radio-group v-model:value="layout">
-        <a-radio value="horizontal">Horizontal</a-radio>
-        <a-radio value="vertical">Vertical</a-radio>
-        <a-radio value="inline">Inline</a-radio>
+  <a-form :layout="formState.layout" :model="formState" v-bind="formItemLayout">
+    <a-form-item label="Form Layout">
+      <a-radio-group v-model:value="formState.layout">
+        <a-radio-button value="horizontal">Horizontal</a-radio-button>
+        <a-radio-button value="vertical">Vertical</a-radio-button>
+        <a-radio-button value="inline">Inline</a-radio-button>
       </a-radio-group>
-    </div>
-
-    <a-form
-      :model="formState"
-      :layout="layout"
-      :label-col="layout === 'horizontal' ? { span: 6 } : undefined"
-      :wrapper-col="layout === 'horizontal' ? { span: 18 } : undefined"
-      @finish="onFinish"
-    >
-      <a-form-item
-        label="Field A"
-        name="field1"
-        :rules="[{ required: true, message: 'Please enter field A' }]"
-      >
-        <a-input v-model:value="formState.field1" placeholder="Enter something" />
-      </a-form-item>
-
-      <a-form-item
-        label="Field B"
-        name="field2"
-        :rules="[{ required: true, message: 'Please enter field B' }]"
-      >
-        <a-input v-model:value="formState.field2" placeholder="Enter something" />
-      </a-form-item>
-
-      <a-form-item
-        :wrapper-col="layout === 'horizontal' ? { offset: 6, span: 18 } : undefined"
-      >
-        <button type="submit" class="ant-btn ant-btn-primary">Submit</button>
-      </a-form-item>
-    </a-form>
-  </div>
+    </a-form-item>
+    <a-form-item label="Field A">
+      <a-input v-model:value="formState.fieldA" placeholder="input placeholder" />
+    </a-form-item>
+    <a-form-item label="Field B">
+      <a-input v-model:value="formState.fieldB" placeholder="input placeholder" />
+    </a-form-item>
+    <a-form-item :wrapper-col="buttonItemLayout.wrapperCol">
+      <a-button type="primary">Submit</a-button>
+    </a-form-item>
+  </a-form>
 </template>
+<script lang="ts" setup>
+import { computed, reactive } from 'vue';
+import type { UnwrapRef } from 'vue';
+
+interface FormState {
+  layout: 'horizontal' | 'vertical' | 'inline';
+  fieldA: string;
+  fieldB: string;
+}
+const formState: UnwrapRef<FormState> = reactive({
+  layout: 'horizontal',
+  fieldA: '',
+  fieldB: '',
+});
+const formItemLayout = computed(() => {
+  const { layout } = formState;
+  return layout === 'horizontal'
+    ? {
+        labelCol: { span: 4 },
+        wrapperCol: { span: 14 },
+      }
+    : {};
+});
+const buttonItemLayout = computed(() => {
+  const { layout } = formState;
+  return layout === 'horizontal'
+    ? {
+        wrapperCol: { span: 14, offset: 4 },
+      }
+    : {};
+});
+</script>

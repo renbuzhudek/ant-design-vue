@@ -1,27 +1,3 @@
-<script setup lang="ts">
-import type { ColumnsType } from '../types'
-
-interface DataType {
-  key: number
-  name: string
-  age: number
-  address: string
-}
-
-const columns: ColumnsType<DataType> = [
-  { title: 'Name', dataIndex: 'name', width: 150 },
-  { title: 'Age', dataIndex: 'age', width: 150 },
-  { title: 'Address', dataIndex: 'address' },
-]
-
-const data: DataType[] = Array.from({ length: 100 }, (_, i) => ({
-  key: i,
-  name: `Edward King ${i}`,
-  age: 32,
-  address: `London, Park Lane no. ${i}`,
-}))
-</script>
-
 <template>
   <a-table
     :columns="columns"
@@ -30,3 +6,28 @@ const data: DataType[] = Array.from({ length: 100 }, (_, i) => ({
     :scroll="{ y: 240 }"
   />
 </template>
+<script lang="ts" setup>
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    width: 150,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    width: 150,
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+  },
+];
+
+const data = [...Array(100)].map((_, i) => ({
+  key: i,
+  name: `Edward King ${i}`,
+  age: 32,
+  address: `London, Park Lane no. ${i}`,
+}));
+</script>

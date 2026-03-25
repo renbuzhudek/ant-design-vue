@@ -1,18 +1,20 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <a-radio disabled>Disabled</a-radio>
-    <a-radio disabled checked>Disabled Checked</a-radio>
-
-    <a-radio-group disabled value="a">
-      <a-radio value="a">A</a-radio>
-      <a-radio value="b">B</a-radio>
-      <a-radio value="c">C</a-radio>
-    </a-radio-group>
-
-    <a-radio-group disabled value="a" button-style="solid">
-      <a-radio-button value="a">Hangzhou</a-radio-button>
-      <a-radio-button value="b">Shanghai</a-radio-button>
-      <a-radio-button value="c">Beijing</a-radio-button>
-    </a-radio-group>
+  <div>
+    <a-radio v-model:checked="checked1" :disabled="disabled">Disabled</a-radio>
+    <a-radio v-model:checked="checked2" :disabled="disabled">Disabled</a-radio>
+    <br />
+    <div style="margin-top: 16px">
+      <a-button type="primary" @click="toggleDisabled">Toggle disabled</a-button>
+    </div>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const disabled = ref<boolean>(true);
+const checked1 = ref<boolean>(true);
+const checked2 = ref<boolean>(false);
+
+const toggleDisabled = () => {
+  disabled.value = !disabled.value;
+};
+</script>

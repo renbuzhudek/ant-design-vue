@@ -1,5 +1,7 @@
 <template>
-  <a-space :wrap="true" size="small">
-    <a-button v-for="i in 15" :key="i" variant="outlined">Button {{ i }}</a-button>
+  <a-space :size="[8, 16]" wrap>
+    <template v-for="_i in 20" :key="_i">
+      <a-button>Button</a-button>
+    </template>
   </a-space>
 </template>

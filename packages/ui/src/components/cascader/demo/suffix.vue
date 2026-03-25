@@ -1,34 +1,27 @@
 <template>
-  <div style="display: flex; gap: 16px; max-width: 500px">
+  <a-space>
     <a-cascader
       v-model:value="value1"
+      style="margin-top: 1rem"
       :options="options"
-      placeholder="Custom suffix icon"
+      placeholder="Please select"
     >
-      <template #suffixIcon>
-        <span style="color: #52c41a">^_^</span>
-      </template>
+      <template #suffixIcon><smile-outlined class="test" /></template>
     </a-cascader>
-
     <a-cascader
       v-model:value="value2"
+      suffix-icon="ab"
+      style="margin-top: 1rem"
       :options="options"
-      placeholder="Text suffix"
-    >
-      <template #suffixIcon>
-        <span style="font-size: 12px">ab</span>
-      </template>
-    </a-cascader>
-  </div>
+      placeholder="Please select"
+    />
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value1 = ref<(string | number)[]>([])
-const value2 = ref<(string | number)[]>([])
-
-const options = [
+<script lang="ts" setup>
+import { SmileOutlined } from '@ant-design/icons-vue';
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -37,7 +30,10 @@ const options = [
         value: 'hangzhou',
         label: 'Hangzhou',
         children: [
-          { value: 'xihu', label: 'West Lake' },
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
         ],
       },
     ],
@@ -50,10 +46,15 @@ const options = [
         value: 'nanjing',
         label: 'Nanjing',
         children: [
-          { value: 'zhonghuamen', label: 'Zhong Hua Men' },
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
         ],
       },
     ],
   },
-]
+];
+const value1 = ref<string[]>([]);
+const value2 = ref<string[]>([]);
 </script>

@@ -1,44 +1,60 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>maxTagCount: {{ maxTagCount }}</h4>
-    <div style="display: flex; gap: 8px">
+  <a-space direction="vertical" style="width: 100%">
+    <a-space>
       <a-button type="primary" @click="maxTagCount++">maxTagCount++</a-button>
       <a-button type="primary" @click="maxTagCount--">maxTagCount--</a-button>
-    </div>
+    </a-space>
+
+    <h2>maxTagCount: {{ maxTagCount }}</h2>
     <a-select
       v-model:value="value"
       mode="multiple"
       style="width: 100%"
-      placeholder="Select items..."
+      placeholder="Select Item..."
       :max-tag-count="maxTagCount"
       :options="options"
     >
-      <template #maxTagPlaceholder="{ omittedValues }">
+      <template #maxTagPlaceholder="omittedValues">
         <span style="color: red">+ {{ omittedValues.length }} ...</span>
       </template>
     </a-select>
-
-    <h4>maxTagCount: responsive</h4>
+    <h2>maxTagCount: responsive</h2>
     <a-select
       v-model:value="value"
       mode="multiple"
       style="width: 100%"
-      placeholder="Select items..."
+      placeholder="Select Item..."
       max-tag-count="responsive"
       :options="options"
-    />
-  </div>
+    ></a-select>
+    <a-space>
+      <a-button type="primary" @click="maxTagTextLength++">maxTagTextLength++</a-button>
+      <a-button type="primary" @click="maxTagTextLength--">maxTagTextLength--</a-button>
+    </a-space>
+    <h2>maxTagTextLength: {{ maxTagTextLength }}</h2>
+    <a-select
+      v-model:value="value"
+      mode="multiple"
+      style="width: 100%"
+      placeholder="Select Item..."
+      :max-tag-text-length="maxTagTextLength"
+      :options="options"
+    ></a-select>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import type { SelectProps } from 'ant-design-vue';
+import { ref } from 'vue';
+const options = ref<SelectProps['options']>([]);
 
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const options: { value: string; label: string }[] = []
 for (let i = 10; i < 36; i++) {
-  const val = i.toString(36) + i
-  options.push({ value: val, label: `Long Label: ${val}` })
+  const value = i.toString(36) + i;
+  options.value.push({
+    label: `Long Label: ${value}`,
+    value,
+  });
 }
-
-const maxTagCount = ref(2)
-const value = ref<string[]>(['a10', 'c12', 'h17', 'j19', 'k20'])
+const maxTagCount = ref(2);
+const maxTagTextLength = ref(10);
+const value = ref(['a10', 'c12', 'h17', 'j19', 'k20']);
 </script>

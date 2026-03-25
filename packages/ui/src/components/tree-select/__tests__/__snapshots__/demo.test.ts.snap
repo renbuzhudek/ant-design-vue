@@ -1,36 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`TreeSelect demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;">
-  <h4>Basic TreeSelect</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-tree-select ant-select-single ant-select-show-arrow ant-select-allow-clear" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" readonly="" role="combobox" tabindex="-1" style="opacity: 0; width: 0px; position: absolute;"></span>
-  <!--v-if--><span class="ant-select-selection-placeholder">Please select</span>
-</div><!-- Clear -->
+"<span class="ant-trigger-wrapper"><div class="ant-select ant-tree-select ant-select-single ant-select-show-search ant-select-show-arrow ant-select-allow-clear" style="width: 100%;"><div class="ant-select-selector"><!-- Multiple mode --><!-- Single mode --><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="tree" value=""></span>
+<!--v-if--><span class="ant-select-selection-placeholder">Please select</span></div><!-- Clear -->
 <!--v-if-->
 <!-- Arrow --><span class="ant-select-arrow"><span class="ant-select-arrow-icon"></span></span></div></span>
 <!--teleport start-->
+
 <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
   <!--v-if-->
 </transition-stub>
-<!--teleport end-->
-<h4>Multiple TreeSelect</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-tree-select ant-select-multiple ant-select-allow-clear" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!--v-if--><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="tree" value=""></span><span class="ant-select-selection-placeholder">Select multiple</span></div><!-- Clear -->
-<!--v-if-->
-<!-- Arrow -->
-<!--v-if-->
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end-->
-<h4>Checkable TreeSelect</h4><span class="ant-trigger-wrapper"><div class="ant-select ant-tree-select ant-select-multiple ant-select-allow-clear" tabindex="0"><div class="ant-select-selector"><!-- Multiple mode --><!--v-if--><span class="ant-select-selection-search"><input class="ant-select-selection-search-input" autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="tree" value=""></span><span class="ant-select-selection-placeholder">Check nodes</span></div><!-- Clear -->
-<!--v-if-->
-<!-- Arrow -->
-<!--v-if-->
-</div></span>
-<!--teleport start-->
-<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-  <!--v-if-->
-</transition-stub>
-<!--teleport end-->
-</div>"
+
+<!--teleport end-->"
 `;

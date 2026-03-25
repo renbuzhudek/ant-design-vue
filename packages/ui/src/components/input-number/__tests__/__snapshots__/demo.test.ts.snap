@@ -1,52 +1,44 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`InputNumber demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 12px;">
+"<div>
   <!-- With addon wrapper -->
   <!-- Standard (no addon) -->
   <div class="ant-input-number">
     <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" placeholder="Enter number" value="3"></div>
+    <div class="ant-input-number-input-wrap"><input id="inputNumber" class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" value="3"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
-  </div><!-- With addon wrapper -->
-  <!-- Standard (no addon) -->
-  <div class="ant-input-number">
-    <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="0" aria-valuemax="1" placeholder="With step" value=""></div>
-    <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-disabled" disabled="" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
-  </div>
+  </div> 当前值：3
 </div>"
 `;
 
 exports[`InputNumber demos > demo: Disabled 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 12px;">
+"<div>
   <!-- With addon wrapper -->
   <!-- Standard (no addon) -->
   <div class="ant-input-number ant-input-number-disabled">
     <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="3" disabled="" value="3"></div>
-    <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-disabled" disabled="" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-disabled" disabled="" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
-  </div><!-- With addon wrapper -->
-  <!-- Standard (no addon) -->
-  <div class="ant-input-number ant-input-number-readonly">
-    <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="5" readonly="" value="5"></div>
+    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" disabled="" value="3"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-disabled" disabled="" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down ant-input-number-handler-disabled" disabled="" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
   </div>
+  <div style="margin-top: 20px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <!--v-if-->
+      <!--v-if--><span class="ant-btn-content">Toggle disabled</span>
+    </button></div>
 </div>"
 `;
 
 exports[`InputNumber demos > demo: Formatter 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 12px;">
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!-- With addon wrapper -->
   <!-- Standard (no addon) -->
-  <div class="ant-input-number" style="width: 200px;">
+  <div class="ant-input-number">
     <!--v-if-->
     <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="1000" value="$ 1,000"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
   </div><!-- With addon wrapper -->
   <!-- Standard (no addon) -->
-  <div class="ant-input-number" style="width: 200px;">
+  <div class="ant-input-number">
     <!--v-if-->
     <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" value="100%"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up ant-input-number-handler-disabled" disabled="" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
@@ -55,24 +47,24 @@ exports[`InputNumber demos > demo: Formatter 1`] = `
 `;
 
 exports[`InputNumber demos > demo: Size 1`] = `
-"<div style="display: flex; gap: 12px; align-items: flex-start;">
+"<div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!-- With addon wrapper -->
   <!-- Standard (no addon) -->
-  <div class="ant-input-number ant-input-number-sm">
+  <div class="ant-input-number ant-input-number-lg">
     <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="3" placeholder="Small" value="3"></div>
+    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="1" aria-valuemax="100000" aria-valuenow="3" value="3"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
   </div><!-- With addon wrapper -->
   <!-- Standard (no addon) -->
   <div class="ant-input-number">
     <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="3" placeholder="Middle" value="3"></div>
+    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="1" aria-valuemax="100000" aria-valuenow="3" value="3"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
   </div><!-- With addon wrapper -->
   <!-- Standard (no addon) -->
-  <div class="ant-input-number ant-input-number-lg">
+  <div class="ant-input-number ant-input-number-sm">
     <!--v-if-->
-    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuenow="3" placeholder="Large" value="3"></div>
+    <div class="ant-input-number-input-wrap"><input class="ant-input-number-input" type="text" inputmode="decimal" role="spinbutton" aria-valuemin="1" aria-valuemax="100000" aria-valuenow="3" value="3"></div>
     <div class="ant-input-number-handler-wrap"><button type="button" class="ant-input-number-handler ant-input-number-handler-up" aria-label="Increase value" tabindex="-1"><span class="ant-input-number-handler-up-inner">▲</span></button><button type="button" class="ant-input-number-handler ant-input-number-handler-down" aria-label="Decrease value" tabindex="-1"><span class="ant-input-number-handler-down-inner">▼</span></button></div>
   </div>
 </div>"

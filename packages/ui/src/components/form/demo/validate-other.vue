@@ -1,38 +1,14 @@
-<script setup lang="ts">
-import { reactive } from 'vue'
-
-const formItemLayout = {
-  labelCol: { span: 6 },
-  wrapperCol: { span: 14 },
-}
-
-const formState = reactive<Record<string, any>>({
-  'input-number': 3,
-  'checkbox-group': ['A', 'B'],
-  rate: 3.5,
-})
-
-function onFinish(values: any) {
-  console.log('Success:', values)
-}
-
-function onFinishFailed(errorInfo: any) {
-  console.log('Failed:', errorInfo)
-}
-</script>
-
 <template>
   <a-form
     :model="formState"
     name="validate_other"
     v-bind="formItemLayout"
+    @finishFailed="onFinishFailed"
     @finish="onFinish"
-    @finish-failed="onFinishFailed"
   >
     <a-form-item label="Plain Text">
       <span class="ant-form-text">China</span>
     </a-form-item>
-
     <a-form-item
       name="select"
       label="Select"
@@ -75,7 +51,14 @@ function onFinishFailed(errorInfo: any) {
     <a-form-item name="slider" label="Slider">
       <a-slider
         v-model:value="formState.slider"
-        :marks="{ 0: 'A', 20: 'B', 40: 'C', 60: 'D', 80: 'E', 100: 'F' }"
+        :marks="{
+          0: 'A',
+          20: 'B',
+          40: 'C',
+          60: 'D',
+          80: 'E',
+          100: 'F',
+        }"
       />
     </a-form-item>
 
@@ -128,8 +111,56 @@ function onFinishFailed(errorInfo: any) {
       <a-rate v-model:value="formState.rate" allow-half />
     </a-form-item>
 
+    <a-form-item name="upload" label="Upload" extra="longgggggggggggggggggggggggggggggggggg">
+      <a-upload
+        v-model:file-list="formState.upload"
+        name="logo"
+        action="/upload.do"
+        list-type="picture"
+      >
+        <a-button>
+          <template #icon><UploadOutlined /></template>
+          Click to upload
+        </a-button>
+      </a-upload>
+    </a-form-item>
+
+    <a-form-item label="Dragger">
+      <a-form-item name="dragger" no-style>
+        <a-upload-dragger v-model:file-list="formState.dragger" name="files" action="/upload.do">
+          <p class="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p class="ant-upload-text">Click or drag file to this area to upload</p>
+          <p class="ant-upload-hint">Support for a single or bulk upload.</p>
+        </a-upload-dragger>
+      </a-form-item>
+    </a-form-item>
+
     <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
       <a-button type="primary" html-type="submit">Submit</a-button>
     </a-form-item>
   </a-form>
 </template>
+<script lang="ts" setup>
+import { reactive } from 'vue';
+import { UploadOutlined, InboxOutlined } from '@ant-design/icons-vue';
+
+const formItemLayout = {
+  labelCol: { span: 6 },
+  wrapperCol: { span: 14 },
+};
+
+const formState = reactive<Record<string, any>>({
+  'input-number': 3,
+  'checkbox-group': ['A', 'B'],
+  rate: 3.5,
+});
+const onFinish = (values: any) => {
+  console.log('Success:', values);
+};
+
+const onFinishFailed = (errorInfo: any) => {
+  console.log('Failed:', errorInfo);
+};
+</script>

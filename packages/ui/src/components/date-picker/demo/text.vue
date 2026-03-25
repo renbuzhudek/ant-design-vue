@@ -1,29 +1,22 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <a-date-picker v-model:value="dateValue" placeholder="Select date" @ok="onOk">
-      <span>{{ dateValue ? dateValue.format('YYYY-MM-DD') : 'Select a date' }}</span>
+  <a-space direction="vertical" :size="12">
+    <a-date-picker v-model:value="time1" placeholder="Select Time" @ok="onOk">
+      <span>{{ time1 ? time1.toString() : 'SelectTime' }}</span>
     </a-date-picker>
-
-    <a-range-picker v-model:value="rangeValue">
+    <a-range-picker v-model:value="time2">
       <span>
-        {{
-          rangeValue
-            ? `${rangeValue[0]?.format('YYYY-MM-DD')} ~ ${rangeValue[1]?.format('YYYY-MM-DD')}`
-            : 'Select date range'
-        }}
+        {{ time2 ? time2.toString() : '请选择' }}
       </span>
     </a-range-picker>
-  </div>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import type { Dayjs } from 'dayjs';
+import { ref } from 'vue';
+const time1 = ref<Dayjs>();
+const time2 = ref<[Dayjs, Dayjs]>();
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { Dayjs } from 'dayjs'
-
-const dateValue = ref<Dayjs | null>(null)
-const rangeValue = ref<[Dayjs, Dayjs] | null>(null)
-
-function onOk(value: Dayjs | null) {
-  console.log('onOk:', value)
-}
+const onOk = (value: Dayjs) => {
+  console.log('onOk: ', value);
+};
 </script>

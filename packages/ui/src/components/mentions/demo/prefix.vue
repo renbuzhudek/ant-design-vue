@@ -1,35 +1,30 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Custom Trigger Prefix</h4>
-    <a-mentions
-      v-model:value="value"
-      placeholder="Type @ to mention people, # to mention tag"
-      :prefix="['@', '#']"
-      :options="options"
-      @search="onSearch"
-    />
-  </div>
+  <a-mentions
+    v-model:value="value"
+    placeholder="input @ to mention people, # to mention tag"
+    :prefix="['@', '#']"
+    :options="options"
+    @search="onSearch"
+  ></a-mentions>
 </template>
-
-<script setup lang="ts">
-import { ref, computed } from 'vue'
-
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
 const MOCK_DATA: Record<string, string[]> = {
-  '@': ['afc163', 'zombieJ', 'yesmeck'],
+  '@': ['afc163', 'zombiej', 'yesmeck'],
   '#': ['1.0', '2.0', '3.0'],
-}
+};
+const prefix = ref<string>('@');
+const value = ref<string>('');
+const options = computed(() => {
+  return (MOCK_DATA[prefix.value] || []).map(value => ({
+    key: value,
+    value,
+    label: value,
+  }));
+});
 
-const currentPrefix = ref('@')
-const value = ref('')
-
-const options = computed(() =>
-  (MOCK_DATA[currentPrefix.value] || []).map((val) => ({
-    value: val,
-    label: val,
-  })),
-)
-
-const onSearch = (_: string, prefix: string) => {
-  currentPrefix.value = prefix
-}
+const onSearch = (_: string, val: string) => {
+  console.log(_, val);
+  prefix.value = val;
+};
 </script>

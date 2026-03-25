@@ -79,9 +79,9 @@ exports[`Tabs demos > demo: Centered 1`] = `
     <div class="ant-tabs-content">
       <!-- Items-based content -->
       <!-- Slot-based content (TabPane children) -->
-      <div class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel" aria-hidden="false">Content of Tab 1</div>
-      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 2</div>
-      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 3</div>
+      <div class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel" aria-hidden="false">Content of Tab Pane 1</div>
+      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab Pane 2</div>
+      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab Pane 3</div>
     </div>
   </div>
 </div>"
@@ -108,9 +108,9 @@ exports[`Tabs demos > demo: Disabled 1`] = `
     <div class="ant-tabs-content">
       <!-- Items-based content -->
       <!-- Slot-based content (TabPane children) -->
-      <div class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel" aria-hidden="false">Content of Tab 1</div>
-      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 2</div>
-      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 3</div>
+      <div class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel" aria-hidden="false">Tab 1</div>
+      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Tab 2</div>
+      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Tab 3</div>
     </div>
   </div>
 </div>"
@@ -153,34 +153,30 @@ exports[`Tabs demos > demo: Items 1`] = `
 `;
 
 exports[`Tabs demos > demo: Position 1`] = `
-"<div>
-  <div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px; margin-bottom: 16px;"><span>Tab position:</span>
-    <div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup"><label class="ant-radio-wrapper ant-radio-wrapper-checked"><span class="ant-radio ant-radio-checked"><input type="radio" class="ant-radio-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Top</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Bottom</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Left</span></label><label class="ant-radio-wrapper"><span class="ant-radio"><input type="radio" class="ant-radio-input" role="radio" aria-checked="false"><span class="ant-radio-inner"></span></span><span class="ant-radio-label">Right</span></label></div>
-  </div>
-  <div class="ant-tabs ant-tabs-top ant-tabs-line ant-tabs-md">
-    <!-- Tab bar -->
-    <div class="ant-tabs-nav" role="tablist" aria-orientation="horizontal">
-      <!-- Left extra -->
-      <!--v-if-->
-      <div class="ant-tabs-nav-wrap">
-        <div class="ant-tabs-nav-list">
-          <!-- Tab buttons -->
-          <!-- Ink bar (line type only) -->
-          <div class="ant-tabs-ink-bar"></div>
-        </div>
-      </div><!-- Add button for editable-card -->
-      <!--v-if-->
-      <!-- Right extra -->
-      <!--v-if-->
-    </div><!-- Tab content -->
-    <div class="ant-tabs-content-holder">
-      <div class="ant-tabs-content">
-        <!-- Items-based content -->
-        <!-- Slot-based content (TabPane children) -->
-        <div class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel" aria-hidden="false">Content of Tab 1</div>
-        <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 2</div>
-        <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 3</div>
+"<div class="ant-radio-group ant-radio-group-default ant-radio-group-outline" role="radiogroup" style="margin: 8px;"><label class="ant-radio-button-wrapper ant-radio-button-wrapper-checked"><input type="radio" class="ant-radio-button-input" checked="" role="radio" aria-checked="true"><span class="ant-radio-button-inner">top</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">bottom</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">left</span></label><label class="ant-radio-button-wrapper"><input type="radio" class="ant-radio-button-input" role="radio" aria-checked="false"><span class="ant-radio-button-inner">right</span></label></div>
+<div class="ant-tabs ant-tabs-top ant-tabs-line ant-tabs-md">
+  <!-- Tab bar -->
+  <div class="ant-tabs-nav" role="tablist" aria-orientation="horizontal">
+    <!-- Left extra -->
+    <!--v-if-->
+    <div class="ant-tabs-nav-wrap">
+      <div class="ant-tabs-nav-list">
+        <!-- Tab buttons -->
+        <!-- Ink bar (line type only) -->
+        <div class="ant-tabs-ink-bar"></div>
       </div>
+    </div><!-- Add button for editable-card -->
+    <!--v-if-->
+    <!-- Right extra -->
+    <!--v-if-->
+  </div><!-- Tab content -->
+  <div class="ant-tabs-content-holder">
+    <div class="ant-tabs-content">
+      <!-- Items-based content -->
+      <!-- Slot-based content (TabPane children) -->
+      <div class="ant-tabs-tabpane ant-tabs-tabpane-active" role="tabpanel" aria-hidden="false">Content of Tab 1</div>
+      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 2</div>
+      <div class="ant-tabs-tabpane" role="tabpanel" aria-hidden="true" style="display: none;">Content of Tab 3</div>
     </div>
   </div>
 </div>"

@@ -1,32 +1,25 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Segmented demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px;">
-  <div class="ant-segmented" role="radiogroup">
-    <div class="ant-segmented-group">
-      <div class="ant-segmented-thumb" aria-hidden="true"></div>
-      <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
-    </div>
+"<div class="ant-segmented" role="radiogroup">
+  <div class="ant-segmented-group">
+    <div class="ant-segmented-thumb" aria-hidden="true"></div>
+    <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
   </div>
-  <p>Selected: Daily</p>
 </div>"
 `;
 
 exports[`Segmented demos > demo: Block 1`] = `
-"<div style="max-width: 600px;">
-  <div class="ant-segmented ant-segmented-block" role="radiogroup">
-    <div class="ant-segmented-group">
-      <div class="ant-segmented-thumb" aria-hidden="true"></div>
-      <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
-    </div>
+"<div class="ant-segmented ant-segmented-block" role="radiogroup">
+  <div class="ant-segmented-group">
+    <div class="ant-segmented-thumb" aria-hidden="true"></div>
+    <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="123"><span class="ant-segmented-item-label">123</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="456"><span class="ant-segmented-item-label">456</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="longtext-longtext-longtext-longtext"><span class="ant-segmented-item-label">longtext-longtext-longtext-longtext</span></div>
   </div>
 </div>"
 `;
@@ -43,53 +36,61 @@ exports[`Segmented demos > demo: CustomLabel 1`] = `
 `;
 
 exports[`Segmented demos > demo: Disabled 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px;">
-  <p>Fully disabled:</p>
+"<div>
   <div class="ant-segmented ant-segmented-disabled" role="radiogroup">
     <div class="ant-segmented-group">
       <div class="ant-segmented-thumb" aria-hidden="true"></div>
-      <div class="ant-segmented-item ant-segmented-item-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
-      <div class="ant-segmented-item ant-segmented-item-selected ant-segmented-item-disabled" role="radio" aria-checked="true" aria-disabled="true" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
-      <div class="ant-segmented-item ant-segmented-item-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
+      <div class="ant-segmented-item ant-segmented-item-selected ant-segmented-item-disabled" role="radio" aria-checked="true" aria-disabled="true" tabindex="-1" title="Map"><span class="ant-segmented-item-label">Map</span></div>
+      <div class="ant-segmented-item ant-segmented-item-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" title="Transit"><span class="ant-segmented-item-label">Transit</span></div>
+      <div class="ant-segmented-item ant-segmented-item-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" title="Satellite"><span class="ant-segmented-item-label">Satellite</span></div>
     </div>
-  </div>
-  <p>Per-option disabled:</p>
+  </div><br><br>
   <div class="ant-segmented" role="radiogroup">
     <div class="ant-segmented-group">
       <div class="ant-segmented-thumb" aria-hidden="true"></div>
       <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
       <div class="ant-segmented-item ant-segmented-item-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
       <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
+      <div class="ant-segmented-item ant-segmented-item-disabled" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
+      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
     </div>
   </div>
 </div>"
 `;
 
 exports[`Segmented demos > demo: Size 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px;">
-  <div class="ant-segmented ant-segmented-sm" role="radiogroup">
-    <div class="ant-segmented-group">
-      <div class="ant-segmented-thumb" aria-hidden="true"></div>
-      <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
-    </div>
+"<div class="ant-segmented" role="radiogroup">
+  <div class="ant-segmented-group">
+    <div class="ant-segmented-thumb" aria-hidden="true"></div>
+    <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
   </div>
-  <div class="ant-segmented" role="radiogroup">
-    <div class="ant-segmented-group">
-      <div class="ant-segmented-thumb" aria-hidden="true"></div>
-      <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
-    </div>
+</div>
+<br>
+<br>
+<div class="ant-segmented" role="radiogroup">
+  <div class="ant-segmented-group">
+    <div class="ant-segmented-thumb" aria-hidden="true"></div>
+    <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
   </div>
-  <div class="ant-segmented ant-segmented-lg" role="radiogroup">
-    <div class="ant-segmented-group">
-      <div class="ant-segmented-thumb" aria-hidden="true"></div>
-      <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
-      <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
-    </div>
+</div>
+<br>
+<br>
+<div class="ant-segmented" role="radiogroup">
+  <div class="ant-segmented-group">
+    <div class="ant-segmented-thumb" aria-hidden="true"></div>
+    <div class="ant-segmented-item ant-segmented-item-selected" role="radio" aria-checked="true" tabindex="0" title="Daily"><span class="ant-segmented-item-label">Daily</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Weekly"><span class="ant-segmented-item-label">Weekly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Monthly"><span class="ant-segmented-item-label">Monthly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Quarterly"><span class="ant-segmented-item-label">Quarterly</span></div>
+    <div class="ant-segmented-item" role="radio" aria-checked="false" tabindex="-1" title="Yearly"><span class="ant-segmented-item-label">Yearly</span></div>
   </div>
 </div>"
 `;

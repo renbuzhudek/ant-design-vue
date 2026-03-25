@@ -1,62 +1,74 @@
 <template>
-  <div style="max-width: 400px">
-    <h4>Custom Tag Render</h4>
-    <a-cascader
-      v-model:value="value"
-      multiple
-      :options="options"
-      placeholder="Please select"
-    >
-      <template #tagRender="{ label, closable, onClose }">
-        <a-tag color="blue" :closable="closable" @close="onClose">
-          {{ label }}
-        </a-tag>
-      </template>
-    </a-cascader>
-  </div>
+  <a-cascader
+    v-model:value="value"
+    multiple
+    :options="options"
+    placeholder="Please select"
+    suffix-icon="Shopping Around"
+  >
+    <template #tagRender="data">
+      <a-tag :key="data.value" color="blue">{{ data.label }}</a-tag>
+    </template>
+  </a-cascader>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value = ref<(string | number)[][]>([])
-
-const options = [
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
+const options: CascaderProps['options'] = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
     children: [
       {
-        value: 'frozen',
-        label: 'Frozen',
+        value: 'freezeKey',
+        label: 'freeze',
         children: [
-          { value: 'salmon', label: 'Salmon' },
-          { value: 'beef', label: 'Beef' },
+          {
+            value: 'key1',
+            label: 'salmon',
+          },
+          {
+            value: 'key2',
+            label: 'beef',
+          },
         ],
       },
       {
-        value: 'fruits',
-        label: 'Fruits',
+        value: 'fruitsKey',
+        label: 'fruits',
         children: [
-          { value: 'apple', label: 'Apple' },
-          { value: 'banana', label: 'Banana' },
+          {
+            value: 'key11',
+            label: 'apple',
+          },
+          {
+            value: 'key22',
+            label: 'banana',
+          },
         ],
       },
     ],
   },
   {
-    value: 'jiangsu',
-    label: 'Jiangsu',
+    value: 'Chinese delicious food',
+    label: '中国美食',
     children: [
       {
-        value: 'pastry',
-        label: 'Pastry',
+        value: 'key3',
+        label: '月饼',
         children: [
-          { value: 'mooncake-egg', label: 'Egg Yolk Mooncake' },
-          { value: 'mooncake-nut', label: 'Five Nut Mooncake' },
+          {
+            value: 'key4',
+            label: '蛋黄馅',
+          },
+          {
+            value: 'key5',
+            label: '五仁馅',
+          },
         ],
       },
     ],
   },
-]
+];
+const value = ref<string[]>([]);
 </script>

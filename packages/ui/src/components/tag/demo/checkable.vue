@@ -1,23 +1,21 @@
 <template>
-  <div style="display: flex; gap: 8px;">
+  <span style="margin-right: 8px">Categories:</span>
+  <a-space :size="[0, 8]" wrap>
     <a-checkable-tag
-      v-for="tag in tags"
+      v-for="(tag, index) in tagsData"
       :key="tag"
-      v-model:checked="selectedTags[tag]"
+      v-model:checked="selectTags[index]"
+      @change="checked => handleChange(tag, checked)"
     >
       {{ tag }}
     </a-checkable-tag>
-  </div>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { reactive } from 'vue'
-
-const tags = ['Movies', 'Books', 'Music', 'Sports']
-const selectedTags = reactive<Record<string, boolean>>({
-  Movies: true,
-  Books: false,
-  Music: false,
-  Sports: false,
-})
+<script lang="ts" setup>
+import { reactive } from 'vue';
+const tagsData = reactive(['Movies', 'Books', 'Music', 'Sports']);
+const selectTags = reactive([false, true, false, false]);
+const handleChange = (tag: string, checked: boolean) => {
+  console.log(tag, checked);
+};
 </script>

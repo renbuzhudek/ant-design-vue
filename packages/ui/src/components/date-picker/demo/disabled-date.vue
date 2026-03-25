@@ -1,19 +1,13 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
+  <a-space direction="vertical">
     <a-date-picker
       v-model:value="value1"
       format="YYYY-MM-DD HH:mm:ss"
       :disabled-date="disabledDate"
       :disabled-time="disabledDateTime"
       :show-time="{ defaultValue: dayjs('00:00:00', 'HH:mm:ss') }"
-      placeholder="Disabled date & time"
     />
-    <a-date-picker
-      v-model:value="value2"
-      :disabled-date="disabledDate"
-      picker="month"
-      placeholder="Disabled months"
-    />
+    <a-date-picker v-model:value="value2" :disabled-date="disabledDate" picker="month" />
     <a-range-picker v-model:value="value3" :disabled-date="disabledDate" />
     <a-range-picker
       v-model:value="value4"
@@ -26,51 +20,52 @@
       }"
       format="YYYY-MM-DD HH:mm:ss"
     />
-  </div>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import { ref } from 'vue';
+const range = (start: number, end: number) => {
+  const result = [];
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import dayjs from 'dayjs'
-import type { Dayjs } from 'dayjs'
-
-const value1 = ref<Dayjs | null>(null)
-const value2 = ref<Dayjs | null>(null)
-const value3 = ref<[Dayjs, Dayjs] | null>(null)
-const value4 = ref<[Dayjs, Dayjs] | null>(null)
-
-function range(start: number, end: number): number[] {
-  const result: number[] = []
   for (let i = start; i < end; i++) {
-    result.push(i)
+    result.push(i);
   }
-  return result
-}
 
-function disabledDate(current: Dayjs): boolean {
-  return current && current < dayjs().endOf('day')
-}
+  return result;
+};
 
-function disabledDateTime() {
+const disabledDate = (current: Dayjs) => {
+  // Can not select days before today and today
+  return current && current < dayjs().endOf('day');
+};
+
+const disabledDateTime = () => {
   return {
     disabledHours: () => range(0, 24).splice(4, 20),
     disabledMinutes: () => range(30, 60),
     disabledSeconds: () => [55, 56],
-  }
-}
+  };
+};
 
-function disabledRangeTime(_: Dayjs | null, type: 'start' | 'end') {
+const disabledRangeTime = (_: Dayjs, type: 'start' | 'end') => {
   if (type === 'start') {
     return {
       disabledHours: () => range(0, 60).splice(4, 20),
       disabledMinutes: () => range(30, 60),
       disabledSeconds: () => [55, 56],
-    }
+    };
   }
   return {
     disabledHours: () => range(0, 60).splice(20, 4),
     disabledMinutes: () => range(0, 31),
     disabledSeconds: () => [55, 56],
-  }
-}
+  };
+};
+
+const value1 = ref<Dayjs>();
+const value2 = ref<Dayjs>();
+const value3 = ref<[Dayjs, Dayjs]>();
+const value4 = ref<[Dayjs, Dayjs]>();
 </script>

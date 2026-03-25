@@ -1,20 +1,17 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const open = ref(false)
-
-function hide() {
-  open.value = false
-}
-</script>
-
 <template>
-  <div style="padding: 40px;">
-    <a-popover v-model:open="open" title="Title" trigger="click">
-      <template #content>
-        <a @click="hide">Close</a>
-      </template>
-      <a-button variant="solid">Click me</a-button>
-    </a-popover>
-  </div>
+  <a-popover v-model:open="visible" title="Title" trigger="click">
+    <template #content>
+      <a @click="hide">Close</a>
+    </template>
+    <a-button type="primary">Click me</a-button>
+  </a-popover>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+const visible = ref<boolean>(false);
+
+const hide = () => {
+  visible.value = false;
+};
+</script>

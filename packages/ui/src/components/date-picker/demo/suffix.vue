@@ -1,6 +1,6 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
-    <a-date-picker placeholder="Custom suffix icon" @change="onChange">
+  <a-space direction="vertical">
+    <a-date-picker @change="onChange">
       <template #suffixIcon>
         <SmileOutlined />
       </template>
@@ -20,18 +20,20 @@
         <SmileOutlined />
       </template>
     </a-date-picker>
-  </div>
+    <a-date-picker suffix-icon="ab" @change="onChange" />
+    <a-date-picker suffix-icon="ab" placeholder="Select month" picker="month" @change="onChange" />
+    <a-range-picker suffix-icon="ab" @change="onRangeChange" />
+    <a-date-picker suffix-icon="ab" placeholder="Select week" picker="week" @change="onChange" />
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { SmileOutlined } from '@ant-design/icons-vue';
+import type { Dayjs } from 'dayjs';
+const onChange = (date: Dayjs | string, dateString: string) => {
+  console.log(date, dateString);
+};
 
-<script setup lang="ts">
-import { SmileOutlined } from '@ant-design/icons-vue'
-import type { Dayjs } from 'dayjs'
-
-function onChange(date: Dayjs | null, dateString: string) {
-  console.log('Changed:', date, dateString)
-}
-
-function onRangeChange(dates: [Dayjs, Dayjs] | null, dateStrings: [string, string]) {
-  console.log('Range changed:', dates, dateStrings)
-}
+const onRangeChange = (date: [Dayjs, Dayjs], dateString: [string, string]) => {
+  console.log(date, dateString);
+};
 </script>

@@ -1,18 +1,16 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const checked = ref(true)
-const disabled = ref(true)
-
-function onToggle() {
-  disabled.value = !disabled.value
-}
-</script>
-
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
+  <a-space direction="vertical">
     <a-switch v-model:checked="checked" :disabled="disabled" />
-    <a-switch :disabled="disabled" />
     <a-button type="primary" @click="onToggle">Toggle disabled</a-button>
-  </div>
+  </a-space>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+const checked = ref<boolean>(true);
+const disabled = ref<boolean>(true);
+
+const onToggle = () => {
+  disabled.value = !disabled.value;
+};
+</script>

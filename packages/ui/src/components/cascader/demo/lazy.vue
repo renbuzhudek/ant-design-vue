@@ -1,41 +1,36 @@
 <template>
-  <div style="max-width: 300px">
-    <h4>Lazy Loading</h4>
-    <a-cascader
-      v-model:value="value"
-      :options="options"
-      :load-data="loadData"
-      placeholder="Please select"
-      change-on-select
-    />
-  </div>
+  <a-cascader
+    v-model:value="value"
+    :options="options"
+    :load-data="loadData"
+    placeholder="Please select"
+    change-on-select
+  />
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type { CascaderProps } from 'ant-design-vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const options = ref<CascaderProps['options']>([
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    isLeaf: false,
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    isLeaf: false,
+  },
+]);
 
-interface Option {
-  value: string
-  label: string
-  isLeaf?: boolean
-  loading?: boolean
-  children?: Option[]
-}
+const loadData: CascaderProps['loadData'] = selectedOptions => {
+  const targetOption = selectedOptions[selectedOptions.length - 1];
+  targetOption.loading = true;
 
-const value = ref<(string | number)[]>([])
-
-const options = ref<Option[]>([
-  { value: 'zhejiang', label: 'Zhejiang', isLeaf: false },
-  { value: 'jiangsu', label: 'Jiangsu', isLeaf: false },
-])
-
-const loadData = (selectedOptions: any[]) => {
-  const targetOption = selectedOptions[selectedOptions.length - 1]
-  targetOption.loading = true
-
-  // Simulate async loading
+  // load options lazily
   setTimeout(() => {
-    targetOption.loading = false
+    targetOption.loading = false;
     targetOption.children = [
       {
         label: `${targetOption.label} Dynamic 1`,
@@ -45,8 +40,10 @@ const loadData = (selectedOptions: any[]) => {
         label: `${targetOption.label} Dynamic 2`,
         value: 'dynamic2',
       },
-    ]
-    options.value = [...options.value]
-  }, 1000)
-}
+    ];
+    options.value = [...options.value];
+  }, 1000);
+};
+
+const value = ref<string[]>([]);
 </script>

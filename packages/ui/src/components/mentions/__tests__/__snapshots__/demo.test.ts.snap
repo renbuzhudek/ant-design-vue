@@ -1,18 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Mentions demos > demo: Basic 1`] = `
-"<div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px;">
-  <h4>Basic Mentions</h4><span class="ant-trigger-wrapper"><div class="ant-mentions"><textarea class="ant-mentions-input" placeholder="Type @ to mention someone" rows="1" value=""></textarea></div></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-  <h4>Custom Prefix</h4><span class="ant-trigger-wrapper"><div class="ant-mentions"><textarea class="ant-mentions-input" placeholder="Type @ or # to trigger" rows="1" value=""></textarea></div></span>
-  <!--teleport start-->
-  <transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
-  <!--teleport end-->
-</div>"
+"<span class="ant-trigger-wrapper"><div class="ant-mentions"><textarea class="ant-mentions-input" rows="1" autofocus="" value="@afc163"></textarea></div></span>
+<!--teleport start-->
+
+<transition-stub name="ant-slide-up" appear="false" persisted="false" css="true">
+  <!--v-if-->
+</transition-stub>
+
+<!--teleport end-->"
 `;

@@ -1,12 +1,7 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const checked = ref(false)
-</script>
-
 <template>
-  <div>
-    <a-radio v-model:checked="checked">Radio</a-radio>
-    <p>Checked: {{ checked }}</p>
-  </div>
+  <a-radio v-model:checked="checked">Radio</a-radio>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const checked = ref<boolean>(false);
+</script>

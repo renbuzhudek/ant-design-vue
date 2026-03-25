@@ -1,28 +1,29 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
-    <div>
-      <strong>gap: small (8px)</strong>
-      <a-flex gap="small" style="margin-top: 8px">
-        <a-button variant="solid">1</a-button>
-        <a-button variant="solid">2</a-button>
-        <a-button variant="solid">3</a-button>
-      </a-flex>
-    </div>
-    <div>
-      <strong>gap: middle (16px)</strong>
-      <a-flex gap="middle" style="margin-top: 8px">
-        <a-button variant="solid">1</a-button>
-        <a-button variant="solid">2</a-button>
-        <a-button variant="solid">3</a-button>
-      </a-flex>
-    </div>
-    <div>
-      <strong>gap: large (32px)</strong>
-      <a-flex gap="large" style="margin-top: 8px">
-        <a-button variant="solid">1</a-button>
-        <a-button variant="solid">2</a-button>
-        <a-button variant="solid">3</a-button>
-      </a-flex>
-    </div>
-  </div>
+  <a-flex gap="middle" vertical>
+    <a-radio-group v-model:value="gapSize">
+      <a-radio value="small">small</a-radio>
+      <a-radio value="middle">middle</a-radio>
+      <a-radio value="large">large</a-radio>
+      <a-radio value="customize">customize</a-radio>
+    </a-radio-group>
+    <template v-if="gapSize === 'customize'">
+      <a-slider v-model:value="customGapSize" />
+    </template>
+    <a-flex :gap="gapSize !== 'customize' ? gapSize : customGapSize">
+      <a-button type="primary">Primary</a-button>
+      <a-button>Default</a-button>
+      <a-button type="dashed">Dashed</a-button>
+      <a-button type="link">Link</a-button>
+    </a-flex>
+  </a-flex>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+
+type SizeType = 'small' | 'middle' | 'large' | undefined;
+
+const gapSize = ref<SizeType | 'customize'>('small');
+
+const customGapSize = ref<number>(0);
+</script>

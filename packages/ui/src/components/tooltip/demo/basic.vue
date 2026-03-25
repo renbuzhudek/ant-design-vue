@@ -1,7 +1,6 @@
 <template>
-  <div style="display: flex; gap: 16px; flex-wrap: wrap; padding: 40px;">
-    <a-tooltip title="prompt text">
-      <span>Tooltip will show on mouse enter.</span>
-    </a-tooltip>
-  </div>
+  <a-tooltip>
+    <template #title>prompt text</template>
+    Tooltip will show when mouse enter.
+  </a-tooltip>
 </template>

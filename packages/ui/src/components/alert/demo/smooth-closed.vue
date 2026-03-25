@@ -7,13 +7,10 @@
     :after-close="handleClose"
   />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const visible = ref(true)
-
+<script lang="ts" setup>
+import { ref } from 'vue';
+const visible = ref<boolean>(true);
 const handleClose = () => {
-  visible.value = false
-}
+  visible.value = false;
+};
 </script>

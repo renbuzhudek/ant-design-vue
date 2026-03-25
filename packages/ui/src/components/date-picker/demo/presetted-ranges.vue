@@ -1,58 +1,47 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px">
-    <a-date-picker
-      v-model:value="value1"
-      :presets="datePresets"
-      placeholder="Date with presets"
-      @change="onDateChange"
-    />
+  <a-space direction="vertical" :size="12">
+    <a-date-picker :presets="presets" @change="onChange" />
+    <a-range-picker :presets="rangePresets" @change="onRangeChange" />
     <a-range-picker
-      v-model:value="value2"
-      :presets="rangePresets"
-      @change="onRangeChange"
-    />
-    <a-range-picker
-      v-model:value="value3"
       style="width: 400px"
       show-time
       format="YYYY/MM/DD HH:mm:ss"
       :presets="rangePresets"
       @change="onRangeChange"
     />
-  </div>
+  </a-space>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import dayjs from 'dayjs'
-import type { Dayjs } from 'dayjs'
-
-const value1 = ref<Dayjs | null>(null)
-const value2 = ref<[Dayjs, Dayjs] | null>(null)
-const value3 = ref<[Dayjs, Dayjs] | null>(null)
-
-const datePresets = [
-  { label: 'Yesterday', value: dayjs().subtract(1, 'day') },
-  { label: 'Last Week', value: dayjs().subtract(7, 'day') },
-  { label: 'Last Month', value: dayjs().subtract(1, 'month') },
-]
-
-const rangePresets = [
-  { label: 'Last 7 Days', value: [dayjs().subtract(7, 'day'), dayjs()] as [Dayjs, Dayjs] },
-  { label: 'Last 14 Days', value: [dayjs().subtract(14, 'day'), dayjs()] as [Dayjs, Dayjs] },
-  { label: 'Last 30 Days', value: [dayjs().subtract(30, 'day'), dayjs()] as [Dayjs, Dayjs] },
-  { label: 'Last 90 Days', value: [dayjs().subtract(90, 'day'), dayjs()] as [Dayjs, Dayjs] },
-]
-
-function onDateChange(date: Dayjs | null, dateString: string) {
-  console.log('Date changed:', date, dateString)
-}
-
-function onRangeChange(dates: [Dayjs, Dayjs] | null, dateStrings: [string, string]) {
-  if (dates) {
-    console.log('From:', dateStrings[0], 'To:', dateStrings[1])
+<script lang="ts" setup>
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
+import { ref } from 'vue';
+type RangeValue = [Dayjs, Dayjs];
+const onChange = (date: Dayjs) => {
+  if (date) {
+    console.log('Date: ', date);
   } else {
-    console.log('Clear')
+    console.log('Clear');
   }
-}
+};
+const onRangeChange = (dates: RangeValue, dateStrings: string[]) => {
+  if (dates) {
+    console.log('From: ', dates[0], ', to: ', dates[1]);
+    console.log('From: ', dateStrings[0], ', to: ', dateStrings[1]);
+  } else {
+    console.log('Clear');
+  }
+};
+
+const presets = ref([
+  { label: 'Yesterday', value: dayjs().add(-1, 'd') },
+  { label: 'Last Week', value: dayjs().add(-7, 'd') },
+  { label: 'Last Month', value: dayjs().add(-1, 'month') },
+]);
+
+const rangePresets = ref([
+  { label: 'Last 7 Days', value: [dayjs().add(-7, 'd'), dayjs()] },
+  { label: 'Last 14 Days', value: [dayjs().add(-14, 'd'), dayjs()] },
+  { label: 'Last 30 Days', value: [dayjs().add(-30, 'd'), dayjs()] },
+  { label: 'Last 90 Days', value: [dayjs().add(-90, 'd'), dayjs()] },
+]);
 </script>

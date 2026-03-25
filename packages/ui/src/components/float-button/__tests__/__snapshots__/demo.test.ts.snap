@@ -1,8 +1,14 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`FloatButton demos > demo: BackTopDemo 1`] = `
-"<div>
-  <p style="margin-bottom: 16px;">Scroll down to see the BackTop button appear.</p><button type="button" class="ant-float-btn ant-float-btn-back-top ant-float-btn-default ant-float-btn-circle" style="position: absolute; display: none;">
+"<div style="height: 500vh; padding: 10px;">
+  <div>Scroll to bottom</div>
+  <div>Scroll to bottom</div>
+  <div>Scroll to bottom</div>
+  <div>Scroll to bottom</div>
+  <div>Scroll to bottom</div>
+  <div>Scroll to bottom</div>
+  <div>Scroll to bottom</div><button type="button" class="ant-float-btn ant-float-btn-back-top ant-float-btn-default ant-float-btn-circle" style="display: none;">
     <div class="ant-float-btn-body">
       <div class="ant-float-btn-content">
         <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -17,88 +23,135 @@ exports[`FloatButton demos > demo: BackTopDemo 1`] = `
 `;
 
 exports[`FloatButton demos > demo: Basic 1`] = `
-"<div style="height: 300px; position: relative; overflow: hidden;"><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button" style="position: absolute;">
-    <div class="ant-float-btn-body">
-      <div class="ant-float-btn-content">
-        <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-            <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2z"></path>
-          </svg></div>
-        <!--v-if-->
-      </div>
+"<button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
+  <div class="ant-float-btn-body">
+    <div class="ant-float-btn-content">
+      <div class="ant-float-btn-icon"></div>
       <!--v-if-->
     </div>
-  </button></div>"
+    <!--v-if-->
+  </div>
+</button>"
 `;
 
 exports[`FloatButton demos > demo: Group 1`] = `
-"<div style="height: 300px; position: relative; overflow: hidden;">
-  <div class="ant-float-btn-group ant-float-btn-group-circle" style="position: absolute;">
-    <div class="ant-float-btn-group-items" style="display: none;"><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button" style="position: relative;">
-        <div class="ant-float-btn-body">
-          <div class="ant-float-btn-content">
-            <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-                <path d="M464 512a48 48 0 1096 0 48 48 0 10-96 0zm200 0a48 48 0 1096 0 48 48 0 10-96 0zm-400 0a48 48 0 1096 0 48 48 0 10-96 0z"></path>
-              </svg></div>
-            <!--v-if-->
-          </div>
-          <!--v-if-->
-        </div>
-      </button><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button" style="position: relative;">
-        <div class="ant-float-btn-body">
-          <div class="ant-float-btn-content">
-            <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-                <path d="M928 161H699.2c-49.1 0-97.1 14.1-138.4 40.7L512 233l-48.8-31.3A255.2 255.2 0 00324.8 161H96c-17.7 0-32 14.3-32 32v568c0 17.7 14.3 32 32 32h228.8c49.1 0 97.1 14.1 138.4 40.7l44.4 28.6c1.3.8 2.8 1.3 4.3 1.3s3-.4 4.3-1.3l44.4-28.6c41.3-26.6 89.3-40.7 138.4-40.7H928c17.7 0 32-14.3 32-32V193c0-17.7-14.3-32-32-32z"></path>
-              </svg></div>
-            <!--v-if-->
-          </div>
-          <!--v-if-->
-        </div>
-      </button></div><button type="button" class="ant-float-btn ant-float-btn-group-trigger ant-float-btn-default ant-float-btn-circle">
+"<div class="ant-float-btn-group ant-float-btn-group-circle ant-float-btn-group-open" style="right: 24px;">
+  <div class="ant-float-btn-group-items"><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
       <div class="ant-float-btn-body">
         <div class="ant-float-btn-content">
-          <div class="ant-float-btn-icon"><span class="ant-float-btn-group-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path d="M192 474h672q8 0 8 8v60q0 8-8 8H192q-8 0-8-8v-60q0-8 8-8z"></path></svg></span></div>
+          <div class="ant-float-btn-icon"></div>
+          <!--v-if-->
         </div>
+        <!--v-if-->
       </div>
-    </button>
-  </div>
+    </button><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
+      <div class="ant-float-btn-body">
+        <div class="ant-float-btn-content">
+          <div class="ant-float-btn-icon"></div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </button><button type="button" class="ant-float-btn ant-float-btn-back-top ant-float-btn-default ant-float-btn-circle" style="display: none;">
+      <div class="ant-float-btn-body">
+        <div class="ant-float-btn-content">
+          <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+              <path d="M859.9 168H164.1c-4.5 0-8.1 3.6-8.1 8v60c0 4.4 3.6 8 8.1 8h695.8c4.5 0 8.1-3.6 8.1-8v-60c0-4.4-3.6-8-8.1-8zM518.3 355a8 8 0 00-12.6 0l-112 141.7a7.98 7.98 0 006.3 12.9h73.9V848c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V509.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 355z"></path>
+            </svg></div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </button></div>
+  <!--v-if-->
+</div>
+<div class="ant-float-btn-group ant-float-btn-group-square ant-float-btn-group-open" style="right: 94px;">
+  <div class="ant-float-btn-group-items"><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
+      <div class="ant-float-btn-body">
+        <div class="ant-float-btn-content">
+          <div class="ant-float-btn-icon"></div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </button><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
+      <div class="ant-float-btn-body">
+        <div class="ant-float-btn-content">
+          <div class="ant-float-btn-icon"></div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </button><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
+      <div class="ant-float-btn-body">
+        <div class="ant-float-btn-content">
+          <div class="ant-float-btn-icon"></div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </button><button type="button" class="ant-float-btn ant-float-btn-back-top ant-float-btn-default ant-float-btn-circle" style="display: none;">
+      <div class="ant-float-btn-body">
+        <div class="ant-float-btn-content">
+          <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+              <path d="M859.9 168H164.1c-4.5 0-8.1 3.6-8.1 8v60c0 4.4 3.6 8 8.1 8h695.8c4.5 0 8.1-3.6 8.1-8v-60c0-4.4-3.6-8-8.1-8zM518.3 355a8 8 0 00-12.6 0l-112 141.7a7.98 7.98 0 006.3 12.9h73.9V848c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V509.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 355z"></path>
+            </svg></div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </div>
+    </button></div>
+  <!--v-if-->
 </div>"
 `;
 
 exports[`FloatButton demos > demo: Shape 1`] = `
-"<div style="height: 300px; position: relative; overflow: hidden;"><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button" style="position: absolute; bottom: 100px;">
-    <div class="ant-float-btn-body">
-      <div class="ant-float-btn-content">
-        <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-            <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2z"></path>
-          </svg></div>
-        <!--v-if-->
-      </div>
+"<button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button">
+  <div class="ant-float-btn-body">
+    <div class="ant-float-btn-content">
+      <div class="ant-float-btn-icon"></div>
       <!--v-if-->
     </div>
-  </button><button class="ant-float-btn ant-float-btn-default ant-float-btn-square" type="button" style="position: absolute; bottom: 48px;">
-    <div class="ant-float-btn-body">
-      <div class="ant-float-btn-content">
-        <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-            <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 00-44.4 0L77.5 505a63.9 63.9 0 00-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0018.7-45.3c0-17-6.7-33.1-18.8-45.2z"></path>
-          </svg></div>
-        <!--v-if-->
-      </div>
+    <!--v-if-->
+  </div>
+</button>
+<button class="ant-float-btn ant-float-btn-primary ant-float-btn-circle" type="button" style="right: 94px;">
+  <div class="ant-float-btn-body">
+    <div class="ant-float-btn-content">
+      <div class="ant-float-btn-icon"></div>
       <!--v-if-->
     </div>
-  </button></div>"
+    <!--v-if-->
+  </div>
+</button>
+<button class="ant-float-btn ant-float-btn-primary ant-float-btn-square" type="button" style="right: 24px;">
+  <div class="ant-float-btn-body">
+    <div class="ant-float-btn-content">
+      <div class="ant-float-btn-icon"></div>
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+</button>"
 `;
 
 exports[`FloatButton demos > demo: Tooltip 1`] = `
-"<div style="height: 300px; position: relative; overflow: hidden;"><button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" title="Click me" type="button" style="position: absolute;">
-    <div class="ant-float-btn-body">
-      <div class="ant-float-btn-content">
-        <div class="ant-float-btn-icon"><svg viewBox="64 64 896 896" width="1em" height="1em" fill="currentColor">
-            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
-            <path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm-16 152h128v272H448V488z"></path>
-          </svg></div>
-        <!--v-if-->
-      </div>
+"<button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" title="HELP INFO" type="button" style="right: 24px;">
+  <div class="ant-float-btn-body">
+    <div class="ant-float-btn-content">
+      <div class="ant-float-btn-icon"></div>
       <!--v-if-->
     </div>
-  </button></div>"
+    <!--v-if-->
+  </div>
+</button>
+<button class="ant-float-btn ant-float-btn-default ant-float-btn-circle" type="button" style="right: 94px;">
+  <div class="ant-float-btn-body">
+    <div class="ant-float-btn-content">
+      <div class="ant-float-btn-icon"></div>
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+</button>"
 `;

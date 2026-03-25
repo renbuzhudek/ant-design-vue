@@ -1,18 +1,15 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const value1 = ref(30)
-const value2 = ref<[number, number]>([20, 50])
-const reverse = ref(true)
-</script>
-
 <template>
-  <div style="max-width: 400px">
+  <div>
     <a-slider v-model:value="value1" :reverse="reverse" />
     <a-slider v-model:value="value2" range :reverse="reverse" />
-    <div style="margin-top: 16px">
-      Reversed:
-      <input v-model="reverse" type="checkbox" />
-    </div>
+    Reversed:
+    <a-switch v-model:checked="reverse" size="small" />
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+const value1 = ref<number>(30);
+const value2 = ref<[number, number]>([20, 50]);
+const reverse = ref<boolean>(true);
+</script>

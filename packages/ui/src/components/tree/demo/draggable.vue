@@ -1,95 +1,110 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import type { TreeDataNode, Key, TreeDropInfo } from '../types'
-
-const treeData = ref<TreeDataNode[]>([
-  {
-    title: 'Expand to load',
-    key: '0-0',
-    children: [
-      { title: 'Child Node 0', key: '0-0-0' },
-      { title: 'Child Node 1', key: '0-0-1' },
-      { title: 'Child Node 2', key: '0-0-2' },
-    ],
-  },
-  {
-    title: 'Expand to load',
-    key: '0-1',
-    children: [
-      { title: 'Child Node 3', key: '0-1-0' },
-      { title: 'Child Node 4', key: '0-1-1' },
-    ],
-  },
-  {
-    title: 'Tree Node',
-    key: '0-2',
-  },
-])
-
-const expandedKeys = ref<Key[]>(['0-0', '0-1'])
-
-function onDrop(info: TreeDropInfo) {
-  const dropKey = info.node.key
-  const dragKey = info.dragNode.key
-  const dropPos = info.dropPosition
-  const dropToGap = info.dropToGap
-
-  // Find and remove drag node
-  const data = [...treeData.value]
-  let dragObj: TreeDataNode | undefined
-
-  function loop(
-    nodes: TreeDataNode[],
-    key: Key,
-    callback: (item: TreeDataNode, index: number, arr: TreeDataNode[]) => void,
-  ) {
-    for (let i = 0; i < nodes.length; i++) {
-      if (nodes[i].key === key) {
-        callback(nodes[i], i, nodes)
-        return
-      }
-      if (nodes[i].children) {
-        loop(nodes[i].children!, key, callback)
-      }
-    }
-  }
-
-  loop(data, dragKey, (item, index, arr) => {
-    arr.splice(index, 1)
-    dragObj = item
-  })
-
-  if (!dragObj) return
-
-  if (!dropToGap) {
-    // Drop on the node (add as child)
-    loop(data, dropKey, (item) => {
-      item.children = item.children || []
-      item.children.unshift(dragObj!)
-    })
-  } else if (dropPos === -1) {
-    // Drop before
-    loop(data, dropKey, (_item, index, arr) => {
-      arr.splice(index, 0, dragObj!)
-    })
-  } else {
-    // Drop after
-    loop(data, dropKey, (_item, index, arr) => {
-      arr.splice(index + 1, 0, dragObj!)
-    })
-  }
-
-  treeData.value = data
-}
-</script>
-
 <template>
   <a-tree
-    :tree-data="treeData"
-    :expanded-keys="expandedKeys"
+    class="draggable-tree"
     draggable
     block-node
+    :tree-data="gData"
+    @dragenter="onDragEnter"
     @drop="onDrop"
-    @expand="(keys: Key[]) => (expandedKeys = keys)"
   />
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+import type {
+  AntTreeNodeDragEnterEvent,
+  AntTreeNodeDropEvent,
+  TreeProps,
+} from 'ant-design-vue/es/tree';
+
+const x = 3;
+const y = 2;
+const z = 1;
+const genData = [];
+
+const generateData = (_level: number, _preKey?: string, _tns?: TreeProps['treeData']) => {
+  const preKey = _preKey || '0';
+  const tns = _tns || genData;
+
+  const children = [];
+  for (let i = 0; i < x; i++) {
+    const key = `${preKey}-${i}`;
+    tns.push({ title: key, key });
+    if (i < y) {
+      children.push(key);
+    }
+  }
+  if (_level < 0) {
+    return tns;
+  }
+  const level = _level - 1;
+  children.forEach((key, index) => {
+    tns[index].children = [];
+    return generateData(level, key, tns[index].children);
+  });
+};
+generateData(z);
+type TreeDataItem = TreeProps['treeData'][number];
+const gData = ref<TreeProps['treeData']>(genData);
+const onDragEnter = (info: AntTreeNodeDragEnterEvent) => {
+  console.log(info);
+  // expandedKeys 需要展开时
+  // expandedKeys.value = info.expandedKeys;
+};
+
+const onDrop = (info: AntTreeNodeDropEvent) => {
+  console.log(info);
+  const dropKey = info.node.key;
+  const dragKey = info.dragNode.key;
+  const dropPos = info.node.pos.split('-');
+  const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]);
+  const loop = (data: TreeProps['treeData'], key: string | number, callback: any) => {
+    data.forEach((item, index) => {
+      if (item.key === key) {
+        return callback(item, index, data);
+      }
+      if (item.children) {
+        return loop(item.children, key, callback);
+      }
+    });
+  };
+  const data = [...gData.value];
+
+  // Find dragObject
+  let dragObj: TreeDataItem;
+  loop(data, dragKey, (item: TreeDataItem, index: number, arr: TreeProps['treeData']) => {
+    arr.splice(index, 1);
+    dragObj = item;
+  });
+  if (!info.dropToGap) {
+    // Drop on the content
+    loop(data, dropKey, (item: TreeDataItem) => {
+      item.children = item.children || [];
+      /// where to insert 示例添加到头部，可以是随意位置
+      item.children.unshift(dragObj);
+    });
+  } else if (
+    (info.node.children || []).length > 0 && // Has children
+    info.node.expanded && // Is expanded
+    dropPosition === 1 // On the bottom gap
+  ) {
+    loop(data, dropKey, (item: TreeDataItem) => {
+      item.children = item.children || [];
+      // where to insert 示例添加到头部，可以是随意位置
+      item.children.unshift(dragObj);
+    });
+  } else {
+    let ar: TreeProps['treeData'] = [];
+    let i = 0;
+    loop(data, dropKey, (_item: TreeDataItem, index: number, arr: TreeProps['treeData']) => {
+      ar = arr;
+      i = index;
+    });
+    if (dropPosition === -1) {
+      ar.splice(i, 0, dragObj);
+    } else {
+      ar.splice(i + 1, 0, dragObj);
+    }
+  }
+  gData.value = data;
+};
+</script>

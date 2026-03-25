@@ -1,36 +1,97 @@
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px">
-    <h4>Custom Option Rendering with tagRender</h4>
+  <a-space direction="vertical" style="width: 100%">
     <a-select
       v-model:value="value"
       mode="multiple"
       style="width: 100%"
-      placeholder="Select countries"
+      placeholder="select one country"
+      option-label-prop="children"
+    >
+      <a-select-option value="china" label="China">
+        <span role="img" aria-label="China">🇨🇳</span>
+        &nbsp;&nbsp;China (中国)
+      </a-select-option>
+      <a-select-option value="usa" label="USA">
+        <span role="img" aria-label="USA">🇺🇸</span>
+        &nbsp;&nbsp;USA (美国)
+      </a-select-option>
+      <a-select-option value="japan" label="Japan">
+        <span role="img" aria-label="Japan">🇯🇵</span>
+        &nbsp;&nbsp;Japan (日本)
+      </a-select-option>
+      <a-select-option value="korea" label="Korea">
+        <span role="img" aria-label="Korea">🇰🇷</span>
+        &nbsp;&nbsp;Korea (韩国)
+      </a-select-option>
+    </a-select>
+
+    <a-select
+      v-model:value="value"
+      mode="multiple"
+      style="width: 100%"
+      placeholder="select one country"
       option-label-prop="label"
       :options="options"
     >
-      <template #option="{ label }">
-        {{ label }}
+      <template #option="{ value: val, label, icon }">
+        <span role="img" :aria-label="val">{{ icon }}</span>
+        &nbsp;&nbsp;{{ label }}
       </template>
-      <template #tagRender="{ label, closable, onClose }">
+    </a-select>
+    <span>Note: v-slot:option support from v2.2.5</span>
+  </a-space>
+  <br />
+  <br />
+  <a-space direction="vertical" style="width: 100%">
+    <a-select
+      v-model:value="value"
+      mode="multiple"
+      style="width: 100%"
+      placeholder="select one country"
+      :options="options"
+    >
+      <template #option="{ value: val, label, icon }">
+        <span role="img" :aria-label="val">{{ icon }}</span>
+        &nbsp;&nbsp;{{ label }}
+      </template>
+      <template #tagRender="{ value: val, label, closable, onClose, option }">
         <a-tag :closable="closable" style="margin-right: 3px" @close="onClose">
-          {{ label }}
+          {{ label }}&nbsp;&nbsp;
+          <span role="img" :aria-label="val">{{ option.icon }}</span>
         </a-tag>
       </template>
     </a-select>
-    <p>Selected: {{ value }}</p>
-  </div>
+    <span>Note: v-slot:tagRender support from v3.0</span>
+  </a-space>
 </template>
+<script lang="ts" setup>
+import { ref, watch } from 'vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
+const value = ref(['china']);
 
-const value = ref<string[]>(['china'])
-
-const options = [
-  { value: 'china', label: 'China' },
-  { value: 'usa', label: 'USA' },
-  { value: 'japan', label: 'Japan' },
-  { value: 'korea', label: 'Korea' },
-]
+const options = ref([
+  {
+    value: 'china',
+    label: 'China (中国)',
+    icon: '🇨🇳',
+  },
+  {
+    value: 'usa',
+    label: 'USA (美国)',
+    icon: '🇺🇸',
+  },
+  {
+    value: 'japan',
+    label: 'Japan (日本)',
+    icon: '🇯🇵',
+  },
+  {
+    value: 'korea',
+    label: 'Korea (韩国)',
+    icon: '🇨🇰',
+  },
+]);
+watch(value, val => {
+  console.log(`selected:`, val);
+});
 </script>

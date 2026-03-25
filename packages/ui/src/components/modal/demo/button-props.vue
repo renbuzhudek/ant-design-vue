@@ -1,14 +1,12 @@
 <template>
   <div>
-    <a-button variant="solid" @click="open = true">
-      Open Modal with customized button props
-    </a-button>
+    <a-button type="primary" @click="showModal">Open Modal with customized button props</a-button>
     <a-modal
       v-model:open="open"
       title="Basic Modal"
       :ok-button-props="{ disabled: true }"
       :cancel-button-props="{ disabled: true }"
-      @ok="open = false"
+      @ok="handleOk"
     >
       <p>Some contents...</p>
       <p>Some contents...</p>
@@ -16,8 +14,17 @@
     </a-modal>
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
 
-<script setup lang="ts">
-import { ref } from 'vue'
-const open = ref(false)
+const open = ref<boolean>(false);
+
+const showModal = () => {
+  open.value = true;
+};
+
+const handleOk = (e: MouseEvent) => {
+  console.log(e);
+  open.value = false;
+};
 </script>

@@ -1,7 +1,25 @@
 <template>
-  <a-steps :current="1" status="error">
-    <a-step title="Finished" description="This is a description." />
-    <a-step title="In Progress" description="This is a description." />
-    <a-step title="Waiting" description="This is a description." />
-  </a-steps>
+  <a-steps
+    v-model:current="current"
+    status="error"
+    :items="[
+      {
+        title: 'Finished',
+        description,
+      },
+      {
+        title: 'In Process',
+        description,
+      },
+      {
+        title: 'Waiting',
+        description,
+      },
+    ]"
+  ></a-steps>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const current = ref<number>(1);
+const description = 'This is a description.';
+</script>

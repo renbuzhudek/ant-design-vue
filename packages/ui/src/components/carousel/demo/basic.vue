@@ -1,31 +1,30 @@
 <template>
-  <a-carousel>
-    <div class="carousel-slide" style="background: #364d79;">
-      <h3>1</h3>
-    </div>
-    <div class="carousel-slide" style="background: #364d79;">
-      <h3>2</h3>
-    </div>
-    <div class="carousel-slide" style="background: #364d79;">
-      <h3>3</h3>
-    </div>
-    <div class="carousel-slide" style="background: #364d79;">
-      <h3>4</h3>
-    </div>
+  <a-carousel :after-change="onChange">
+    <div><h3>1</h3></div>
+    <div><h3>2</h3></div>
+    <div><h3>3</h3></div>
+    <div><h3>4</h3></div>
   </a-carousel>
 </template>
 
-<style>
-.carousel-slide {
-  height: 160px;
-  color: #fff;
-  line-height: 160px;
+<script lang="ts" setup>
+const onChange = (current: number) => {
+  console.log(current);
+};
+</script>
+
+<style scoped>
+/* For demo */
+:deep(.slick-slide) {
   text-align: center;
-  font-size: 24px;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
 }
 
-.carousel-slide h3 {
+:deep(.slick-slide h3) {
   color: #fff;
-  margin: 0;
 }
 </style>
+```

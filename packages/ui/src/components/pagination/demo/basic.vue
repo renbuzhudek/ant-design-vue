@@ -1,8 +1,7 @@
 <template>
-  <a-pagination v-model:current="current" :total="50" />
+  <a-pagination v-model:current="current" :total="50" show-less-items />
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-const current = ref(1)
+<script lang="ts" setup>
+import { ref } from 'vue';
+const current = ref(2);
 </script>

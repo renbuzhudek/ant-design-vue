@@ -2,6 +2,15 @@
 
 exports[`App demos > demo: Basic 1`] = `
 "<div class="ant-app">
-  <div style="display: flex; gap: 8px;"><button class="ant-btn ant-btn-solid">Show Message</button><button class="ant-btn ant-btn-solid">Show Notification</button><button class="ant-btn ant-btn-solid">Show Modal</button></div>
+  <div class="ant-space ant-space-horizontal ant-space-align-center" style="column-gap: 8px; row-gap: 8px;"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <!--v-if-->
+      <!--v-if--><span class="ant-btn-content">Open message</span>
+    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <!--v-if-->
+      <!--v-if--><span class="ant-btn-content">Open modal</span>
+    </button><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
+      <!--v-if-->
+      <!--v-if--><span class="ant-btn-content">Open notification</span>
+    </button></div>
 </div>"
 `;
