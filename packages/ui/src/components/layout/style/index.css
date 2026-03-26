@@ -3,6 +3,7 @@
 :where(.ant-layout) {
   @apply flex flex-auto;
   box-sizing: border-box;
+  font-family: var(--ant-font-family);
   min-height: 0;
 }
 

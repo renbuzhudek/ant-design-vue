@@ -2,6 +2,7 @@
 
 :where(.ant-result) {
   @apply py-12 px-8;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-result) .ant-result-icon {
@@ -39,7 +40,8 @@
 }
 
 :where(.ant-result) .ant-result-subtitle {
-  @apply text-center text-sm mt-2;
+  @apply text-center mt-2;
+  font-size: var(--ant-font-size);
   color: var(--color-neutral-secondary, rgba(0, 0, 0, 0.45));
 }
 

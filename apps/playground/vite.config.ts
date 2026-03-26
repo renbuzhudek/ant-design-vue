@@ -143,6 +143,14 @@ export default defineConfig({
   server: {
     fs: { allow: [monorepoRoot] },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        'old-demo': resolve(__dirname, 'old-demo.html'),
+      },
+    },
+  },
   resolve: {
     dedupe: ['@codemirror/state', '@codemirror/view', '@codemirror/language'],
     alias: {

@@ -3,6 +3,7 @@
 /* ---- Base ---- */
 :where(.ant-spin) {
   @apply box-border relative inline-flex flex-col items-center justify-center;
+  font-family: var(--ant-font-family);
   color: var(--color-accent, #1677ff);
   font-size: 14px;
   line-height: 1;
@@ -85,7 +86,8 @@
 
 /* ---- Tip text ---- */
 :where(.ant-spin) .ant-spin-text {
-  @apply text-sm pt-1;
+  @apply pt-1;
+  font-size: var(--ant-font-size);
   color: var(--color-accent, #1677ff);
 }
 

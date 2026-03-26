@@ -6,10 +6,12 @@
   --tooltip-color: #fff;
   --tooltip-border-radius: var(--ant-border-radius);
   --tooltip-max-width: 250px;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-tooltip) .ant-tooltip-inner {
-  @apply px-2 py-1.5 text-sm leading-normal break-words;
+  @apply px-2 py-1.5 leading-normal break-words;
+  font-size: var(--ant-font-size);
   min-width: 32px;
   min-height: 32px;
   max-width: var(--tooltip-max-width);

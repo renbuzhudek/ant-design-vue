@@ -5,10 +5,11 @@
   --popconfirm-bg: #fff;
   --popconfirm-color: var(--color-neutral);
   --popconfirm-border-radius: var(--ant-border-radius-lg);
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-popconfirm) .ant-popconfirm-inner {
-  @apply text-sm;
+  font-size: var(--ant-font-size);
   color: var(--popconfirm-color);
   background: var(--popconfirm-bg);
   border-radius: var(--popconfirm-border-radius);
@@ -25,7 +26,8 @@
 }
 
 :where(.ant-popconfirm) .ant-popconfirm-message-icon {
-  @apply text-base leading-none shrink-0 mt-0.5;
+  @apply leading-none shrink-0 mt-0.5;
+  font-size: var(--ant-font-size-lg);
   color: var(--color-warning);
 }
 
@@ -34,11 +36,13 @@
 }
 
 :where(.ant-popconfirm) .ant-popconfirm-title {
-  @apply font-semibold leading-normal;
+  @apply font-semibold;
+  line-height: var(--ant-line-height);
 }
 
 :where(.ant-popconfirm) .ant-popconfirm-description {
-  @apply mt-1 leading-normal;
+  @apply mt-1;
+  line-height: var(--ant-line-height);
   color: var(--color-neutral-secondary);
 }
 

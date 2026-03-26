@@ -66,7 +66,7 @@ describe('Divider', () => {
     })
     expect(wrapper.classes('ant-divider-no-default-orientation-margin-left')).toBe(true)
     const inner = wrapper.find('.ant-divider-inner-text')
-    expect((inner.element as HTMLElement).style.marginLeft).toBe('20px')
+    expect((inner.element as HTMLElement).style.marginInlineStart).toBe('20px')
   })
 
   it('applies orientationMargin for right orientation as number', () => {
@@ -76,7 +76,7 @@ describe('Divider', () => {
     })
     expect(wrapper.classes('ant-divider-no-default-orientation-margin-right')).toBe(true)
     const inner = wrapper.find('.ant-divider-inner-text')
-    expect((inner.element as HTMLElement).style.marginRight).toBe('30px')
+    expect((inner.element as HTMLElement).style.marginInlineEnd).toBe('30px')
   })
 
   it('does not apply orientationMargin for center orientation', () => {
@@ -87,8 +87,8 @@ describe('Divider', () => {
     const inner = wrapper.find('.ant-divider-inner-text')
     expect(wrapper.classes('ant-divider-no-default-orientation-margin-left')).toBe(false)
     expect(wrapper.classes('ant-divider-no-default-orientation-margin-right')).toBe(false)
-    expect((inner.element as HTMLElement).style.marginLeft).toBe('')
-    expect((inner.element as HTMLElement).style.marginRight).toBe('')
+    expect((inner.element as HTMLElement).style.marginInlineStart).toBe('')
+    expect((inner.element as HTMLElement).style.marginInlineEnd).toBe('')
   })
 
   it('does not apply orientationMargin classes without content', () => {

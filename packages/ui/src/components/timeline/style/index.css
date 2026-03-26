@@ -2,7 +2,10 @@
 
 /* ---- Base ---- */
 :where(.ant-timeline) {
-  @apply box-border m-0 p-0 text-sm leading-relaxed list-none;
+  @apply box-border m-0 p-0 list-none;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
+  line-height: var(--ant-line-height);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
 }
 

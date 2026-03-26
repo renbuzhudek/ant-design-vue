@@ -3,6 +3,7 @@
 /* ---- Base ---- */
 :where(.ant-descriptions) {
   @apply box-border;
+  font-family: var(--ant-font-family);
   font-size: var(--ant-font-size, 14px);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
 }
@@ -83,7 +84,7 @@
 :where(.ant-descriptions).ant-descriptions-bordered .ant-descriptions-row > th,
 :where(.ant-descriptions).ant-descriptions-bordered .ant-descriptions-row > td {
   @apply py-3 px-6;
-  border-inline-end: 1px solid var(--color-neutral-border, #d9d9d9);
+  border-inline-end: 1px solid var(--color-neutral-border-secondary, #f0f0f0);
 }
 
 :where(.ant-descriptions).ant-descriptions-bordered .ant-descriptions-row > th:last-child,
@@ -93,7 +94,7 @@
 
 :where(.ant-descriptions).ant-descriptions-bordered .ant-descriptions-row:not(:last-child) > th,
 :where(.ant-descriptions).ant-descriptions-bordered .ant-descriptions-row:not(:last-child) > td {
-  border-bottom: 1px solid var(--color-neutral-border, #d9d9d9);
+  border-bottom: 1px solid var(--color-neutral-border-secondary, #f0f0f0);
 }
 
 :where(.ant-descriptions).ant-descriptions-bordered .ant-descriptions-item-label {

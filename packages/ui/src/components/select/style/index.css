@@ -2,8 +2,9 @@
 
 /* ==================== Selector ==================== */
 .ant-select {
-  @apply relative inline-flex items-center cursor-pointer text-sm;
+  @apply relative inline-flex items-center cursor-pointer;
   font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
   color: var(--color-neutral);
 }
 

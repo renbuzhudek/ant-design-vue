@@ -27,6 +27,7 @@
 :where(.ant-modal) {
   @apply relative;
   box-sizing: border-box;
+  font-family: var(--ant-font-family);
   width: 520px;
   max-width: calc(100vw - 32px);
   margin: 0 auto;

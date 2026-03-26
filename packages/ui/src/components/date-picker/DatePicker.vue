@@ -12,7 +12,7 @@ import { useConfigInject } from '@/hooks'
 import CalendarOutlined from '@ant-design/icons-vue/CalendarOutlined'
 import CloseCircleFilled from '@ant-design/icons-vue/CloseCircleFilled'
 import type { DatePickerProps, DatePickerEmits, DatePickerSlots } from './types'
-import { datePickerDefaultProps, getDefaultFormat, resolveSize } from './types'
+import { datePickerDefaultProps, resolveFormatString, formatDisplayValue, resolveSize } from './types'
 
 dayjs.extend(weekOfYear)
 dayjs.extend(quarterOfYear)
@@ -34,7 +34,7 @@ const triggerRef = ref<InstanceType<typeof Trigger> | null>(null)
 // ---- Resolved props ----
 const isDisabled = computed(() => props.disabled ?? globalDisabled.value)
 const resolvedSize = computed(() => resolveSize(props.size ?? globalSize.value))
-const displayFormat = computed(() => props.format ?? getDefaultFormat(props.picker!, props.showTime))
+const parseFormat = computed(() => resolveFormatString(props.format, props.picker!, props.showTime))
 
 // ---- Open state ----
 const internalOpen = ref(props.defaultOpen ?? false)
@@ -58,7 +58,7 @@ function parseDayjs(val: Dayjs | string | null | undefined): Dayjs | null {
   if (!val) return null
   if (dayjs.isDayjs(val)) return val as Dayjs
   if (typeof val === 'string') {
-    const fmt = props.valueFormat || displayFormat.value
+    const fmt = props.valueFormat || parseFormat.value
     const d = dayjs(val, fmt)
     return d.isValid() ? d : null
   }
@@ -95,7 +95,7 @@ watch(() => props.value, (v) => {
 const inputText = ref('')
 
 watch(selectedValue, (val) => {
-  inputText.value = val ? val.format(displayFormat.value) : ''
+  inputText.value = val ? formatDisplayValue(val, props.format, props.picker!, props.showTime) : ''
 }, { immediate: true })
 
 // ---- Selection ----
@@ -113,11 +113,11 @@ function handleSelect(date: Dayjs) {
 function confirmValue(date: Dayjs) {
   if (!isValueControlled.value) internalValue.value = date
   viewDate.value = date
-  inputText.value = date.format(displayFormat.value)
+  inputText.value = formatDisplayValue(date, props.format, props.picker!, props.showTime)
 
   const output = toOutput(date)
   emit('update:value', output)
-  emit('change', output, date.format(displayFormat.value))
+  emit('change', output, formatDisplayValue(date, props.format, props.picker!, props.showTime))
 
   if (!props.showTime) {
     setOpen(false)
@@ -154,12 +154,12 @@ function handleInputBlur(e: FocusEvent) {
   emit('blur', e)
   // Try to parse the input text
   if (inputText.value) {
-    const parsed = dayjs(inputText.value, displayFormat.value, true)
+    const parsed = dayjs(inputText.value, parseFormat.value, true)
     if (parsed.isValid() && !(props.disabledDate?.(parsed))) {
       confirmValue(parsed)
     } else {
       // Revert to current value
-      inputText.value = selectedValue.value ? selectedValue.value.format(displayFormat.value) : ''
+      inputText.value = selectedValue.value ? formatDisplayValue(selectedValue.value, props.format, props.picker!, props.showTime) : ''
     }
   }
 }
@@ -171,7 +171,7 @@ function handleInputFocus(e: FocusEvent) {
 function handleInputKeydown(e: KeyboardEvent) {
   if (e.key === 'Enter') {
     if (inputText.value) {
-      const parsed = dayjs(inputText.value, displayFormat.value, true)
+      const parsed = dayjs(inputText.value, parseFormat.value, true)
       if (parsed.isValid() && !(props.disabledDate?.(parsed))) {
         confirmValue(parsed)
       }

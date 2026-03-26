@@ -2,6 +2,7 @@
 
 :where(.ant-rate) {
   @apply m-0 p-0 list-none inline-flex;
+  font-family: var(--ant-font-family);
   font-size: 20px;
   line-height: unset;
   color: #fadb14;

@@ -4,6 +4,7 @@
 :where(.ant-tabs) {
   @apply relative;
   box-sizing: border-box;
+  font-family: var(--ant-font-family);
   font-size: var(--ant-font-size);
   color: var(--color-neutral);
   line-height: var(--ant-line-height);

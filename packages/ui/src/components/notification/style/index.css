@@ -6,6 +6,7 @@
   width: 384px;
   max-width: calc(100vw - 32px);
   pointer-events: none;
+  font-family: var(--ant-font-family);
   display: flex;
   flex-direction: column;
   gap: 16px;

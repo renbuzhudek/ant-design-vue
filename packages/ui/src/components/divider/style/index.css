@@ -1,17 +1,30 @@
 @reference '../../../style/tailwind.css';
 
+/* Base reset — matches antd v5 resetComponent(token) */
 :where(.ant-divider) {
-  @apply box-border m-0 p-0 text-sm list-none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
+  line-height: var(--ant-line-height);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
-  --divider-color: var(--color-neutral-border, #d9d9d9);
+  list-style: none;
+  --divider-color: var(--color-neutral-separator, rgba(5, 5, 5, 0.06));
 }
 
+/* Horizontal — line drawn via ::before/::after pseudos */
 :where(.ant-divider).ant-divider-horizontal {
-  @apply flex clear-both w-full min-w-full my-6 mx-0;
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 24px 0;
 
   &::before,
   &::after {
-    @apply relative w-1/2;
+    position: relative;
+    width: 50%;
     border-block-start: 1px solid var(--divider-color);
     border-block-end: 0;
     content: '';
@@ -19,12 +32,18 @@
   }
 }
 
+/* Vertical */
 :where(.ant-divider).ant-divider-vertical {
-  @apply relative top-[-0.06em] inline-block h-[0.9em] mx-2 my-0 align-middle;
+  position: relative;
+  top: -0.06em;
+  display: inline-block;
+  height: 0.9em;
+  margin: 0 8px;
+  vertical-align: middle;
   border-inline-start: 1px solid var(--divider-color);
 }
 
-/* Dashed */
+/* Dashed — horizontal */
 :where(.ant-divider).ant-divider-horizontal.ant-divider-dashed {
   &::before,
   &::after {
@@ -32,24 +51,20 @@
   }
 }
 
+/* Dashed — vertical */
 :where(.ant-divider).ant-divider-vertical.ant-divider-dashed {
   border-inline-start-style: dashed;
 }
 
-/* Divider with text */
-:where(.ant-divider).ant-divider-with-text {
-  @apply items-center my-4 mx-0;
+/* With text */
+:where(.ant-divider).ant-divider-horizontal.ant-divider-with-text {
+  align-items: center;
+  margin: 16px 0;
+  color: var(--color-neutral, rgba(0, 0, 0, 0.88));
+  font-weight: 500;
+  font-size: var(--ant-font-size-lg, 16px);
   white-space: nowrap;
   text-align: center;
-
-  &::before,
-  &::after {
-    @apply relative w-1/2;
-    border-block-start: 1px solid var(--divider-color);
-    border-block-end: 0;
-    content: '';
-    transform: translateY(50%);
-  }
 }
 
 :where(.ant-divider).ant-divider-with-text-left {
@@ -71,9 +86,11 @@
 }
 
 :where(.ant-divider) .ant-divider-inner-text {
-  @apply inline-block px-4 font-medium text-base;
+  display: inline-block;
+  padding: 0 1em;
 }
 
+/* orientationMargin — left */
 :where(.ant-divider).ant-divider-horizontal.ant-divider-with-text-left.ant-divider-no-default-orientation-margin-left {
   &::before {
     width: 0;
@@ -84,10 +101,11 @@
   }
 
   .ant-divider-inner-text {
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 }
 
+/* orientationMargin — right */
 :where(.ant-divider).ant-divider-horizontal.ant-divider-with-text-right.ant-divider-no-default-orientation-margin-right {
   &::before {
     width: 100%;
@@ -98,10 +116,12 @@
   }
 
   .ant-divider-inner-text {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 }
 
+/* Plain text style */
 :where(.ant-divider).ant-divider-plain .ant-divider-inner-text {
-  @apply text-sm font-normal;
+  font-weight: normal;
+  font-size: var(--ant-font-size);
 }

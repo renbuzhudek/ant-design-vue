@@ -3,6 +3,7 @@
 /* ── Image wrapper ── */
 :where(.ant-image) {
   @apply relative inline-block;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-image-img) {

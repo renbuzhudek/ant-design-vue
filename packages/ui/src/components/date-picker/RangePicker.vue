@@ -12,7 +12,7 @@ import { useConfigInject } from '@/hooks'
 import CalendarOutlined from '@ant-design/icons-vue/CalendarOutlined'
 import CloseCircleFilled from '@ant-design/icons-vue/CloseCircleFilled'
 import type { RangePickerProps, RangePickerEmits, RangePickerSlots, RangeValue } from './types'
-import { rangePickerDefaultProps, getDefaultFormat, resolveSize } from './types'
+import { rangePickerDefaultProps, resolveFormatString, formatDisplayValue, resolveSize } from './types'
 
 dayjs.extend(weekOfYear)
 dayjs.extend(quarterOfYear)
@@ -42,7 +42,7 @@ const isEndDisabled = computed(() => {
 })
 const isDisabled = computed(() => isStartDisabled.value && isEndDisabled.value)
 const resolvedSize = computed(() => resolveSize(props.size ?? globalSize.value))
-const displayFormat = computed(() => props.format ?? getDefaultFormat(props.picker!, props.showTime))
+const parseFormat = computed(() => resolveFormatString(props.format, props.picker!, props.showTime))
 
 // ---- Open state ----
 const internalOpen = ref(props.defaultOpen ?? false)
@@ -64,7 +64,7 @@ function parseDayjs(val: Dayjs | string | null | undefined): Dayjs | null {
   if (!val) return null
   if (dayjs.isDayjs(val)) return val as Dayjs
   if (typeof val === 'string') {
-    const fmt = props.valueFormat || displayFormat.value
+    const fmt = props.valueFormat || parseFormat.value
     const d = dayjs(val, fmt)
     return d.isValid() ? d : null
   }
@@ -120,8 +120,8 @@ const startText = ref('')
 const endText = ref('')
 
 watch(selectedValue, ([s, e]) => {
-  startText.value = s ? s.format(displayFormat.value) : ''
-  endText.value = e ? e.format(displayFormat.value) : ''
+  startText.value = s ? formatDisplayValue(s, props.format, props.picker!, props.showTime) : ''
+  endText.value = e ? formatDisplayValue(e, props.format, props.picker!, props.showTime) : ''
 }, { immediate: true })
 
 // ---- Selection (two-click flow) ----
@@ -136,7 +136,7 @@ function handleSelect(date: Dayjs) {
 
     emit('calendarChange',
       [toOutput(date) as any, null],
-      [date.format(displayFormat.value), ''],
+      [formatDisplayValue(date, props.format, props.picker!, props.showTime), ''],
       { range: 'start' },
     )
   } else {
@@ -152,17 +152,15 @@ function handleSelect(date: Dayjs) {
     const newValue: [Dayjs | null, Dayjs | null] = [start, end]
 
     if (!isValueControlled.value) internalValue.value = newValue
-    startText.value = start.format(displayFormat.value)
-    endText.value = end.format(displayFormat.value)
+    const fmtStart = formatDisplayValue(start, props.format, props.picker!, props.showTime)
+    const fmtEnd = formatDisplayValue(end, props.format, props.picker!, props.showTime)
+    startText.value = fmtStart
+    endText.value = fmtEnd
 
     const outputValue = [toOutput(start), toOutput(end)] as any
     emit('update:value', outputValue)
-    emit('change', outputValue, [start.format(displayFormat.value), end.format(displayFormat.value)])
-    emit('calendarChange',
-      outputValue,
-      [start.format(displayFormat.value), end.format(displayFormat.value)],
-      { range: 'end' },
-    )
+    emit('change', outputValue, [fmtStart, fmtEnd])
+    emit('calendarChange', outputValue, [fmtStart, fmtEnd], { range: 'end' })
 
     pickingStart.value = null
     activeInput.value = 'start'

@@ -4,6 +4,7 @@
 :where(.ant-transfer) {
   @apply flex items-stretch;
   gap: 0;
+  font-family: var(--ant-font-family);
   font-size: var(--ant-font-size, 14px);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
   box-sizing: border-box;

@@ -3,6 +3,7 @@
 /* Base skeleton */
 :where(.ant-skeleton) {
   @apply table w-full;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-skeleton) .ant-skeleton-header {

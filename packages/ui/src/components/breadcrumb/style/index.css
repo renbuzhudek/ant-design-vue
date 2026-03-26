@@ -2,7 +2,10 @@
 
 /* ---- Base ---- */
 :where(.ant-breadcrumb) {
-  @apply box-border text-sm leading-relaxed;
+  @apply box-border;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
+  line-height: var(--ant-line-height);
   color: var(--color-neutral-secondary, rgba(0, 0, 0, 0.45));
 }
 

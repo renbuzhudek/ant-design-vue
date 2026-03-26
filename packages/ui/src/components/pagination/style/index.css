@@ -4,6 +4,7 @@
 :where(.ant-pagination) {
   @apply flex flex-wrap items-center;
   gap: 8px;
+  font-family: var(--ant-font-family);
   font-size: var(--ant-font-size);
   color: var(--color-neutral);
   list-style: none;

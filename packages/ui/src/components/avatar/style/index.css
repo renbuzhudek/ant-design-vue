@@ -2,6 +2,7 @@
 
 :where(.ant-avatar) {
   @apply relative inline-flex items-center justify-center overflow-hidden;
+  font-family: var(--ant-font-family);
   width: 32px;
   height: 32px;
   font-size: 14px;

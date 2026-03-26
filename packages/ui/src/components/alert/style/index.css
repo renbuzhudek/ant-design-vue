@@ -2,7 +2,10 @@
 
 /* ---- Base ---- */
 :where(.ant-alert) {
-  @apply box-border relative flex items-start w-full p-2 px-3 text-sm leading-relaxed list-none;
+  @apply box-border relative flex items-start w-full p-2 px-3 list-none;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
+  line-height: var(--ant-line-height);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
   border-radius: var(--ant-border-radius, 8px);
   border: 1px solid transparent;
@@ -99,7 +102,8 @@
 }
 
 :where(.ant-alert) .ant-alert-description {
-  @apply mt-1 text-sm;
+  @apply mt-1;
+  font-size: var(--ant-font-size);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
 }
 
@@ -109,7 +113,8 @@
 }
 
 :where(.ant-alert).ant-alert-with-description .ant-alert-message {
-  @apply text-base font-semibold mb-1;
+  @apply font-semibold mb-1;
+  font-size: var(--ant-font-size-lg);
 }
 
 /* ---- Action ---- */
@@ -139,7 +144,7 @@
 }
 
 :where(.ant-alert) .ant-alert-close-x {
-  @apply text-sm;
+  font-size: var(--ant-font-size);
 }
 
 /* ---- Banner ---- */

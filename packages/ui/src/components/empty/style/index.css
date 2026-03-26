@@ -1,7 +1,9 @@
 @reference '../../../style/tailwind.css';
 
 :where(.ant-empty) {
-  @apply m-2 text-sm text-center;
+  @apply m-2 text-center;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
   color: var(--color-neutral-disabled, rgba(0, 0, 0, 0.25));
 }
 

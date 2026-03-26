@@ -8,6 +8,7 @@
   z-index: 101;
   width: 40px;
   height: 40px;
+  font-family: var(--ant-font-family);
   font-size: var(--ant-font-size, 14px);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
   background-color: var(--color-neutral-bg-container, #fff);

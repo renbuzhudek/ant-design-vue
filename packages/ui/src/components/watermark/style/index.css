@@ -2,4 +2,5 @@
 
 :where(.ant-watermark) {
   @apply relative overflow-hidden;
+  font-family: var(--ant-font-family);
 }

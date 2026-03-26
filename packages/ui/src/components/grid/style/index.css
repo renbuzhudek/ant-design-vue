@@ -3,6 +3,7 @@
 :where(.ant-row) {
   @apply flex flex-wrap;
   box-sizing: border-box;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-col) {

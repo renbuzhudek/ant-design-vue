@@ -2,7 +2,8 @@
 
 /* Base */
 :where(.ant-progress) {
-  @apply inline-flex items-center text-sm;
+  @apply inline-flex items-center;
+  font-size: var(--ant-font-size);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
   font-family: var(--ant-font-family);
 }
@@ -36,7 +37,8 @@
 
 /* Text */
 :where(.ant-progress) .ant-progress-text {
-  @apply inline-block text-sm text-center;
+  @apply inline-block text-center;
+  font-size: var(--ant-font-size);
   word-break: normal;
   width: 2em;
   margin-inline-start: 8px;

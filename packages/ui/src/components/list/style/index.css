@@ -17,13 +17,11 @@
 }
 
 :where(.ant-list-bordered) :where(.ant-list-header) {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-inline: 24px;
 }
 
 :where(.ant-list-bordered) :where(.ant-list-footer) {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-inline: 24px;
 }
 
 :where(.ant-list-bordered) :where(.ant-list-items) {
@@ -31,8 +29,7 @@
 }
 
 :where(.ant-list-bordered) :where(.ant-list-item) {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-inline: 24px;
 }
 
 /* ── Header ── */
@@ -187,14 +184,12 @@
 }
 
 :where(.ant-list-sm.ant-list-bordered) :where(.ant-list-item) {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-inline: 16px;
 }
 
 :where(.ant-list-sm.ant-list-bordered) :where(.ant-list-header),
 :where(.ant-list-sm.ant-list-bordered) :where(.ant-list-footer) {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-inline: 16px;
 }
 
 /* ── Size: lg ── */
@@ -208,14 +203,12 @@
 }
 
 :where(.ant-list-lg.ant-list-bordered) :where(.ant-list-item) {
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-inline: 32px;
 }
 
 :where(.ant-list-lg.ant-list-bordered) :where(.ant-list-header),
 :where(.ant-list-lg.ant-list-bordered) :where(.ant-list-footer) {
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-inline: 32px;
 }
 
 /* ── Grid Layout ── */

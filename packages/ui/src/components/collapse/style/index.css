@@ -2,7 +2,10 @@
 
 /* ---- Base ---- */
 :where(.ant-collapse) {
-  @apply box-border text-sm leading-relaxed;
+  @apply box-border;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
+  line-height: var(--ant-line-height);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
   background-color: var(--color-neutral-bg-container-alt, rgba(0, 0, 0, 0.02));
   border: 1px solid var(--color-neutral-border, #d9d9d9);

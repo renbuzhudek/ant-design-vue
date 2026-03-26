@@ -34,7 +34,8 @@
   --tour-primary-bg: var(--color-accent, #1677ff);
   --tour-primary-color: var(--color-accent-content, #fff);
 
-  @apply text-sm;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size);
   position: fixed;
   width: var(--tour-panel-width);
   max-width: calc(100vw - 32px);

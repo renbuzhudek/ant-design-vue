@@ -3,6 +3,7 @@
 /* ── Switch ── */
 :where(.ant-switch) {
   @apply relative inline-flex items-center;
+  font-family: var(--ant-font-family);
   min-width: 44px;
   width: fit-content;
   height: 22px;

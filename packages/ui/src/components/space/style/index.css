@@ -2,6 +2,7 @@
 
 :where(.ant-space) {
   @apply inline-flex;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-space).ant-space-vertical {

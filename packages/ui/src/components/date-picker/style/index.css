@@ -133,7 +133,8 @@
 }
 
 .ant-picker-separator {
-  @apply text-neutral-disabled text-sm;
+  @apply text-neutral-disabled;
+  font-size: var(--ant-font-size);
 }
 
 .ant-picker-range .ant-picker-suffix {

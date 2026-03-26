@@ -2,6 +2,7 @@
 
 :where(.ant-flex) {
   @apply flex;
+  font-family: var(--ant-font-family);
 }
 
 :where(.ant-flex).ant-flex-vertical {

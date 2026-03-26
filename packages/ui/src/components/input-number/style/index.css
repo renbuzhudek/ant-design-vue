@@ -8,8 +8,9 @@
   @apply inline-flex items-center relative;
   @apply box-border bg-white text-neutral;
   @apply border border-solid border-neutral-border rounded-md;
-  @apply text-sm leading-normal;
   @apply transition-all;
+  font-size: var(--ant-font-size);
+  line-height: normal;
   transition-duration: var(--ant-motion-duration);
   font-family: var(--ant-font-family);
   width: 90px;
@@ -38,7 +39,8 @@
 
 :where(.ant-input-number-input) {
   @apply w-full bg-transparent border-none outline-none;
-  @apply px-3 py-1 text-sm text-neutral;
+  @apply px-3 py-1 text-neutral;
+  font-size: var(--ant-font-size);
 
   &::placeholder {
     @apply text-neutral-disabled;
@@ -113,7 +115,8 @@
   border-radius: var(--ant-border-radius-sm, 4px);
 
   .ant-input-number-input {
-    @apply px-2 py-0 text-xs;
+    @apply px-2 py-0;
+    font-size: var(--ant-font-size-sm);
   }
 }
 
@@ -121,7 +124,8 @@
   border-radius: var(--ant-border-radius-lg, 8px);
 
   .ant-input-number-input {
-    @apply px-3 py-2 text-base;
+    @apply px-3 py-2;
+    font-size: var(--ant-font-size-lg);
   }
 }
 
@@ -218,8 +222,9 @@
   @apply flex items-center;
   @apply bg-neutral-disabled-bg text-neutral;
   @apply border border-solid border-neutral-border;
-  @apply px-3 py-1 text-sm;
+  @apply px-3 py-1;
   @apply whitespace-nowrap;
+  font-size: var(--ant-font-size);
 
   &:first-child {
     @apply rounded-l-md border-r-0;

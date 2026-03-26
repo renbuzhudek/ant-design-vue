@@ -11,6 +11,7 @@
 :where(.ant-drawer) {
   @apply fixed;
   z-index: 1000;
+  font-family: var(--ant-font-family);
   background: #fff;
   box-shadow:
     -6px 0 16px 0 rgba(0, 0, 0, 0.08),

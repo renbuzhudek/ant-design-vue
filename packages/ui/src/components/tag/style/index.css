@@ -2,14 +2,16 @@
 
 /* ── Base Tag ── */
 :where(.ant-tag) {
-  @apply inline-flex items-center px-2 py-0 text-xs leading-5 rounded;
+  @apply inline-flex items-center px-2 py-0 rounded;
   border: 1px solid var(--color-neutral-border, #d9d9d9);
   background: var(--color-neutral-bg-container, #fafafa);
   color: var(--color-neutral, rgba(0, 0, 0, 0.88));
   white-space: nowrap;
   box-sizing: border-box;
   transition: all 0.2s;
-  font-family: inherit;
+  font-family: var(--ant-font-family);
+  font-size: var(--ant-font-size-sm);
+  line-height: 20px;
 }
 
 :where(.ant-tag-text) {

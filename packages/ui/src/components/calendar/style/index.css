@@ -24,7 +24,8 @@
 
 .ant-picker-calendar-year-select,
 .ant-picker-calendar-month-select {
-  @apply border border-solid border-neutral-border rounded-md bg-white text-neutral text-sm;
+  @apply border border-solid border-neutral-border rounded-md bg-white text-neutral;
+  font-size: var(--ant-font-size);
   @apply px-2 py-1 cursor-pointer;
   @apply outline-none;
   transition: border-color var(--ant-motion-duration) var(--ant-motion-ease);
@@ -47,7 +48,8 @@
 }
 
 .ant-picker-calendar-mode-btn {
-  @apply px-3 py-1 text-sm bg-transparent border-none cursor-pointer text-neutral;
+  @apply px-3 py-1 bg-transparent border-none cursor-pointer text-neutral;
+  font-size: var(--ant-font-size);
   transition: background var(--ant-motion-duration) var(--ant-motion-ease),
               color var(--ant-motion-duration) var(--ant-motion-ease);
 }
@@ -75,7 +77,8 @@
 }
 
 .ant-picker-calendar-table th {
-  @apply text-center text-neutral-secondary font-normal text-sm;
+  @apply text-center text-neutral-secondary font-normal;
+  font-size: var(--ant-font-size);
   padding: 8px 0;
 }
 
@@ -98,7 +101,8 @@
 }
 
 .ant-picker-calendar-full .ant-picker-calendar-date-value {
-  @apply text-sm leading-6;
+  font-size: var(--ant-font-size);
+  line-height: 24px;
 }
 
 .ant-picker-calendar-full .ant-picker-calendar-date-today .ant-picker-calendar-date-value {
@@ -118,7 +122,8 @@
 }
 
 .ant-picker-calendar-full .ant-picker-calendar-date-content {
-  @apply mt-1 text-xs;
+  @apply mt-1;
+  font-size: var(--ant-font-size-sm);
   min-height: 40px;
 }
 
@@ -135,7 +140,7 @@
 }
 
 .ant-picker-calendar-full .ant-picker-calendar-month-value {
-  @apply text-sm;
+  font-size: var(--ant-font-size);
 }
 
 .ant-picker-calendar-full .ant-picker-calendar-month-selected {
@@ -151,7 +156,8 @@
 }
 
 .ant-picker-calendar-full .ant-picker-calendar-month-content {
-  @apply mt-1 text-xs;
+  @apply mt-1;
+  font-size: var(--ant-font-size-sm);
   min-height: 40px;
 }
 
@@ -171,7 +177,8 @@
 }
 
 .ant-picker-calendar-mini .ant-picker-calendar-date-value {
-  @apply inline-flex items-center justify-center rounded-md text-sm;
+  @apply inline-flex items-center justify-center rounded-md;
+  font-size: var(--ant-font-size);
   width: 24px;
   height: 24px;
   line-height: 24px;
@@ -209,7 +216,8 @@
 }
 
 .ant-picker-calendar-mini .ant-picker-calendar-month-value {
-  @apply inline-flex items-center justify-center rounded-md text-sm px-3;
+  @apply inline-flex items-center justify-center rounded-md px-3;
+  font-size: var(--ant-font-size);
   height: 24px;
   transition: background var(--ant-motion-duration) var(--ant-motion-ease);
 }

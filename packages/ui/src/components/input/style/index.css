@@ -10,8 +10,10 @@
 .ant-input {
   @apply box-border w-full bg-white text-neutral;
   @apply border border-solid border-neutral-border rounded-md;
-  @apply px-3 py-1 text-sm leading-normal;
+  @apply px-3 py-1;
   @apply outline-none transition-all;
+  font-size: var(--ant-font-size);
+  line-height: normal;
   transition-duration: var(--ant-motion-duration);
   font-family: var(--ant-font-family);
 
@@ -33,12 +35,14 @@
 /* --- Sizes --- */
 
 .ant-input.ant-input-sm {
-  @apply px-2 py-0 text-xs;
+  @apply px-2 py-0;
+  font-size: var(--ant-font-size-sm);
   border-radius: var(--ant-border-radius-sm, 4px);
 }
 
 .ant-input.ant-input-lg {
-  @apply px-3 py-2 text-base;
+  @apply px-3 py-2;
+  font-size: var(--ant-font-size-lg);
   border-radius: var(--ant-border-radius-lg, 8px);
 }
 
@@ -97,8 +101,10 @@
   @apply inline-flex items-center w-full;
   @apply box-border bg-white text-neutral;
   @apply border border-solid border-neutral-border rounded-md;
-  @apply px-3 py-1 text-sm leading-normal;
+  @apply px-3 py-1;
   @apply transition-all;
+  font-size: var(--ant-font-size);
+  line-height: normal;
   transition-duration: var(--ant-motion-duration);
 
   &:hover {
@@ -123,12 +129,14 @@
 /* --- Affix sizes --- */
 
 .ant-input-affix-wrapper-sm {
-  @apply px-2 py-0 text-xs;
+  @apply px-2 py-0;
+  font-size: var(--ant-font-size-sm);
   border-radius: var(--ant-border-radius-sm, 4px);
 }
 
 .ant-input-affix-wrapper-lg {
-  @apply px-3 py-2 text-base;
+  @apply px-3 py-2;
+  font-size: var(--ant-font-size-lg);
   border-radius: var(--ant-border-radius-lg, 8px);
 }
 
@@ -204,7 +212,8 @@
 
 .ant-input-clear-icon-inner {
   @apply inline-flex items-center justify-center;
-  @apply w-4 h-4 rounded-full bg-neutral-disabled text-white text-xs leading-none;
+  @apply w-4 h-4 rounded-full bg-neutral-disabled text-white leading-none;
+  font-size: var(--ant-font-size-sm);
 }
 
 /* ==============================
@@ -212,7 +221,8 @@
    ============================== */
 
 .ant-input-show-count-suffix {
-  @apply text-neutral-secondary text-xs whitespace-nowrap;
+  @apply text-neutral-secondary whitespace-nowrap;
+  font-size: var(--ant-font-size-sm);
 }
 
 /* ==============================
@@ -231,8 +241,9 @@
   @apply flex items-center;
   @apply bg-neutral-disabled-bg text-neutral;
   @apply border border-solid border-neutral-border;
-  @apply px-3 py-1 text-sm;
+  @apply px-3 py-1;
   @apply whitespace-nowrap;
+  font-size: var(--ant-font-size);
 
   &:first-child {
     @apply rounded-l-md border-r-0;
@@ -279,7 +290,8 @@
 }
 
 .ant-input-textarea-suffix {
-  @apply absolute right-3 bottom-1 text-neutral-secondary text-xs;
+  @apply absolute right-3 bottom-1 text-neutral-secondary;
+  font-size: var(--ant-font-size-sm);
 }
 
 /* --- TextArea status --- */
@@ -350,7 +362,8 @@
 .ant-input-search-button {
   @apply inline-flex items-center justify-center cursor-pointer;
   @apply bg-accent text-accent-content border-none;
-  @apply px-4 py-1 text-sm rounded-none;
+  @apply px-4 py-1 rounded-none;
+  font-size: var(--ant-font-size);
   @apply hover:bg-accent-hover active:bg-accent-active;
   @apply transition-all;
   transition-duration: var(--ant-motion-duration);

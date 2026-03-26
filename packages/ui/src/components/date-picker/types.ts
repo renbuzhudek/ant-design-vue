@@ -18,8 +18,8 @@ export interface DatePickerProps {
   defaultPickerValue?: Dayjs | string | null
   /** Picker mode: date, week, month, quarter, year */
   picker?: PickerMode
-  /** Display format string (dayjs format) */
-  format?: string
+  /** Display format — string, array of parse formats, or custom function */
+  format?: string | string[] | ((value: Dayjs) => string)
   /** Value format string — when set, value/onChange use strings instead of Dayjs */
   valueFormat?: string
   /** Whether to show time selection */
@@ -109,8 +109,8 @@ export interface RangePickerProps {
   defaultPickerValue?: RangeValue | RangeStringValue | null
   /** Picker mode */
   picker?: PickerMode
-  /** Display format string */
-  format?: string
+  /** Display format — string, array of parse formats, or custom function */
+  format?: string | string[] | ((value: Dayjs) => string)
   /** Value format string */
   valueFormat?: string
   /** Show time selection */
@@ -194,6 +194,35 @@ export function getDefaultFormat(picker: PickerMode, showTime?: boolean | TimePr
     return `${PICKER_FORMAT_MAP.date} ${timeFormat}`
   }
   return PICKER_FORMAT_MAP[picker] || PICKER_FORMAT_MAP.date
+}
+
+/**
+ * Extract a string format suitable for dayjs.format() / dayjs(str, fmt) parsing.
+ * - string → returned as-is
+ * - string[] → first element used
+ * - function → falls back to picker default
+ */
+export function resolveFormatString(
+  format: string | string[] | ((value: Dayjs) => string) | undefined,
+  picker: PickerMode,
+  showTime?: boolean | TimeProps,
+): string {
+  if (typeof format === 'string') return format
+  if (Array.isArray(format)) return format[0]
+  return getDefaultFormat(picker, showTime)
+}
+
+/**
+ * Format a Dayjs value for display, supporting string / string[] / function formats.
+ */
+export function formatDisplayValue(
+  value: Dayjs,
+  format: string | string[] | ((value: Dayjs) => string) | undefined,
+  picker: PickerMode,
+  showTime?: boolean | TimeProps,
+): string {
+  if (typeof format === 'function') return format(value)
+  return value.format(resolveFormatString(format, picker, showTime))
 }
 
 const SIZE_MAP: Record<string, DatePickerSize> = {

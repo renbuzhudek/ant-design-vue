@@ -25,10 +25,14 @@
         </div>
         <div class="compare-panel panel-old">
           <div class="panel-label">Old</div>
-          <div class="panel-content">
-            <ErrorBoundary>
-              <component :is="oldDemos[demoName]" />
-            </ErrorBoundary>
+          <div class="panel-content panel-content-iframe">
+            <iframe
+              :src="oldDemoUrl(demoName)"
+              :data-key="`${componentName}-${demoName}`"
+              frameborder="0"
+              scrolling="no"
+              class="old-demo-iframe"
+            />
           </div>
         </div>
       </div>
@@ -68,10 +72,14 @@
           </div>
           <div class="compare-panel panel-old">
             <div class="panel-label">Old</div>
-            <div class="panel-content">
-              <ErrorBoundary>
-                <component :is="oldDemos[demoName]" />
-              </ErrorBoundary>
+            <div class="panel-content panel-content-iframe">
+              <iframe
+                :src="oldDemoUrl(demoName)"
+                :data-key="`${componentName}-${demoName}`"
+                frameborder="0"
+                scrolling="no"
+                class="old-demo-iframe"
+              />
             </div>
           </div>
         </div>
@@ -86,25 +94,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h, onErrorCaptured, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { findComponent } from '#/data/demos'
 import { findOldComponent } from '#/data/old-demos'
-
-// Simple error boundary to catch old demo render errors
-const ErrorBoundary = defineComponent({
-  setup(_, { slots }) {
-    const error = ref<string | null>(null)
-    onErrorCaptured((err) => {
-      error.value = String(err)
-      return false
-    })
-    return () =>
-      error.value
-        ? h('div', { class: 'panel-error' }, `Render error: ${error.value}`)
-        : slots.default?.()
-  },
-})
 
 const route = useRoute()
 const componentName = computed(() => route.params.component as string)
@@ -132,20 +125,38 @@ const oldDemos = computed(() => {
 const newNames = computed(() => new Set(Object.keys(newDemos.value)))
 const oldNames = computed(() => new Set(Object.keys(oldDemos.value)))
 
-// Demos present in both old and new
 const bothDemos = computed(() =>
   [...newNames.value].filter(n => oldNames.value.has(n)).sort(),
 )
 
-// Demos only in new
 const newOnlyDemos = computed(() =>
   [...newNames.value].filter(n => !oldNames.value.has(n)).sort(),
 )
 
-// Demos only in old
 const oldOnlyDemos = computed(() =>
   [...oldNames.value].filter(n => !newNames.value.has(n)).sort(),
 )
+
+function oldDemoUrl(demoName: string) {
+  return `/old-demo.html?component=${encodeURIComponent(componentName.value)}&demo=${encodeURIComponent(demoName)}`
+}
+
+// Auto-resize iframes based on content height
+function onMessage(e: MessageEvent) {
+  if (e.data?.type !== 'old-demo-resize') return
+  const height = e.data.height
+  // Find the iframe whose src matches the origin
+  const iframes = document.querySelectorAll<HTMLIFrameElement>('.old-demo-iframe')
+  for (const iframe of iframes) {
+    if (iframe.contentWindow === e.source) {
+      iframe.style.height = `${height}px`
+      break
+    }
+  }
+}
+
+onMounted(() => window.addEventListener('message', onMessage))
+onUnmounted(() => window.removeEventListener('message', onMessage))
 </script>
 
 <style>
@@ -240,6 +251,17 @@ const oldOnlyDemos = computed(() =>
 
 .panel-content {
   padding: 16px;
+}
+
+.panel-content-iframe {
+  padding: 0;
+}
+
+.old-demo-iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  display: block;
 }
 
 .panel-missing {

@@ -34,8 +34,8 @@ const innerStyle = computed(() => {
       ? `${props.orientationMargin}px`
       : props.orientationMargin
 
-  if (props.orientation === 'left') return { marginLeft: margin }
-  if (props.orientation === 'right') return { marginRight: margin }
+  if (props.orientation === 'left') return { marginInlineStart: margin }
+  if (props.orientation === 'right') return { marginInlineEnd: margin }
   return undefined
 })
 </script>
