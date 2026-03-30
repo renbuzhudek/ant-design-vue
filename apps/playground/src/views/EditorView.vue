@@ -42,6 +42,7 @@ import {
   onErrorCaptured,
 } from 'vue'
 import * as Vue from 'vue'
+import * as AntdUI from '@ant-design-vue/ui'
 import { transform } from 'sucrase'
 import { useRoute } from 'vue-router'
 import { findDemo } from '#/data/demos'
@@ -83,7 +84,7 @@ watch(
   },
 )
 
-// --- Vue APIs available in script setup ---
+// --- APIs available in script setup ---
 const VUE_API_NAMES = [
   'ref', 'reactive', 'computed', 'watch', 'watchEffect',
   'onMounted', 'onBeforeMount', 'onUnmounted', 'onBeforeUnmount',
@@ -95,6 +96,16 @@ const VUE_API_NAMES = [
 ] as const
 
 const vueApiValues = VUE_API_NAMES.map(name => (Vue as any)[name])
+
+// Imperative APIs from @ant-design-vue/ui (message, notification, Modal, etc.)
+const JS_RESERVED = new Set(['default', 'import', 'export', 'class', 'extends', 'return', 'function', 'var', 'let', 'const', 'if', 'else', 'switch', 'case', 'break', 'continue', 'for', 'while', 'do', 'new', 'delete', 'typeof', 'void', 'this', 'super', 'with', 'throw', 'try', 'catch', 'finally', 'yield', 'await', 'enum', 'implements', 'interface', 'package', 'private', 'protected', 'public', 'static', 'install'])
+const ANTD_API_NAMES = Object.keys(AntdUI).filter(
+  k => !k.startsWith('_') && !JS_RESERVED.has(k) && typeof (AntdUI as any)[k] !== 'undefined',
+)
+const antdApiValues = ANTD_API_NAMES.map(k => (AntdUI as any)[k])
+
+const ALL_API_NAMES = [...VUE_API_NAMES, ...ANTD_API_NAMES]
+const allApiValues = [...vueApiValues, ...antdApiValues]
 
 // --- Compilation ---
 function compileSFC(source: string) {
@@ -144,8 +155,8 @@ function compileSFC(source: string) {
   }
 
   const setupBody = `${scriptContent}\nreturn { ${[...new Set(bindings)].join(', ')} }`
-  const setupFn = new Function(...VUE_API_NAMES, setupBody)
-  return markRaw(defineComponent({ setup: () => setupFn(...vueApiValues), template }))
+  const setupFn = new Function(...ALL_API_NAMES, setupBody)
+  return markRaw(defineComponent({ setup: () => setupFn(...allApiValues), template }))
 }
 
 function compileCode(source: string) {
