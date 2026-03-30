@@ -58,7 +58,26 @@
       "Bash(__NEW_LINE_9a46fd0469dca6a2__ echo:*)",
       "Bash(ls:*)",
       "Bash(npx vue-tsc:*)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh api:*)",
+      "Bash(git stash:*)",
+      "Bash(git remote:*)",
+      "Bash(git pull:*)",
+      "Bash(npx puppeteer:*)",
+      "Bash(npx playwright:*)",
+      "Bash(npx --no-install puppeteer --version)",
+      "Bash(B=~/.claude/skills/gstack/browse/dist/browse $B stop 2)",
+      "Bash(/dev/null lsof:*)",
+      "Bash(xargs kill:*)",
+      "Bash(/dev/null echo:*)",
+      "Bash($B stop:*)",
+      "Bash(gh run:*)",
+      "Bash(npx tsc:*)",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(j[''''name''''], j[''''conclusion'''']\\) for j in data[''''jobs'''']]\")",
+      "Bash(gh auth:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(npm run:*)"
     ]
   }
 }

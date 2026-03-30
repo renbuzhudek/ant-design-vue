@@ -112,3 +112,5 @@ vite.config.*.timestamp*
 .tsup/
 .gstack/
 **/settings.local.json
+
+.claude/

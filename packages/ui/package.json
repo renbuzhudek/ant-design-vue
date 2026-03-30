@@ -23,7 +23,7 @@
     "serve": "npm run dev --filter playground",
     "lint": "eslint . --fix",
     "tsc": "vue-tsc --noEmit",
-    "tsg": "tsc --declaration --declarationMap --emitDeclarationOnly --noEmit false --outDir dist/types",
+    "tsg": "vue-tsc --declaration --declarationMap --emitDeclarationOnly --noEmit false --outDir dist/types",
     "test": "vitest"
   },
   "type": "module",
