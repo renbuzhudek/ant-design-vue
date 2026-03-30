@@ -1,21 +1,13 @@
-import type { Slot, ScopedSlot, SlotReturnType } from '@/utils/types'
+import type { Slot } from '@/utils/types'
 import type { Component, InjectionKey, Ref } from 'vue'
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error'
-
-export type ProgressDotRender = (info: {
-  index: number
-  status: StepStatus
-  title: SlotReturnType
-  description: SlotReturnType
-  node: SlotReturnType
-}) => SlotReturnType
 
 export interface StepItem {
   title?: string
   subTitle?: string
   description?: string
-  icon?: Component | string
+  icon?: Component
   status?: StepStatus
   disabled?: boolean
 }
@@ -37,8 +29,8 @@ export interface StepsProps {
   type?: 'default' | 'navigation' | 'inline'
   /** Progress percentage for the current step icon */
   percent?: number
-  /** Show dot style progress bar. Pass a function for custom dot rendering */
-  progressDot?: boolean | ProgressDotRender
+  /** Show dot style progress bar */
+  progressDot?: boolean
   /** Declarative step items — alternative to using <Step> children */
   items?: StepItem[]
   /** Auto-switch to vertical layout on small screens */
@@ -62,13 +54,6 @@ export interface StepsEmits {
 
 export interface StepsSlots {
   default?: Slot
-  progressDot?: ScopedSlot<{
-    index: number
-    status: StepStatus
-    title: SlotReturnType
-    description: SlotReturnType
-    node: SlotReturnType
-  }>
 }
 
 export interface StepProps {
@@ -78,8 +63,8 @@ export interface StepProps {
   subTitle?: string
   /** Description of the step */
   description?: string
-  /** Custom icon component or string */
-  icon?: Component | string
+  /** Custom icon component */
+  icon?: Component
   /** Override the automatically determined status */
   status?: StepStatus
   /** Whether the step is disabled (not clickable) */
@@ -103,7 +88,7 @@ export interface StepsContextType {
   direction: Ref<'horizontal' | 'vertical'>
   labelPlacement: Ref<'horizontal' | 'vertical'>
   percent: Ref<number | undefined>
-  progressDot: Ref<boolean | ProgressDotRender | undefined>
+  progressDot: Ref<boolean | undefined>
   type: Ref<'default' | 'navigation' | 'inline'>
   onStepClick?: (index: number) => void
   registerStep: () => number

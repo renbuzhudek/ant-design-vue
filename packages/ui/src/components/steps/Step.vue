@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, useSlots, type Component } from 'vue'
+import { computed, inject, useSlots } from 'vue'
 import CheckOutlined from '@ant-design/icons-vue/CheckOutlined'
 import CloseOutlined from '@ant-design/icons-vue/CloseOutlined'
 import type { StepProps, StepSlots } from './types'
@@ -76,10 +76,9 @@ const stepRole = computed(() => (isClickable.value ? 'button' : undefined))
       <div class="ant-steps-item-tail" />
       <div class="ant-steps-item-icon">
         <slot name="icon">
-          <component
-            v-if="hasCustomIcon && icon"
-            :is="icon as Component"
-          />
+          <span v-if="hasCustomIcon && icon" class="ant-steps-icon">
+            <component :is="icon" />
+          </span>
           <span v-else-if="isProgressDot" class="ant-steps-icon ant-steps-icon-dot" />
           <span v-else class="ant-steps-icon">
             <CheckOutlined v-if="isFinish" />

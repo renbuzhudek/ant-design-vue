@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { h, nextTick } from 'vue'
+import { defineComponent, h, markRaw } from 'vue'
 import Steps from '../Steps.vue'
 import Step from '../Step.vue'
 
@@ -250,6 +250,25 @@ describe('Step', () => {
     })
     expect(wrapper.find('.custom-icon').exists()).toBe(true)
     expect(wrapper.find('.custom-icon').text()).toBe('★')
+  })
+
+  it('wraps icon prop content with .ant-steps-icon', () => {
+    const IconProp = defineComponent({
+      name: 'IconProp',
+      setup() {
+        return () => h('span', { class: 'prop-icon' }, 'P')
+      },
+    })
+
+    const wrapper = mount(Steps, {
+      props: {
+        current: 0,
+        items: [{ title: 'Custom', icon: markRaw(IconProp) }],
+      },
+    })
+
+    expect(wrapper.find('.ant-steps-item-icon > .ant-steps-icon').exists()).toBe(true)
+    expect(wrapper.find('.ant-steps-item-icon > .ant-steps-icon .prop-icon').exists()).toBe(true)
   })
 
   it('supports title slot', () => {

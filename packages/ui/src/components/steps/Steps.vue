@@ -13,6 +13,7 @@ defineSlots<StepsSlots>()
 const { size: globalSize } = useConfigInject()
 const screens = useBreakpoint()
 
+// Steps only supports 'default' | 'small'; ConfigProvider 'md'/'lg' both map to 'default'
 const mergedSize = computed(() => props.size ?? (globalSize.value === 'sm' ? 'small' : 'default'))
 
 const mergedDirection = computed(() => {
@@ -70,7 +71,7 @@ const classes = computed(() => ({
     <slot>
       <Step
         v-for="(item, index) in (items || [])"
-        :key="item.title ?? index"
+        :key="index"
         :title="item.title"
         :sub-title="item.subTitle"
         :description="item.description"

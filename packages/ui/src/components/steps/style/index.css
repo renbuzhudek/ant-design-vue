@@ -273,7 +273,11 @@
   @apply hidden;
 }
 
-/* ---- Progress dot ---- */
+/* ---- Progress dot ----
+   .ant-steps-item-content has width: 140px; the dot icon (8px) is centered
+   within it: margin-inline-start = (140 - 8) / 2 + 1 = 67px.
+   Process dot is 10px: (140 - 10) / 2 + 1 = 66px.
+   Tail starts at: 140 / 2 = 70px. */
 :where(.ant-steps).ant-steps-dot .ant-steps-item-icon {
   width: 8px;
   height: 8px;
