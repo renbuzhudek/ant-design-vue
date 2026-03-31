@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { Drawer } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
-import { defineComponent, nextTick, ref } from 'vue'
+import { defineComponent, h, nextTick, ref } from 'vue'
 import MultiLevelDemo from '../demo/multi-level-drawer.vue'
 
 const globalStubs = {
@@ -13,6 +13,7 @@ const globalStubs = {
 }
 
 const mountedWrappers: Array<{ unmount: () => void }> = []
+const mountedHosts: HTMLElement[] = []
 
 function mountTracked(component: any, options?: any) {
   const wrapper = mount(component, options)
@@ -22,6 +23,13 @@ function mountTracked(component: any, options?: any) {
 
 function mountDrawer(options?: any) {
   return mountTracked(Drawer, options)
+}
+
+function createMountHost() {
+  const host = document.createElement('div')
+  document.body.appendChild(host)
+  mountedHosts.push(host)
+  return host
 }
 
 async function flushDrawerMotion() {
@@ -53,10 +61,10 @@ function mountMultiLevelDrawer(options?: { placement?: 'left' | 'right' | 'top' 
       return { open, childOpen }
     },
     template: `
-      <Drawer v-model:open="open" get-container="false" :placement="placement" :push="push" class="outer-drawer">
+      <Drawer v-model:open="open" :get-container="false" :placement="placement" :push="push" class="outer-drawer">
         <button class="open-child" @click="childOpen = true">Open child</button>
         <button class="close-child" @click="childOpen = false">Close child</button>
-        <Drawer v-model:open="childOpen" get-container="false" :placement="placement" class="inner-drawer">
+        <Drawer v-model:open="childOpen" :get-container="false" :placement="placement" class="inner-drawer">
           <div class="inner-content">Two-level drawer</div>
         </Drawer>
       </Drawer>
@@ -83,6 +91,7 @@ function getVisibleDrawerTitles() {
 
 afterEach(() => {
   mountedWrappers.splice(0).reverse().forEach(wrapper => wrapper.unmount())
+  mountedHosts.splice(0).reverse().forEach(host => host.remove())
   document.body.style.overflow = ''
   document.body.style.overflowX = ''
   document.body.style.overflowY = ''
@@ -311,6 +320,25 @@ describe('Drawer', () => {
     expect(wrapper.find('.ant-drawer-footer').exists()).toBe(false)
   })
 
+  it('renders VNode arrays passed through render props', () => {
+    const wrapper = mountDrawer({
+      props: {
+        open: true,
+        title: [h('span', { class: 'title-part-a' }, 'Title A'), h('span', { class: 'title-part-b' }, 'Title B')],
+        extra: [h('span', { class: 'extra-part' }, 'Extra')],
+        footer: [h('span', { class: 'footer-part' }, 'Footer')],
+        closeIcon: [h('span', { class: 'close-icon-part' }, 'Close')],
+      },
+      ...globalStubs,
+    })
+
+    expect(wrapper.find('.title-part-a').exists()).toBe(true)
+    expect(wrapper.find('.title-part-b').exists()).toBe(true)
+    expect(wrapper.find('.extra-part').exists()).toBe(true)
+    expect(wrapper.find('.footer-part').exists()).toBe(true)
+    expect(wrapper.find('.ant-drawer-close .close-icon-part').exists()).toBe(true)
+  })
+
   it('has proper aria attributes', () => {
     const wrapper = mountDrawer({
       props: { open: true, title: 'Accessible Drawer' },
@@ -423,6 +451,44 @@ describe('Drawer', () => {
     expect(document.body.style.overflow).toBe('hidden')
   })
 
+  it('falls back to the default container when getContainer selector does not match', async () => {
+    const host = createMountHost()
+
+    mountDrawer({
+      attachTo: host,
+      props: { open: true, getContainer: '#drawer-target-not-found' },
+    })
+
+    await flushDrawerMotion()
+
+    expect(host.querySelector('.ant-drawer-root')).toBeNull()
+
+    const root = document.body.querySelector('.ant-drawer-root') as HTMLElement | null
+    expect(root).not.toBeNull()
+    expect(root?.classList.contains('ant-drawer-inline')).toBe(false)
+    expect(document.body.style.overflow).toBe('hidden')
+  })
+
+  it('falls back to the default container when getContainer selector is invalid', async () => {
+    const host = createMountHost()
+
+    expect(() => {
+      mountDrawer({
+        attachTo: host,
+        props: { open: true, getContainer: '[' },
+      })
+    }).not.toThrow()
+
+    await flushDrawerMotion()
+
+    expect(host.querySelector('.ant-drawer-root')).toBeNull()
+
+    const root = document.body.querySelector('.ant-drawer-root') as HTMLElement | null
+    expect(root).not.toBeNull()
+    expect(root?.classList.contains('ant-drawer-inline')).toBe(false)
+    expect(document.body.style.overflow).toBe('hidden')
+  })
+
   it('does not lock body scroll when mask is false', () => {
     mountDrawer({
       props: { open: true, mask: false },
@@ -491,6 +557,33 @@ describe('Drawer', () => {
     await flushDrawerMotion()
 
     expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe('')
+  })
+
+  it('preserves CSS units for nested drawer push distance', async () => {
+    const wrapper = mountMultiLevelDrawer({ placement: 'right', push: { distance: '2rem' } })
+
+    await flushDrawerMotion()
+    await wrapper.find('.open-child').trigger('click')
+    await flushDrawerMotion()
+
+    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe(
+      'translateX(-2rem)',
+    )
+  })
+
+  it('preserves CSS expressions for nested drawer push distance', async () => {
+    const wrapper = mountMultiLevelDrawer({
+      placement: 'right',
+      push: { distance: 'calc(100% - 24px)' },
+    })
+
+    await flushDrawerMotion()
+    await wrapper.find('.open-child').trigger('click')
+    await flushDrawerMotion()
+
+    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toContain(
+      'calc(100% - 24px)',
+    )
   })
 
   it('disables parent mask interaction while child drawer is open', async () => {

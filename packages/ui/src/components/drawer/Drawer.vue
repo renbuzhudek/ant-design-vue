@@ -42,38 +42,32 @@
                   @click="onClose"
                 >
                   <slot name="closeIcon">
-                    <component :is="props.closeIcon" v-if="isTemplateRenderable(props.closeIcon)" />
-                    <template v-else-if="props.closeIcon !== undefined && props.closeIcon !== null">
-                      {{ props.closeIcon }}
-                    </template>
+                    <RenderContent v-if="hasRenderableContent(props.closeIcon)" :content="props.closeIcon" />
                     <CloseOutlined v-else />
                   </slot>
                 </button>
                 <div v-if="hasTitle" :id="titleId" class="ant-drawer-title">
                   <slot name="title">
-                    <component :is="props.title" v-if="isTemplateRenderable(props.title)" />
-                    <template v-else>{{ props.title }}</template>
+                    <RenderContent :content="props.title" />
                   </slot>
                 </div>
               </div>
               <div v-if="hasExtra" class="ant-drawer-extra">
                 <slot name="extra">
-                  <component :is="props.extra" v-if="isTemplateRenderable(props.extra)" />
-                  <template v-else>{{ props.extra }}</template>
+                  <RenderContent :content="props.extra" />
                 </slot>
               </div>
             </div>
 
             <!-- Body -->
             <div class="ant-drawer-body" :style="props.bodyStyle">
-              <RenderVNodes :nodes="decoratedBodyContent" />
+              <RenderContent :content="decoratedBodyContent" />
             </div>
 
             <!-- Footer -->
             <div v-if="hasFooter" class="ant-drawer-footer" :style="props.footerStyle">
               <slot name="footer">
-                <component :is="props.footer" v-if="isTemplateRenderable(props.footer)" />
-                <template v-else>{{ props.footer }}</template>
+                <RenderContent :content="props.footer" />
               </slot>
             </div>
           </div>
@@ -111,11 +105,14 @@ type BodyScrollStyleSnapshot = {
   width: string
 }
 
-const RenderVNodes = defineComponent({
-  name: 'DrawerRenderVNodes',
-  props: ['nodes'],
+const RenderContent = defineComponent({
+  name: 'DrawerRenderContent',
+  props: ['content'],
   setup(renderProps) {
-    return () => renderProps.nodes as any
+    return () => {
+      const content = renderProps.content
+      return typeof content === 'function' ? content() : (content as any)
+    }
   },
 })
 
@@ -346,10 +343,6 @@ function hasRenderableContent(value: unknown) {
   return value !== undefined && value !== null && value !== false && value !== ''
 }
 
-function isTemplateRenderable(value: unknown) {
-  return typeof value === 'function' || isVNode(value)
-}
-
 function toCssSize(value: string | number) {
   if (typeof value === 'number') {
     return `${value}px`
@@ -365,7 +358,7 @@ function toCssSize(value: string | number) {
 }
 
 function toPushDistance(value: string | number) {
-  return `${parseFloat(String(value || 0))}px`
+  return toCssSize(value)
 }
 
 function decorateNestedDrawerNode(value: unknown): unknown {
