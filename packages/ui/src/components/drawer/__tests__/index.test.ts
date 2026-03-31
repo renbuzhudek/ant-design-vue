@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { Drawer } from '@ant-design-vue/ui'
+import { Drawer, Modal } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
 import MultiLevelDemo from '../demo/multi-level-drawer.vue'
@@ -41,7 +41,11 @@ async function flushDrawerMotion() {
   await nextTick()
 }
 
-function mountMultiLevelDrawer(options?: { placement?: 'left' | 'right' | 'top' | 'bottom'; push?: any }) {
+function mountMultiLevelDrawer(options?: {
+  placement?: 'left' | 'right' | 'top' | 'bottom'
+  push?: any
+  maskStyle?: any
+}) {
   const component = defineComponent({
     components: { Drawer },
     props: {
@@ -53,6 +57,10 @@ function mountMultiLevelDrawer(options?: { placement?: 'left' | 'right' | 'top' 
         type: [Boolean, Object],
         default: options?.push,
       },
+      maskStyle: {
+        type: Object,
+        default: options?.maskStyle,
+      },
     },
     setup() {
       const open = ref(true)
@@ -61,7 +69,14 @@ function mountMultiLevelDrawer(options?: { placement?: 'left' | 'right' | 'top' 
       return { open, childOpen }
     },
     template: `
-      <Drawer v-model:open="open" :get-container="false" :placement="placement" :push="push" class="outer-drawer">
+      <Drawer
+        v-model:open="open"
+        :get-container="false"
+        :placement="placement"
+        :push="push"
+        :mask-style="maskStyle"
+        class="outer-drawer"
+      >
         <button class="open-child" @click="childOpen = true">Open child</button>
         <button class="close-child" @click="childOpen = false">Close child</button>
         <Drawer v-model:open="childOpen" :get-container="false" :placement="placement" class="inner-drawer">
@@ -93,8 +108,6 @@ afterEach(() => {
   mountedWrappers.splice(0).reverse().forEach(wrapper => wrapper.unmount())
   mountedHosts.splice(0).reverse().forEach(host => host.remove())
   document.body.style.overflow = ''
-  document.body.style.overflowX = ''
-  document.body.style.overflowY = ''
   document.body.style.paddingRight = ''
   document.body.style.width = ''
 })
@@ -419,6 +432,19 @@ describe('Drawer', () => {
     expect(wrapper.find('.ant-drawer').exists()).toBe(true)
   })
 
+  it('treats undefined controlled open prop as closed', async () => {
+    const wrapper = mountDrawer({
+      props: { open: undefined, title: 'Maybe Drawer' },
+      slots: { default: 'Drawer content' },
+      ...globalStubs,
+    })
+
+    await flushDrawerMotion()
+
+    expect(wrapper.find('.ant-drawer').exists()).toBe(false)
+    expect(document.body.querySelector('.ant-drawer')).toBeNull()
+  })
+
   it('renders inline when getContainer is false', () => {
     const wrapper = mountDrawer({
       props: { open: true, getContainer: false },
@@ -434,6 +460,67 @@ describe('Drawer', () => {
     expect(document.body.style.overflow).toBe('')
     expect(document.body.style.paddingRight).toBe('')
     expect(document.body.style.width).toBe('')
+  })
+
+  it('locks body scroll without mutating body width', () => {
+    const originalInnerWidth = window.innerWidth
+    const originalClientWidth = document.documentElement.clientWidth
+
+    Object.defineProperty(window, 'innerWidth', {
+      configurable: true,
+      value: 1200,
+    })
+    Object.defineProperty(document.documentElement, 'clientWidth', {
+      configurable: true,
+      value: 1180,
+    })
+
+    try {
+      mountDrawer({
+        props: { open: true },
+        ...globalStubs,
+      })
+
+      expect(document.body.style.overflow).toBe('hidden')
+      expect(document.body.style.paddingRight).toBe('20px')
+      expect(document.body.style.width).toBe('')
+    } finally {
+      Object.defineProperty(window, 'innerWidth', {
+        configurable: true,
+        value: originalInnerWidth,
+      })
+      Object.defineProperty(document.documentElement, 'clientWidth', {
+        configurable: true,
+        value: originalClientWidth,
+      })
+    }
+  })
+
+  it('shares body scroll lock with modal overlays', async () => {
+    const drawerWrapper = mountDrawer({
+      props: { open: true, title: 'Drawer' },
+      slots: { default: 'Drawer content' },
+      ...globalStubs,
+    })
+    const modalWrapper = mountTracked(Modal, {
+      props: { open: true, title: 'Modal' },
+      slots: { default: 'Modal content' },
+      ...globalStubs,
+    })
+
+    await flushDrawerMotion()
+
+    expect(document.body.style.overflow).toBe('hidden')
+
+    await drawerWrapper.setProps({ open: false })
+    await flushDrawerMotion()
+
+    expect(document.body.style.overflow).toBe('hidden')
+
+    await modalWrapper.setProps({ open: false })
+    await flushDrawerMotion()
+
+    expect(document.body.style.overflow).toBe('')
   })
 
   it('does not treat omitted getContainer as inline rendering', async () => {
@@ -515,14 +602,23 @@ describe('Drawer', () => {
     await wrapper.find('.open-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe(
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toBe(
       'translateX(-180px)',
     )
+    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe('')
 
     await wrapper.find('.close-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe('')
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toBe('')
   })
 
   it('pushes parent drawer in multi-level left placement', async () => {
@@ -532,7 +628,11 @@ describe('Drawer', () => {
     await wrapper.find('.open-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe(
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toBe(
       'translateX(180px)',
     )
   })
@@ -544,7 +644,11 @@ describe('Drawer', () => {
     await wrapper.find('.open-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe(
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toBe(
       'translateY(180px)',
     )
   })
@@ -556,7 +660,11 @@ describe('Drawer', () => {
     await wrapper.find('.open-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe('')
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toBe('')
   })
 
   it('preserves CSS units for nested drawer push distance', async () => {
@@ -566,7 +674,11 @@ describe('Drawer', () => {
     await wrapper.find('.open-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe(
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toBe(
       'translateX(-2rem)',
     )
   })
@@ -581,9 +693,26 @@ describe('Drawer', () => {
     await wrapper.find('.open-child').trigger('click')
     await flushDrawerMotion()
 
-    expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toContain(
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-transform',
+      ),
+    ).toContain(
       'calc(100% - 24px)',
     )
+  })
+
+  it('keeps parent mask non-interactive even when maskStyle sets pointerEvents', async () => {
+    const wrapper = mountMultiLevelDrawer({
+      placement: 'right',
+      maskStyle: { pointerEvents: 'auto' },
+    })
+
+    await flushDrawerMotion()
+    await wrapper.find('.open-child').trigger('click')
+    await flushDrawerMotion()
+
+    expect((wrapper.findAll('.ant-drawer-mask')[0].element as HTMLElement).style.pointerEvents).toBe('none')
   })
 
   it('disables parent mask interaction while child drawer is open', async () => {
@@ -669,7 +798,7 @@ describe('Drawer', () => {
     expect(roots).toHaveLength(2)
     expect(roots.map(root => root.classList.contains('ant-drawer-inline'))).toEqual([false, false])
     expect(roots[1]?.closest('.ant-drawer-body')).toBeNull()
-    expect(wrappers[0]?.style.transform).toBe('translateX(-180px)')
+    expect(wrappers[0]?.style.getPropertyValue('--ant-drawer-push-transform')).toBe('translateX(-180px)')
     expect(wrappers[0]?.style.width).toBe('520px')
     expect(wrappers[1]?.style.width).toBe('320px')
   })

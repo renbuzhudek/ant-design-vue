@@ -21,6 +21,7 @@
 :where(.ant-drawer-content-wrapper) {
   @apply fixed;
   z-index: 1000;
+  transform: var(--ant-drawer-push-transform, translate3d(0, 0, 0));
   transition: transform var(--ant-motion-duration) var(--ant-motion-ease);
 }
 
@@ -158,7 +159,7 @@
 
 .ant-slide-right-enter-from,
 .ant-slide-right-leave-to {
-  transform: translateX(100%);
+  transform: translateX(100%) var(--ant-drawer-push-transform, translate3d(0, 0, 0));
 }
 
 /* Slide left */
@@ -169,7 +170,7 @@
 
 .ant-slide-left-enter-from,
 .ant-slide-left-leave-to {
-  transform: translateX(-100%);
+  transform: translateX(-100%) var(--ant-drawer-push-transform, translate3d(0, 0, 0));
 }
 
 /* Slide top */
@@ -180,7 +181,7 @@
 
 .ant-slide-top-enter-from,
 .ant-slide-top-leave-to {
-  transform: translateY(-100%);
+  transform: translateY(-100%) var(--ant-drawer-push-transform, translate3d(0, 0, 0));
 }
 
 /* Slide bottom */
@@ -191,5 +192,5 @@
 
 .ant-slide-bottom-enter-from,
 .ant-slide-bottom-leave-to {
-  transform: translateY(100%);
+  transform: translateY(100%) var(--ant-drawer-push-transform, translate3d(0, 0, 0));
 }

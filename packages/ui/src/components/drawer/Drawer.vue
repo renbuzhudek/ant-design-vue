@@ -94,16 +94,9 @@ import {
 import type { CSSProperties } from 'vue'
 import { CloseOutlined } from '@ant-design/icons-vue'
 import { Portal } from '@/_internal/portal'
+import { lockBodyScroll, unlockBodyScroll } from '../../utils/bodyScrollLock'
 import type { DrawerProps, DrawerEmits, DrawerSlots } from './types'
 import { drawerDefaultProps } from './types'
-
-type BodyScrollStyleSnapshot = {
-  overflow: string
-  overflowX: string
-  overflowY: string
-  paddingRight: string
-  width: string
-}
 
 const RenderContent = defineComponent({
   name: 'DrawerRenderContent',
@@ -119,69 +112,6 @@ const RenderContent = defineComponent({
 const defaultPushDistance = 180
 const defaultDrawerZIndex = 1000
 const nestedDrawerZIndexOffset = 10
-
-let bodyScrollLockCount = 0
-const bodyScrollOriginStyle: BodyScrollStyleSnapshot = {
-  overflow: '',
-  overflowX: '',
-  overflowY: '',
-  paddingRight: '',
-  width: '',
-}
-
-function applyBodyScrollStyle(style: BodyScrollStyleSnapshot) {
-  document.body.style.overflow = style.overflow
-  document.body.style.overflowX = style.overflowX
-  document.body.style.overflowY = style.overflowY
-  document.body.style.paddingRight = style.paddingRight
-  document.body.style.width = style.width
-}
-
-function captureBodyScrollStyle() {
-  bodyScrollOriginStyle.overflow = document.body.style.overflow
-  bodyScrollOriginStyle.overflowX = document.body.style.overflowX
-  bodyScrollOriginStyle.overflowY = document.body.style.overflowY
-  bodyScrollOriginStyle.paddingRight = document.body.style.paddingRight
-  bodyScrollOriginStyle.width = document.body.style.width
-}
-
-function clearBodyScrollStyleSnapshot() {
-  bodyScrollOriginStyle.overflow = ''
-  bodyScrollOriginStyle.overflowX = ''
-  bodyScrollOriginStyle.overflowY = ''
-  bodyScrollOriginStyle.paddingRight = ''
-  bodyScrollOriginStyle.width = ''
-}
-
-function lockBodyScroll() {
-  if (typeof document === 'undefined') return
-
-  if (bodyScrollLockCount === 0) {
-    captureBodyScrollStyle()
-
-    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
-    applyBodyScrollStyle({
-      overflow: 'hidden',
-      overflowX: 'hidden',
-      overflowY: 'hidden',
-      paddingRight: bodyScrollOriginStyle.paddingRight,
-      width: scrollBarWidth > 0 ? `calc(100% - ${scrollBarWidth}px)` : bodyScrollOriginStyle.width,
-    })
-  }
-
-  bodyScrollLockCount += 1
-}
-
-function unlockBodyScroll() {
-  if (typeof document === 'undefined' || bodyScrollLockCount === 0) return
-
-  bodyScrollLockCount -= 1
-
-  if (bodyScrollLockCount === 0) {
-    applyBodyScrollStyle(bodyScrollOriginStyle)
-    clearBodyScrollStyleSnapshot()
-  }
-}
 
 defineOptions({ name: 'ADrawer', inheritAttrs: false })
 
@@ -220,8 +150,8 @@ const resolvedPush = computed(() => {
 const isInline = computed(() => resolvedGetContainer.value === false)
 const internalOpen = ref(false)
 const mergedOpen = computed(() => {
-  if (controlledOpenProp.value === 'open') return props.open
-  if (controlledOpenProp.value === 'visible') return props.visible
+  if (controlledOpenProp.value === 'open') return props.open ?? false
+  if (controlledOpenProp.value === 'visible') return props.visible ?? false
   return internalOpen.value
 })
 
@@ -475,18 +405,24 @@ const pushTransformStyle = computed<CSSProperties>(() => {
       ? toPushDistance(push.distance)
       : toPushDistance(defaultPushDistance)
 
+  let transform = ''
+
   switch (props.placement) {
     case 'left':
-      return { transform: `translateX(${distance})` }
+      transform = `translateX(${distance})`
+      break
     case 'right':
-      return { transform: `translateX(-${distance})` }
+      transform = `translateX(-${distance})`
+      break
     case 'top':
-      return { transform: `translateY(${distance})` }
+      transform = `translateY(${distance})`
+      break
     case 'bottom':
-      return { transform: `translateY(-${distance})` }
-    default:
-      return {}
+      transform = `translateY(-${distance})`
+      break
   }
+
+  return transform ? ({ '--ant-drawer-push-transform': transform } as CSSProperties) : {}
 })
 
 const contentWrapperStyle = computed(() => {
@@ -510,7 +446,7 @@ const drawerStyle = computed(() => {
 })
 
 const maskStyle = computed(() => {
-  return [overlayStyle.value, hasActiveNestedDrawer.value ? inactiveMaskStyle : null, props.maskStyle]
+  return [overlayStyle.value, props.maskStyle, hasActiveNestedDrawer.value ? inactiveMaskStyle : null]
 })
 
 // --- Handlers ---
