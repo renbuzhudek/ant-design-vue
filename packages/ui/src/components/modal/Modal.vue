@@ -129,13 +129,17 @@ let previousActiveElement: HTMLElement | null = null
 let isBodyScrollLocked = false
 
 watch(mergedOpen, (val) => {
+  if (typeof document === 'undefined') return
+
   if (val) {
     nextTick(() => {
+      if (typeof document === 'undefined') return
       previousActiveElement = document.activeElement as HTMLElement
       modalRef.value?.focus()
     })
   } else {
     nextTick(() => {
+      if (typeof document === 'undefined') return
       previousActiveElement?.focus()
       previousActiveElement = null
     })

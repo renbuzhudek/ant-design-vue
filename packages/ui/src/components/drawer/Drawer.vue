@@ -226,14 +226,19 @@ watch(
   mergedOpen,
   (val) => {
     if (!props.autofocus) return
+    if (typeof document === 'undefined') return
+
     if (val) {
       nextTick(() => {
+        if (typeof document === 'undefined') return
         previousActiveElement = document.activeElement as HTMLElement
         drawerRef.value?.focus()
       })
       return
     }
+
     nextTick(() => {
+      if (typeof document === 'undefined') return
       previousActiveElement?.focus()
       previousActiveElement = null
     })
@@ -422,7 +427,9 @@ const pushTransformStyle = computed<CSSProperties>(() => {
       break
   }
 
-  return transform ? ({ '--ant-drawer-push-transform': transform } as CSSProperties) : {}
+  return transform
+    ? ({ '--ant-drawer-push-transform': transform, '--ant-drawer-push-distance': distance } as CSSProperties)
+    : {}
 })
 
 const contentWrapperStyle = computed(() => {

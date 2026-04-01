@@ -9,6 +9,15 @@ const bodyScrollOriginStyle: BodyScrollStyleSnapshot = {
   paddingRight: '',
 }
 
+function canUseBodyScrollLock() {
+  return (
+    typeof document !== 'undefined' &&
+    typeof window !== 'undefined' &&
+    !!document.body &&
+    !!document.documentElement
+  )
+}
+
 function captureBodyScrollStyle() {
   bodyScrollOriginStyle.overflow = document.body.style.overflow
   bodyScrollOriginStyle.paddingRight = document.body.style.paddingRight
@@ -20,7 +29,7 @@ function clearBodyScrollStyleSnapshot() {
 }
 
 export function lockBodyScroll() {
-  if (typeof document === 'undefined') return
+  if (!canUseBodyScrollLock()) return
 
   if (bodyScrollLockCount === 0) {
     captureBodyScrollStyle()
@@ -37,7 +46,7 @@ export function lockBodyScroll() {
 }
 
 export function unlockBodyScroll() {
-  if (typeof document === 'undefined' || bodyScrollLockCount === 0) return
+  if (!canUseBodyScrollLock() || bodyScrollLockCount === 0) return
 
   bodyScrollLockCount -= 1
 

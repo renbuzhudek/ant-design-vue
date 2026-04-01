@@ -1,7 +1,9 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Drawer, Modal } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
+import { renderToString } from '@vue/server-renderer'
+import { lockBodyScroll, unlockBodyScroll } from '../../../utils/bodyScrollLock'
 import MultiLevelDemo from '../demo/multi-level-drawer.vue'
 
 const globalStubs = {
@@ -445,6 +447,31 @@ describe('Drawer', () => {
     expect(document.body.querySelector('.ant-drawer')).toBeNull()
   })
 
+  it('renders without DOM globals when initially open', async () => {
+    const originalWindow = globalThis.window
+    const originalDocument = globalThis.document
+
+    vi.stubGlobal('window', undefined)
+    vi.stubGlobal('document', undefined)
+
+    try {
+      const html = await renderToString(
+        h(
+          Drawer,
+          { open: true, title: 'SSR Drawer' },
+          {
+            default: () => 'Drawer content',
+          },
+        ),
+      )
+
+      expect(typeof html).toBe('string')
+    } finally {
+      vi.stubGlobal('window', originalWindow)
+      vi.stubGlobal('document', originalDocument)
+    }
+  })
+
   it('renders inline when getContainer is false', () => {
     const wrapper = mountDrawer({
       props: { open: true, getContainer: false },
@@ -493,6 +520,19 @@ describe('Drawer', () => {
         configurable: true,
         value: originalClientWidth,
       })
+    }
+  })
+
+  it('body scroll lock safely no-ops without window', () => {
+    const originalWindow = globalThis.window
+
+    vi.stubGlobal('window', undefined)
+
+    try {
+      expect(() => lockBodyScroll()).not.toThrow()
+      expect(() => unlockBodyScroll()).not.toThrow()
+    } finally {
+      vi.stubGlobal('window', originalWindow)
     }
   })
 
@@ -609,6 +649,11 @@ describe('Drawer', () => {
     ).toBe(
       'translateX(-180px)',
     )
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-distance',
+      ),
+    ).toBe('180px')
     expect((wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.transform).toBe('')
 
     await wrapper.find('.close-child').trigger('click')
@@ -681,6 +726,11 @@ describe('Drawer', () => {
     ).toBe(
       'translateX(-2rem)',
     )
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-distance',
+      ),
+    ).toBe('2rem')
   })
 
   it('preserves CSS expressions for nested drawer push distance', async () => {
@@ -700,6 +750,11 @@ describe('Drawer', () => {
     ).toContain(
       'calc(100% - 24px)',
     )
+    expect(
+      (wrapper.findAll('.ant-drawer-content-wrapper')[0].element as HTMLElement).style.getPropertyValue(
+        '--ant-drawer-push-distance',
+      ),
+    ).toBe('calc(100% - 24px)')
   })
 
   it('keeps parent mask non-interactive even when maskStyle sets pointerEvents', async () => {
