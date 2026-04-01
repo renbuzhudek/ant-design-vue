@@ -368,6 +368,19 @@ describe('Drawer', () => {
     expect(wrapper.find('.ant-drawer-footer').exists()).toBe(false)
   })
 
+  it('calls footer render prop once per render cycle', async () => {
+    const footer = vi.fn(() => 'Footer')
+    const wrapper = mountDrawer({
+      props: { open: true, footer },
+      ...globalStubs,
+    })
+
+    await flushDrawerMotion()
+
+    expect(footer).toHaveBeenCalledTimes(1)
+    expect(wrapper.find('.ant-drawer-footer').text()).toContain('Footer')
+  })
+
   it('renders VNode arrays passed through render props', () => {
     const wrapper = mountDrawer({
       props: {

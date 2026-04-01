@@ -87,4 +87,29 @@ describe('Portal', () => {
     expect(movedInput?.value).toBe('draft value')
     expect(document.body.contains(originalContainer)).toBe(false)
   })
+
+  it('does not create a default container when getContainer changes while hidden', async () => {
+    const component = defineComponent({
+      components: { Portal },
+      setup() {
+        const visible = ref(false)
+        const getContainer = ref<string | HTMLElement | (() => HTMLElement) | false | undefined>(undefined)
+        return { visible, getContainer }
+      },
+      template: `
+        <Portal :visible="visible" :get-container="getContainer">
+          <input class="portal-input" />
+        </Portal>
+      `,
+    })
+
+    const wrapper = mountTracked(component, { attachTo: document.body })
+    const bodyChildCount = document.body.childElementCount
+
+    ;(wrapper.vm as any).getContainer = '.missing-container'
+    await flushPortalUpdate()
+
+    expect(document.body.childElementCount).toBe(bodyChildCount)
+    expect(wrapper.find('.portal-input').exists()).toBe(true)
+  })
 })

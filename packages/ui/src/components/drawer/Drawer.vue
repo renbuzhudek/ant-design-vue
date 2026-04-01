@@ -42,19 +42,19 @@
                   @click="onClose"
                 >
                   <slot name="closeIcon">
-                    <RenderContent v-if="hasRenderableContent(props.closeIcon)" :content="props.closeIcon" />
+                    <RenderContent v-if="hasCustomCloseIcon" :content="resolvedCloseIconContent" />
                     <CloseOutlined v-else />
                   </slot>
                 </button>
                 <div v-if="hasTitle" :id="titleId" class="ant-drawer-title">
                   <slot name="title">
-                    <RenderContent :content="props.title" />
+                    <RenderContent :content="resolvedTitleContent" />
                   </slot>
                 </div>
               </div>
               <div v-if="hasExtra" class="ant-drawer-extra">
                 <slot name="extra">
-                  <RenderContent :content="props.extra" />
+                  <RenderContent :content="resolvedExtraContent" />
                 </slot>
               </div>
             </div>
@@ -67,7 +67,7 @@
             <!-- Footer -->
             <div v-if="hasFooter" class="ant-drawer-footer" :style="props.footerStyle">
               <slot name="footer">
-                <RenderContent :content="props.footer" />
+                <RenderContent :content="resolvedFooterContent" />
               </slot>
             </div>
           </div>
@@ -284,8 +284,11 @@ onBeforeUnmount(() => {
 
 // --- Computed ---
 function hasRenderableContent(value: unknown) {
-  const resolvedValue = typeof value === 'function' ? value() : value
-  return resolvedValue !== undefined && resolvedValue !== null && resolvedValue !== false && resolvedValue !== ''
+  return value !== undefined && value !== null && value !== false && value !== ''
+}
+
+function resolveRenderableContent(value: unknown) {
+  return typeof value === 'function' ? value() : value
 }
 
 function toCssSize(value: string | number) {
@@ -306,8 +309,13 @@ function toPushDistance(value: string | number) {
   return toCssSize(value)
 }
 
-const hasTitle = computed(() => !!slots.title || hasRenderableContent(props.title))
-const hasExtra = computed(() => !!slots.extra || hasRenderableContent(props.extra))
+const resolvedTitleContent = computed(() => resolveRenderableContent(props.title))
+const resolvedExtraContent = computed(() => resolveRenderableContent(props.extra))
+const resolvedFooterContent = computed(() => resolveRenderableContent(props.footer))
+const resolvedCloseIconContent = computed(() => resolveRenderableContent(props.closeIcon))
+const hasCustomCloseIcon = computed(() => hasRenderableContent(resolvedCloseIconContent.value))
+const hasTitle = computed(() => !!slots.title || hasRenderableContent(resolvedTitleContent.value))
+const hasExtra = computed(() => !!slots.extra || hasRenderableContent(resolvedExtraContent.value))
 // Vue may normalize an omitted `footer` prop to false, so raw vnode props decide explicit disablement.
 const showFooter = computed(() => {
   if ('footer' in rawProps.value) {
@@ -315,7 +323,9 @@ const showFooter = computed(() => {
   }
   return true
 })
-const hasFooter = computed(() => showFooter.value && (!!slots.footer || hasRenderableContent(props.footer)))
+const hasFooter = computed(
+  () => showFooter.value && (!!slots.footer || hasRenderableContent(resolvedFooterContent.value)),
+)
 const hasHeader = computed(() => hasTitle.value || hasExtra.value || props.closable)
 
 function onNestedDrawerToggle(open: boolean) {

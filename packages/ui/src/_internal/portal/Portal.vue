@@ -141,6 +141,10 @@ watch(
 watch(
   () => props.getContainer,
   () => {
+    if (!props.visible && !container.value) {
+      return
+    }
+
     resolveContainer()
   },
 )
