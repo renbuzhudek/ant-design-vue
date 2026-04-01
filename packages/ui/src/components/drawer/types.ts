@@ -1,10 +1,18 @@
-import type { CSSProperties } from 'vue'
+import type { CSSProperties, ComputedRef, InjectionKey } from 'vue'
 import type { Slot, SlotReturnType } from '@/utils/types'
 
 export type DrawerPlacement = 'top' | 'right' | 'bottom' | 'left'
 export type DrawerGetContainer = string | HTMLElement | (() => HTMLElement) | false
 export type DrawerRenderContent = Exclude<SlotReturnType, boolean> | (() => SlotReturnType)
 export type DrawerPush = boolean | { distance: string | number }
+
+export interface DrawerContext {
+  open: ComputedRef<boolean>
+  zIndex: ComputedRef<number>
+  onNestedDrawerToggle: (open: boolean) => void
+}
+
+export const drawerContextKey: InjectionKey<DrawerContext> = Symbol('drawerContext')
 
 export interface DrawerProps {
   /** Whether the drawer is visible (v-model:open) */
@@ -39,12 +47,6 @@ export interface DrawerProps {
   forceRender?: boolean
   /** Nested drawers push behavior */
   push?: DrawerPush
-  /** @internal Nested drawer push callback */
-  __parentDrawerToggle?: (open: boolean) => void
-  /** @internal Nested drawer parent open state */
-  __parentDrawerOpen?: boolean
-  /** @internal Nested drawer parent z-index baseline */
-  __parentDrawerZIndex?: number
   /** Custom z-index */
   zIndex?: number
   /** Style for the drawer body */

@@ -61,7 +61,7 @@
 
             <!-- Body -->
             <div class="ant-drawer-body" :style="props.bodyStyle">
-              <RenderContent :content="decoratedBodyContent" />
+              <slot />
             </div>
 
             <!-- Footer -->
@@ -83,22 +83,22 @@ import {
   shallowRef,
   computed,
   watch,
+  provide,
+  inject,
   useAttrs,
   useSlots,
   onBeforeUpdate,
   onBeforeUnmount,
   nextTick,
   getCurrentInstance,
-  isVNode,
   defineComponent,
-  cloneVNode,
 } from 'vue'
-import type { CSSProperties, VNode } from 'vue'
+import type { CSSProperties } from 'vue'
 import { CloseOutlined } from '@ant-design/icons-vue'
 import { Portal } from '@/_internal/portal'
 import { lockBodyScroll, unlockBodyScroll } from '../../utils/bodyScrollLock'
 import type { DrawerProps, DrawerEmits, DrawerSlots } from './types'
-import { drawerDefaultProps } from './types'
+import { drawerContextKey, drawerDefaultProps } from './types'
 
 const RenderContent = defineComponent({
   name: 'DrawerRenderContent',
@@ -124,6 +124,7 @@ const attrs = useAttrs()
 const slots = useSlots()
 
 const instance = getCurrentInstance()!
+const parentDrawerContext = inject(drawerContextKey, null)
 
 const drawerRef = ref<HTMLElement | null>(null)
 const hasNotifiedParentDrawer = ref(false)
@@ -195,20 +196,20 @@ watch(
 watch(
   motionOpen,
   open => {
-    if (!props.__parentDrawerToggle) {
+    if (!parentDrawerContext) {
       return
     }
 
     if (open) {
       if (!hasNotifiedParentDrawer.value) {
-        props.__parentDrawerToggle(true)
+        parentDrawerContext.onNestedDrawerToggle(true)
         hasNotifiedParentDrawer.value = true
       }
       return
     }
 
     if (hasNotifiedParentDrawer.value) {
-      props.__parentDrawerToggle(false)
+      parentDrawerContext.onNestedDrawerToggle(false)
       hasNotifiedParentDrawer.value = false
     }
   },
@@ -216,7 +217,7 @@ watch(
 )
 
 watch(
-  () => props.__parentDrawerOpen,
+  () => parentDrawerContext?.open.value,
   parentOpen => {
     if (parentOpen === false && mergedOpen.value) {
       setOpen(false)
@@ -276,7 +277,7 @@ onBeforeUnmount(() => {
   setBodyScrollLock(false)
 
   if (hasNotifiedParentDrawer.value) {
-    props.__parentDrawerToggle?.(false)
+    parentDrawerContext?.onNestedDrawerToggle(false)
     hasNotifiedParentDrawer.value = false
   }
 })
@@ -304,50 +305,6 @@ function toPushDistance(value: string | number) {
   return toCssSize(value)
 }
 
-function cloneVNodeWithDecoratedChildren(vnode: VNode) {
-  if (!Array.isArray(vnode.children)) {
-    return vnode
-  }
-
-  const decoratedChildren = vnode.children.map(child => decorateNestedDrawerNode(child))
-  const clonedVNode = cloneVNode(vnode)
-  clonedVNode.children = decoratedChildren as VNode['children']
-  return clonedVNode
-}
-
-function decorateNestedDrawerNode(value: unknown): unknown {
-  if (Array.isArray(value)) {
-    return value.map(item => decorateNestedDrawerNode(item))
-  }
-
-  if (!isVNode(value)) {
-    return value
-  }
-
-  const type = value.type as { name?: string; __name?: string } | null
-  const typeName = type?.name || type?.__name
-  const vnodeProps = value.props as Record<string, unknown> | null
-  const looksLikeDrawer =
-    !!vnodeProps &&
-    ('open' in vnodeProps || 'visible' in vnodeProps) &&
-    ('placement' in vnodeProps ||
-      'closable' in vnodeProps ||
-      'maskClosable' in vnodeProps ||
-      'getContainer' in vnodeProps ||
-      'width' in vnodeProps ||
-      'height' in vnodeProps)
-
-  if (value.type === instance.type || typeName === 'ADrawer' || typeName === 'Drawer' || looksLikeDrawer) {
-    return cloneVNode(value, {
-      __parentDrawerToggle: onNestedDrawerToggle,
-      __parentDrawerOpen: mergedOpen.value,
-      __parentDrawerZIndex: resolvedZIndex.value + nestedDrawerZIndexOffset,
-    })
-  }
-
-  return cloneVNodeWithDecoratedChildren(value)
-}
-
 const hasTitle = computed(() => !!slots.title || hasRenderableContent(props.title))
 const hasExtra = computed(() => !!slots.extra || hasRenderableContent(props.extra))
 // Vue may normalize an omitted `footer` prop to false, so raw vnode props decide explicit disablement.
@@ -363,10 +320,6 @@ const hasHeader = computed(() => hasTitle.value || hasExtra.value || props.closa
 function onNestedDrawerToggle(open: boolean) {
   pushedChildrenCount.value = Math.max(0, pushedChildrenCount.value + (open ? 1 : -1))
 }
-
-const decoratedBodyContent = computed(() => {
-  return (slots.default?.() ?? []).map(decorateNestedDrawerNode)
-})
 
 const sizeWidthMap = { default: 378, large: 736 }
 const sizeHeightMap = { default: 378, large: 736 }
@@ -414,7 +367,13 @@ const drawerClasses = computed(() => [
 ])
 
 const resolvedZIndex = computed(() => {
-  return props.zIndex ?? props.__parentDrawerZIndex ?? defaultDrawerZIndex
+  return props.zIndex ?? (parentDrawerContext ? parentDrawerContext.zIndex.value + nestedDrawerZIndexOffset : defaultDrawerZIndex)
+})
+
+provide(drawerContextKey, {
+  open: mergedOpen,
+  zIndex: resolvedZIndex,
+  onNestedDrawerToggle,
 })
 
 const overlayStyle = computed<CSSProperties>(() => {
