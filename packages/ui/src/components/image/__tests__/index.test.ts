@@ -1,7 +1,26 @@
-import { describe, expect, it, vi } from 'vitest'
-import { Image, ImagePreviewGroup } from '@ant-design-vue/ui'
-import { mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { Drawer, Image, ImagePreviewGroup } from '@ant-design-vue/ui'
+import { mount, flushPromises } from '@vue/test-utils'
 import { nextTick } from 'vue'
+import ImagePreview from '../ImagePreview.vue'
+
+const globalStubs = {
+  global: {
+    stubs: {
+      teleport: true,
+    },
+  },
+}
+
+async function flushOverlayState() {
+  await nextTick()
+  await flushPromises()
+}
+
+afterEach(() => {
+  document.body.style.overflow = ''
+  document.body.style.paddingRight = ''
+})
 
 describe('Image', () => {
   it('should render correctly', () => {
@@ -119,6 +138,35 @@ describe('Image', () => {
     await nextTick()
     // Preview should be rendered in portal
     expect(wrapper.findComponent({ name: 'AImagePreview' }).exists()).toBe(true)
+  })
+
+  it('shares body scroll lock with drawer overlays', async () => {
+    const previewWrapper = mount(ImagePreview, {
+      props: { open: true, src: 'https://example.com/image.png' },
+      ...globalStubs,
+    })
+    const drawerWrapper = mount(Drawer, {
+      props: { open: true, title: 'Drawer' },
+      slots: { default: 'Drawer content' },
+      ...globalStubs,
+    })
+
+    await flushOverlayState()
+
+    expect(document.body.style.overflow).toBe('hidden')
+
+    await previewWrapper.setProps({ open: false })
+    await flushOverlayState()
+
+    expect(document.body.style.overflow).toBe('hidden')
+
+    await drawerWrapper.setProps({ open: false })
+    await flushOverlayState()
+
+    expect(document.body.style.overflow).toBe('')
+
+    previewWrapper.unmount()
+    drawerWrapper.unmount()
   })
 })
 

@@ -9,6 +9,8 @@ const bodyScrollOriginStyle: BodyScrollStyleSnapshot = {
   paddingRight: '',
 }
 
+// Overlay components must share this helper instead of mutating body styles directly.
+
 function canUseBodyScrollLock() {
   return (
     typeof document !== 'undefined' &&

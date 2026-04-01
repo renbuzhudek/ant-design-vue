@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { Drawer, Modal } from '@ant-design-vue/ui'
-import { mount } from '@vue/test-utils'
+import { mount, flushPromises } from '@vue/test-utils'
 import { defineComponent, h, nextTick, ref } from 'vue'
 import { renderToString } from '@vue/server-renderer'
 import { lockBodyScroll, unlockBodyScroll } from '../../../utils/bodyScrollLock'
@@ -36,11 +36,7 @@ function createMountHost() {
 
 async function flushDrawerMotion() {
   await nextTick()
-  await nextTick()
-  await nextTick()
-  await nextTick()
-  await nextTick()
-  await nextTick()
+  await flushPromises()
 }
 
 function mountMultiLevelDrawer(options?: {
