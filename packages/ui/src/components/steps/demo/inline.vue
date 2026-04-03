@@ -1,29 +1,30 @@
 <template>
-  <a-list :data-source="data">
-    <template #renderItem="{ item }">
-      <a-list-item>
-        <a-list-item-meta
-          description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-        >
-          <template #title>
-            <a href="https://www.antdv.com/">{{ item.title }}</a>
-          </template>
-          <template #avatar>
-            <a-avatar src="https://joeschmoe.io/api/v1/random" />
-          </template>
-        </a-list-item-meta>
-        <a-steps
-          style="margin-top: 8px"
-          type="inline"
-          :current="item.current"
-          :status="item.status"
-          :items="items"
-        />
-      </a-list-item>
-    </template>
-  </a-list>
+  <div style="display: flex; flex-direction: column; gap: 24px">
+    <div v-for="(item, index) in data" :key="index" style="display: flex; align-items: center; gap: 16px">
+      <div style="min-width: 200px">
+        <div style="font-weight: 500">{{ item.title }}</div>
+        <div style="font-size: 12px; color: rgba(0, 0, 0, 0.45)">
+          Ant Design, a design language for background applications
+        </div>
+      </div>
+      <a-steps
+        style="flex: 1"
+        type="inline"
+        :current="item.current"
+        :status="item.status"
+        :items="stepItems"
+      />
+    </div>
+  </div>
 </template>
-<script lang="ts" setup>
+
+<script setup lang="ts">
+const stepItems = [
+  { title: 'Step 1' },
+  { title: 'Step 2' },
+  { title: 'Step 3' },
+]
+
 const data = [
   {
     title: 'Ant Design Title 1',
@@ -42,20 +43,5 @@ const data = [
     title: 'Ant Design Title 4',
     current: 1,
   },
-];
-
-const items = [
-  {
-    title: 'Step 1',
-    description: 'This is a Step 1.',
-  },
-  {
-    title: 'Step 2',
-    description: 'This is a Step 2.',
-  },
-  {
-    title: 'Step 3',
-    description: 'This is a Step 3.',
-  },
-];
+]
 </script>

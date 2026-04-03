@@ -108,13 +108,13 @@
 }
 
 :where(.ant-steps) .ant-steps-item-process .ant-steps-item-icon .ant-steps-icon {
-  color: #fff;
+  color: var(--color-accent-content, #fff);
 }
 
 /* Finish icon */
 :where(.ant-steps) .ant-steps-item-finish .ant-steps-item-icon {
   border-color: var(--color-accent, #1677ff);
-  background: #fff;
+  background: var(--color-neutral-bg-container, #fff);
 }
 
 :where(.ant-steps) .ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon {
@@ -123,7 +123,7 @@
 
 /* Wait icon */
 :where(.ant-steps) .ant-steps-item-wait .ant-steps-item-icon {
-  background: #fff;
+  background: var(--color-neutral-bg-container, #fff);
   border-color: var(--color-neutral-border, #d9d9d9);
 }
 
@@ -134,7 +134,7 @@
 /* Error icon */
 :where(.ant-steps) .ant-steps-item-error .ant-steps-item-icon {
   border-color: var(--color-error, #ff4d4f);
-  background: #fff;
+  background: var(--color-neutral-bg-container, #fff);
 }
 
 :where(.ant-steps) .ant-steps-item-error .ant-steps-item-icon .ant-steps-icon {
@@ -271,5 +271,133 @@
 }
 
 :where(.ant-steps).ant-steps-navigation .ant-steps-item-tail {
+  @apply hidden;
+}
+
+/* ---- Progress dot ----
+   .ant-steps-item-content has width: 140px; the dot icon (8px) is centered
+   within it: margin-inline-start = (140 - 8) / 2 + 1 = 67px.
+   Process dot is 10px: (140 - 10) / 2 + 1 = 66px.
+   Tail starts at: 140 / 2 = 70px. */
+:where(.ant-steps).ant-steps-dot .ant-steps-item-icon {
+  width: 8px;
+  height: 8px;
+  margin-inline-start: 67px;
+  padding: 0;
+  line-height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-neutral-border, #d9d9d9);
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-icon .ant-steps-icon-dot {
+  @apply block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  transition: transform var(--ant-motion-duration, 0.2s);
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-process .ant-steps-item-icon {
+  width: 10px;
+  height: 10px;
+  margin-inline-start: 66px;
+  line-height: 10px;
+  background: var(--color-accent, #1677ff);
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-finish .ant-steps-item-icon {
+  background: var(--color-accent, #1677ff);
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-error .ant-steps-item-icon {
+  background: var(--color-error, #ff4d4f);
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-tail {
+  top: 2px;
+  width: 100%;
+  margin: 0 0 0 70px;
+  padding: 0;
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-tail::after {
+  margin-inline-start: 12px;
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-content {
+  width: 140px;
+}
+
+:where(.ant-steps).ant-steps-dot .ant-steps-item-title {
+  line-height: 1.5;
+}
+
+:where(.ant-steps).ant-steps-dot.ant-steps-vertical .ant-steps-item-icon {
+  margin-inline-start: 0;
+  margin-top: 12px;
+}
+
+:where(.ant-steps).ant-steps-dot.ant-steps-vertical .ant-steps-item-tail {
+  top: 6px;
+  margin: 0;
+  padding: 22px 0 4px;
+  inset-inline-start: 3px;
+}
+
+/* ---- Inline type ---- */
+:where(.ant-steps).ant-steps-inline {
+  width: auto;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item {
+  @apply overflow-visible;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-container {
+  @apply flex-col items-center;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-icon {
+  width: 8px;
+  height: 8px;
+  border: none;
+  margin-inline-end: 0;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-process .ant-steps-item-icon {
+  background: var(--color-accent, #1677ff);
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-wait .ant-steps-item-icon {
+  background: var(--color-neutral-border, #d9d9d9);
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-finish .ant-steps-item-icon {
+  background: var(--color-accent, #1677ff);
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-content {
+  width: auto;
+  margin-top: 8px;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-title {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-neutral-secondary, rgba(0, 0, 0, 0.45));
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-process .ant-steps-item-title {
+  color: var(--color-neutral, rgba(0, 0, 0, 0.88));
+  font-weight: 600;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-tail {
+  @apply hidden;
+}
+
+:where(.ant-steps).ant-steps-inline .ant-steps-item-description {
   @apply hidden;
 }
