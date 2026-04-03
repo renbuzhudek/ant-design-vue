@@ -116,7 +116,7 @@ function compileSFC(source: string) {
   const template = templateMatch[1]
 
   const scriptSetupMatch = source.match(
-    /<script\s+setup(?:\s+lang="ts")?\s*>([\s\S]*?)<\/script>/,
+    /<script\b(?=[^>]*\bsetup\b)[^>]*>([\s\S]*?)<\/script>/,
   )
   if (!scriptSetupMatch) return markRaw(defineComponent({ template }))
 

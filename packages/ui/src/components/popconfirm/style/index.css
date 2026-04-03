@@ -51,5 +51,5 @@
 }
 
 :where(.ant-popconfirm) .ant-trigger-arrow {
-  background: var(--popconfirm-bg);
+  --ant-trigger-arrow-background: var(--popconfirm-bg);
 }

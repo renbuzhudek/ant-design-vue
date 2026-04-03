@@ -39,5 +39,5 @@
 }
 
 :where(.ant-popover) .ant-trigger-arrow {
-  background: var(--popover-bg);
+  --ant-trigger-arrow-background: var(--popover-bg);
 }

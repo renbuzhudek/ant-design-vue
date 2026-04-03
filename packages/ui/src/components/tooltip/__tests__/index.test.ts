@@ -56,6 +56,34 @@ describe('Tooltip', () => {
     expect(wrapper.find('.ant-tooltip').exists()).toBe(true)
   })
 
+  it('positions popup with left/top styles instead of transform', async () => {
+    const wrapper = mount(Tooltip, {
+      attachTo: document.body,
+      props: {
+        title: 'prompt text',
+        open: true,
+        zIndex: 1234,
+        overlayStyle: {
+          maxWidth: '123px',
+        },
+      },
+      slots: { default: () => h('span', 'Trigger') },
+    })
+
+    await nextTick()
+    await nextTick()
+
+    const popup = document.body.querySelector('.ant-trigger-popup') as HTMLElement | null
+    const styleAttr = popup?.getAttribute('style') ?? ''
+
+    expect(popup).not.toBeNull()
+    expect(styleAttr).toContain('left:')
+    expect(styleAttr).toContain('top:')
+    expect(styleAttr).not.toContain('transform:')
+
+    wrapper.unmount()
+  })
+
   it('supports overlayClassName', () => {
     const wrapper = mount(Tooltip, {
       props: {
