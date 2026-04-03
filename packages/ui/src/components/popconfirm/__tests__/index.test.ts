@@ -527,6 +527,86 @@ describe('Popconfirm', () => {
     expect(typeof receivedOkSlotProps?.confirm).toBe('function')
   })
 
+  it('keeps custom cancel button prop click handlers when slot props invoke cancel', async () => {
+    const cancelButtonClick = vi.fn()
+
+    trackMount(mount(defineComponent({
+      components: { Popconfirm },
+      setup() {
+        const open = ref(true)
+
+        return {
+          open,
+          cancelButtonClick,
+        }
+      },
+      template: `
+        <div>
+          <Popconfirm
+            :open="open"
+            title="Are you sure?"
+            :cancelButtonProps="{ onClick: cancelButtonClick }"
+            @openChange="open = $event"
+          >
+            <template #cancelButton="slotProps">
+              <button class="custom-cancel" @click="slotProps.onClick">Cancel</button>
+            </template>
+            <span>Delete</span>
+          </Popconfirm>
+        </div>
+      `,
+    }), {
+      attachTo: document.body,
+    }))
+
+    await flushPopup()
+
+    ;(document.body.querySelector('.custom-cancel') as HTMLButtonElement | null)?.click()
+    await flushPopup()
+
+    expect(cancelButtonClick).toHaveBeenCalledTimes(1)
+    expect(getPopup()?.style.display).toBe('none')
+  })
+
+  it('keeps custom ok button prop click handlers when slot props invoke confirm', async () => {
+    const okButtonClick = vi.fn()
+
+    trackMount(mount(defineComponent({
+      components: { Popconfirm },
+      setup() {
+        const open = ref(true)
+
+        return {
+          open,
+          okButtonClick,
+        }
+      },
+      template: `
+        <Popconfirm
+          :open="open"
+          title="Are you sure?"
+          :okButtonProps="{ onClick: okButtonClick }"
+          @openChange="open = $event"
+        >
+          <template #okButton="slotProps">
+            <button class="custom-ok" @click="slotProps.onClick">OK</button>
+          </template>
+          <span>Delete</span>
+        </Popconfirm>
+      `,
+    }), {
+      attachTo: document.body,
+    }))
+
+    await flushPopup()
+
+    ;(document.body.querySelector('.custom-ok') as HTMLButtonElement | null)?.click()
+    await flushPopup()
+
+    expect(okButtonClick).toHaveBeenCalledTimes(1)
+    expect(getPopup()?.style.display).toBe('none')
+  })
+
   it('supports icon slot', async () => {
     trackMount(mount(Popconfirm, {
       attachTo: document.body,

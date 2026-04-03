@@ -165,6 +165,21 @@ function getCompatHandlers<T extends (...args: any[]) => unknown>(
   return mergedHandlers
 }
 
+type ButtonClickHandler = (event: MouseEvent) => unknown
+
+function composeButtonClickHandler(
+  userHandler: unknown,
+  internalHandler: (event: MouseEvent) => void,
+) {
+  return (event: MouseEvent) => {
+    try {
+      toFunctionArray<ButtonClickHandler>(userHandler).forEach(handler => handler(event))
+    } finally {
+      internalHandler(event)
+    }
+  }
+}
+
 function normalizeRenderable(content: unknown) {
   if (content == null || content === false) {
     return null
@@ -320,20 +335,34 @@ const popupClasses = computed(() => {
   return classes
 })
 
-const cancelButtonSlotProps = computed(() => ({
-  onClick: onCancel as (event: MouseEvent) => void,
-  size: 'small' as const,
-  ...(props.cancelButtonProps ?? {}),
-  cancel: onCancel as (event: MouseEvent) => void,
-}))
+const cancelButtonSlotProps = computed(() => {
+  const cancelButtonProps = props.cancelButtonProps ?? {}
 
-const okButtonSlotProps = computed(() => ({
-  onClick: onConfirm,
-  type: props.okType,
-  size: 'small' as const,
-  ...(props.okButtonProps ?? {}),
-  confirm: onConfirm,
-}))
+  return {
+    size: 'small' as const,
+    ...cancelButtonProps,
+    onClick: composeButtonClickHandler(
+      (cancelButtonProps as { onClick?: unknown }).onClick,
+      onCancel as (event: MouseEvent) => void,
+    ),
+    cancel: onCancel as (event: MouseEvent) => void,
+  }
+})
+
+const okButtonSlotProps = computed(() => {
+  const okButtonProps = props.okButtonProps ?? {}
+
+  return {
+    type: props.okType,
+    size: 'small' as const,
+    ...okButtonProps,
+    onClick: composeButtonClickHandler(
+      (okButtonProps as { onClick?: unknown }).onClick,
+      onConfirm,
+    ),
+    confirm: onConfirm,
+  }
+})
 
 // --- Handlers ---
 function setOpen(val: boolean, event?: PopconfirmOpenChangeEvent) {
