@@ -281,8 +281,7 @@ describe('Popconfirm', () => {
     const confirm = vi.fn()
     const wrapper = trackMount(mount(Popconfirm, {
       attachTo: document.body,
-      props: { title: 'Are you sure?', trigger: 'click' },
-      attrs: { onConfirm: confirm },
+      props: { title: 'Are you sure?', trigger: 'click', onConfirm: confirm },
       slots: { default: () => h('span', 'Delete') },
     }))
     await wrapper.find('.ant-trigger-wrapper').trigger('click')
@@ -292,6 +291,7 @@ describe('Popconfirm', () => {
     await flushPopup()
 
     expect(confirm).toHaveBeenCalledTimes(1)
+    expect(wrapper.emitted('confirm')?.at(-1)?.[0]).toBeInstanceOf(MouseEvent)
     expect((wrapper.vm as { getPopupDomNode: () => HTMLElement | null }).getPopupDomNode()?.style.display).toBe('none')
   })
 
@@ -299,8 +299,7 @@ describe('Popconfirm', () => {
     const cancel = vi.fn()
     const wrapper = trackMount(mount(Popconfirm, {
       attachTo: document.body,
-      props: { title: 'Are you sure?', open: true },
-      attrs: { onCancel: cancel },
+      props: { title: 'Are you sure?', open: true, onCancel: cancel },
       slots: { default: () => h('span', 'Delete') },
     }))
 
@@ -309,6 +308,7 @@ describe('Popconfirm', () => {
     await flushPopup()
 
     expect(cancel).toHaveBeenCalledTimes(1)
+    expect(wrapper.emitted('cancel')?.at(-1)?.[0]).toBeInstanceOf(MouseEvent)
     expect(wrapper.emitted('openChange')?.at(-1)?.[0]).toBe(false)
     expect(wrapper.emitted('openChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
     expect(wrapper.emitted('visibleChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
@@ -378,6 +378,54 @@ describe('Popconfirm', () => {
 
     expect(cancel).toHaveBeenCalledTimes(1)
     expect(getPopup()?.style.display).toBe('none')
+  })
+
+  it('supports once modifiers on confirm listeners', async () => {
+    const confirm = vi.fn()
+
+    trackMount(mount(defineComponent({
+      components: { Popconfirm },
+      setup() {
+        const open = ref(false)
+
+        const handleOpenChange = (value: boolean) => {
+          open.value = value
+        }
+
+        return {
+          open,
+          confirm,
+          handleOpenChange,
+        }
+      },
+      template: `
+        <Popconfirm
+          :open="open"
+          title="Are you sure?"
+          trigger="click"
+          @openChange="handleOpenChange"
+          @confirm.once="confirm"
+        >
+          <span>Delete</span>
+        </Popconfirm>
+      `,
+    }), {
+      attachTo: document.body,
+    }))
+
+    const trigger = document.body.querySelector('.ant-trigger-wrapper') as HTMLElement | null
+
+    trigger?.click()
+    await flushPopup()
+    getButtons()[1]?.click()
+    await flushPopup()
+
+    trigger?.click()
+    await flushPopup()
+    getButtons()[1]?.click()
+    await flushPopup()
+
+    expect(confirm).toHaveBeenCalledTimes(1)
   })
 
   it('is disabled when disabled prop is true', () => {
@@ -464,8 +512,7 @@ describe('Popconfirm', () => {
     )
     const wrapper = trackMount(mount(Popconfirm, {
       attachTo: document.body,
-      props: { title: 'Are you sure?', trigger: 'click' },
-      attrs: { onConfirm: confirm },
+      props: { title: 'Are you sure?', trigger: 'click', onConfirm: confirm },
       slots: { default: () => h('span', 'Delete') },
     }))
     await wrapper.find('.ant-trigger-wrapper').trigger('click')

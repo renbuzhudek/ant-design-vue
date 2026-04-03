@@ -150,19 +150,8 @@ function toFunctionArray<T extends (...args: any[]) => unknown>(value: unknown):
   return []
 }
 
-function getCompatHandlers<T extends (...args: any[]) => unknown>(
-  handlers: T | T[] | undefined,
-  rawPropName: 'onConfirm' | 'onCancel',
-): T[] {
-  const mergedHandlers = toFunctionArray<T>(handlers)
-
-  toFunctionArray<T>(rawProps.value[rawPropName]).forEach(handler => {
-    if (!mergedHandlers.includes(handler)) {
-      mergedHandlers.push(handler)
-    }
-  })
-
-  return mergedHandlers
+function getCompatHandlers<T extends (...args: any[]) => unknown>(handlers: T | T[] | undefined): T[] {
+  return toFunctionArray<T>(handlers)
 }
 
 type ButtonClickHandler = (event: MouseEvent) => unknown
@@ -382,14 +371,41 @@ function onOpenChange(val: boolean) {
   setOpen(val)
 }
 
+function emitCompatEvent(eventName: 'confirm' | 'cancel', event: MouseEvent) {
+  const handlerName = eventName === 'confirm' ? 'onConfirm' : 'onCancel'
+  const vnodeProps = instance.vnode.props as Record<string, unknown> | null
+  const emitEvent = () => {
+    if (eventName === 'confirm') {
+      emit('confirm', event)
+      return
+    }
+
+    emit('cancel', event)
+  }
+
+  if (!vnodeProps || !(handlerName in vnodeProps)) {
+    emitEvent()
+    return
+  }
+
+  const handler = vnodeProps[handlerName]
+
+  try {
+    vnodeProps[handlerName] = undefined
+    emitEvent()
+  } finally {
+    vnodeProps[handlerName] = handler
+  }
+}
+
 function invokeConfirmHandlers(e: MouseEvent) {
-  const handlers = getCompatHandlers(props.onConfirm, 'onConfirm')
+  const handlers = getCompatHandlers(props.onConfirm)
   const results = handlers.map(handler => handler(e))
   return results.find(isThenable) ?? results.find(result => result !== undefined)
 }
 
 function invokeCancelHandlers(e: MouseEvent) {
-  const handlers = getCompatHandlers(props.onCancel, 'onCancel')
+  const handlers = getCompatHandlers(props.onCancel)
   handlers.forEach(handler => handler(e))
 }
 
@@ -398,6 +414,7 @@ function onConfirm(e: MouseEvent) {
     return
   }
 
+  emitCompatEvent('confirm', e)
   const result = invokeConfirmHandlers(e)
   if (isThenable(result)) {
     confirmLoading.value = true
@@ -417,6 +434,7 @@ function onConfirm(e: MouseEvent) {
 }
 
 function onCancel(e: MouseEvent) {
+  emitCompatEvent('cancel', e)
   invokeCancelHandlers(e)
   setOpen(false, e)
 }
