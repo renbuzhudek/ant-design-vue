@@ -1,7 +1,11 @@
 <template>
-  <a-empty :image="simpleImage" />
+  <a-empty :image="Empty.PRESENTED_IMAGE_SIMPLE">
+    <template #description>
+      <span>Customize <a href="#API">Description</a></span>
+    </template>
+  </a-empty>
 </template>
-<script lang="ts" setup>
-import { Empty } from 'ant-design-vue';
-const simpleImage = Empty.PRESENTED_IMAGE_SIMPLE;
+
+<script setup lang="ts">
+import { Empty } from '@ant-design-vue/ui'
 </script>

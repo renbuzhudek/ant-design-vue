@@ -1,15 +1,16 @@
 import { describe, expect, it } from 'vitest'
 import { h } from 'vue'
-import { Empty, SimpleEmpty } from '@ant-design-vue/ui'
+import { ConfigProvider, Empty, SimpleEmpty } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
 
 describe('Empty', () => {
   it('should render default empty state with DefaultEmpty SVG', () => {
     const wrapper = mount(Empty)
     expect(wrapper.find('.ant-empty').exists()).toBe(true)
+    expect(wrapper.find('.ant-empty').classes()).not.toContain('ant-empty-normal')
     expect(wrapper.find('.ant-empty-image').exists()).toBe(true)
     expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
-    expect(wrapper.find('.ant-empty-description').text()).toBe('No Data')
+    expect(wrapper.find('.ant-empty-description').text()).toBe('No data')
   })
 
   it('should show custom description', () => {
@@ -33,7 +34,16 @@ describe('Empty', () => {
     const img = wrapper.find('.ant-empty-image img')
     expect(img.exists()).toBe(true)
     expect(img.attributes('src')).toBe('https://example.com/empty.svg')
-    expect(img.attributes('alt')).toBe('')
+    expect(img.attributes('alt')).toBe('No data')
+  })
+
+  it('should support built-in Empty.PRESENTED_IMAGE_SIMPLE image API', () => {
+    const wrapper = mount(Empty, {
+      props: { image: Empty.PRESENTED_IMAGE_SIMPLE },
+    })
+    expect(wrapper.find('.ant-empty').classes()).toContain('ant-empty-normal')
+    expect(wrapper.find('.ant-empty').classes()).toContain('ant-empty-small')
+    expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
   })
 
   it('should render custom image slot', () => {
@@ -43,6 +53,17 @@ describe('Empty', () => {
       },
     })
     expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
+  })
+
+  it('should prefer image prop over image slot', () => {
+    const wrapper = mount(Empty, {
+      props: { image: 'https://example.com/from-prop.svg' },
+      slots: {
+        image: () => h(SimpleEmpty),
+      },
+    })
+    expect(wrapper.find('.ant-empty-image img').exists()).toBe(true)
+    expect(wrapper.find('.ant-empty-image svg').exists()).toBe(false)
   })
 
   it('should render footer slot', () => {
@@ -76,6 +97,20 @@ describe('Empty', () => {
     const desc = wrapper.find('.ant-empty-description')
     expect(desc.find('a').exists()).toBe(true)
     expect(desc.text()).toContain('Custom')
+  })
+
+  it('should use locale description from config provider when description is not set', () => {
+    const wrapper = mount(
+      {
+        components: { AConfigProvider: ConfigProvider, AEmpty: Empty },
+        template: `
+          <a-config-provider :locale="{ locale: 'en', Empty: { description: 'Nothing configured' } }">
+            <a-empty />
+          </a-config-provider>
+        `,
+      },
+    )
+    expect(wrapper.find('.ant-empty-description').text()).toBe('Nothing configured')
   })
 
   it('should match snapshot', () => {

@@ -18,7 +18,7 @@ exports[`Empty demos > demo: Basic 1`] = `
         </g>
       </g>
     </svg></div>
-  <div class="ant-empty-description">No Data</div>
+  <div class="ant-empty-description">No data</div>
   <!--v-if-->
 </div>"
 `;
@@ -180,7 +180,7 @@ exports[`Empty demos > demo: ConfigProviderDemo 1`] = `
             </g>
           </g>
         </svg></div>
-      <div class="ant-empty-description">No Data</div>
+      <div class="ant-empty-description">No data</div>
       <!--v-if-->
     </div>
   </div>
@@ -192,11 +192,13 @@ exports[`Empty demos > demo: ConfigProviderDemo 1`] = `
 
 exports[`Empty demos > demo: Customize 1`] = `
 "<div class="ant-empty" role="status">
-  <div class="ant-empty-image" style="height: 60px;" aria-hidden="true"><img src="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original" alt=""></div>
+  <div class="ant-empty-image" style="height: 60px;" aria-hidden="true"><img src="https://gw.alipayobjects.com/mdn/miniapp_social/afts/img/A*pevERLJC9v0AAAAAAAAAAABjAQAAAQ/original" alt="No data"></div>
   <div class="ant-empty-description"><span> Customize <a href="#api">Description</a></span></div>
   <div class="ant-empty-footer"><button class="ant-btn ant-btn-solid ant-btn-md" type="button">
       <wave-stub disabled="false"></wave-stub>
-      <!--v-if--><span class="ant-btn-content">Create Now</span>
+      <transition-stub appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub><span class="ant-btn-content">Create Now</span>
     </button></div>
 </div>"
 `;
@@ -219,15 +221,23 @@ exports[`Empty demos > demo: Description 1`] = `
         </g>
       </g>
     </svg></div>
-  <div class="ant-empty-description">No Data</div>
+  <div class="ant-empty-description">No data</div>
   <!--v-if-->
 </div>"
 `;
 
 exports[`Empty demos > demo: Simple 1`] = `
-"<div class="ant-empty" role="status">
-  <div class="ant-empty-image" aria-hidden="true"><img src="() => (0, _vue.h)(_simple.default)" alt=""></div>
-  <div class="ant-empty-description">No Data</div>
+"<div class="ant-empty ant-empty-normal ant-empty-small" role="status">
+  <div class="ant-empty-image" aria-hidden="true"><svg width="64" height="41" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
+        <ellipse fill="#f5f5f5" cx="32" cy="33" rx="32" ry="7"></ellipse>
+        <g fill-rule="nonzero" stroke="#d9d9d9">
+          <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+          <path d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z" fill="#fafafa"></path>
+        </g>
+      </g>
+    </svg></div>
+  <div class="ant-empty-description"><span>Customize <a href="#API">Description</a></span></div>
   <!--v-if-->
 </div>"
 `;
