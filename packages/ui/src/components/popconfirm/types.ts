@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'vue'
 import type { MaybeArray, Slot, ScopedSlot } from '@/utils/types'
 import type { TooltipPlacement } from '../tooltip/types'
 import type { TriggerType } from '@/_internal/trigger/types'
@@ -60,7 +61,7 @@ export interface PopconfirmProps {
   /** Class for the overlay */
   overlayClassName?: string
   /** Style for the overlay */
-  overlayStyle?: Record<string, string>
+  overlayStyle?: CSSProperties
   /** Destroy popup on hide */
   destroyTooltipOnHide?: boolean
   /** Auto adjust when near edges */

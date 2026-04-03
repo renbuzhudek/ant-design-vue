@@ -1,5 +1,6 @@
+import type { CSSProperties } from 'vue'
 import type { Placement, Strategy } from '@floating-ui/vue'
-import type { Slot, ScopedSlot } from '@/utils/types'
+import type { Slot } from '@/utils/types'
 
 export type TriggerType = 'hover' | 'click' | 'focus' | 'contextmenu'
 
@@ -29,7 +30,7 @@ export interface TriggerProps {
   /** Custom class for the popup wrapper */
   popupClass?: string | Record<string, boolean> | (string | Record<string, boolean>)[]
   /** Custom style for the popup wrapper */
-  popupStyle?: Record<string, string>
+  popupStyle?: CSSProperties
   /** Whether the popup is disabled */
   disabled?: boolean
   /** Function returning the container element */

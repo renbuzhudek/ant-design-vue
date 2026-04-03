@@ -65,6 +65,8 @@ describe('Tooltip', () => {
         zIndex: 1234,
         overlayStyle: {
           maxWidth: '123px',
+          opacity: 0.9,
+          '--tooltip-test-color': '#f50',
         },
       },
       slots: { default: () => h('span', 'Trigger') },
@@ -73,13 +75,16 @@ describe('Tooltip', () => {
     await nextTick()
     await nextTick()
 
-    const popup = document.body.querySelector('.ant-trigger-popup') as HTMLElement | null
+    const popup = (wrapper.vm as { getPopupDomNode: () => HTMLElement | null }).getPopupDomNode()
     const styleAttr = popup?.getAttribute('style') ?? ''
 
     expect(popup).not.toBeNull()
     expect(styleAttr).toContain('left:')
     expect(styleAttr).toContain('top:')
     expect(styleAttr).not.toContain('transform:')
+    expect(styleAttr).toContain('max-width: 123px')
+    expect(styleAttr).toContain('opacity: 0.9')
+    expect(styleAttr).toContain('--tooltip-test-color: #f50')
 
     wrapper.unmount()
   })

@@ -1,5 +1,6 @@
+import type { CSSProperties } from 'vue'
 import type { Placement } from '@floating-ui/vue'
-import type { Slot, ScopedSlot } from '@/utils/types'
+import type { Slot } from '@/utils/types'
 import type { TriggerType } from '@/_internal/trigger/types'
 
 /** Preset tooltip colors */
@@ -100,7 +101,7 @@ export interface TooltipProps {
   /** Class applied to the overlay element */
   overlayClassName?: string
   /** Style applied to the overlay element */
-  overlayStyle?: Record<string, string>
+  overlayStyle?: CSSProperties
   /** Style applied to the inner content */
   overlayInnerStyle?: Record<string, string>
   /** Whether to destroy the tooltip DOM when hidden */

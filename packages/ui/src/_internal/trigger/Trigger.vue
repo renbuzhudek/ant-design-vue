@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, shallowRef, computed, watch, onBeforeUnmount, nextTick, getCurrentInstance, type CSSProperties } from 'vue'
+import { ref, shallowRef, computed, watch, onBeforeUnmount, nextTick, getCurrentInstance } from 'vue'
 import {
   useFloating,
   autoUpdate,
@@ -106,22 +106,15 @@ const { floatingStyles, placement: actualPlacement, middlewareData, update } = u
 )
 
 const popupStyles = computed(() => {
-  const baseStyles = floatingStyles.value as CSSProperties
-
   if (props.zIndex == null && !props.popupStyle) {
-    return baseStyles
+    return floatingStyles.value
   }
 
-  const styles: CSSProperties[] = [baseStyles]
-
-  if (props.zIndex != null) {
-    styles.push({ zIndex: props.zIndex })
+  return {
+    ...floatingStyles.value,
+    ...(props.zIndex != null ? { zIndex: props.zIndex } : {}),
+    ...(props.popupStyle ?? {}),
   }
-  if (props.popupStyle) {
-    styles.push(props.popupStyle as CSSProperties)
-  }
-
-  return styles
 })
 
 const arrowStyles = computed(() => {

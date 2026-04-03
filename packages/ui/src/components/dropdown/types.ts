@@ -1,4 +1,5 @@
-import type { Slot, ScopedSlot } from '@/utils/types'
+import type { CSSProperties } from 'vue'
+import type { Slot } from '@/utils/types'
 import type { TriggerType } from '@/_internal/trigger/types'
 import type { TooltipPlacement } from '../tooltip/types'
 import type { MenuProps, ItemType } from '../menu/types'
@@ -32,7 +33,7 @@ export interface DropdownProps {
   /** Class for the overlay */
   overlayClassName?: string
   /** Style for the overlay */
-  overlayStyle?: Record<string, string>
+  overlayStyle?: CSSProperties
   /** Delay before showing (ms, hover trigger) */
   mouseEnterDelay?: number
   /** Delay before hiding (ms, hover trigger) */
@@ -105,7 +106,7 @@ export interface DropdownButtonProps {
   /** Class for the overlay */
   overlayClassName?: string
   /** Style for the overlay */
-  overlayStyle?: Record<string, string>
+  overlayStyle?: CSSProperties
   /** Destroy popup when hidden */
   destroyPopupOnHide?: boolean
   /** Custom popup container */
