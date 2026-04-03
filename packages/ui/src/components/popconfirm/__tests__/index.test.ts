@@ -31,6 +31,7 @@ function getButtons() {
 
 afterEach(() => {
   mountedWrappers.splice(0).reverse().forEach(wrapper => wrapper.unmount())
+  vi.restoreAllMocks()
   vi.useRealTimers()
   document.body.innerHTML = ''
 })
