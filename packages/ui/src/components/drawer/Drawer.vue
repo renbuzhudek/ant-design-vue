@@ -305,9 +305,6 @@ function toCssSize(value: string | number) {
   return value
 }
 
-function toPushDistance(value: string | number) {
-  return toCssSize(value)
-}
 
 const resolvedTitleContent = computed(() => resolveRenderableContent(props.title))
 const resolvedExtraContent = computed(() => resolveRenderableContent(props.extra))
@@ -407,8 +404,8 @@ const pushTransformStyle = computed<CSSProperties>(() => {
   const push = resolvedPush.value
   const distance =
     typeof push === 'object' && push !== null
-      ? toPushDistance(push.distance)
-      : toPushDistance(defaultPushDistance)
+      ? toCssSize(push.distance)
+      : toCssSize(defaultPushDistance)
 
   let transform = ''
 
