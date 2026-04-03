@@ -658,6 +658,31 @@ describe('Popconfirm', () => {
     expect(getPopup()?.style.display).toBe('none')
   })
 
+  it('keeps default cancel button prop click handlers', async () => {
+    const firstCancelClick = vi.fn()
+    const secondCancelClick = vi.fn()
+    const wrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: {
+        title: 'Are you sure?',
+        defaultOpen: true,
+        cancelButtonProps: {
+          onClick: [firstCancelClick, secondCancelClick],
+        } as any,
+      },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await flushPopup()
+
+    getButtons()[0]?.click()
+    await flushPopup()
+
+    expect(firstCancelClick).toHaveBeenCalledTimes(1)
+    expect(secondCancelClick).toHaveBeenCalledTimes(1)
+    expect((wrapper.vm as { getPopupDomNode: () => HTMLElement | null }).getPopupDomNode()?.style.display).toBe('none')
+  })
+
   it('keeps custom ok button prop click handlers when slot props invoke confirm', async () => {
     const okButtonClick = vi.fn()
 
@@ -695,6 +720,60 @@ describe('Popconfirm', () => {
 
     expect(okButtonClick).toHaveBeenCalledTimes(1)
     expect(getPopup()?.style.display).toBe('none')
+  })
+
+  it('keeps default ok button prop click handlers', async () => {
+    const firstOkClick = vi.fn()
+    const secondOkClick = vi.fn()
+    const wrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: {
+        title: 'Are you sure?',
+        defaultOpen: true,
+        okButtonProps: {
+          onClick: [firstOkClick, secondOkClick],
+        } as any,
+      },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await flushPopup()
+
+    getButtons()[1]?.click()
+    await flushPopup()
+
+    expect(firstOkClick).toHaveBeenCalledTimes(1)
+    expect(secondOkClick).toHaveBeenCalledTimes(1)
+    expect((wrapper.vm as { getPopupDomNode: () => HTMLElement | null }).getPopupDomNode()?.style.display).toBe('none')
+  })
+
+  it('resets confirm loading when controlled open closes externally', async () => {
+    const confirm = vi.fn(() => new Promise(() => {}))
+    const wrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: {
+        title: 'Are you sure?',
+        open: true,
+        onConfirm: confirm,
+      },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await flushPopup()
+
+    getButtons()[1]?.click()
+    await flushPopup()
+
+    expect(confirm).toHaveBeenCalledTimes(1)
+    expect(getButtons()[1]?.className).toContain('ant-btn-loading')
+
+    await wrapper.setProps({ open: false })
+    await flushPopup()
+
+    await wrapper.setProps({ open: true })
+    await flushPopup()
+
+    expect(getButtons()[1]?.className ?? '').not.toContain('ant-btn-loading')
   })
 
   it('supports icon slot', async () => {

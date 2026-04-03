@@ -37,11 +37,7 @@
         <div class="ant-popconfirm-buttons">
           <template v-if="props.showCancel">
             <slot name="cancelButton" v-bind="cancelButtonSlotProps">
-              <a-button
-                size="sm"
-                v-bind="props.cancelButtonProps"
-                @click="onCancel"
-              >
+              <a-button v-bind="defaultCancelButtonProps">
                 <VNodes :vnodes="cancelTextContent" />
               </a-button>
             </slot>
@@ -49,10 +45,8 @@
           <slot name="okButton" v-bind="okButtonSlotProps">
             <a-button
               :variant="okButtonVariant"
-              size="sm"
-              v-bind="props.okButtonProps"
+              v-bind="defaultOkButtonProps"
               :loading="confirmLoading"
-              @click="onConfirm"
             >
               <VNodes :vnodes="okTextContent" />
             </a-button>
@@ -338,6 +332,11 @@ const cancelButtonSlotProps = computed(() => {
   }
 })
 
+const defaultCancelButtonProps = computed(() => {
+  const { cancel, ...buttonProps } = cancelButtonSlotProps.value
+  return buttonProps
+})
+
 const okButtonSlotProps = computed(() => {
   const okButtonProps = props.okButtonProps ?? {}
 
@@ -351,6 +350,11 @@ const okButtonSlotProps = computed(() => {
     ),
     confirm: onConfirm,
   }
+})
+
+const defaultOkButtonProps = computed(() => {
+  const { confirm, ...buttonProps } = okButtonSlotProps.value
+  return buttonProps
 })
 
 // --- Handlers ---
@@ -465,6 +469,10 @@ function onDocumentKeydown(e: KeyboardEvent) {
 watch(
   mergedOpen,
   open => {
+    if (!open) {
+      confirmLoading.value = false
+    }
+
     if (typeof document === 'undefined') {
       return
     }
