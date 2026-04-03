@@ -220,7 +220,7 @@ const isUserControlled = computed(() => {
 })
 
 const mergedOpen = computed(() => {
-  if (hasExplicitProp('open') && props.open !== null) return props.open
+  if (hasExplicitProp('open') && props.open !== null) return props.open ?? false
   if (hasExplicitProp('visible')) return props.visible ?? false
   return internalOpen.value
 })

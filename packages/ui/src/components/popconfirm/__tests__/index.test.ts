@@ -469,6 +469,20 @@ describe('Popconfirm', () => {
     expect(wrapper.emitted('update:open')?.[0]).toEqual([true])
   })
 
+  it('treats explicit open=undefined as controlled false', async () => {
+    const wrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: { title: 'Are you sure?', trigger: 'click', open: undefined },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await wrapper.find('.ant-trigger-wrapper').trigger('click')
+    await flushPopup()
+
+    expect(getPopup()).toBeNull()
+    expect(wrapper.emitted('update:open')?.[0]).toEqual([true])
+  })
+
   it('is disabled when disabled prop is true', () => {
     const wrapper = trackMount(mount(Popconfirm, {
       props: { title: 'Are you sure?', disabled: true },
