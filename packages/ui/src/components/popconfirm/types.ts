@@ -93,6 +93,8 @@ export const popconfirmDefaultProps = {
 export interface PopconfirmEmits {
   (e: 'update:open', open: boolean): void
   (e: 'openChange', open: boolean, event?: PopconfirmOpenChangeEvent): void
+  (e: 'confirm', event: MouseEvent): void
+  (e: 'cancel', event: MouseEvent): void
   /** @deprecated */
   (e: 'update:visible', open: boolean): void
   /** @deprecated */
