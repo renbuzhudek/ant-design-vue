@@ -1,7 +1,24 @@
 import { describe, expect, it, vi } from 'vitest'
 import { Alert } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
-import { nextTick } from 'vue'
+import { Comment, defineComponent, h, nextTick, onMounted, onUnmounted, ref } from 'vue'
+
+const ImmediateTransition = defineComponent({
+  name: 'ImmediateTransition',
+  props: {
+    onAfterLeave: Function,
+  },
+  setup(props, { slots }) {
+    return () => {
+      const children = slots.default?.()?.filter((child) => child.type !== Comment)
+      if (!children?.length) {
+        props.onAfterLeave?.()
+        return null
+      }
+      return children
+    }
+  },
+})
 
 describe('Alert', () => {
   it('should render correctly', () => {
@@ -119,13 +136,17 @@ describe('Alert', () => {
     const afterClose = vi.fn()
     const wrapper = mount(Alert, {
       props: { message: 'Close me', closable: true, afterClose },
+      global: {
+        stubs: {
+          transition: ImmediateTransition,
+        },
+      },
     })
 
     await wrapper.find('.ant-alert-close-icon').trigger('click')
     await nextTick()
 
-    // afterClose is called via Transition @after-leave, which may not fire in test env
-    // We verify the alert is removed from DOM
+    expect(afterClose).toHaveBeenCalledTimes(1)
     expect(wrapper.find('.ant-alert').exists()).toBe(false)
   })
 
@@ -150,11 +171,32 @@ describe('Alert', () => {
     expect(wrapper.find('.ant-alert').classes()).toContain('ant-alert-error')
   })
 
+  it('banner mode respects explicitly set info type', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Banner', banner: true, type: 'info' },
+    })
+    expect(wrapper.find('.ant-alert').classes()).toContain('ant-alert-info')
+  })
+
   it('banner mode shows icon by default', () => {
     const wrapper = mount(Alert, {
       props: { message: 'Banner', banner: true },
     })
     expect(wrapper.find('.ant-alert-icon').exists()).toBe(true)
+  })
+
+  it('banner mode still defaults icon when showIcon is explicitly undefined', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Banner', banner: true, showIcon: undefined },
+    })
+    expect(wrapper.find('.ant-alert-icon').exists()).toBe(true)
+  })
+
+  it('banner mode respects explicitly disabled icon', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Banner', banner: true, showIcon: false },
+    })
+    expect(wrapper.find('.ant-alert-icon').exists()).toBe(false)
   })
 
   it('renders message slot', () => {
@@ -205,19 +247,212 @@ describe('Alert', () => {
         closeText: 'Close Now',
       },
     })
-    expect(wrapper.find('.ant-alert-close-icon').exists()).toBe(true)
-    expect(wrapper.find('.ant-alert-close-icon').text()).toBe('Close Now')
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(true)
+    expect(closeButton.text()).toBe('Close Now')
+    expect(closeButton.attributes('aria-label')).toBeUndefined()
   })
 
-  it('renders closeIcon slot', () => {
+  it('keeps aria-label when closeText slot is icon-only', () => {
     const wrapper = mount(Alert, {
-      props: { message: 'Close icon' },
+      props: { message: 'Close icon text slot' },
+      slots: {
+        closeText: '<span class="slot-close-icon" aria-hidden="true">x</span>',
+      },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.find('.slot-close-icon').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBe('Close')
+  })
+
+  it('falls back to closeIcon when closeText slot returns empty content', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Empty closeText slot' },
+      slots: {
+        closeText: () => [],
+        closeIcon: '<span class="custom-close">X</span>',
+      },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.find('.custom-close').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBe('Close')
+  })
+
+  it('renders closeIcon slot when closable', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close icon', closable: true },
       slots: {
         closeIcon: '<span class="custom-close">X</span>',
       },
     })
     expect(wrapper.find('.ant-alert-close-icon').exists()).toBe(true)
     expect(wrapper.find('.custom-close').exists()).toBe(true)
+  })
+
+  it('does not become closable when only closeIcon slot is provided', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close icon only' },
+      slots: {
+        closeIcon: '<span class="custom-close">X</span>',
+      },
+    })
+    expect(wrapper.find('.ant-alert-close-icon').exists()).toBe(false)
+    expect(wrapper.find('.custom-close').exists()).toBe(false)
+  })
+
+  it('closeText prop makes alert closable', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close me', closeText: 'Close Now' },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(true)
+    expect(wrapper.find('.ant-alert').classes()).toContain('ant-alert-closable')
+    expect(closeButton.text()).toContain('Close Now')
+    expect(closeButton.attributes('aria-label')).toBeUndefined()
+  })
+
+  it('closeText true falls back to close icon', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close me', closeText: true },
+      slots: {
+        closeIcon: '<span class="custom-close">X</span>',
+      },
+    })
+
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(true)
+    expect(closeButton.find('.custom-close').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBe('Close')
+  })
+
+  it('closeText empty string does not make alert closable', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close me', closeText: '' },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(false)
+    expect(wrapper.find('.ant-alert').classes()).not.toContain('ant-alert-closable')
+  })
+
+  it('falls back to closeIcon when closeText prop content is an empty array', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close me', closeText: [] },
+      slots: {
+        closeIcon: '<span class="custom-close">X</span>',
+      },
+    })
+
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(true)
+    expect(closeButton.find('.custom-close').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBe('Close')
+  })
+
+  it('falls back to closeIcon when closeText prop content is comment-only', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close me', closeText: [h(Comment)] },
+      slots: {
+        closeIcon: '<span class="custom-close">X</span>',
+      },
+    })
+
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(true)
+    expect(closeButton.find('.custom-close').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBe('Close')
+  })
+
+  it('closeText zero does not make alert closable', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Close me', closeText: 0 },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.exists()).toBe(false)
+    expect(wrapper.find('.ant-alert').classes()).not.toContain('ant-alert-closable')
+  })
+
+  it('closeText prop overrides closeIcon when both exist', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Test', closeText: 'Close' },
+      slots: {
+        closeIcon: '<span class="custom-close">X</span>',
+      },
+    })
+    expect(wrapper.find('.ant-alert-close-icon').text()).toContain('Close')
+    // closeIcon slot should NOT be rendered when closeText is present
+    expect(wrapper.find('.custom-close').exists()).toBe(false)
+  })
+
+  it('renders VNode closeText prop and omits aria-label', () => {
+    const wrapper = mount(Alert, {
+      props: {
+        message: 'VNode closeText',
+        closeText: h('span', { class: 'vnode-close-text' }, 'Dismiss'),
+      },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.find('.vnode-close-text').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBeUndefined()
+  })
+
+  it('renders VNode[] closeText prop and omits aria-label', () => {
+    const wrapper = mount(Alert, {
+      props: {
+        message: 'VNode[] closeText',
+        closeText: [
+          h('span', { class: 'vnode-close-text-part1' }, 'Dis'),
+          h('span', { class: 'vnode-close-text-part2' }, 'miss'),
+        ],
+      },
+    })
+    const closeButton = wrapper.find('.ant-alert-close-icon')
+    expect(closeButton.find('.vnode-close-text-part1').exists()).toBe(true)
+    expect(closeButton.find('.vnode-close-text-part2').exists()).toBe(true)
+    expect(closeButton.attributes('aria-label')).toBeUndefined()
+  })
+
+  it('keeps VNode closeText component mounted across alert updates', async () => {
+    const mounted = vi.fn()
+    const unmounted = vi.fn()
+
+    const StatefulCloseText = defineComponent({
+      name: 'StatefulCloseText',
+      setup() {
+        const clicks = ref(0)
+
+        onMounted(mounted)
+        onUnmounted(unmounted)
+
+        return () =>
+          h(
+            'span',
+            {
+              class: 'stateful-close-text',
+              onClick: (event: MouseEvent) => {
+                event.stopPropagation()
+                clicks.value += 1
+              },
+            },
+            `Dismiss ${clicks.value}`,
+          )
+      },
+    })
+
+    const wrapper = mount(Alert, {
+      props: {
+        message: 'VNode closeText stateful',
+        closeText: h(StatefulCloseText),
+      },
+    })
+
+    await wrapper.find('.stateful-close-text').trigger('click')
+    expect(wrapper.find('.stateful-close-text').text()).toBe('Dismiss 1')
+
+    await wrapper.setProps({ description: 'Updated description' })
+
+    expect(mounted).toHaveBeenCalledTimes(1)
+    expect(unmounted).not.toHaveBeenCalled()
+    expect(wrapper.find('.stateful-close-text').text()).toBe('Dismiss 1')
   })
 
   it('renders default slot as message content', () => {
@@ -227,5 +462,30 @@ describe('Alert', () => {
       },
     })
     expect(wrapper.find('.ant-alert-message').text()).toBe('Default slot message')
+  })
+
+  it('passes data and aria attributes to the alert root', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Attrs alert' },
+      attrs: {
+        'data-test': 'test-id',
+        'aria-describedby': 'some-label',
+      },
+    })
+
+    const alert = wrapper.find('.ant-alert')
+    expect(alert.attributes('data-test')).toBe('test-id')
+    expect(alert.attributes('aria-describedby')).toBe('some-label')
+  })
+
+  it('allows overriding the root role', () => {
+    const wrapper = mount(Alert, {
+      props: { message: 'Status alert' },
+      attrs: {
+        role: 'status',
+      },
+    })
+
+    expect(wrapper.find('.ant-alert').attributes('role')).toBe('status')
   })
 })
