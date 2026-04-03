@@ -85,6 +85,8 @@ import type {
   PopconfirmProps,
   PopconfirmEmits,
   PopconfirmSlots,
+  PopconfirmConfirmHandler,
+  PopconfirmCancelHandler,
   PopconfirmOpenChangeEvent,
 } from './types'
 import type { ButtonVariant } from '../button/types'
@@ -150,11 +152,9 @@ function toFunctionArray<T extends (...args: any[]) => unknown>(value: unknown):
   return []
 }
 
-function getCompatHandlers<T extends (...args: any[]) => unknown>(handlers: T | T[] | undefined): T[] {
-  return toFunctionArray<T>(handlers)
-}
-
 type ButtonClickHandler = (event: MouseEvent) => unknown
+type CompatRawHandlerName = 'onConfirm' | 'onCancel'
+const firedOnceHandlers = new WeakSet<(...args: any[]) => unknown>()
 
 function composeButtonClickHandler(
   userHandler: unknown,
@@ -222,11 +222,11 @@ function hasRenderableContent(content: unknown) {
 // Popconfirm manages its own open state (for confirm/cancel close behavior)
 // Check raw vnode props to detect user-controlled mode
 const isUserControlled = computed(() => {
-  return hasExplicitProp('open') || hasExplicitProp('visible')
+  return (hasExplicitProp('open') && props.open !== null) || hasExplicitProp('visible')
 })
 
 const mergedOpen = computed(() => {
-  if (hasExplicitProp('open')) return props.open ?? false
+  if (hasExplicitProp('open') && props.open !== null) return props.open
   if (hasExplicitProp('visible')) return props.visible ?? false
   return internalOpen.value
 })
@@ -371,42 +371,60 @@ function onOpenChange(val: boolean) {
   setOpen(val)
 }
 
+function getCompatHandlers<T extends (...args: any[]) => unknown>(rawPropName: CompatRawHandlerName): T[] {
+  return toFunctionArray<T>(rawProps.value[rawPropName])
+}
+
+function getCompatOnceHandlers<T extends (...args: any[]) => unknown>(rawPropName: CompatRawHandlerName): T[] {
+  return toFunctionArray<T>(rawProps.value[`${rawPropName}Once`])
+}
+
+function hasCompatHandlers(rawPropName: CompatRawHandlerName) {
+  return getCompatHandlers(rawPropName).length > 0 || getCompatOnceHandlers(rawPropName).length > 0
+}
+
 function emitCompatEvent(eventName: 'confirm' | 'cancel', event: MouseEvent) {
-  const handlerName = eventName === 'confirm' ? 'onConfirm' : 'onCancel'
-  const vnodeProps = instance.vnode.props as Record<string, unknown> | null
-  const emitEvent = () => {
-    if (eventName === 'confirm') {
+  if (eventName === 'confirm') {
+    if (!hasCompatHandlers('onConfirm')) {
       emit('confirm', event)
-      return
     }
-
-    emit('cancel', event)
-  }
-
-  if (!vnodeProps || !(handlerName in vnodeProps)) {
-    emitEvent()
     return
   }
 
-  const handler = vnodeProps[handlerName]
-
-  try {
-    vnodeProps[handlerName] = undefined
-    emitEvent()
-  } finally {
-    vnodeProps[handlerName] = handler
+  if (!hasCompatHandlers('onCancel')) {
+    emit('cancel', event)
   }
 }
 
+function invokeRawHandlers<T extends (...args: any[]) => unknown>(
+  rawPropName: CompatRawHandlerName,
+  event: MouseEvent,
+) {
+  const results: ReturnType<T>[] = []
+
+  getCompatHandlers<T>(rawPropName).forEach(handler => {
+    results.push(handler(event) as ReturnType<T>)
+  })
+
+  getCompatOnceHandlers<T>(rawPropName).forEach(handler => {
+    if (firedOnceHandlers.has(handler)) {
+      return
+    }
+
+    firedOnceHandlers.add(handler)
+    results.push(handler(event) as ReturnType<T>)
+  })
+
+  return results
+}
+
 function invokeConfirmHandlers(e: MouseEvent) {
-  const handlers = getCompatHandlers(props.onConfirm)
-  const results = handlers.map(handler => handler(e))
+  const results = invokeRawHandlers<PopconfirmConfirmHandler>('onConfirm', e)
   return results.find(isThenable) ?? results.find(result => result !== undefined)
 }
 
 function invokeCancelHandlers(e: MouseEvent) {
-  const handlers = getCompatHandlers(props.onCancel)
-  handlers.forEach(handler => handler(e))
+  invokeRawHandlers<PopconfirmCancelHandler>('onCancel', e)
 }
 
 function onConfirm(e: MouseEvent) {
@@ -420,8 +438,7 @@ function onConfirm(e: MouseEvent) {
     confirmLoading.value = true
     result.then(
       () => {
-        confirmLoading.value = false
-        setOpen(false)
+        setOpen(false, e)
       },
       () => {
         confirmLoading.value = false

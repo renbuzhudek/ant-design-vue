@@ -291,7 +291,6 @@ describe('Popconfirm', () => {
     await flushPopup()
 
     expect(confirm).toHaveBeenCalledTimes(1)
-    expect(wrapper.emitted('confirm')?.at(-1)?.[0]).toBeInstanceOf(MouseEvent)
     expect((wrapper.vm as { getPopupDomNode: () => HTMLElement | null }).getPopupDomNode()?.style.display).toBe('none')
   })
 
@@ -308,10 +307,38 @@ describe('Popconfirm', () => {
     await flushPopup()
 
     expect(cancel).toHaveBeenCalledTimes(1)
-    expect(wrapper.emitted('cancel')?.at(-1)?.[0]).toBeInstanceOf(MouseEvent)
     expect(wrapper.emitted('openChange')?.at(-1)?.[0]).toBe(false)
     expect(wrapper.emitted('openChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
     expect(wrapper.emitted('visibleChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
+  })
+
+  it('emits confirm events on button clicks without explicit handlers', async () => {
+    const confirmWrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: { title: 'Are you sure?', trigger: 'click' },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await confirmWrapper.find('.ant-trigger-wrapper').trigger('click')
+    await flushPopup()
+    getButtons()[1]?.click()
+    await flushPopup()
+
+    expect(confirmWrapper.emitted('confirm')?.at(-1)?.[0]).toBeInstanceOf(MouseEvent)
+  })
+
+  it('emits cancel events on button clicks without explicit handlers', async () => {
+    const cancelWrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: { title: 'Are you sure?', open: true },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await flushPopup()
+    getButtons()[0]?.click()
+    await flushPopup()
+
+    expect(cancelWrapper.emitted('cancel')?.at(-1)?.[0]).toBeInstanceOf(MouseEvent)
   })
 
   it('keeps template confirm and cancel listeners working in controlled mode', async () => {
@@ -428,6 +455,20 @@ describe('Popconfirm', () => {
     expect(confirm).toHaveBeenCalledTimes(1)
   })
 
+  it('treats open=null as uncontrolled', async () => {
+    const wrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: { title: 'Are you sure?', trigger: 'click', open: null },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await wrapper.find('.ant-trigger-wrapper').trigger('click')
+    await flushPopup()
+
+    expect(getPopup()).not.toBeNull()
+    expect(wrapper.emitted('update:open')?.[0]).toEqual([true])
+  })
+
   it('is disabled when disabled prop is true', () => {
     const wrapper = trackMount(mount(Popconfirm, {
       props: { title: 'Are you sure?', disabled: true },
@@ -534,7 +575,8 @@ describe('Popconfirm', () => {
     await flushPopup()
 
     expect(wrapper.emitted('update:open')?.at(-1)).toEqual([false])
-    expect(wrapper.emitted('visibleChange')?.at(-1)).toEqual([false, undefined])
+    expect(wrapper.emitted('openChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
+    expect(wrapper.emitted('visibleChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
   })
 
   it('passes legacy-compatible props into custom button slots', async () => {
