@@ -593,6 +593,50 @@ describe('Popconfirm', () => {
     expect(wrapper.emitted('visibleChange')?.at(-1)?.[1]).toBeInstanceOf(MouseEvent)
   })
 
+  it('ignores stale async confirm resolution after popup closes and reopens', async () => {
+    let resolveConfirm!: () => void
+    const confirm = vi.fn(
+      () => new Promise<void>(resolve => {
+        resolveConfirm = resolve
+      }),
+    )
+    const wrapper = trackMount(mount(Popconfirm, {
+      attachTo: document.body,
+      props: { title: 'Are you sure?', trigger: 'click', onConfirm: confirm },
+      slots: { default: () => h('span', 'Delete') },
+    }))
+
+    await wrapper.find('.ant-trigger-wrapper').trigger('click')
+    await flushPopup()
+
+    getButtons()[1]?.click()
+    await flushPopup()
+
+    expect(confirm).toHaveBeenCalledTimes(1)
+    expect(getButtons()[1]?.className).toContain('ant-btn-loading')
+
+    await wrapper.find('.ant-trigger-wrapper').trigger('click')
+    await flushPopup()
+
+    expect(getPopup()?.style.display).toBe('none')
+
+    await wrapper.find('.ant-trigger-wrapper').trigger('click')
+    await flushPopup()
+
+    expect(getPopup()?.style.display).not.toBe('none')
+    expect(getButtons()[1]?.className ?? '').not.toContain('ant-btn-loading')
+
+    resolveConfirm()
+    await Promise.resolve()
+    await flushPopup()
+
+    const closedEvents = (wrapper.emitted('update:open') ?? []).filter(args => args[0] === false)
+
+    expect(closedEvents).toHaveLength(1)
+    expect(wrapper.emitted('update:open')?.at(-1)).toEqual([true])
+    expect(getPopup()?.style.display).not.toBe('none')
+  })
+
   it('passes legacy-compatible props into custom button slots', async () => {
     let receivedCancelSlotProps: PopconfirmCancelButtonSlotProps | undefined
     let receivedOkSlotProps: PopconfirmOkButtonSlotProps | undefined

@@ -119,6 +119,8 @@ const { getPopupContainer, locale } = useConfigInject()
 const triggerRef = shallowRef<InstanceType<typeof Trigger> | null>(null)
 const internalOpen = ref(props.defaultOpen ?? false)
 const confirmLoading = ref(false)
+const activeConfirmToken = ref(0)
+let confirmTokenSeed = 0
 const instance = getCurrentInstance()!
 const rawProps = shallowRef<Record<string, unknown>>((instance.vnode.props || {}) as Record<string, unknown>)
 
@@ -364,6 +366,7 @@ function setOpen(val: boolean, event?: PopconfirmOpenChangeEvent) {
   }
   if (!val) {
     confirmLoading.value = false
+    activeConfirmToken.value = 0
   }
   emit('update:open', val)
   emit('openChange', val, event)
@@ -439,12 +442,23 @@ function onConfirm(e: MouseEvent) {
   emitCompatEvent('confirm', e)
   const result = invokeConfirmHandlers(e)
   if (isThenable(result)) {
+    const token = ++confirmTokenSeed
+    activeConfirmToken.value = token
     confirmLoading.value = true
     result.then(
       () => {
+        if (activeConfirmToken.value !== token || !mergedOpen.value) {
+          return
+        }
+
         setOpen(false, e)
       },
       () => {
+        if (activeConfirmToken.value !== token) {
+          return
+        }
+
+        activeConfirmToken.value = 0
         confirmLoading.value = false
       },
     )
@@ -471,6 +485,7 @@ watch(
   open => {
     if (!open) {
       confirmLoading.value = false
+      activeConfirmToken.value = 0
     }
 
     if (typeof document === 'undefined') {
