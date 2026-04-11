@@ -128,10 +128,10 @@ defineExpose({ focus, blur })
     </div>
     <span class="ant-switch-inner">
       <span class="ant-switch-inner-checked">
-        <slot name="checkedChildren" />
+        <slot name="checkedChildren">{{ checkedChildren }}</slot>
       </span>
       <span class="ant-switch-inner-unchecked">
-        <slot name="unCheckedChildren" />
+        <slot name="unCheckedChildren">{{ unCheckedChildren }}</slot>
       </span>
     </span>
   </button>

@@ -19,6 +19,10 @@ export interface SwitchProps {
   id?: string
   /** Tab order of the switch */
   tabindex?: string | number
+  /** Text/content shown when checked (use slot for custom content) */
+  checkedChildren?: string
+  /** Text/content shown when unchecked (use slot for custom content) */
+  unCheckedChildren?: string
 }
 
 export const switchDefaultProps = {
