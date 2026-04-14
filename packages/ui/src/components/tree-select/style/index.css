@@ -115,3 +115,35 @@
   color: var(--color-neutral-disabled);
   padding: 16px 12px;
 }
+
+/* ====================== SpaceCompact: Horizontal ====================== */
+
+.ant-tree-select-compact-item:not(.ant-tree-select-compact-last-item) {
+  margin-inline-end: -1px;
+}
+
+.ant-tree-select-compact-item {
+  &:hover > .ant-select-selector,
+  &.ant-select-focused > .ant-select-selector,
+  &:active > .ant-select-selector {
+    z-index: 2;
+  }
+
+  &:where([disabled]) > .ant-select-selector {
+    z-index: 0;
+  }
+}
+
+.ant-tree-select-compact-item:not(.ant-tree-select-compact-first-item):not(.ant-tree-select-compact-last-item) > .ant-select-selector {
+  border-radius: 0;
+}
+
+.ant-tree-select-compact-item.ant-tree-select-compact-first-item:not(.ant-tree-select-compact-last-item) > .ant-select-selector {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.ant-tree-select-compact-item.ant-tree-select-compact-last-item:not(.ant-tree-select-compact-first-item) > .ant-select-selector {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}

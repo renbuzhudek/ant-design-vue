@@ -2,12 +2,19 @@
 import { computed, ref, useSlots, watch } from 'vue'
 import type { InputProps, InputEmits, InputSlots } from './types'
 import { inputDefaultProps } from './types'
+import { useCompactItemContext } from '../space/useCompactItemContext'
+import { useConfigInject } from '@/hooks'
 
 defineOptions({ name: 'AInput' })
 const props = withDefaults(defineProps<InputProps>(), inputDefaultProps)
 const emit = defineEmits<InputEmits>()
 defineSlots<InputSlots>()
 const slots = useSlots()
+const { direction } = useConfigInject()
+const { compactSize, compactItemClassnames } = useCompactItemContext(
+  computed(() => 'ant-input'),
+  direction,
+)
 
 const inputRef = ref<HTMLInputElement | null>(null)
 const internalValue = ref(props.value ?? props.defaultValue ?? '')
@@ -62,23 +69,31 @@ const showClearIcon = computed(
   () => props.allowClear && currentValue.value && !props.disabled && !props.readonly,
 )
 
-const inputClasses = computed(() => ({
-  'ant-input': !hasAddon.value && !hasPrefix.value && !hasSuffix.value,
-  'ant-input-sm': props.size === 'small',
-  'ant-input-lg': props.size === 'large',
-  'ant-input-disabled': props.disabled,
-  'ant-input-borderless': !props.bordered,
-  [`ant-input-status-${props.status}`]: !!props.status,
-}))
+const mergedSize = computed(() => compactSize.value || props.size)
 
-const wrapperClasses = computed(() => ({
-  'ant-input-affix-wrapper': true,
-  'ant-input-affix-wrapper-sm': props.size === 'small',
-  'ant-input-affix-wrapper-lg': props.size === 'large',
-  'ant-input-affix-wrapper-disabled': props.disabled,
-  'ant-input-affix-wrapper-borderless': !props.bordered,
-  [`ant-input-affix-wrapper-status-${props.status}`]: !!props.status,
-}))
+const inputClasses = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-input': !hasAddon.value && !hasPrefix.value && !hasSuffix.value,
+    'ant-input-sm': mergedSize.value === 'small',
+    'ant-input-lg': mergedSize.value === 'large',
+    'ant-input-disabled': props.disabled,
+    'ant-input-borderless': !props.bordered,
+    [`ant-input-status-${props.status}`]: !!props.status,
+  },
+])
+
+const wrapperClasses = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-input-affix-wrapper': true,
+    'ant-input-affix-wrapper-sm': mergedSize.value === 'small',
+    'ant-input-affix-wrapper-lg': mergedSize.value === 'large',
+    'ant-input-affix-wrapper-disabled': props.disabled,
+    'ant-input-affix-wrapper-borderless': !props.bordered,
+    [`ant-input-affix-wrapper-status-${props.status}`]: !!props.status,
+  },
+])
 
 const countText = computed(() => {
   if (!props.showCount) return ''
@@ -98,7 +113,7 @@ defineExpose({
   <span
     v-if="hasAddon"
     class="ant-input-group-wrapper"
-    :class="{ [`ant-input-group-wrapper-${size}`]: size }"
+    :class="[compactItemClassnames, { [`ant-input-group-wrapper-${mergedSize}`]: mergedSize }]"
   >
     <span class="ant-input-wrapper ant-input-group">
       <span v-if="$slots.addonBefore" class="ant-input-group-addon">

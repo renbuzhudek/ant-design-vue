@@ -5,7 +5,9 @@ import './style/index.css'
 
 export { default as Space } from './Space.vue'
 export { default as SpaceCompact } from './SpaceCompact.vue'
+export { default as NoCompactStyle } from './NoCompactStyle.vue'
 export * from './types'
+export { useCompactItemContext } from './useCompactItemContext'
 
 // Add Space.Compact static property for API compatibility with original
 ;(Space as typeof Space & { Compact: typeof SpaceCompact }).Compact = SpaceCompact

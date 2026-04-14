@@ -3,6 +3,7 @@ import { computed, ref, shallowRef, watch, nextTick, getCurrentInstance, onMount
 import type { Placement } from '@floating-ui/vue'
 import { Trigger } from '@/_internal/trigger'
 import { useConfigInject } from '@/hooks'
+import { useCompactItemContext } from '../space/useCompactItemContext'
 import type {
   CascaderProps, CascaderEmits, CascaderSlots,
   CascaderOption, CascaderPlacement, CascaderValueType, CascaderFieldNames,
@@ -16,7 +17,11 @@ const emit = defineEmits<CascaderEmits>()
 defineSlots<CascaderSlots>()
 const slots = useSlots()
 
-const { getPopupContainer } = useConfigInject()
+const { getPopupContainer, direction } = useConfigInject()
+const { compactSize, compactItemClassnames } = useCompactItemContext(
+  computed(() => 'ant-cascader'),
+  direction,
+)
 
 const instance = getCurrentInstance()!
 const triggerRef = shallowRef<InstanceType<typeof Trigger> | null>(null)
@@ -374,23 +379,27 @@ const shouldShowArrow = computed(() => {
 
 const showPlaceholder = computed(() => selectedPaths.value.length === 0 && !currentSearchValue.value)
 
-const selectorClasses = computed(() => ({
-  'ant-select': true,
-  'ant-cascader': true,
-  'ant-select-open': mergedOpen.value,
-  'ant-select-focused': focused.value,
-  'ant-select-disabled': props.disabled,
-  'ant-select-single': !props.multiple,
-  'ant-select-multiple': props.multiple,
-  'ant-select-show-search': isSearchable.value,
-  'ant-select-show-arrow': shouldShowArrow.value,
-  'ant-select-allow-clear': props.allowClear,
-  'ant-select-sm': props.size === 'small',
-  'ant-select-lg': props.size === 'large',
-  'ant-select-borderless': !props.bordered,
-  [`ant-select-status-${props.status}`]: !!props.status,
-  'ant-select-loading': props.loading,
-}))
+const mergedSize = computed(() => compactSize.value || props.size)
+const selectorClasses = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-select': true,
+    'ant-cascader': true,
+    'ant-select-open': mergedOpen.value,
+    'ant-select-focused': focused.value,
+    'ant-select-disabled': props.disabled,
+    'ant-select-single': !props.multiple,
+    'ant-select-multiple': props.multiple,
+    'ant-select-show-search': isSearchable.value,
+    'ant-select-show-arrow': shouldShowArrow.value,
+    'ant-select-allow-clear': props.allowClear,
+    'ant-select-sm': mergedSize.value === 'small',
+    'ant-select-lg': mergedSize.value === 'large',
+    'ant-select-borderless': !props.bordered,
+    [`ant-select-status-${props.status}`]: !!props.status,
+    'ant-select-loading': props.loading,
+  },
+])
 
 // Tags display for multiple
 const displayTags = computed(() => {

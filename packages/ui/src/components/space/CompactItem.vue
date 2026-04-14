@@ -42,7 +42,5 @@ provide(spaceCompactItemContextKey, {
 </script>
 
 <template>
-  <div class="ant-space-compact-item">
-    <slot />
-  </div>
+  <slot />
 </template>

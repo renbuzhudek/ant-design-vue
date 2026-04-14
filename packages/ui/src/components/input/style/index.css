@@ -380,3 +380,35 @@
 .ant-input-search-loading {
   @apply animate-spin inline-block;
 }
+
+/* ====================== SpaceCompact: Horizontal ====================== */
+
+.ant-input-compact-item:not(.ant-input-compact-last-item) {
+  margin-inline-end: -1px;
+}
+
+.ant-input-compact-item {
+  &:hover,
+  &:focus-within,
+  &:active {
+    z-index: 2;
+  }
+
+  &:where([disabled]) {
+    z-index: 0;
+  }
+}
+
+.ant-input-compact-item:not(.ant-input-compact-first-item):not(.ant-input-compact-last-item) {
+  border-radius: 0;
+}
+
+.ant-input-compact-item.ant-input-compact-first-item:not(.ant-input-compact-last-item) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.ant-input-compact-item.ant-input-compact-last-item:not(.ant-input-compact-first-item) {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}

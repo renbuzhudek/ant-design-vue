@@ -9,6 +9,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { Trigger } from '@/_internal/trigger'
 import { PickerPanel } from '@/_internal/date-panel'
 import { useConfigInject } from '@/hooks'
+import { useCompactItemContext } from '../space/useCompactItemContext'
 import CalendarOutlined from '@ant-design/icons-vue/CalendarOutlined'
 import CloseCircleFilled from '@ant-design/icons-vue/CloseCircleFilled'
 import type { DatePickerProps, DatePickerEmits, DatePickerSlots } from './types'
@@ -26,14 +27,18 @@ const emit = defineEmits<DatePickerEmits>()
 defineSlots<DatePickerSlots>()
 
 const instance = getCurrentInstance()!
-const { size: globalSize, getPopupContainer, disabled: globalDisabled } = useConfigInject()
+const { size: globalSize, getPopupContainer, disabled: globalDisabled, direction } = useConfigInject()
+const { compactSize, compactItemClassnames } = useCompactItemContext(
+  computed(() => 'ant-picker'),
+  direction,
+)
 
 const inputRef = ref<HTMLInputElement | null>(null)
 const triggerRef = ref<InstanceType<typeof Trigger> | null>(null)
 
 // ---- Resolved props ----
 const isDisabled = computed(() => props.disabled ?? globalDisabled.value)
-const resolvedSize = computed(() => resolveSize(props.size ?? globalSize.value))
+const resolvedSize = computed(() => resolveSize(compactSize.value || (props.size ?? globalSize.value)))
 const parseFormat = computed(() => resolveFormatString(props.format, props.picker!, props.showTime))
 
 // ---- Open state ----
@@ -199,14 +204,17 @@ function handleTriggerClick() {
 }
 
 // ---- Classes ----
-const rootClass = computed(() => ({
-  'ant-picker': true,
-  [`ant-picker-${resolvedSize.value}`]: true,
-  'ant-picker-disabled': isDisabled.value,
-  'ant-picker-focused': isOpen.value,
-  'ant-picker-borderless': !props.bordered,
-  [`ant-picker-status-${props.status}`]: props.status,
-}))
+const rootClass = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-picker': true,
+    [`ant-picker-${resolvedSize.value}`]: true,
+    'ant-picker-disabled': isDisabled.value,
+    'ant-picker-focused': isOpen.value,
+    'ant-picker-borderless': !props.bordered,
+    [`ant-picker-status-${props.status}`]: props.status,
+  },
+])
 
 const showClear = computed(() =>
   props.allowClear && selectedValue.value && !isDisabled.value,

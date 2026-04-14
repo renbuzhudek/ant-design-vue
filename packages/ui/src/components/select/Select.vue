@@ -4,6 +4,7 @@ import type { Placement } from '@floating-ui/vue'
 import { Trigger } from '@/_internal/trigger'
 import { VirtualList } from '@/_internal/virtual-list'
 import { useConfigInject } from '@/hooks'
+import { useCompactItemContext } from '../space/useCompactItemContext'
 import type { SelectProps, SelectEmits, SelectSlots, SelectOption, SelectOptGroup, SelectOptionType, SelectPlacement, LabeledValue } from './types'
 import { selectDefaultProps, isOptGroup } from './types'
 
@@ -14,7 +15,11 @@ const emit = defineEmits<SelectEmits>()
 defineSlots<SelectSlots>()
 const slots = useSlots()
 
-const { getPopupContainer } = useConfigInject()
+const { getPopupContainer, direction } = useConfigInject()
+const { compactSize, compactItemClassnames } = useCompactItemContext(
+  computed(() => 'ant-select'),
+  direction,
+)
 
 const instance = getCurrentInstance()!
 const triggerRef = shallowRef<InstanceType<typeof Trigger> | null>(null)
@@ -469,22 +474,26 @@ const shouldShowArrow = computed(() => {
 })
 
 // --- CSS classes ---
-const selectorClasses = computed(() => ({
-  'ant-select': true,
-  'ant-select-open': mergedOpen.value,
-  'ant-select-focused': focused.value,
-  'ant-select-disabled': props.disabled,
-  'ant-select-single': !isMultiple.value,
-  'ant-select-multiple': isMultiple.value,
-  'ant-select-show-search': isSearchable.value,
-  'ant-select-show-arrow': shouldShowArrow.value,
-  'ant-select-allow-clear': props.allowClear,
-  'ant-select-sm': props.size === 'small',
-  'ant-select-lg': props.size === 'large',
-  'ant-select-borderless': !props.bordered,
-  [`ant-select-status-${props.status}`]: !!props.status,
-  'ant-select-loading': props.loading,
-}))
+const mergedSize = computed(() => compactSize.value || props.size)
+const selectorClasses = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-select': true,
+    'ant-select-open': mergedOpen.value,
+    'ant-select-focused': focused.value,
+    'ant-select-disabled': props.disabled,
+    'ant-select-single': !isMultiple.value,
+    'ant-select-multiple': isMultiple.value,
+    'ant-select-show-search': isSearchable.value,
+    'ant-select-show-arrow': shouldShowArrow.value,
+    'ant-select-allow-clear': props.allowClear,
+    'ant-select-sm': mergedSize.value === 'small',
+    'ant-select-lg': mergedSize.value === 'large',
+    'ant-select-borderless': !props.bordered,
+    [`ant-select-status-${props.status}`]: !!props.status,
+    'ant-select-loading': props.loading,
+  },
+])
 
 // --- Dropdown width ---
 const dropdownStyle = computed(() => {

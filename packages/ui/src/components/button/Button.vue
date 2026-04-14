@@ -65,6 +65,7 @@ import { buttonDefaultProps, resolveVariant, resolveSize, BUTTON_GROUP_KEY } fro
 import { getCssVarColor } from '@/utils/colorAlgorithm'
 import { useConfigInject } from '@/hooks'
 import { DEFAULT_PRIMARY_COLOR } from '../theme/types'
+import { useCompactItemContext } from '../space/useCompactItemContext'
 import LoadingOutlined from '@ant-design/icons-vue/LoadingOutlined'
 import { Wave } from '../wave'
 
@@ -81,6 +82,10 @@ const {
   theme,
 } = useConfigInject()
 const buttonGroup = inject(BUTTON_GROUP_KEY, null)
+const { compactSize, compactItemClassnames } = useCompactItemContext(
+  computed(() => 'ant-btn'),
+  direction,
+)
 
 const elRef = shallowRef<HTMLElement | null>(null)
 const slots = useSlots()
@@ -125,7 +130,7 @@ onUpdated(fixTwoCNChar)
 
 // --- Resolved props ---
 const variant = computed(() => resolveVariant(props))
-const size = computed(() => resolveSize(props.size ?? buttonGroup?.size.value ?? globalSize.value))
+const size = computed(() => resolveSize(props.size ?? compactSize.value ?? buttonGroup?.size.value ?? globalSize.value))
 const isDisabled = computed(() => props.disabled || globalDisabled.value)
 
 if (process.env.NODE_ENV !== 'production') {
@@ -166,21 +171,24 @@ const iconNode = computed(() => props.icon ?? null)
 const isIconOnly = computed(() => !slots.default && (hasIcon.value || isLoading.value))
 
 // --- Classes ---
-const rootClass = computed(() => ({
-  'ant-btn': true,
-  [`ant-btn-${variant.value}`]: true,
-  [`ant-btn-${size.value}`]: true,
-  [`ant-btn-shape-${props.shape}`]: props.shape !== 'default',
-  'ant-btn-danger': props.danger,
-  'ant-btn-ghost': props.ghost,
-  'ant-btn-loading': isLoading.value,
-  'ant-btn-disabled': isDisabled.value,
-  'ant-btn-block': props.block,
-  'ant-btn-custom-color': !!props.color || props.danger,
-  'ant-btn-icon-only': isIconOnly.value,
-  'ant-btn-two-chinese-chars': hasTwoCNChar.value && autoInsertSpace.value,
-  'ant-btn-rtl': direction.value === 'rtl',
-}))
+const rootClass = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-btn': true,
+    [`ant-btn-${variant.value}`]: true,
+    [`ant-btn-${size.value}`]: true,
+    [`ant-btn-shape-${props.shape}`]: props.shape !== 'default',
+    'ant-btn-danger': props.danger,
+    'ant-btn-ghost': props.ghost,
+    'ant-btn-loading': isLoading.value,
+    'ant-btn-disabled': isDisabled.value,
+    'ant-btn-block': props.block,
+    'ant-btn-custom-color': !!props.color || props.danger,
+    'ant-btn-icon-only': isIconOnly.value,
+    'ant-btn-two-chinese-chars': hasTwoCNChar.value && autoInsertSpace.value,
+    'ant-btn-rtl': direction.value === 'rtl',
+  },
+])
 
 // --- Loading icon transition hooks ---
 function onCollapseWidth(el: Element) {

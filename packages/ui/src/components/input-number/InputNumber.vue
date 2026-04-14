@@ -4,12 +4,19 @@ import UpOutlined from '@ant-design/icons-vue/UpOutlined'
 import DownOutlined from '@ant-design/icons-vue/DownOutlined'
 import type { InputNumberProps, InputNumberEmits, InputNumberSlots } from './types'
 import { inputNumberDefaultProps } from './types'
+import { useCompactItemContext } from '../space/useCompactItemContext'
+import { useConfigInject } from '@/hooks'
 
 defineOptions({ name: 'AInputNumber' })
 const props = withDefaults(defineProps<InputNumberProps>(), inputNumberDefaultProps)
 const emit = defineEmits<InputNumberEmits>()
 defineSlots<InputNumberSlots>()
 const slots = useSlots()
+const { direction } = useConfigInject()
+const { compactSize, compactItemClassnames } = useCompactItemContext(
+  computed(() => 'ant-input-number'),
+  direction,
+)
 
 const inputRef = ref<HTMLInputElement | null>(null)
 const focused = ref(false)
@@ -185,16 +192,21 @@ const isDownDisabled = computed(() => {
 const hasAddon = computed(() => !!slots.addonBefore || !!slots.addonAfter)
 const hasPrefix = computed(() => !!slots.prefix)
 
-const wrapperClasses = computed(() => ({
-  'ant-input-number': true,
-  'ant-input-number-sm': props.size === 'small',
-  'ant-input-number-lg': props.size === 'large',
-  'ant-input-number-disabled': props.disabled,
-  'ant-input-number-readonly': props.readonly,
-  'ant-input-number-borderless': !props.bordered,
-  'ant-input-number-focused': focused.value,
-  [`ant-input-number-status-${props.status}`]: !!props.status,
-}))
+const mergedSize = computed(() => compactSize.value || props.size)
+
+const wrapperClasses = computed(() => [
+  compactItemClassnames.value,
+  {
+    'ant-input-number': true,
+    'ant-input-number-sm': mergedSize.value === 'small',
+    'ant-input-number-lg': mergedSize.value === 'large',
+    'ant-input-number-disabled': props.disabled,
+    'ant-input-number-readonly': props.readonly,
+    'ant-input-number-borderless': !props.bordered,
+    'ant-input-number-focused': focused.value,
+    [`ant-input-number-status-${props.status}`]: !!props.status,
+  },
+])
 
 defineExpose({
   focus: (opts?: FocusOptions) => inputRef.value?.focus(opts),
@@ -208,7 +220,7 @@ defineExpose({
   <div
     v-if="hasAddon"
     class="ant-input-number-group-wrapper"
-    :class="{ [`ant-input-number-group-wrapper-${size}`]: size }"
+    :class="[compactItemClassnames, { [`ant-input-number-group-wrapper-${mergedSize}`]: mergedSize }]"
   >
     <div class="ant-input-number-wrapper ant-input-number-group">
       <span v-if="$slots.addonBefore" class="ant-input-number-group-addon">
