@@ -9,8 +9,8 @@ defineOptions({ name: 'AEmpty' })
 
 const props = withDefaults(
   defineProps<{
-    /** Custom description text; pass false to hide */
-    description?: string | false
+    /** Custom description text; pass false or null to hide */
+    description?: string | false | null
     /** Custom image (as URL string or built-in Empty image component) */
     image?: string | EmptyImageComponent
     /** Image style override */
@@ -47,8 +47,7 @@ const emptyClass = computed(() => ({
   'ant-empty-small': imageVariant.value === 'simple',
 }))
 const showDescription = computed(() => {
-  if (props.description !== undefined) return props.description !== false
-  return true
+  return props.description !== false && props.description !== null
 })
 const descriptionText = computed(() =>
   typeof props.description === 'string'

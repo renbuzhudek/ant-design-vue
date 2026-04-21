@@ -4,6 +4,10 @@ import { ConfigProvider, Empty, SimpleEmpty } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
 
 describe('Empty', () => {
+  it('should have the correct component name', () => {
+    expect(Empty.__name).toBe('AEmpty')
+  })
+
   it('should render default empty state with DefaultEmpty SVG', () => {
     const wrapper = mount(Empty)
     expect(wrapper.find('.ant-empty').exists()).toBe(true)
@@ -23,6 +27,13 @@ describe('Empty', () => {
   it('should hide description when description is false', () => {
     const wrapper = mount(Empty, {
       props: { description: false },
+    })
+    expect(wrapper.find('.ant-empty-description').exists()).toBe(false)
+  })
+
+  it('should hide description when description is null', () => {
+    const wrapper = mount(Empty, {
+      props: { description: null },
     })
     expect(wrapper.find('.ant-empty-description').exists()).toBe(false)
   })

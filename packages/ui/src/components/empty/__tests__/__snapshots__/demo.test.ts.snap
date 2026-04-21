@@ -221,7 +221,7 @@ exports[`Empty demos > demo: Description 1`] = `
         </g>
       </g>
     </svg></div>
-  <div class="ant-empty-description">No data</div>
+  <!--v-if-->
   <!--v-if-->
 </div>"
 `;
