@@ -57,6 +57,15 @@ describe('Empty', () => {
     expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
   })
 
+  it('should support built-in Empty.PRESENTED_IMAGE_DEFAULT image API', () => {
+    const wrapper = mount(Empty, {
+      props: { image: Empty.PRESENTED_IMAGE_DEFAULT },
+    })
+    expect(wrapper.find('.ant-empty').classes()).not.toContain('ant-empty-normal')
+    expect(wrapper.find('.ant-empty').classes()).not.toContain('ant-empty-small')
+    expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
+  })
+
   it('should render custom image slot', () => {
     const wrapper = mount(Empty, {
       slots: {
