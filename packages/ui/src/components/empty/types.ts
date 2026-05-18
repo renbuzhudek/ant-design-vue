@@ -12,8 +12,8 @@ export interface EmptyComponentStatics {
 }
 
 export interface EmptyProps {
-  /** Custom description text */
-  description?: string | false
+  /** Custom description text; pass false or null to hide */
+  description?: string | false | null
   /** Custom image (as URL string or built-in Empty image component) */
   image?: string | EmptyImageComponent
   /** Image style override */

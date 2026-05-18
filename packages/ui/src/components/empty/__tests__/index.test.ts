@@ -4,6 +4,10 @@ import { ConfigProvider, Empty, SimpleEmpty } from '@ant-design-vue/ui'
 import { mount } from '@vue/test-utils'
 
 describe('Empty', () => {
+  it('should have the correct component name', () => {
+    expect(Empty.__name).toBe('AEmpty')
+  })
+
   it('should render default empty state with DefaultEmpty SVG', () => {
     const wrapper = mount(Empty)
     expect(wrapper.find('.ant-empty').exists()).toBe(true)
@@ -27,6 +31,13 @@ describe('Empty', () => {
     expect(wrapper.find('.ant-empty-description').exists()).toBe(false)
   })
 
+  it('should hide description when description is null', () => {
+    const wrapper = mount(Empty, {
+      props: { description: null },
+    })
+    expect(wrapper.find('.ant-empty-description').exists()).toBe(false)
+  })
+
   it('should render image from URL', () => {
     const wrapper = mount(Empty, {
       props: { image: 'https://example.com/empty.svg' },
@@ -43,6 +54,15 @@ describe('Empty', () => {
     })
     expect(wrapper.find('.ant-empty').classes()).toContain('ant-empty-normal')
     expect(wrapper.find('.ant-empty').classes()).toContain('ant-empty-small')
+    expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
+  })
+
+  it('should support built-in Empty.PRESENTED_IMAGE_DEFAULT image API', () => {
+    const wrapper = mount(Empty, {
+      props: { image: Empty.PRESENTED_IMAGE_DEFAULT },
+    })
+    expect(wrapper.find('.ant-empty').classes()).not.toContain('ant-empty-normal')
+    expect(wrapper.find('.ant-empty').classes()).not.toContain('ant-empty-small')
     expect(wrapper.find('.ant-empty-image svg').exists()).toBe(true)
   })
 
