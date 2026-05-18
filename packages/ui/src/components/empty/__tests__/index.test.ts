@@ -5,7 +5,7 @@ import { mount } from '@vue/test-utils'
 
 describe('Empty', () => {
   it('should have the correct component name', () => {
-    expect(Empty.__name).toBe('AEmpty')
+    expect(Empty.name).toBe('AEmpty')
   })
 
   it('should render default empty state with DefaultEmpty SVG', () => {
