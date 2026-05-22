@@ -13,7 +13,7 @@
         v-show="mergedOpen"
         ref="floatingRef"
         :class="popupClasses"
-        :style="floatingStyles"
+        :style="popupStyles"
         role="tooltip"
         v-bind="popupListeners"
       >
@@ -22,7 +22,9 @@
           ref="arrowRef"
           class="ant-trigger-arrow"
           :style="arrowStyles"
-        />
+        >
+          <span class="ant-trigger-arrow-content" />
+        </div>
         <slot name="popup" />
       </div>
     </Transition>
@@ -38,7 +40,6 @@ import {
   flip,
   shift,
   arrow as arrowMiddleware,
-  type Placement,
 } from '@floating-ui/vue'
 import { Portal } from '../portal'
 import type { TriggerProps, TriggerEmits, TriggerSlots, TriggerType } from './types'
@@ -56,6 +57,13 @@ const floatingRef = shallowRef<HTMLElement | null>(null)
 const arrowRef = shallowRef<HTMLElement | null>(null)
 
 const internalOpen = ref(props.defaultOpen ?? false)
+
+const STATIC_SIDE_MAP = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right',
+} as const
 
 // Detect controlled mode: check if parent passed the `open` prop in vnode.props
 // (Vue boolean casting makes props.open always false when absent, so we can't check that)
@@ -93,29 +101,35 @@ const { floatingStyles, placement: actualPlacement, middlewareData, update } = u
         : []),
     ]),
     whileElementsMounted: autoUpdate,
-    transform: true,
+    transform: false,
   },
 )
+
+const popupStyles = computed(() => {
+  if (props.zIndex == null && !props.popupStyle) {
+    return floatingStyles.value
+  }
+
+  return {
+    ...floatingStyles.value,
+    ...(props.zIndex != null ? { zIndex: props.zIndex } : {}),
+    ...(props.popupStyle ?? {}),
+  }
+})
 
 const arrowStyles = computed(() => {
   const arrowData = middlewareData.value?.arrow
   if (!arrowData) return {}
 
   const { x, y } = arrowData
-  const side = actualPlacement.value.split('-')[0]
-  const staticSide: Record<string, string> = {
-    top: 'bottom',
-    right: 'left',
-    bottom: 'top',
-    left: 'right',
-  }
+  const side = actualPlacement.value.split('-')[0] as keyof typeof STATIC_SIDE_MAP
 
   return {
     left: x != null ? `${x}px` : '',
     top: y != null ? `${y}px` : '',
     right: '',
     bottom: '',
-    [staticSide[side]]: '-4px',
+    [STATIC_SIDE_MAP[side]]: '0px',
   }
 })
 

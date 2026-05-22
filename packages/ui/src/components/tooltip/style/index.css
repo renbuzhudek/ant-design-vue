@@ -25,7 +25,7 @@
 }
 
 :where(.ant-tooltip) .ant-trigger-arrow {
-  background: var(--tooltip-bg);
+  --ant-trigger-arrow-background: var(--tooltip-bg);
 }
 
 /* Preset colors */

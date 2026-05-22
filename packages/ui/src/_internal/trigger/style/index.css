@@ -11,11 +11,85 @@
 }
 
 :where(.ant-trigger-arrow) {
-  @apply absolute w-2 h-2;
-  background: inherit;
-  transform: rotate(45deg);
-  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.07);
-  z-index: -1;
+  /*
+   * Ant Design arrow geometry for a 16px box:
+   * - shadow square = 16 / sqrt(2)
+   * - inner corner inset = (16 - 16 / sqrt(2)) / 2
+   * The rounded clip-path matches the legacy Trigger arrow silhouette.
+   */
+  --ant-trigger-arrow-size: 16px;
+  --ant-trigger-arrow-half-size: 8px;
+  --ant-trigger-arrow-shadow-size: 8.9705627485px;
+  --ant-trigger-arrow-corner-inset: 1.6568542495px;
+  --ant-trigger-arrow-shadow-blur: 7px;
+  --ant-trigger-arrow-shadow-offset: 3px;
+  --ant-trigger-arrow-shadow-radius: 2px;
+  @apply absolute;
+  z-index: 1;
+  display: block;
+  width: var(--ant-trigger-arrow-size);
+  height: var(--ant-trigger-arrow-size);
+  overflow: hidden;
+  background: transparent;
+  pointer-events: none;
+}
+
+:where(.ant-trigger-arrow)::after {
+  content: '';
+  position: absolute;
+  width: var(--ant-trigger-arrow-shadow-size);
+  height: var(--ant-trigger-arrow-shadow-size);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 0 0 var(--ant-trigger-arrow-shadow-radius) 0;
+  transform: translateY(50%) rotate(-135deg);
+  box-shadow: var(--ant-trigger-arrow-shadow-offset) var(--ant-trigger-arrow-shadow-offset) var(--ant-trigger-arrow-shadow-blur) rgba(0, 0, 0, 0.07);
+  z-index: 0;
+  background: transparent;
+}
+
+:where(.ant-trigger-arrow-content) {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+:where(.ant-trigger-arrow-content)::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--ant-trigger-arrow-size);
+  height: var(--ant-trigger-arrow-half-size);
+  background: var(--ant-trigger-arrow-background, #fff);
+  clip-path: polygon(var(--ant-trigger-arrow-corner-inset) 100%, 50% var(--ant-trigger-arrow-corner-inset), calc(var(--ant-trigger-arrow-size) - var(--ant-trigger-arrow-corner-inset)) 100%, var(--ant-trigger-arrow-corner-inset) 100%);
+  clip-path: path('M 0 8 A 4 4 0 0 0 2.82842712474619 6.82842712474619 L 6.585786437626905 3.0710678118654755 A 2 2 0 0 1 9.414213562373096 3.0710678118654755 L 13.17157287525381 6.82842712474619 A 4 4 0 0 0 16 8 Z');
+  content: '';
+}
+
+:where(.ant-trigger-placement-top) .ant-trigger-arrow,
+:where(.ant-trigger-placement-top-start) .ant-trigger-arrow,
+:where(.ant-trigger-placement-top-end) .ant-trigger-arrow {
+  transform: translateY(100%) rotate(180deg);
+}
+
+:where(.ant-trigger-placement-bottom) .ant-trigger-arrow,
+:where(.ant-trigger-placement-bottom-start) .ant-trigger-arrow,
+:where(.ant-trigger-placement-bottom-end) .ant-trigger-arrow {
+  transform: translateY(-100%);
+}
+
+:where(.ant-trigger-placement-left) .ant-trigger-arrow,
+:where(.ant-trigger-placement-left-start) .ant-trigger-arrow,
+:where(.ant-trigger-placement-left-end) .ant-trigger-arrow {
+  transform: translateX(100%) rotate(90deg);
+}
+
+:where(.ant-trigger-placement-right) .ant-trigger-arrow,
+:where(.ant-trigger-placement-right-start) .ant-trigger-arrow,
+:where(.ant-trigger-placement-right-end) .ant-trigger-arrow {
+  transform: translateX(-100%) rotate(-90deg);
 }
 
 /* Zoom-big-fast transition */

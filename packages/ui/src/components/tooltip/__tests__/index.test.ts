@@ -56,6 +56,39 @@ describe('Tooltip', () => {
     expect(wrapper.find('.ant-tooltip').exists()).toBe(true)
   })
 
+  it('positions popup with left/top styles instead of transform', async () => {
+    const wrapper = mount(Tooltip, {
+      attachTo: document.body,
+      props: {
+        title: 'prompt text',
+        open: true,
+        zIndex: 1234,
+        overlayStyle: {
+          maxWidth: '123px',
+          opacity: 0.9,
+          '--tooltip-test-color': '#f50',
+        },
+      },
+      slots: { default: () => h('span', 'Trigger') },
+    })
+
+    await nextTick()
+    await nextTick()
+
+    const popup = (wrapper.vm as { getPopupDomNode: () => HTMLElement | null }).getPopupDomNode()
+    const styleAttr = popup?.getAttribute('style') ?? ''
+
+    expect(popup).not.toBeNull()
+    expect(styleAttr).toContain('left:')
+    expect(styleAttr).toContain('top:')
+    expect(styleAttr).not.toContain('transform:')
+    expect(styleAttr).toContain('max-width: 123px')
+    expect(styleAttr).toContain('opacity: 0.9')
+    expect(styleAttr).toContain('--tooltip-test-color: #f50')
+
+    wrapper.unmount()
+  })
+
   it('supports overlayClassName', () => {
     const wrapper = mount(Tooltip, {
       props: {

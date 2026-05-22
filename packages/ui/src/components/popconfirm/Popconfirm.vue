@@ -20,41 +20,35 @@
   >
     <slot />
     <template #popup>
-      <div class="ant-popconfirm-inner" @keydown.esc="onCancel">
+      <div class="ant-popconfirm-inner">
         <div class="ant-popconfirm-message">
-          <span class="ant-popconfirm-message-icon">
-            <slot name="icon">
-              <ExclamationCircleFilled />
-            </slot>
+          <span v-if="hasIcon" class="ant-popconfirm-message-icon">
+            <VNodes :vnodes="iconContent" />
           </span>
           <div class="ant-popconfirm-message-text">
             <div class="ant-popconfirm-title">
-              <slot name="title">{{ props.title }}</slot>
+              <VNodes :vnodes="titleContent" />
             </div>
             <div v-if="hasDescription" class="ant-popconfirm-description">
-              <slot name="description">{{ props.description }}</slot>
+              <VNodes :vnodes="descriptionContent" />
             </div>
           </div>
         </div>
         <div class="ant-popconfirm-buttons">
-          <slot name="cancelButton" :cancel="onCancel">
+          <template v-if="props.showCancel">
+            <slot name="cancelButton" v-bind="cancelButtonSlotProps">
+              <a-button v-bind="defaultCancelButtonProps">
+                <VNodes :vnodes="cancelTextContent" />
+              </a-button>
+            </slot>
+          </template>
+          <slot name="okButton" v-bind="okButtonSlotProps">
             <a-button
-              v-if="props.showCancel"
-              size="sm"
-              v-bind="props.cancelButtonProps"
-              @click="onCancel"
+              :variant="okButtonVariant"
+              v-bind="defaultOkButtonProps"
+              :loading="confirmLoading"
             >
-              <slot name="cancelText">{{ props.cancelText }}</slot>
-            </a-button>
-          </slot>
-          <slot name="okButton" :confirm="onConfirm">
-            <a-button
-              :type="props.okType"
-              size="sm"
-              v-bind="props.okButtonProps"
-              @click="onConfirm"
-            >
-              <slot name="okText">{{ props.okText }}</slot>
+              <VNodes :vnodes="okTextContent" />
             </a-button>
           </slot>
         </div>
@@ -64,57 +58,240 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, shallowRef, useSlots, getCurrentInstance } from 'vue'
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  h,
+  isVNode,
+  onBeforeUnmount,
+  onBeforeUpdate,
+  ref,
+  shallowRef,
+  useSlots,
+  watch,
+} from 'vue'
 import { Trigger } from '@/_internal/trigger'
 import { useConfigInject } from '@/hooks'
 import { resolveFloatingPlacement } from '../tooltip/types'
 import ExclamationCircleFilled from '@ant-design/icons-vue/ExclamationCircleFilled'
-import type { PopconfirmProps, PopconfirmEmits, PopconfirmSlots } from './types'
+import type {
+  PopconfirmProps,
+  PopconfirmEmits,
+  PopconfirmSlots,
+  PopconfirmConfirmHandler,
+  PopconfirmCancelHandler,
+  PopconfirmOpenChangeEvent,
+} from './types'
+import type { ButtonVariant } from '../button/types'
 import { popconfirmDefaultProps } from './types'
 
 defineOptions({ name: 'APopconfirm' })
 
-const props = withDefaults(defineProps<PopconfirmProps>(), {
-  trigger: 'click',
-  placement: 'top',
-  mouseEnterDelay: 100,
-  mouseLeaveDelay: 100,
-  destroyTooltipOnHide: false,
-  autoAdjustOverflow: true,
-  disabled: false,
-  okType: 'primary',
-  showCancel: true,
-  okText: 'OK',
-  cancelText: 'Cancel',
+const VNodes = defineComponent({
+  name: 'PopconfirmVNodes',
+  props: {
+    vnodes: {
+      type: null,
+      default: null,
+    },
+  },
+  setup(rendererProps) {
+    return () => rendererProps.vnodes as any
+  },
 })
+
+const LEGACY_OK_TYPE_VARIANT_MAP: Record<NonNullable<PopconfirmProps['okType']>, ButtonVariant> = {
+  primary: 'solid',
+  default: 'outlined',
+  dashed: 'dashed',
+  text: 'text',
+  link: 'link',
+}
+
+const props = withDefaults(defineProps<PopconfirmProps>(), popconfirmDefaultProps)
 const emit = defineEmits<PopconfirmEmits>()
 defineSlots<PopconfirmSlots>()
 const slots = useSlots()
 
-const { getPopupContainer } = useConfigInject()
+const { getPopupContainer, locale } = useConfigInject()
 
 const triggerRef = shallowRef<InstanceType<typeof Trigger> | null>(null)
 const internalOpen = ref(props.defaultOpen ?? false)
+const confirmLoading = ref(false)
+const activeConfirmToken = ref(0)
+let confirmTokenSeed = 0
+const instance = getCurrentInstance()!
+const rawProps = shallowRef<Record<string, unknown>>((instance.vnode.props || {}) as Record<string, unknown>)
+
+function syncRawProps() {
+  rawProps.value = (instance.vnode.props || {}) as Record<string, unknown>
+}
+
+onBeforeUpdate(syncRawProps)
+
+function hasExplicitProp(propName: string, kebabName?: string) {
+  return propName in rawProps.value || (!!kebabName && kebabName in rawProps.value)
+}
+
+function isThenable(value: unknown): value is PromiseLike<unknown> {
+  return !!value && typeof (value as PromiseLike<unknown>).then === 'function'
+}
+
+function toFunctionArray<T extends (...args: any[]) => unknown>(value: unknown): T[] {
+  if (typeof value === 'function') {
+    return [value as T]
+  }
+  if (Array.isArray(value)) {
+    return value.filter((handler): handler is T => typeof handler === 'function')
+  }
+  return []
+}
+
+type ButtonClickHandler = (event: MouseEvent) => unknown
+type CompatRawHandlerName = 'onConfirm' | 'onCancel'
+const firedOnceHandlers = new WeakSet<(...args: any[]) => unknown>()
+
+function composeButtonClickHandler(
+  userHandler: unknown,
+  internalHandler: (event: MouseEvent) => void,
+) {
+  return (event: MouseEvent) => {
+    try {
+      toFunctionArray<ButtonClickHandler>(userHandler).forEach(handler => handler(event))
+    } finally {
+      internalHandler(event)
+    }
+  }
+}
+
+function normalizeRenderable(content: unknown) {
+  if (content == null || content === false) {
+    return null
+  }
+  if (Array.isArray(content) || isVNode(content)) {
+    return content
+  }
+  if (typeof content === 'string' || typeof content === 'number') {
+    return content
+  }
+  return h(content as any)
+}
+
+function getSlotContent(slotFn: (() => any) | undefined) {
+  const content = slotFn?.()
+  return content?.length ? content : null
+}
+
+function resolveContent(options: {
+  propName: string
+  propValue: unknown
+  slot: (() => any) | undefined
+  kebabName?: string
+  fallbackSlot?: (() => any) | undefined
+  fallbackContent?: unknown
+}) {
+  const {
+    propName,
+    propValue,
+    slot,
+    kebabName,
+    fallbackSlot,
+    fallbackContent,
+  } = options
+
+  if (hasExplicitProp(propName, kebabName)) {
+    return normalizeRenderable(propValue)
+  }
+
+  return getSlotContent(slot) ?? getSlotContent(fallbackSlot) ?? normalizeRenderable(fallbackContent)
+}
+
+function hasRenderableContent(content: unknown) {
+  if (Array.isArray(content)) {
+    return content.length > 0
+  }
+  return content !== null && content !== undefined && content !== false && content !== ''
+}
 
 // --- Open state ---
 // Popconfirm manages its own open state (for confirm/cancel close behavior)
 // Check raw vnode props to detect user-controlled mode
-const instance = getCurrentInstance()!
 const isUserControlled = computed(() => {
-  const rawProps = instance.vnode.props || {}
-  return 'open' in rawProps || 'visible' in rawProps
+  return (hasExplicitProp('open') && props.open !== null) || hasExplicitProp('visible')
 })
 
 const mergedOpen = computed(() => {
-  if (isUserControlled.value) {
-    return props.open ?? props.visible ?? false
-  }
+  if (hasExplicitProp('open') && props.open !== null) return props.open ?? false
+  if (hasExplicitProp('visible')) return props.visible ?? false
   return internalOpen.value
+})
+
+const resolvedOkText = computed(() => {
+  return locale.value.Popconfirm?.okText ?? popconfirmDefaultProps.okText
+})
+
+const resolvedCancelText = computed(() => {
+  return locale.value.Popconfirm?.cancelText ?? popconfirmDefaultProps.cancelText
+})
+
+const okButtonVariant = computed(() => {
+  return LEGACY_OK_TYPE_VARIANT_MAP[props.okType ?? popconfirmDefaultProps.okType]
+})
+
+const iconContent = computed(() => {
+  return resolveContent({
+    propName: 'icon',
+    propValue: props.icon,
+    slot: slots.icon,
+    fallbackContent: h(ExclamationCircleFilled),
+  })
+})
+
+const titleContent = computed(() => {
+  return resolveContent({
+    propName: 'title',
+    propValue: props.title,
+    slot: slots.title,
+  })
+})
+
+const descriptionContent = computed(() => {
+  return resolveContent({
+    propName: 'description',
+    propValue: props.description,
+    slot: slots.description,
+  })
+})
+
+const cancelTextContent = computed(() => {
+  return resolveContent({
+    propName: 'cancelText',
+    kebabName: 'cancel-text',
+    propValue: props.cancelText,
+    slot: slots.cancelText,
+    fallbackSlot: slots.cancel,
+    fallbackContent: resolvedCancelText.value,
+  })
+})
+
+const okTextContent = computed(() => {
+  return resolveContent({
+    propName: 'okText',
+    kebabName: 'ok-text',
+    propValue: props.okText,
+    slot: slots.okText,
+    fallbackContent: resolvedOkText.value,
+  })
+})
+
+const hasIcon = computed(() => {
+  return hasRenderableContent(iconContent.value)
 })
 
 // --- Check for description ---
 const hasDescription = computed(() => {
-  return (props.description !== undefined && props.description !== null && props.description !== '') || !!slots.description
+  return hasRenderableContent(descriptionContent.value)
 })
 
 // --- Arrow ---
@@ -143,30 +320,193 @@ const popupClasses = computed(() => {
   return classes
 })
 
+const cancelButtonSlotProps = computed(() => {
+  const cancelButtonProps = props.cancelButtonProps ?? {}
+
+  return {
+    size: 'small' as const,
+    ...cancelButtonProps,
+    onClick: composeButtonClickHandler(
+      (cancelButtonProps as { onClick?: unknown }).onClick,
+      onCancel as (event: MouseEvent) => void,
+    ),
+    cancel: onCancel as (event: MouseEvent) => void,
+  }
+})
+
+const defaultCancelButtonProps = computed(() => {
+  const { cancel, ...buttonProps } = cancelButtonSlotProps.value
+  return buttonProps
+})
+
+const okButtonSlotProps = computed(() => {
+  const okButtonProps = props.okButtonProps ?? {}
+
+  return {
+    type: props.okType,
+    size: 'small' as const,
+    ...okButtonProps,
+    onClick: composeButtonClickHandler(
+      (okButtonProps as { onClick?: unknown }).onClick,
+      onConfirm,
+    ),
+    confirm: onConfirm,
+  }
+})
+
+const defaultOkButtonProps = computed(() => {
+  const { confirm, ...buttonProps } = okButtonSlotProps.value
+  return buttonProps
+})
+
 // --- Handlers ---
-function setOpen(val: boolean) {
+function setOpen(val: boolean, event?: PopconfirmOpenChangeEvent) {
   if (!isUserControlled.value) {
     internalOpen.value = val
   }
+  if (!val) {
+    confirmLoading.value = false
+    activeConfirmToken.value = 0
+  }
   emit('update:open', val)
-  emit('openChange', val)
+  emit('openChange', val, event)
   emit('update:visible', val)
-  emit('visibleChange', val)
+  emit('visibleChange', val, event)
 }
 
 function onOpenChange(val: boolean) {
   setOpen(val)
 }
 
-function onConfirm(e: MouseEvent) {
-  emit('confirm', e)
-  setOpen(false)
+function getCompatHandlers<T extends (...args: any[]) => unknown>(rawPropName: CompatRawHandlerName): T[] {
+  return toFunctionArray<T>(rawProps.value[rawPropName])
 }
 
-function onCancel(e: MouseEvent | KeyboardEvent) {
-  emit('cancel', e as MouseEvent)
-  setOpen(false)
+function getCompatOnceHandlers<T extends (...args: any[]) => unknown>(rawPropName: CompatRawHandlerName): T[] {
+  return toFunctionArray<T>(rawProps.value[`${rawPropName}Once`])
 }
+
+function hasCompatHandlers(rawPropName: CompatRawHandlerName) {
+  return getCompatHandlers(rawPropName).length > 0 || getCompatOnceHandlers(rawPropName).length > 0
+}
+
+function emitCompatEvent(eventName: 'confirm' | 'cancel', event: MouseEvent) {
+  if (eventName === 'confirm') {
+    if (!hasCompatHandlers('onConfirm')) {
+      emit('confirm', event)
+    }
+    return
+  }
+
+  if (!hasCompatHandlers('onCancel')) {
+    emit('cancel', event)
+  }
+}
+
+function invokeRawHandlers<T extends (...args: any[]) => unknown>(
+  rawPropName: CompatRawHandlerName,
+  event: MouseEvent,
+) {
+  const results: ReturnType<T>[] = []
+
+  getCompatHandlers<T>(rawPropName).forEach(handler => {
+    results.push(handler(event) as ReturnType<T>)
+  })
+
+  getCompatOnceHandlers<T>(rawPropName).forEach(handler => {
+    if (firedOnceHandlers.has(handler)) {
+      return
+    }
+
+    firedOnceHandlers.add(handler)
+    results.push(handler(event) as ReturnType<T>)
+  })
+
+  return results
+}
+
+function invokeConfirmHandlers(e: MouseEvent) {
+  const results = invokeRawHandlers<PopconfirmConfirmHandler>('onConfirm', e)
+  return results.find(isThenable) ?? results.find(result => result !== undefined)
+}
+
+function invokeCancelHandlers(e: MouseEvent) {
+  invokeRawHandlers<PopconfirmCancelHandler>('onCancel', e)
+}
+
+function onConfirm(e: MouseEvent) {
+  if (confirmLoading.value) {
+    return
+  }
+
+  emitCompatEvent('confirm', e)
+  const result = invokeConfirmHandlers(e)
+  if (isThenable(result)) {
+    const token = ++confirmTokenSeed
+    activeConfirmToken.value = token
+    confirmLoading.value = true
+    result.then(
+      () => {
+        if (activeConfirmToken.value !== token || !mergedOpen.value) {
+          return
+        }
+
+        setOpen(false, e)
+      },
+      () => {
+        if (activeConfirmToken.value !== token) {
+          return
+        }
+
+        activeConfirmToken.value = 0
+        confirmLoading.value = false
+      },
+    )
+    return
+  }
+
+  setOpen(false, e)
+}
+
+function onCancel(e: MouseEvent) {
+  emitCompatEvent('cancel', e)
+  invokeCancelHandlers(e)
+  setOpen(false, e)
+}
+
+function onDocumentKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape' && mergedOpen.value) {
+    setOpen(false, e)
+  }
+}
+
+watch(
+  mergedOpen,
+  open => {
+    if (!open) {
+      confirmLoading.value = false
+      activeConfirmToken.value = 0
+    }
+
+    if (typeof document === 'undefined') {
+      return
+    }
+
+    if (open) {
+      document.addEventListener('keydown', onDocumentKeydown)
+      return
+    }
+
+    document.removeEventListener('keydown', onDocumentKeydown)
+  },
+  { flush: 'post', immediate: true },
+)
+
+onBeforeUnmount(() => {
+  if (typeof document !== 'undefined') {
+    document.removeEventListener('keydown', onDocumentKeydown)
+  }
+})
 
 // --- Expose ---
 defineExpose({
