@@ -297,7 +297,7 @@ export default defineComponent({
             formContext.onValidate(
               fieldName.value,
               !errors.value.length,
-              errors.value.length ? toRaw(errors.value[0]) : null,
+              errors.value.length ? toRaw(errors.value) : null,
             );
           }
         });
